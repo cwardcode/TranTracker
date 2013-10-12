@@ -13,6 +13,5 @@ Folder Layout:
  --TrackerClients <-- Holds mobile client applications
  |--Android <--holds andorid client app
  |--iOS <-- holds apple client app
- |__
  --TranGPSTracker <---Holds the GPS Transmitter app
  --Website <---Holds our django website - see its readme for more details
