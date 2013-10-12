@@ -1,12 +1,18 @@
+Moved entire project to one repository to keep everything tidy, hopefully.
+
 This is the main working directory for our capstone project. 
 
-This dir can be accessed by visiting: http://corp.cwardcode.com/capstone. I 
-figure we could put anything extra related to the project here, if need be.
+I figure we could put anything extra related to the project here, if need be.
 
 Even though this is the main directory for the site, it isn't served from here,
-instead it's served from the GPSTracker subfolder as it's a Django project.
+instead it's served from the Website subfolder as it's a Django project.
 The actual capstone site can be accessed at: http://tracker.cwardcode.com
 
 
 Folder Layout:
- --GPSTracker <---Holds our django website - see its readme for more details
+ --TrackerClients <-- Holds mobile client applications
+ |--Android <--holds andorid client app
+ |--iOS <-- holds apple client app
+ |__
+ --TranGPSTracker <---Holds the GPS Transmitter app
+ --Website <---Holds our django website - see its readme for more details
