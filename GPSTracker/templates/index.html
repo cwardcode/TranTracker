@@ -13,16 +13,48 @@
     #map_canvas { height:100%}
 </style>
 <script type="text/javascript"
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3xadTdJ57fBnlrJLmggZdxxHFdTpPPvA&sensor=false"></script>
-<script type="text/javascript">
+        src="https://maps.googleapis.com/maps/api/js?libraries=geometry&key=AIzaSyD3xadTdJ57fBnlrJLmggZdxxHFdTpPPvA&sensor=false"></script>
+<script type='text/javascript'>
     function initialize() {
+        var styles = [{
+            "stylers": [{
+                "saturation": -100
+            }, {
+                "gamma": 0.18
+            }, {
+                "lightness": -30
+            }]
+        }, {
+            "elementType": "labels.text",
+                "stylers": [{
+                "invert_lightness": true
+            }]
+        }];
+
+        var styledMap = new google.maps.StyledMapType(styles, {
+            name: "Black-White Map"
+        });
+        var myLatlng = new google.maps.LatLng(35.30872, -83.18432);
         var mapOptions = {
-            center: new google.maps.LatLng(35.30975, -83.18466),
-            zoom: 17,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-        var map = new google.maps.Map(document.getElementById("map_canvas"),
-                                      mapOptions);
+            zoom: 16,
+            center: myLatlng,
+            mapTypeControlOptions: {
+                mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_theme']
+            }
+        }
+        var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+            map.mapTypes.set('map_theme', styledMap);
+            map.setMapTypeId('map_theme');
+        var decodedPath = google.maps.geometry.encoding.decodePath('cbnvE`muzNVCVJTPP@XCLWpBeC@KQ[@O`CsC^Uj@G`@@pATtD_@HpAqCXIGY_Ai@Ks@M_@Ak@FKFSLaCrCAJP^AJsBdCKVYBQAUQWKWBOH?DxCzC?JYd@_@T{@b@mLpDiCh@gAHy@Oc@r@mBjBqC|DEDaEsGk@m@[W}@SqAOiBlJ[u@Uu@[sBMY][m@ScAMk@I_ACo@JiBb@_AFcF}@}B]c@RUX}@zDIPeAlAU^KZAj@@|ABf@NxAGb@@TTJD?DGBI?OGQYI@GOyACg@AyABo@H[T_@dAmAHQ|@{DTYb@S|B\\bF|@~@GhBc@n@K~@B@QPcAGwBScDOi@[oCISOScAg@_@IaA?[Gi@_@_AsAeAsABGnByBxBkBnAtA@i@IqA@oAJm@l@_BRYlAu@vAUj@kAb@WPQHQJg@JaBNg@JW?Ga@iADKDCx@[Y^MB[N^`A?FKVOf@KdBKb@IPQRc@Ti@jARTR`@VbAB^@vAFt@QjBI`Ba@dASVQJQFW@[GSI_@[IRDXRPv@b@N@VCXMLMHQ@a@BIf@w@x@oBvBcEhB_ExAoC`B}A`@UAUe@aBMUMMKAI?o@h@]^a@^_Ad@Z`BB@l@LJBTX@NeArBiB|DwBbEc@dAEPHBNX`@|Af@~B\\nAVh@l@d@VH|@FfBAl@RfCbBZHjACpA@R@b@N\\XPZRl@ZbBDd@AlAEb@@J');
+
+        var setRegion = new google.maps.Polyline({
+            path: decodedPath,
+            levels: "",
+            strokeColor: "#FF0000",
+            strokeOpacity: 1.0,
+            strokeWeight: 2,
+            map: map
+        });
     }
     google.maps.event.addDomListener(window, 'load', initialize);
 </script>
@@ -72,32 +104,5 @@
         </select> 
     </ul>                                                   
     </li>                                                   
-    <!--
-            <li class="last"><a href="#">Stop Key </a>                                  
-        <ul id="side-menu-68085">                                                   
-            <li class="first">                                                      
-            <a href=""> N. Baseball </a> </li>                                      
-            <li><a href=""> S. Baseball </a></li>                                   
-            <li> <a href=""> Ramsey </a></li>                                       
-            <li> <a href=""> Field House </a></li>                                  
-            <li> <a href=""> Bardo Arts Center </a></li>                            
-            <li> <a href=""> Dining Hall </a></li>                                  
-            <li> <a href=""> Walker </a></li>                                       
-            <li> <a href=""> Village </a></li>                                      
-            <li> <a href=""> Norton </a></li>                                       
-            <li> <a href=""> UC </a></li>                                           
-            <li> <a href=""> Library </a></li>                                      
-            <li> <a href=""> Moore </a></li>                                        
-            <li> <a href=""> Reynolds </a></li>                                     
-            <li> <a href=""> McKee </a></li>                                        
-            <li> <a href=""> Albright/Benton </a></li>                              
-            <li> <a href=""> Harrill </a></li>                                      
-            <li> <a href=""> Central </a></li>                                      
-            <li> <a href=""> OneStop </a></li>                                      
-            <li> <a href=""> Coulter </a></li>                                      
-            <li class="last"> <a href=""> Kimmell </a></li>                         
-        </ul>                                                                       
-        </li> 
-   -->
 </ul>
 {% endblock %}
