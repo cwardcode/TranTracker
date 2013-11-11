@@ -28,10 +28,10 @@ public class LocReceiver extends BroadcastReceiver {
     private static final String DB_DRIVER = "com.mysql.jdbc.Driver";
     
     /** The connection string that allows DB_DRIVER to connect to the server.*/
-    private static final String DB_CONNECTION = "jdbc:mysql://direct.cwardcode.com:3306/cdward4_Tracker";
+    private static final String DB_CONNECTION = "jdbc:mysql://tracker.cwardcode.com:3306/tracker";
     
     /** The username used for this connection */
-    private static final String DB_USER = "cdward4_tracker";
+    private static final String DB_USER = "gpstracker";
     
     /** The password used for this connection */
     private static final String DB_PASSWORD = "tracker";
