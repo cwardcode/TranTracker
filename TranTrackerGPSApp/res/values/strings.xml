@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Tran Tracker</string>
+    <string name="v1">Catran1</string>
+    <string name="v2">Catran2</string>
+    <string name="v3">Catran3</string>
+
+</resources>

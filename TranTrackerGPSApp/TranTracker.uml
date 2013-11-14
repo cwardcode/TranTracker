@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.cwardcode.TranTracker</OriginalElement>
+  <nodes>
+    <node x="22.0" y="-173.5">com.cwardcode.TranTracker.R.drawable</node>
+    <node x="-280.0" y="197.0">com.cwardcode.TranTracker.SendLoc.MyLocationListener</node>
+    <node x="454.0" y="-205.0">com.cwardcode.TranTracker.R.string</node>
+    <node x="69.0" y="199.0">com.cwardcode.TranTracker.TranTracker.VehicleSelectionListener</node>
+    <node x="435.0" y="-274.0">com.cwardcode.TranTracker.Manifest.permission</node>
+    <node x="370.75" y="-342.0">com.cwardcode.TranTracker.Manifest</node>
+    <node x="469.0" y="-55.0">com.cwardcode.TranTracker.LocReceiver</node>
+    <node x="311.0" y="-173.5">com.cwardcode.TranTracker.R.array</node>
+    <node x="40.0" y="-341.0">com.cwardcode.TranTracker.BuildConfig</node>
+    <node x="218.0" y="-341.0">com.cwardcode.TranTracker.R</node>
+    <node x="187.0" y="-173.5">com.cwardcode.TranTracker.R.layout</node>
+    <node x="477.0" y="151.0">com.cwardcode.TranTracker.LocReceiver.SendLocationData</node>
+    <node x="-275.5" y="-60.0">com.cwardcode.TranTracker.SendLoc</node>
+    <node x="-195.0" y="-194.5">com.cwardcode.TranTracker.R.id</node>
+    <node x="126.5" y="-58.0">com.cwardcode.TranTracker.TranTracker</node>
+    <node x="271.0" y="-272.0">com.cwardcode.TranTracker.Manifest.permission_group</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.cwardcode.TranTracker.Manifest.permission" target="com.cwardcode.TranTracker.Manifest">
+      <point x="0.0" y="-14.5" />
+      <point x="486.0" y="-288.0" />
+      <point x="436.0" y="-288.0" />
+      <point x="21.75" y="14.5" />
+    </edge>
+    <edge source="com.cwardcode.TranTracker.LocReceiver.SendLocationData" target="com.cwardcode.TranTracker.LocReceiver">
+      <point x="0.0" y="-25.0" />
+      <point x="0.0" y="78.0" />
+    </edge>
+    <edge source="com.cwardcode.TranTracker.R.string" target="com.cwardcode.TranTracker.R">
+      <point x="0.0" y="-56.5" />
+      <point x="528.0" y="-235.0" />
+      <point x="255.8" y="-235.0" />
+      <point x="16.80000000000001" y="14.5" />
+    </edge>
+    <edge source="com.cwardcode.TranTracker.Manifest.permission_group" target="com.cwardcode.TranTracker.Manifest">
+      <point x="0.0" y="-14.5" />
+      <point x="342.5" y="-288.0" />
+      <point x="392.5" y="-288.0" />
+      <point x="-21.75" y="14.5" />
+    </edge>
+    <edge source="com.cwardcode.TranTracker.TranTracker" target="com.cwardcode.TranTracker.TranTracker.VehicleSelectionListener">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.cwardcode.TranTracker.R.drawable" target="com.cwardcode.TranTracker.R">
+      <point x="0.0" y="-25.0" />
+      <point x="94.5" y="-225.0" />
+      <point x="230.60000000000002" y="-225.0" />
+      <point x="-8.399999999999977" y="14.5" />
+    </edge>
+    <edge source="com.cwardcode.TranTracker.R.id" target="com.cwardcode.TranTracker.R">
+      <point x="0.0" y="-46.0" />
+      <point x="-96.5" y="-235.0" />
+      <point x="222.2" y="-235.0" />
+      <point x="-16.80000000000001" y="14.5" />
+    </edge>
+    <edge source="com.cwardcode.TranTracker.LocReceiver" target="com.cwardcode.TranTracker.LocReceiver.SendLocationData">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.cwardcode.TranTracker.TranTracker.VehicleSelectionListener" target="com.cwardcode.TranTracker.TranTracker">
+      <point x="0.0" y="-35.5" />
+      <point x="0.0" y="99.0" />
+    </edge>
+    <edge source="com.cwardcode.TranTracker.SendLoc.MyLocationListener" target="com.cwardcode.TranTracker.SendLoc">
+      <point x="0.0" y="-56.5" />
+      <point x="0.0" y="99.0" />
+    </edge>
+    <edge source="com.cwardcode.TranTracker.SendLoc" target="com.cwardcode.TranTracker.SendLoc.MyLocationListener">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.cwardcode.TranTracker.R.layout" target="com.cwardcode.TranTracker.R">
+      <point x="0.0" y="-25.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="com.cwardcode.TranTracker.R.array" target="com.cwardcode.TranTracker.R">
+      <point x="0.0" y="-25.0" />
+      <point x="372.5" y="-225.0" />
+      <point x="247.39999999999998" y="-225.0" />
+      <point x="8.399999999999977" y="14.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.8169642857142857" x="225.5" y="-16.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+    <Category>Fields</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
