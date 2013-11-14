@@ -1,0 +1,182 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+        <title>ES495 Distance Travelled - Staff</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../images/favicon.ico" type="image/x-icon"> 
+        <meta http-equiv="description" content="">
+        <meta http-equiv="keywords" content="">
+        <script type="text/javascript" 
+            src="https://maps.googleapis.com/maps/api/js?libraries=geometry&key=AIzaSyD3xadTdJ57fBnlrJLmggZdxxHFdTpPPvA&sensor=false"></script>
+
+        <script type="text/javascript">
+            //<![CDATA[
+
+        function load() {
+            var styles = [{
+                "stylers": [{
+                    "saturation": -100
+                }, {
+                    "gamma": 0.18
+                }, {
+                    "lightness": -30
+                }]
+            }, {
+                "elementType": "labels.text",
+                    "stylers": [{
+                        "invert_lightness": true
+                    }]
+            }];
+            var image = '/static/images/favicon.ico';
+            var myLatlng = new google.maps.LatLng(35.30872, -83.18432);
+            var mapOptions = {
+                zoom: 16,
+                      center: myLatlng,
+                      mapTypeControlOptions: {
+                        mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_theme']
+                  }
+            }
+            var styledMap = new google.maps.StyledMapType(styles, {name: "Black-White"});
+
+            var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+            map.mapTypes.set('map_theme', styledMap);
+            map.setMapTypeId('map_theme');
+
+            var infoWindow = new google.maps.InfoWindow;
+
+            setTimeout(downloadUrl("/static/genxml.php", function(data) {
+                    var xml = data.responseXML;
+                    var markers = xml.documentElement.getElementsByTagName("marker");
+                    for (var i = 0; i < markers.length; i++) {
+                    var vid = markers[i].getAttribute("VID");
+                    var speed =  markers[i].getAttribute("Speed");
+                    var point = new google.maps.LatLng(
+                        parseFloat(markers[i].getAttribute("latitude")),
+                        parseFloat(markers[i].getAttribute("longitude")));
+                    var html ="<br> VID: " + vid + "<br>speed: " + speed;
+                    var marker = new google.maps.Marker({
+                        map: map,
+                        position: point,
+                        icon: image
+                    });
+                    bindInfoWindow(marker, map, infoWindow, html);
+                    }
+                    })
+                ,15000);
+}
+
+function bindInfoWindow(marker, map, infoWindow, html) {
+    google.maps.event.addListener(marker, 'click', function() {
+            infoWindow.setContent(html);
+            infoWindow.open(map, marker);
+            });
+var decodedPath = google.maps.geometry.encoding.decodePath('cbnvE`muzNVCVJTPP@XCLWpBeC@KQ[@O`CsC^Uj@G`@@pATtD_@HpAqCXIGY_Ai@Ks@M_@Ak@FKFSLaCrCAJP^AJsBdCKVYBQAUQWKWBOH?DxCzC?JYd@_@T{@b@mLpDiCh@gAHy@Oc@r@mBjBqC|DEDaEsGk@m@[W}@SqAOiBlJ[u@Uu@[sBMY][m@ScAMk@I_ACo@JiBb@_AFcF}@}B]c@RUX}@zDIPeAlAU^KZAj@@|ABf@NxAGb@@TTJD?DGBI?OGQYI@GOyACg@AyABo@H[T_@dAmAHQ|@{DTYb@S|B\\bF|@~@GhBc@n@K~@B@QPcAGwBScDOi@[oCISOScAg@_@IaA?[Gi@_@_AsAeAsABGnByBxBkBnAtA@i@IqA@oAJm@l@_BRYlAu@vAUj@kAb@WPQHQJg@JaBNg@JW?Ga@iADKDCx@[Y^MB[N^`A?FKVOf@KdBKb@IPQRc@Ti@jARTR`@VbAB^@vAFt@QjBI`Ba@dASVQJQFW@[GSI_@[IRDXRPv@b@N@VCXMLMHQ@a@BIf@w@x@oBvBcEhB_ExAoC`B}A`@UAUe@aBMUMMKAI?o@h@]^a@^_Ad@Z`BB@l@LJBTX@NeArBiB|DwBbEc@dAEPHBNX`@|Af@~B\\nAVh@l@d@VH|@FfBAl@RfCbBZHjACpA@R@b@N\\XPZRl@ZbBDd@AlAEb@@J');
+
+var villagePath = google.maps.geometry.encoding.decodePath('myovEpsuzNR~DCZQrAkAAiAR_AVaAJaAUoCe@kCc@_@J[Zi@xB]rA}AlBMn@?tABhAPdB');
+
+var offSouthPath = google.maps.geometry.encoding.decodePath('myovErsuzNGeAMi@M_AM_ASi@SULURSfDm@xAyAp@c@|@bEx@hA~@XdD@bAh@b@[t@DzCb@pDSrCw@|Cu@zBI^m@`@?`DdAt@D~AwBvE_FnCoBfAo@pBs@fBFfBj@zCH|BMl@KM{AiDmDwDjAYOA[~BiCh@yASu@e@Kg@vAcAfA_A^sAJtAS`Aa@n@o@\o@Zy@\DVn@g@`B{BjC@f@VLfDeAZCzC`DNbBhBK`CYdDS~Ao@`De@hCRt@TgElCqIbCgKhCiKbDgCrBsE`EeBlBhAzAlA`AKF_Aw@qAcBgBzBmLlPgCvBoEzAwBZ{DHjAlEhBvGh@fCB|IClAJnCHdCRvA~@rDhAbJhAdFnAjIz@bFFfCE?E_C_AuFe@kDc@kC_AkEOo@o@eFQeBcAyDSuAIuCKmC@_B?iD?kCg@oCiBwGoAsEeE@eEJY@Gs@x@cDKO?SYUQUq@]_Ag@m@mA_@o@Oo@O}@My@Q_@]]k@Ok@Gg@EYEPkA@c@E}@G}@??EcA');
+
+var offNorthPath = google.maps.geometry.encoding.decodePath('oyovEnsuzNEcAOc@QwAQcAIQSQDQXUZKh@KlASVK`@]p@u@t@c@[sASe@QM[h@e@r@_@Rg@Hi@IYK[a@uA{B]c@Y]WOa@q@Wg@Sg@Ke@?sAC}A[k@m@]e@q@gBrCkA~@Kd@[h@_@Vi@Di@Te@p@oDxE_AfASHi@Fm@Ae@KYOSjEEhB@f@@j@Bl@Hz@?r@G^Ib@Kd@Eb@Cb@Cv@E~BCdA?REjAGlAGzBIbCLhA\dBInBQhA?ANeAFsAB]Mo@Qs@MgAB_AFkADuBFgABm@@_@BeABwABkA@i@BY@YFa@Ha@Ha@F]Ac@Co@G_AAUAk@?g@Bs@BaAJyBDy@[YUWEa@Kw@EUMm@GOUm@]aA]eAMg@Ow@a@sBq@gDSaAQ_@CKm@m@gAaAkA{@eAy@{@g@c@Qc@GYEe@HUP[`@Sd@K^AlA?RCrAa@vCKvAUvAMpAIpCSpBu@K');
+
+var hhsPath = google.maps.geometry.encoding.decodePath('}invE|tyzN[sAHoBIoCaAqFg@aE{@gEoA}Gk@eFe@oB_@uAUoBCaBIgC?cD@_CGmC_@eCoAqEgBsGkLDCo@v@}CIOEMAIc@a@SQcB}@m@kA[s@Uo@O_AKu@Sa@e@[c@OgBQ@[Nw@A{@IuAIqA');
+
+var setRegion2 = new google.maps.Polyline({
+path: villagePath,
+levels: "",
+strokeColor: "#00FF00",
+strokeOpacity: 1.0,
+strokeWeight: 2,
+map: map
+});
+
+var setRegion2 = new google.maps.Polyline({
+path: hhsPath,
+levels: "",
+strokeColor: "#FFFF00",
+strokeOpacity: 1.0,
+strokeWeight: 2,
+map: map
+});
+
+var setRegion = new google.maps.Polyline({
+path: decodedPath,
+levels: "",
+strokeColor: "#FF0000",
+strokeOpacity: 1.0,
+strokeWeight: 2,
+map: map
+});
+}
+
+
+function downloadUrl(url, callback) {
+    var request = window.ActiveXObject ?
+        new ActiveXObject('Microsoft.XMLHTTP') :
+        new XMLHttpRequest;
+
+    request.onreadystatechange = function() {
+        if (request.readyState == 4) {
+            request.onreadystatechange = doNothing;
+            callback(request, request.status);
+        }
+    };
+
+    request.open('GET', url, true);
+    request.send(null);
+}
+
+function doNothing() {}
+</script> 
+     </head>
+     <body class="products_results" onload="load()">	
+         <div id="header-wrapper">
+             <div id="header" class="content">
+                 <div class="logo">
+                     <h3>ES495 Distance Travelled - All Data</h3>
+                 </div>
+                 <ul id="header-menu">
+                     <li class="first"></li>
+                     <li class="last"></li>
+             </ul>	</div>
+         </div>
+
+         <div id="top-wrapper">
+             <div id="top" class="content">
+                 <ul id="top-menu">
+                     <li class="first"><a href="/" rel="">Home</a></li>
+                 </ul>
+             </div>
+         </div>
+         <div id="content-wrapper">
+             <div id="content" class="content">
+                 <div id="sidebar">
+                     <ul id="side-menu">                                         
+                         <li class="first"><a href="#">Data Sets</a>             
+                         <ul id="side-menu-5938">                                
+                             <li class="first"><a href="/">All Data</a></li>  
+                             <li class="first"><a href="../admin.html">admin</a></li>  
+                             <li class="first"><a href="../faculty.html">faculty</a>
+                             <li class="first"><a href="../staff.html">staff</a></li>  
+                         </ul>                                                   
+                         </li>                                                   
+                         </li>                                                   
+                     </ul>
+
+                 </div>
+
+                 <div id="page">
+                     <div id="map" style="width: 100%; height:900px"></div> 
+                 </div>
+             </div>
+
+
+             <div id="top-wrapper" class="content">
+                 <div id="top" class="content">
+                     <ul id="top-menu">
+                         <li class="first"><a href="#" rel="">FAQ</a></li><li class=""><a href="#" rel="">Privacy Policy</a></li><li><a href="#" rel="">Terms of Use</a></li></ul>
+                 </div>
+             </div>
+         </body>
+     </html>

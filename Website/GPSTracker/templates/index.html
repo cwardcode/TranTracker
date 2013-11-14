@@ -1,0 +1,224 @@
+{% extends "base.html" %}
+
+<!-- Content override -->
+{% block content %}
+<!-- If you have to define styles, etc, you need to have a html template tag
+It basically lets you put a page inside a page.. Since styles/scripts need
+to be definied within the <head  /> tags, we have to simulate that here.-->
+    {% block html %}
+    <head>
+        <style type="text/css"> 
+            html { height:100%}
+            body { height:100%; margin 0px; padding: 0px}
+            #map_canvas { height:100%}
+        </style>
+        <script type="text/javascript" 
+            src="https://maps.googleapis.com/maps/api/js?libraries=geometry&key=AIzaSyD3xadTdJ57fBnlrJLmggZdxxHFdTpPPvA&sensor=false"></script>
+
+        <script type="text/javascript">
+            //<![CDATA[
+
+        function load() {
+            var styles = [{
+                "stylers": [{
+                    "saturation": -100
+                }, {
+                    "gamma": 0.18
+                }, {
+                    "lightness": -30
+                }]
+            }, {
+                "elementType": "labels.text",
+                    "stylers": [{
+                        "invert_lightness": true
+                    }]
+            }];
+            var image = '/static/images/favicon.ico';
+            var myLatlng = new google.maps.LatLng(35.30872, -83.18432);
+            var mapOptions = {
+                zoom: 16,
+                      center: myLatlng,
+                      mapTypeControlOptions: {
+                        mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_theme']
+                  }
+            }
+            var styledMap = new google.maps.StyledMapType(styles, {name: "Black-White"});
+
+            var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+
+            map.mapTypes.set('map_theme', styledMap);
+            map.setMapTypeId('map_theme');
+
+            var infoWindow = new google.maps.InfoWindow;
+
+            downloadUrl("/static/genxml.php", function(data) {
+                    var xml = data.responseXML;
+                    var markers = xml.documentElement.getElementsByTagName("marker");
+                    for (var i = 0; i < markers.length; i++) {
+                    var vid = markers[i].getAttribute("VID");
+                    var speed =  markers[i].getAttribute("speed");
+                    var point = new google.maps.LatLng(
+                        parseFloat(markers[i].getAttribute("latitude")),
+                        parseFloat(markers[i].getAttribute("longitude")));
+                    var html ="<br> VID: " + vid + "<br>speed: " + speed;
+                    var marker = new google.maps.Marker({
+                        map: map,
+                        position: point,
+                        icon: image
+                    });
+                    bindInfoWindow(marker, map, infoWindow, html);
+                    }
+                    });
+            setTimeout(function() { load(); },15000);
+}
+function getMarkers() {
+            downloadUrl("/static/genxml.php", function(data) {
+                    var xml = data.responseXML;
+                    var markers = xml.documentElement.getElementsByTagName("marker");
+                    for (var i = 0; i < markers.length; i++) {
+                    var vid = markers[i].getAttribute("VID");
+                    var speed =  markers[i].getAttribute("Speed");
+                    var point = new google.maps.LatLng(
+                        parseFloat(markers[i].getAttribute("latitude")),
+                        parseFloat(markers[i].getAttribute("longitude")));
+                    var html ="<br> VID: " + vid + "<br>speed: " + speed;
+                    var marker = new google.maps.Marker({
+                        map: map,
+                        position: point,
+                        icon: image
+                    });
+                    bindInfoWindow(marker, map, infoWindow, html);
+                    }
+                    });
+ 
+}
+function bindInfoWindow(marker, map, infoWindow, html) {
+    google.maps.event.addListener(marker, 'click', function() {
+            infoWindow.setContent(html);
+            infoWindow.open(map, marker);
+            });
+var decodedPath = google.maps.geometry.encoding.decodePath('cbnvE`muzNVCVJTPP@XCLWpBeC@KQ[@O`CsC^Uj@G`@@pATtD_@HpAqCXIGY_Ai@Ks@M_@Ak@FKFSLaCrCAJP^AJsBdCKVYBQAUQWKWBOH?DxCzC?JYd@_@T{@b@mLpDiCh@gAHy@Oc@r@mBjBqC|DEDaEsGk@m@[W}@SqAOiBlJ[u@Uu@[sBMY][m@ScAMk@I_ACo@JiBb@_AFcF}@}B]c@RUX}@zDIPeAlAU^KZAj@@|ABf@NxAGb@@TTJD?DGBI?OGQYI@GOyACg@AyABo@H[T_@dAmAHQ|@{DTYb@S|B\\bF|@~@GhBc@n@K~@B@QPcAGwBScDOi@[oCISOScAg@_@IaA?[Gi@_@_AsAeAsABGnByBxBkBnAtA@i@IqA@oAJm@l@_BRYlAu@vAUj@kAb@WPQHQJg@JaBNg@JW?Ga@iADKDCx@[Y^MB[N^`A?FKVOf@KdBKb@IPQRc@Ti@jARTR`@VbAB^@vAFt@QjBI`Ba@dASVQJQFW@[GSI_@[IRDXRPv@b@N@VCXMLMHQ@a@BIf@w@x@oBvBcEhB_ExAoC`B}A`@UAUe@aBMUMMKAI?o@h@]^a@^_Ad@Z`BB@l@LJBTX@NeArBiB|DwBbEc@dAEPHBNX`@|Af@~B\\nAVh@l@d@VH|@FfBAl@RfCbBZHjACpA@R@b@N\\XPZRl@ZbBDd@AlAEb@@J');
+
+var hhsPath = google.maps.geometry.encoding.decodePath('}invE|tyzN[sAHoBIoCaAqFg@aE{@gEoA}Gk@eFe@oB_@uAUoBCaBIgC?cD@_CGmC_@eCoAqEgBsGkLDCo@v@}CIOEMAIc@a@SQcB}@m@kA[s@Uo@O_AKu@Sa@e@[c@OgBQ@[Nw@A{@IuAIqA');
+
+var offNorthPath = google.maps.geometry.encoding.decodePath('oyovEnsuzNEcAOc@QwAQcAIQSQDQXUZKh@KlASVK`@]p@u@t@c@[sASe@QM[h@e@r@_@Rg@Hi@IYK[a@uA{B]c@Y]WOa@q@Wg@Sg@Ke@?sAC}A[k@m@]e@q@gBrCkA~@Kd@[h@_@Vi@Di@Te@p@oDxE_AfASHi@Fm@Ae@KYOSjEEhB@f@@j@Bl@Hz@?r@G^Ib@Kd@Eb@Cb@Cv@E~BCdA?REjAGlAGzBIbCLhA\\dBInBQhA?ANeAFsAB]Mo@Qs@MgAB_AFkADuBFgABm@@_@BeABwABkA@i@BY@YFa@Ha@Ha@F]Ac@Co@G_AAUAk@?g@Bs@BaAJyBDy@[YUWEa@Kw@EUMm@GOUm@]aA]eAMg@Ow@a@sBq@gDSaAQ_@CKm@m@gAaAkA{@eAy@{@g@c@Qc@GYEe@HUP[`@Sd@K^AlA?RCrAa@vCKvAUvAMpAIpCSpBu@K');
+
+var villagePath = google.maps.geometry.encoding.decodePath('myovEpsuzNR~DCZQrAkAAiAR_AVaAJaAUoCe@kCc@_@J[Zi@xB]rA}AlBMn@?tABhAPdB');
+
+var offSouthPath = google.maps.geometry.encoding.decodePath('myovErsuzNGeAMi@M_AM_ASi@SULURSfDm@xAyAp@c@|@bEx@hA~@XdD@bAh@b@[t@DzCb@pDSrCw@|Cu@zBI^m@`@?`DdAt@D~AwBvE_FnCoBfAo@pBs@fBFfBj@zCH|BMl@KM{AiDmDwDjAYOA[~BiCh@yASu@e@Kg@vAcAfA_A^sAJtAS`Aa@n@o@\\o@Zy@\\DVn@g@`B{BjC@f@VLfDeAZCzC`DNbBhBK`CYdDS~Ao@`De@hCRt@TgElCqIbCgKhCiKbDgCrBsE`EeBlBhAzAlA`AKF_Aw@qAcBgBzBmLlPgCvBoEzAwBZ{DHjAlEhBvGh@fCB|IClAJnCHdCRvA~@rDhAbJhAdFnAjIz@bFFfCE?E_C_AuFe@kDc@kC_AkEOo@o@eFQeBcAyDSuAIuCKmC@_B?iD?kCg@oCiBwGoAsEeE@eEJY@Gs@x@cDKO?SYUQUq@]_Ag@m@mA_@o@Oo@O}@My@Q_@]]k@Ok@Gg@EYEPkA@c@E}@G}@??EcA');
+
+var setRegion = new google.maps.Polyline({
+path: decodedPath,
+levels: "",
+strokeColor: "#FF0000",
+strokeOpacity: 1.0,
+strokeWeight: 2,
+map: map
+});
+
+var setRegion = new google.maps.Polyline({
+path: hhsPath,
+levels: "",
+strokeColor: "#FF00FF",
+strokeOpacity: 1.0,
+strokeWeight: 2,
+map: map
+});
+
+var setRegion = new google.maps.Polyline({
+path: offSouthPath,
+levels: "",
+strokeColor: "#0000FF",
+strokeOpacity: 1.0,
+strokeWeight: 2,
+map: map
+});
+
+var setRegion = new google.maps.Polyline({
+path: offNorthPath,
+levels: "",
+strokeColor: "#00FF00",
+strokeOpacity: 1.0,
+strokeWeight: 2,
+map: map
+});
+
+var setRegion = new google.maps.Polyline({
+path: villagePath,
+levels: "",
+strokeColor: "#FFFF00",
+strokeOpacity: 1.0,
+strokeWeight: 2,
+map: map
+});
+}
+
+
+function downloadUrl(url, callback) {
+    var request = window.ActiveXObject ?
+        new ActiveXObject('Microsoft.XMLHTTP') :
+        new XMLHttpRequest;
+
+    request.onreadystatechange = function() {
+        if (request.readyState == 4) {
+            request.onreadystatechange = doNothing;
+            callback(request, request.status);
+        }
+    };
+
+    request.open('GET', url, true);
+    request.send(null);
+}
+
+function doNothing() {}
+google.maps.event.addDomListener(window, 'load', load);
+</script> 
+
+</head>
+<body>
+    <div id="map_canvas" style="width:100%; height:900px"></div>
+</body>
+</html>
+{% endblock %}
+{% endblock %}
+
+<!-- Sidebar override -->
+{% block sidebar %}
+<ul id="side-menu">                                         
+    <li class="first"><a href="#">Route Key</a>             
+    <ul id="side-menu-5938">                                
+        <li class="first"><a href="#">All-Campus</a></li>  
+        <li class="first"><a href="#">Village Express</a></li>  
+        <li class="first"><a href="#">H&HS Express</a></li>  
+        <li class="first"><a href="#">Off-Campus North</a></li>  
+        <li class="first"><a href="#">Off-Campus South</a></li>  
+    </ul>                                                   
+    </li>                                                   
+    <li class="last"><a href="#">Stop Key </a>              
+    <ul id="side-menu-68085">
+        <select id="content-lb" class="content" size="20">
+            <option value="1"> N. Baseball </option>
+            <option value="2"> S. Baseball </option>
+            <option value="3"> Ramsey </option>
+            <option value="4"> Field House </option>
+            <option value="5"> Bardo Arts Center </option>
+            <option value="6"> Dining Hall </option>
+            <option value="7"> Walker </option>
+            <option value="8"> Village </option>
+            <option value="9"> Norton </option>
+            <option value="10"> UC </option>
+            <option value="11"> Library </option>
+            <option value="12"> Moore </option>
+            <option value="13"> Reynolds </option>
+            <option value="14"> McKee </option>
+            <option value="15"> Albright/Benton </option>
+            <option value="16"> Harrill </option>
+            <option value="17"> Central </option>
+            <option value="18"> OneStop </option>
+            <option value="19"> Coulter </option>
+            <option value="20"> Kimmell </option>
+        </select> 
+    </ul>                                                   
+    </li>                                                   
+</ul>
+{% endblock %}
