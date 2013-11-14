@@ -1,0 +1,44 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/dark_grey"
+    android:weightSum="10"
+    tools:context=".Key" >
+    
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:weightSum="3"
+        android:background="@color/white" >
+        
+        <Button
+            android:id="@+id/homeButtonKey"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/home" />
+        
+        <Spinner
+            android:id="@+id/menuSpinnerKey"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="2"
+            android:textSize="10sp"
+            android:entries="@array/menu_array" />
+        
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:text="@string/key_header"
+        android:textColor="@color/white" 
+        android:textSize="30sp" 
+        android:layout_weight="1"
+        android:gravity="center" />
+
+</LinearLayout>

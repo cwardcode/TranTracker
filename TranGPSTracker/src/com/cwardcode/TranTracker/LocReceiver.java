@@ -31,7 +31,7 @@ public class LocReceiver extends BroadcastReceiver {
     private static final String DB_CONNECTION = "jdbc:mysql://tracker.cwardcode.com:3306/tracker";
     
     /** The username used for this connection */
-    private static final String DB_USER = "gpstracker";
+    private static final String DB_USER = "gpstracker2";
     
     /** The password used for this connection */
     private static final String DB_PASSWORD = "tracker";

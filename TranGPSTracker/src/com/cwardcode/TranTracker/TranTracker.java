@@ -74,8 +74,9 @@ public class TranTracker extends Activity {
             IS_TRACKING = true;
         }   else {
             stopService(srvIntent);
-
+            IS_TRACKING = false;
             startService(srvIntent);
+            IS_TRACKING = true;
         }
     }
 

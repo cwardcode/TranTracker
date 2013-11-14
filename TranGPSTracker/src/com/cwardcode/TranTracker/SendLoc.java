@@ -10,6 +10,7 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.Looper;
+import android.util.Log;
 
 /**
  * Uses the device's GPS to determine it's location and sends this infomration
@@ -33,6 +34,7 @@ public class SendLoc extends Service {
      */
     private class MyLocationListener implements LocationListener
     {
+        private String test = "";
     	/**
     	 * Updates the device's location.
     	 * 
@@ -43,6 +45,8 @@ public class SendLoc extends Service {
         {
             if(location != null) {
                 updateLocation(location);
+            } else {
+                Log.e("com.cwardcode.TranTracker","Location was null");
             }
         }
         
@@ -80,6 +84,7 @@ public class SendLoc extends Service {
     /**
      * Creates the service.
      */
+    @Override
     public void onCreate() {
         super.onCreate();
     }
@@ -90,16 +95,19 @@ public class SendLoc extends Service {
      * @param intent The Intent that provides the service with the vehicleID.
      * @param startID a unique identifier for this request.
      */
-    public void onStart(Intent intent, int startID){
-        addLocationListener();
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startID){
         vehicleID = intent.getIntExtra("VehicleID", -1);
+        addLocationListener();
+        return START_STICKY;
     }
 
     /**
      * Creates a new LocationListener and begins listening.
      */
     private void addLocationListener() {
-        Thread sendLocThread = new Thread(new Runnable() {
+        Thread sendLocThread;
+        sendLocThread = new Thread(new Runnable() {
             @Override
             public void run() {
                 try{
@@ -115,9 +123,9 @@ public class SendLoc extends Service {
                 }catch(Exception ex){
                     ex.printStackTrace();
                 }
+
             }
         }, "SendLocThread");
-
         sendLocThread.start();
     }
 
