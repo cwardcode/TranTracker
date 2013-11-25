@@ -94,6 +94,7 @@ to be definied within the <head  /> tags, we have to simulate that here.-->
                 setStops(stopsArray, map);
                 //Populate map with shuttle locations.
                 getMarkers();
+                setInterval(getMarkers,2000);
 }
 
 /**
@@ -116,6 +117,7 @@ function getMarkers() {
     clearShuttleMarkers();
     //Parses locgen.xml and adds a marker for each vehicle to the map.
     downloadUrl("/static/genxml.php", function(data) {
+            var METER_CONVERS = 2.237;
             var xml = data.responseXML;
             //holds all elements of the tag "marker".
             var markers = xml.documentElement.getElementsByTagName("marker");
@@ -123,13 +125,15 @@ function getMarkers() {
             for (var i = 0; i < markers.length; i++) {
             var vid = markers[i].getAttribute("VID");
             var name = markers[i].getAttribute("title");
-            var speed =  markers[i].getAttribute("Speed");
+            var speed =  markers[i].getAttribute("speed");
             //The location where the marker is to be placed.
             var point = new google.maps.LatLng(
                 parseFloat(markers[i].getAttribute("latitude")),
                 parseFloat(markers[i].getAttribute("longitude")));
             //The info that is displayed when a marker is clicked.
-            var html ="<br> VID: " + vid + "<br>speed: " + speed;
+            var html ="<br> VID: " + vid + "<br>speed: " + 
+                                       Math.round(speed*METER_CONVERS) + " mph";
+
             //The marker object to be placed on the map.
             var marker = new google.maps.Marker({
                 map: map,
@@ -319,7 +323,6 @@ function bindInfoWindow(marker, map, infoWindow, html) {
             infoWindow.setContent(html);
             infoWindow.open(map, marker);
             });
-    setTimeout(function() { getMarkers(); },5000);
 }
 
 /**
