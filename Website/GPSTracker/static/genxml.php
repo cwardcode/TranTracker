@@ -50,6 +50,7 @@ while ($row = @mysql_fetch_assoc($result)){
   echo 'latitude="' . $row['Latitude'] . '" ';
   echo 'longitude="' . $row['Longitude'] . '" ';
   echo 'speed="' . $row['Speed'] . '" ';
+  echo 'title="' . $row['Title'] . '" ';
   echo '/>';
 }
 

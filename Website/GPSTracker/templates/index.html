@@ -2,20 +2,25 @@
 
 <!-- Content override -->
 {% block content %}
+
 <!-- If you have to define styles, etc, you need to have a html template tag
 It basically lets you put a page inside a page.. Since styles/scripts need
 to be definied within the <head  /> tags, we have to simulate that here.-->
+
     {% block html %}
     <head>
+
         <!--stylesheet for our map-->
         <style type="text/css"> 
             html { height:100%}
             body { height:100%; margin 0px; padding: 0px}
             #map_canvas { height:100%}
         </style>
+
         <!--importing google maps api-->
         <script type="text/javascript" 
             src="https://maps.googleapis.com/maps/api/js?libraries=geometry&key=AIzaSyD3xadTdJ57fBnlrJLmggZdxxHFdTpPPvA&sensor=false"></script>
+
         <!--our main map script which places routes, stops, and markers on
         the map, and allows interaction between them.-->
         <script type="text/javascript">
@@ -63,8 +68,7 @@ to be definied within the <head  /> tags, we have to simulate that here.-->
                         }]
                 }];
                 //Shuttle marker image
-                //TODO: Change from site's favicon to actual shuttle icon
-                image = '/static/images/favicon.ico';
+                image = '/static/images/shuttle.png';
                 //Location at which to center map.
                 var culloLatLng = new google.maps.LatLng(35.30872, -83.18432);
                 //Centers map, zooms to specified zoom level and applies custom
@@ -322,7 +326,7 @@ function bindInfoWindow(marker, map, infoWindow, html) {
     google.maps.event.addListener(marker, 'click', function() {
             infoWindow.setContent(html);
             infoWindow.open(map, marker);
-            });
+    });
 }
 
 /**
