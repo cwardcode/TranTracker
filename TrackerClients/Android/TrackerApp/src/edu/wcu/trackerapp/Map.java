@@ -1,11 +1,16 @@
 package edu.wcu.trackerapp;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
@@ -20,12 +25,15 @@ import com.google.android.gms.maps.model.LatLng;
 
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.PolylineOptions;
 
 /**
  * The application's map screen and main page.
  * 
  * @author Hayden Thomas
- * @version 10/27/13
+ * @author Chris Ward
+ * @version 11/21/13
  * 
  */
 public class Map extends Activity implements OnItemSelectedListener {
@@ -41,6 +49,12 @@ public class Map extends Activity implements OnItemSelectedListener {
 	@SuppressWarnings("unused")
 	private static final String LngElement = "Longitude";
 
+	private static final String ALL_CAMPUS = "";
+	private static final String OFF_SOUTH = "myovErsuzNGeAMi@M_AM_ASi@SULURSfDm@xAyAp@c@|@bEx@hA~@XdD@bAh@b@[t@DzCb@pDSrCw@|Cu@zBI^m@`@?`DdAt@D~AwBvE_FnCoBfAo@pBs@fBFfBj@zCH|BMl@KM{AiDmDwDjAYOA[~BiCh@yASu@e@Kg@vAcAfA_A^sAJtAS`Aa@n@o@\\o@Zy@\\DVn@g@`B{BjC@f@VLfDeAZCzC`DNbBhBK`CYdDS~Ao@`De@hCRt@TgElCqIbCgKhCiKbDgCrBsE`EeBlBhAzAlA`AKF_Aw@qAcBgBzBmLlPgCvBoEzAwBZ{DHjAlEhBvGh@fCB|IClAJnCHdCRvA~@rDhAbJhAdFnAjIz@bFFfCE?E_C_AuFe@kDc@kC_AkEOo@o@eFQeBcAyDSuAIuCKmC@_B?iD?kCg@oCiBwGoAsEeE@eEJY@Gs@x@cDKO?SYUQUq@]_Ag@m@mA_@o@Oo@O}@My@Q_@]]k@Ok@Gg@EYEPkA@c@E}@G}@??EcA";
+	private static final String OFF_NORTH = "oyovEnsuzNEcAOc@QwAQcAIQSQDQXUZKh@KlASVK`@]p@u@t@c@[sASe@QM[h@e@r@_@Rg@Hi@IYK[a@uA{B]c@Y]WOa@q@Wg@Sg@Ke@?sAC}A[k@m@]e@q@gBrCkA~@Kd@[h@_@Vi@Di@Te@p@oDxE_AfASHi@Fm@Ae@KYOSjEEhB@f@@j@Bl@Hz@?r@G^Ib@Kd@Eb@Cb@Cv@E~BCdA?REjAGlAGzBIbCLhA\\dBInBQhA?ANeAFsAB]Mo@Qs@MgAB_AFkADuBFgABm@@_@BeABwABkA@i@BY@YFa@Ha@Ha@F]Ac@Co@G_AAUAk@?g@Bs@BaAJyBDy@[YUWEa@Kw@EUMm@GOUm@]aA]eAMg@Ow@a@sBq@gDSaAQ_@CKm@m@gAaAkA{@eAy@{@g@c@Qc@GYEe@HUP[`@Sd@K^AlA?RCrAa@vCKvAUvAMpAIpCSpBu@K";
+	private static final String VILLAGE = "myovEpsuzNR~DCZQrAkAAiAR_AVaAJaAUoCe@kCc@_@J[Zi@xB]rA}AlBMn@?tABhAPdB";
+	private static final String HHS = "}invE|tyzN[sAHoBIoCaAqFg@aE{@gEoA}Gk@eFe@oB_@uAUoBCaBIgC?cD@_CGmC_@eCoAqEgBsGkLDCo@v@}CIO";
+
 	// A drop down menu that allows the user to navigate to other pages.\\
 	private Spinner menu;
 	// Our map object\\
@@ -51,6 +65,13 @@ public class Map extends Activity implements OnItemSelectedListener {
 	// Will eventually update dynamically based on xml values.\\
 	private LatLng vehLocation = new LatLng(35.312358699242175,
 			-83.18058013916016);
+	
+	private RouteArrayHolder routeHolder;
+
+	/**
+	 * A list of routes as polylines.
+	 */
+	private ArrayList<Polyline> routes;
 
 	/**
 	 * Initializes the activity.
@@ -69,17 +90,18 @@ public class Map extends Activity implements OnItemSelectedListener {
 		try {
 			// Loading map
 			initializeMap();
+			initializePolylines();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
+		
+	
 	}
 
 	/**
 	 * function to load map. If map is not created it will create it for you
 	 * */
 	private void initializeMap() {
-		NodeList markerList = parseXML();
 
 		if (googleMap == null) {
 			googleMap = ((MapFragment) getFragmentManager().findFragmentById(
@@ -92,25 +114,12 @@ public class Map extends Activity implements OnItemSelectedListener {
 				googleMap.setMyLocationEnabled(true);
 				googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
 						cullowLocation, 15));
-				for (int i = 0; i < markerList.getLength(); i++) {
-					LatLng pos = vehLocation;
-					String vid = "-1";
-					googleMap
-							.addMarker(new MarkerOptions()
-									.position(pos)
-									.title(vid)
-									.icon(BitmapDescriptorFactory
-											.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET)));
-				}
+				routeHolder = new RouteArrayHolder();
+
 			}
 		}
 	}
-	private NodeList parseXML(){
-		ParseXML parser = new ParseXML();
-		String xmlStr = parser.getXmlFromUrl(XMLURL);
-		Document document = parser.getDomElement(xmlStr);
-		return document.getElementsByTagName(RootNode);
-	}
+
 	/**
 	 * Adds options to the menu.
 	 * 
@@ -178,6 +187,37 @@ public class Map extends Activity implements OnItemSelectedListener {
 
 		// TODO Auto-generated method stub
 
+	}
+
+	/**
+	 * This function creates the polylines that will be used to represent routes
+	 * in our application.
+	 */
+	private void initializePolylines() {
+		routes = new ArrayList<Polyline>();
+		//List<LatLng> route1 = decodePoly(OFF_SOUTH);
+
+		Polyline allCampus = googleMap.addPolyline(new PolylineOptions()
+				.addAll(routeHolder.getAllCampus()).width(5).color(Color.RED));
+		allCampus.setVisible(true);
+		
+		Polyline village = googleMap.addPolyline(new PolylineOptions()
+		         .addAll(routeHolder.getVillage()).width(5).color(Color.YELLOW));
+		village.setVisible(true);
+		
+		Polyline hhs = googleMap.addPolyline(new PolylineOptions()
+		         .addAll(routeHolder.getHHS()).width(5).color(Color.MAGENTA));
+		hhs.setVisible(true);
+		
+		Polyline offSouth = googleMap.addPolyline(new PolylineOptions()
+				 .addAll(routeHolder.getOffSouth()).width(5).color(Color.BLUE));
+	    offSouth.setVisible(true);
+	    
+	    Polyline offNorth = googleMap.addPolyline(new PolylineOptions()
+	    		 .addAll(routeHolder.getOffSouth()).width(5).color(Color.GREEN));
+	    offNorth.setVisible(true);
+				
+		
 	}
 
 }
