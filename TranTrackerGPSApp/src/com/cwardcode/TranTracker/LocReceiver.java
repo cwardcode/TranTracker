@@ -10,6 +10,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.concurrent.RejectedExecutionException;
 
 /**
  * Receives location and identification information and sends them to a remote
@@ -36,6 +38,8 @@ public class LocReceiver extends BroadcastReceiver {
     /** The password used for this connection */
     private static final String DB_PASSWORD = "tracker";
 
+    /** ArrayList to hold Tasks */
+    ArrayList<SendLocationData> taskList= new ArrayList<SendLocationData>();
     /**
      * Receives information from an intent broadcasting to this receiver.
      * 
@@ -47,7 +51,8 @@ public class LocReceiver extends BroadcastReceiver {
         Double latitude = intent.getDoubleExtra("latitude", -1);
         Double longitude = intent.getDoubleExtra("longitude", -1);
         Double speed = intent.getDoubleExtra("speed", -1);
-        updateRemote(vehicleID, latitude, longitude, speed);
+        String title = intent.getStringExtra("title");
+        updateRemote(vehicleID, latitude, longitude, speed, title);
     }
     
     /**
@@ -62,20 +67,25 @@ public class LocReceiver extends BroadcastReceiver {
     	 * @param strings the array of items to send.
     	 */
         protected Void doInBackground(String... strings){
+            if(isCancelled()) {
+                return null;
+            }
             try {
                 Connection dbConnection = null;
                 Statement statement = null;
 
                 String insertTableSQL = "INSERT INTO Location"
-                        + "(VehicleID, Latitude, Longitude, Speed) " + "VALUES"
-                        + "(" + strings[0] + "," + strings[1] + "," + strings[2] + "," + strings[3] + ")";
+                        + "(VehicleID, Latitude, Longitude, Speed, Title) " + "VALUES"
+                        + "(" + strings[0] + "," + strings[1] + "," + strings[2] + "," + strings[3] +  "," + "\"" + strings[4] + "\"" +")";
+                Log.e("com.cwardcode.TranTracker", "Attempting to execute:" +insertTableSQL);
                 try {
                     Class.forName(DB_DRIVER);
                     dbConnection = DriverManager.getConnection(DB_CONNECTION, DB_USER, DB_PASSWORD);
                     statement = dbConnection.createStatement();
                     statement.executeUpdate(insertTableSQL);
+
                 } catch (Exception e) {
-                    System.out.println("Error Occured!");
+                    System.out.println("Error Occurred!");
                     System.out.println(e.getMessage());
 
                 } finally {
@@ -87,7 +97,6 @@ public class LocReceiver extends BroadcastReceiver {
                     if (dbConnection != null) {
                         dbConnection.close();
                     }
-
                 }
             } catch (SQLException ex) {
                 ex.getMessage();
@@ -106,12 +115,17 @@ public class LocReceiver extends BroadcastReceiver {
      * @param longitude the vehicle's longitude.
      * @param speed the vehicle's speed.
      */
-    private void updateRemote(int vid, double latitude, double longitude, double speed) {
+    private void updateRemote(int vid, double latitude, double longitude, double speed, String title) {
         Log.e("Latitude:", latitude + "");
         Log.e("Longitude:", longitude + "");
         Log.e("Speed:", speed + "");
-        new SendLocationData().execute(vid+"", latitude+"",longitude+"",speed+"");
         //Now that the local visualizations are out of the way, let's actually send it to the server.
-
+        SendLocationData send = new SendLocationData();
+        taskList.add(send);
+        send.execute(vid + "", latitude + "", longitude + "", speed + "", title);
+       /* send.cancel(true);
+        for(SendLocationData locData: taskList){
+            send.cancel(true);
+        }}*/
     }
 }

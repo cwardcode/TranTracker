@@ -1,31 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AndroidLayoutPreviewToolWindow">
+    <option name="state">
+      <GlobalState />
+    </option>
+  </component>
   <component name="AndroidLayouts">
     <shared>
       <config />
     </shared>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f1aab9ea-5d35-407c-9ec6-f271b1c72e24" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/AndroidManifest.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/resources.ap_" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\chris\Dropbox\Code\Capstone\TranTrackerGPSApp\bin\TranTracker.apk" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\chris\Dropbox\Code\Capstone\TranTrackerGPSApp\bin\classes.dex" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\chris\Dropbox\Code\Capstone\TranTrackerGPSApp\bin\res\drawable-hdpi\ic_launcher.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\chris\Dropbox\Code\Capstone\TranTrackerGPSApp\bin\res\drawable-ldpi\ic_launcher.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\chris\Dropbox\Code\Capstone\TranTrackerGPSApp\bin\res\drawable-mdpi\ic_launcher.png" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/cwardcode/TranTracker/LocReceiver$SendLocationData.class" afterPath="$PROJECT_DIR$/bin/classes/com/cwardcode/TranTracker/LocReceiver$SendLocationData.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/cwardcode/TranTracker/LocReceiver.class" afterPath="$PROJECT_DIR$/bin/classes/com/cwardcode/TranTracker/LocReceiver.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.name" afterPath="$PROJECT_DIR$/.idea/.name" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cwardcode/TranTracker/LocReceiver.java" afterPath="$PROJECT_DIR$/src/com/cwardcode/TranTracker/LocReceiver.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gen/com/cwardcode/TranTracker/R.java" afterPath="$PROJECT_DIR$/gen/com/cwardcode/TranTracker/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/main.xml" afterPath="$PROJECT_DIR$/res/layout/main.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_3_0_17_ga_bin1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_3_0_17_ga_bin1.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project.properties" afterPath="$PROJECT_DIR$/project.properties" />
-    </list>
+    <list default="true" id="f1aab9ea-5d35-407c-9ec6-f271b1c72e24" name="Default" comment="" />
     <ignored path="TranTrackerGPSApp.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -79,8 +65,8 @@
       </breakpoint>
     </breakpoint_any>
     <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
-    <line_breakpoints>
-      <breakpoint url="file://$PROJECT_DIR$/src/com/cwardcode/TranTracker/LocReceiver.java" line="75" class="com.cwardcode.TranTracker.LocReceiver.SendLocationData" package="com.cwardcode.TranTracker">
+    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
+      <breakpoint url="file://$PROJECT_DIR$/src/com/cwardcode/TranTracker/TranTracker.java" line="99" class="com.cwardcode.TranTracker.TranTracker" package="com.cwardcode.TranTracker">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -95,7 +81,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/com/cwardcode/TranTracker/SendLoc.java" line="145" class="com.cwardcode.TranTracker.SendLoc" package="com.cwardcode.TranTracker">
+      <breakpoint url="file://$PROJECT_DIR$/src/com/cwardcode/TranTracker/TranTracker.java" line="101" class="com.cwardcode.TranTracker.TranTracker" package="com.cwardcode.TranTracker">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -110,22 +96,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/com/cwardcode/TranTracker/LocReceiver.java" line="112" class="com.cwardcode.TranTracker.LocReceiver" package="com.cwardcode.TranTracker">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/com/cwardcode/TranTracker/LocReceiver.java" line="78" class="com.cwardcode.TranTracker.LocReceiver.SendLocationData" package="com.cwardcode.TranTracker">
+      <breakpoint url="file://$PROJECT_DIR$/src/com/cwardcode/TranTracker/TranTracker.java" line="100" class="com.cwardcode.TranTracker.TranTracker" package="com.cwardcode.TranTracker">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -153,27 +124,84 @@
       <file leaf-file-name="LocReceiver.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/cwardcode/TranTracker/LocReceiver.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="112" column="0" selection-start="3876" selection-end="3876" vertical-scroll-proportion="0.0" vertical-offset="1419" max-vertical-offset="1938">
+            <state line="94" column="21" selection-start="3543" selection-end="3544" vertical-scroll-proportion="0.0" vertical-offset="1394" max-vertical-offset="2142">
               <folding>
-                <marker date="1384312904662" expanded="true" signature="2278:2484" placeholder="INSERT INTO ..." />
+                <marker date="1386604715873" expanded="true" signature="2611:2848" placeholder="INSERT INTO ..." />
+                <marker date="1386604715873" expanded="true" signature="2611:2825" placeholder="INSERT INTO ..." />
+                <marker date="1386604715873" expanded="true" signature="2611:2805" placeholder="INSERT INTO ..." />
+                <marker date="1386604715873" expanded="true" signature="2611:2859" placeholder="INSERT INTO ..." />
+                <marker date="1386604715873" expanded="true" signature="2611:2857" placeholder="INSERT INTO ..." />
+                <marker date="1386604715873" expanded="true" signature="2611:2855" placeholder="INSERT INTO ..." />
+                <marker date="1386604715873" expanded="true" signature="2611:2855" placeholder="INSERT INTO ..." />
+                <marker date="1386604715873" expanded="true" signature="2611:2855" placeholder="INSERT INTO ..." />
+                <marker date="1386604715873" expanded="true" signature="2611:2855" placeholder="INSERT INTO ..." />
+                <marker date="1386604715873" expanded="true" signature="2611:2852" placeholder="INSERT INTO ..." />
+                <marker date="1386604715873" expanded="true" signature="2611:2830" placeholder="INSERT INTO ..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+      <file leaf-file-name="strings.xml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="0" selection-start="1246" selection-end="1246" vertical-scroll-proportion="0.0" vertical-offset="246" max-vertical-offset="833">
+            <state line="11" column="45" selection-start="505" selection-end="505" vertical-scroll-proportion="0.28858024" vertical-offset="0" max-vertical-offset="648">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SendLoc.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="vehicles.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/values/vehicles.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="8" column="23" selection-start="258" selection-end="258" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="306">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TranTracker.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/cwardcode/TranTracker/TranTracker.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="101" column="46" selection-start="3330" selection-end="3330" vertical-scroll-proportion="0.0" vertical-offset="1373" max-vertical-offset="2499">
+              <folding>
+                <element signature="e#5156#5157#0" expanded="true" />
+                <element signature="e#5186#5187#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="49" column="39" selection-start="1849" selection-end="1849" vertical-scroll-proportion="-14.04" vertical-offset="482" max-vertical-offset="1156">
+              <folding>
+                <element signature="e#479#506#0" expanded="true" />
+                <element signature="e#812#832#0" expanded="true" />
+                <element signature="e#1141#1160#0" expanded="true" />
+                <element signature="e#2025#2045#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SendLoc.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/cwardcode/TranTracker/SendLoc.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="145" column="0" selection-start="4533" selection-end="4533" vertical-scroll-proportion="0.41040462" vertical-offset="2048" max-vertical-offset="2567">
+            <state line="115" column="77" selection-start="3741" selection-end="3741" vertical-scroll-proportion="0.0" vertical-offset="1449" max-vertical-offset="2635">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AsyncTask.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/Documents/adt-bundle-windows-x86_64-20131030/sdk/sources/android-16/android/os/AsyncTask.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="178" column="0" selection-start="8667" selection-end="8667" vertical-scroll-proportion="0.0" vertical-offset="2346" max-vertical-offset="10846">
               <folding />
             </state>
           </provider>
@@ -186,21 +214,50 @@
       <setting name="OPEN_NEW_TAB" value="false" />
     </FindUsagesManager>
   </component>
+  <component name="GenerateSignedApkSettings">
+    <option name="KEY_STORE_PATH" value="C:\Users\chris\Dropbox\Apps\KeyStore\Release\Keys" />
+    <option name="KEY_ALIAS" value="trantracker" />
+    <option name="REMEMBER_PASSWORDS" value="true" />
+  </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/AndroidManifest.xml" />
+        <option value="$USER_HOME$/Downloads/Topological.java" />
+        <option value="$USER_HOME$/Downloads/TopoSort.java" />
+        <option value="db-console:/cad6e908/1666c9f7-461a-403d-ad68-23b4df3071a5/" />
+        <option value="$PROJECT_DIR$/src/com/cwardcode/TranTracker/LocReceiver.java" />
+        <option value="$PROJECT_DIR$/res/values/vehicles.xml" />
+        <option value="$PROJECT_DIR$/src/com/cwardcode/TranTracker/TranTracker.java" />
+        <option value="$PROJECT_DIR$/src/com/cwardcode/TranTracker/SendLoc.java" />
+        <option value="$USER_HOME$/Documents/adt-bundle-windows-x86_64-20131030/sdk/sources/android-16/android/os/AsyncTask.java" />
+        <option value="$PROJECT_DIR$/res/layout/main.xml" />
+        <option value="$PROJECT_DIR$/res/values/strings.xml" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1936" />
+    <option name="width" value="1932" />
     <option name="height" value="1066" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>Android Lint</id>
+          </State>
+        </expanded-state>
+      </profile-state>
+    </entry>
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -211,7 +268,7 @@
     <OptionsSetting value="true" id="Edit" />
     <OptionsSetting value="true" id="Undo Check Out" />
     <OptionsSetting value="true" id="Get Latest Version" />
-    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="2" id="Add" />
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectReloadState">
@@ -230,7 +287,7 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -271,9 +328,59 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TranTrackerGPSApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TranTrackerGPSApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="values" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TranTrackerGPSApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TranTrackerGPSApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="layout" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TranTrackerGPSApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TranTrackerGPSApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -283,11 +390,11 @@
     <property name="MemberChooser.sorted" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="MemberChooser.copyJavadoc" value="false" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="last_opened_file_path" value="C:/Program Files (x86)/Git/bin/git.exe" />
-    <property name="options.lastSelected" value="settings.github" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Dropbox/Apps/KeyStore/Release/Keys" />
+    <property name="options.lastSelected" value="android.dex.compiler" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
@@ -295,6 +402,13 @@
     <property name="recentsLimit" value="5" />
     <property name="restartRequiresConfirmation" value="true" />
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="04037D100D00D011" />
+    <property name="FullScreen" value="false" />
+    <property name="dynamic.classpath" value="false" />
+    <property name="ExportedModule" value="TranTrackerGPSApp" />
+    <property name="ExportedApkPath" value="C:\Users\chris\IdeaProjects\Capstone\TranTrackerGPSApp\TranTrackerGPSApp.apk" />
+    <property name="AndroidRunProguardForReleaseBuild" value="true" />
+    <property name="AndroidProguardConfigPaths" value="C:\Users\chris\Documents\adt-bundle-windows-x86_64-20131030\sdk\tools\proguard\proguard-android.txt;C:\Users\chris\IdeaProjects\Capstone\TranTrackerGPSApp\proguard-project.txt" />
+    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_AVD" value="Andoid2.3" />
   </component>
   <component name="RunManager" selected="Android Application.TranTrackerGPSApp">
     <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails" singleton="true">
@@ -489,6 +603,12 @@
       <envs />
       <method />
     </configuration>
+    <configuration default="true" type="com.intellij.persistence.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
+      <option name="VM_PARAMETERS" value="" />
+      <option name="USER_CFG_CLASS" />
+      <option name="CONTEXT_PROVIDER" />
+      <method />
+    </configuration>
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
       <module name="" />
       <option name="ACTIVITY_CLASS" value="" />
@@ -561,44 +681,87 @@
       <created>1384393448428</created>
       <updated>1384393448428</updated>
       <workItem from="1384393452210" duration="1828000" />
+      <workItem from="1385239503038" duration="1673000" />
+      <workItem from="1385252865174" duration="171000" />
+      <workItem from="1385392633861" duration="771000" />
+      <workItem from="1385413484746" duration="3729000" />
+      <workItem from="1385944724745" duration="2399000" />
+      <workItem from="1385947568052" duration="3899000" />
+      <workItem from="1385951536483" duration="3477000" />
+      <workItem from="1386012626116" duration="1451000" />
+      <workItem from="1386014320899" duration="2785000" />
+      <workItem from="1386030832676" duration="1389000" />
+      <workItem from="1386038315907" duration="924000" />
+      <workItem from="1386039703206" duration="1600000" />
+      <workItem from="1386113750015" duration="1688000" />
+      <workItem from="1386116278503" duration="666000" />
+      <workItem from="1386185878469" duration="140000" />
+      <workItem from="1386186538627" duration="2420000" />
+      <workItem from="1386292788893" duration="1415000" />
+      <workItem from="1386344491863" duration="51000" />
+      <workItem from="1386432503834" duration="249000" />
+      <workItem from="1386432816655" duration="6000" />
+      <workItem from="1386602733947" duration="5488000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1828000" />
+    <option name="totallyTimeSpent" value="38219000" />
+  </component>
+  <component name="TodoView" selected-index="0">
+    <todo-panel id="selected-file">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="default-changelist">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <frame x="-8" y="-8" width="1932" height="1066" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32893288" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32959402" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32893288" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960597" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39911798" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296582" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296582" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39736554" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32893288" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32930845" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26015368" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32893288" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2497332" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296582" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19263607" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32711306" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32968238" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32893288" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -613,6 +776,7 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
+    <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="false" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -622,18 +786,338 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$USER_HOME$/Documents/adt-bundle-windows-x86_64-20131030/sdk/platforms/android-10/android.jar!/android/content/Context.class">
+    <entry file="file://$USER_HOME$/Documents/adt-bundle-windows-x86_64-20131030/sdk/sources/android-16/java/lang/Thread.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="22" selection-start="167" selection-end="167" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3502">
+        <state line="1018" column="0" selection-start="33798" selection-end="33798" vertical-scroll-proportion="0.0" vertical-offset="17306" max-vertical-offset="22321" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/cwardcode/TranTracker/LocReceiver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="116" column="0" selection-start="4070" selection-end="4070" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2074">
+          <folding>
+            <marker date="1386604715873" expanded="true" signature="2611:2848" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2825" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2805" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2859" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2857" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2855" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2855" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2855" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2855" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2852" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2830" placeholder="INSERT INTO ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="0" selection-start="1246" selection-end="1246" vertical-scroll-proportion="0.0" vertical-offset="561" max-vertical-offset="833">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.project">
+    <entry file="file://$PROJECT_DIR$/src/com/cwardcode/TranTracker/SendLoc.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="663">
+        <state line="108" column="5" selection-start="3327" selection-end="3327" vertical-scroll-proportion="0.0" vertical-offset="1836" max-vertical-offset="2618">
           <folding />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TranTrackerGPSApp.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="0" selection-start="749" selection-end="749" vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="425" />
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/com.cwardcode.TranTracker.LocReceiver">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>com.cwardcode.TranTracker.LocReceiver</OriginalElement>
+          <nodes>
+            <node x="42.0" y="0.0">android.content.BroadcastReceiver</node>
+            <node x="19.0" y="680.0">com.cwardcode.TranTracker.LocReceiver.SendLocationData</node>
+            <node x="0.0" y="440.5">com.cwardcode.TranTracker.LocReceiver</node>
+            <node x="262.0" y="400.0">android.content.BroadcastReceiver.PendingResult</node>
+          </nodes>
+          <notes />
+          <edges>
+            <edge source="com.cwardcode.TranTracker.LocReceiver" target="android.content.BroadcastReceiver">
+              <point x="0.0" y="-74.5" />
+              <point x="121.0" y="375.0" />
+              <point x="156.0" y="375.0" />
+              <point x="-114.0" y="175.0" />
+            </edge>
+            <edge source="com.cwardcode.TranTracker.LocReceiver.SendLocationData" target="com.cwardcode.TranTracker.LocReceiver">
+              <point x="0.0" y="-24.0" />
+              <point x="0.0" y="74.5" />
+            </edge>
+            <edge source="android.content.BroadcastReceiver.PendingResult" target="android.content.BroadcastReceiver">
+              <point x="0.0" y="-115.0" />
+              <point x="419.0" y="375.0" />
+              <point x="384.0" y="375.0" />
+              <point x="114.0" y="175.0" />
+            </edge>
+          </edges>
+          <settings layout="Hierarchic Group" zoom="1.0" x="-403.0" y="145.0" />
+          <SelectedNodes>
+            <node>com.cwardcode.TranTracker.LocReceiver</node>
+          </SelectedNodes>
+          <Categories>
+            <Category>Constructors</Category>
+            <Category>Fields</Category>
+            <Category>Methods</Category>
+            <Category>Inner Classes</Category>
+            <Category>Properties</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Documents/adt-bundle-windows-x86_64-20131030/sdk/sources/android-16/java/lang/Thread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="232" column="11" selection-start="7840" selection-end="7840" vertical-scroll-proportion="0.0" vertical-offset="3944" max-vertical-offset="22321" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/cwardcode/TranTracker/TranTracker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="59" column="22" selection-start="1938" selection-end="1939" vertical-scroll-proportion="0.0" vertical-offset="1003" max-vertical-offset="2006">
+          <folding>
+            <element signature="e#5156#5157#0" expanded="true" />
+            <element signature="e#5186#5187#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/cwardcode/TranTracker/LocReceiver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="116" column="0" selection-start="4070" selection-end="4070" vertical-scroll-proportion="0.0" vertical-offset="1972" max-vertical-offset="2074">
+          <folding>
+            <marker date="1386604715873" expanded="true" signature="2611:2848" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2825" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2805" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2859" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2857" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2855" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2855" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2855" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2855" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2852" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2830" placeholder="INSERT INTO ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="0" selection-start="1246" selection-end="1246" vertical-scroll-proportion="0.0" vertical-offset="561" max-vertical-offset="833">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/cwardcode/TranTracker/SendLoc.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="101" column="41" selection-start="3104" selection-end="3104" vertical-scroll-proportion="0.0" vertical-offset="1717" max-vertical-offset="2771">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/TopoSort.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="80" column="30" selection-start="2750" selection-end="2750" vertical-scroll-proportion="0.0" vertical-offset="1082" max-vertical-offset="5253" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TranTrackerGPSApp.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="425" />
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Documents/adt-bundle-windows-x86_64-20131030/sdk/sources/android-16/java/lang/Thread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="232" column="11" selection-start="7840" selection-end="7840" vertical-scroll-proportion="0.0" vertical-offset="3944" max-vertical-offset="22321" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/cwardcode/TranTracker/TranTracker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="13" selection-start="499" selection-end="499" vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="2006">
+          <folding>
+            <element signature="e#5156#5157#0" expanded="true" />
+            <element signature="e#5186#5187#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/cwardcode/TranTracker/LocReceiver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="116" column="0" selection-start="4070" selection-end="4070" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2074">
+          <folding>
+            <marker date="1386604715873" expanded="true" signature="2611:2848" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2825" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2805" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2859" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2857" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2855" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2855" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2855" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2855" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2852" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2830" placeholder="INSERT INTO ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="0" selection-start="1246" selection-end="1246" vertical-scroll-proportion="0.0" vertical-offset="561" max-vertical-offset="833">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/cwardcode/TranTracker/SendLoc.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="112" column="77" selection-start="3568" selection-end="3568" vertical-scroll-proportion="0.0" vertical-offset="1904" max-vertical-offset="2771">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/cwardcode/TranTracker/TranTracker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="13" selection-start="499" selection-end="499" vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="2006">
+          <folding>
+            <element signature="e#5156#5157#0" expanded="true" />
+            <element signature="e#5186#5187#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/cwardcode/TranTracker/LocReceiver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="116" column="0" selection-start="4070" selection-end="4070" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2074">
+          <folding>
+            <marker date="1386604715873" expanded="true" signature="2611:2848" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2825" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2805" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2859" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2857" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2855" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2855" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2855" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2855" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2852" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2830" placeholder="INSERT INTO ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="0" selection-start="1246" selection-end="1246" vertical-scroll-proportion="0.0" vertical-offset="561" max-vertical-offset="833">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/cwardcode/TranTracker/SendLoc.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="112" column="77" selection-start="3568" selection-end="3568" vertical-scroll-proportion="0.0" vertical-offset="1904" max-vertical-offset="2618">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/cwardcode/TranTracker/TranTracker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="13" selection-start="499" selection-end="499" vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="2006">
+          <folding>
+            <element signature="e#5156#5157#0" expanded="true" />
+            <element signature="e#5186#5187#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/cwardcode/TranTracker/LocReceiver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="113" column="80" selection-start="4059" selection-end="4059" vertical-scroll-proportion="0.0" vertical-offset="1921" max-vertical-offset="1921">
+          <folding>
+            <marker date="1386604715873" expanded="true" signature="2611:2848" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2825" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2805" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2859" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2857" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2855" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2855" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2855" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2855" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2852" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2830" placeholder="INSERT INTO ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="0" selection-start="1246" selection-end="1246" vertical-scroll-proportion="0.0" vertical-offset="561" max-vertical-offset="833">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/cwardcode/TranTracker/SendLoc.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="145" column="0" selection-start="4533" selection-end="4533" vertical-scroll-proportion="0.0" vertical-offset="2465" max-vertical-offset="2771">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/cwardcode/TranTracker/TranTracker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="13" selection-start="499" selection-end="499" vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="2006">
+          <folding>
+            <element signature="e#5156#5157#0" expanded="true" />
+            <element signature="e#5186#5187#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/cwardcode/TranTracker/LocReceiver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="112" column="0" selection-start="3876" selection-end="3876" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2091">
+          <folding>
+            <marker date="1386604715873" expanded="true" signature="2611:2848" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2825" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2805" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2859" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2857" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2855" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2855" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2855" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2855" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2852" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2830" placeholder="INSERT INTO ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="0" selection-start="1246" selection-end="1246" vertical-scroll-proportion="0.0" vertical-offset="561" max-vertical-offset="833">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/cwardcode/TranTracker/SendLoc.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="145" column="0" selection-start="4533" selection-end="4533" vertical-scroll-proportion="0.0" vertical-offset="2465" max-vertical-offset="2618">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Documents/adt-bundle-windows-x86_64-20131030/sdk/platforms/android-10/android.jar!/android/content/Context.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="22" selection-start="167" selection-end="167" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3502" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.project">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="663" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
@@ -643,18 +1127,271 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/Downloads/TopoSort.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="80" column="30" selection-start="2750" selection-end="2750" vertical-scroll-proportion="0.4760274" vertical-offset="1082" max-vertical-offset="5253" />
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/com.cwardcode.TranTracker.LocReceiver">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>com.cwardcode.TranTracker.LocReceiver</OriginalElement>
+          <nodes>
+            <node x="42.0" y="0.0">android.content.BroadcastReceiver</node>
+            <node x="19.0" y="680.0">com.cwardcode.TranTracker.LocReceiver.SendLocationData</node>
+            <node x="0.0" y="440.5">com.cwardcode.TranTracker.LocReceiver</node>
+            <node x="262.0" y="400.0">android.content.BroadcastReceiver.PendingResult</node>
+          </nodes>
+          <notes />
+          <edges>
+            <edge source="com.cwardcode.TranTracker.LocReceiver" target="android.content.BroadcastReceiver">
+              <point x="0.0" y="-74.5" />
+              <point x="121.0" y="375.0" />
+              <point x="156.0" y="375.0" />
+              <point x="-114.0" y="175.0" />
+            </edge>
+            <edge source="com.cwardcode.TranTracker.LocReceiver.SendLocationData" target="com.cwardcode.TranTracker.LocReceiver">
+              <point x="0.0" y="-24.0" />
+              <point x="0.0" y="74.5" />
+            </edge>
+            <edge source="android.content.BroadcastReceiver.PendingResult" target="android.content.BroadcastReceiver">
+              <point x="0.0" y="-115.0" />
+              <point x="419.0" y="375.0" />
+              <point x="384.0" y="375.0" />
+              <point x="114.0" y="175.0" />
+            </edge>
+          </edges>
+          <settings layout="Hierarchic Group" zoom="1.0" x="-403.0" y="145.0" />
+          <SelectedNodes>
+            <node>com.cwardcode.TranTracker.LocReceiver</node>
+          </SelectedNodes>
+          <Categories>
+            <Category>Constructors</Category>
+            <Category>Fields</Category>
+            <Category>Methods</Category>
+            <Category>Inner Classes</Category>
+            <Category>Properties</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TranTrackerGPSApp.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="0" selection-start="749" selection-end="749" vertical-scroll-proportion="0.55308217" vertical-offset="0" max-vertical-offset="584" />
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Documents/adt-bundle-windows-x86_64-20131030/sdk/sources/android-16/java/lang/Thread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1018" column="0" selection-start="33798" selection-end="33798" vertical-scroll-proportion="0.0" vertical-offset="16211" max-vertical-offset="21420" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TranTracker.uml">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>com.cwardcode.TranTracker</OriginalElement>
+          <nodes>
+            <node x="" y="">com.cwardcode.TranTracker.R.drawable</node>
+            <node x="" y="">com.cwardcode.TranTracker.SendLoc.MyLocationListener</node>
+            <node x="" y="">com.cwardcode.TranTracker.R.string</node>
+            <node x="" y="">com.cwardcode.TranTracker.TranTracker.VehicleSelectionListener</node>
+            <node x="" y="">com.cwardcode.TranTracker.Manifest.permission</node>
+            <node x="" y="">com.cwardcode.TranTracker.Manifest</node>
+            <node x="" y="">com.cwardcode.TranTracker.LocReceiver</node>
+            <node x="" y="">com.cwardcode.TranTracker.R.array</node>
+            <node x="" y="">com.cwardcode.TranTracker.BuildConfig</node>
+            <node x="" y="">com.cwardcode.TranTracker.R</node>
+            <node x="" y="">com.cwardcode.TranTracker.R.layout</node>
+            <node x="" y="">com.cwardcode.TranTracker.SendLoc</node>
+            <node x="" y="">com.cwardcode.TranTracker.LocReceiver.SendLocationData</node>
+            <node x="" y="">com.cwardcode.TranTracker.R.id</node>
+            <node x="" y="">com.cwardcode.TranTracker.TranTracker</node>
+            <node x="" y="">com.cwardcode.TranTracker.Manifest.permission_group</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="0.8169642857142857" x="728.0" y="210.0" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Constructors</Category>
+            <Category>Fields</Category>
+            <Category>Methods</Category>
+            <Category>Inner Classes</Category>
+            <Category>Properties</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Documents/adt-bundle-windows-x86_64-20131030/sdk/sources/android-16/android/content/ContextWrapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="386" column="19" selection-start="10290" selection-end="10290" vertical-scroll-proportion="3.4150512" vertical-offset="2972" max-vertical-offset="8347" />
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/com.cwardcode.TranTracker">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>com.cwardcode.TranTracker</OriginalElement>
+          <nodes>
+            <node x="" y="">com.cwardcode.TranTracker.R.drawable</node>
+            <node x="" y="">com.cwardcode.TranTracker.SendLoc.MyLocationListener</node>
+            <node x="" y="">com.cwardcode.TranTracker.R.string</node>
+            <node x="" y="">com.cwardcode.TranTracker.TranTracker.VehicleSelectionListener</node>
+            <node x="" y="">com.cwardcode.TranTracker.Manifest.permission</node>
+            <node x="" y="">com.cwardcode.TranTracker.Manifest</node>
+            <node x="" y="">com.cwardcode.TranTracker.LocReceiver</node>
+            <node x="" y="">com.cwardcode.TranTracker.R.array</node>
+            <node x="" y="">com.cwardcode.TranTracker.BuildConfig</node>
+            <node x="" y="">com.cwardcode.TranTracker.R</node>
+            <node x="" y="">com.cwardcode.TranTracker.R.layout</node>
+            <node x="" y="">com.cwardcode.TranTracker.SendLoc</node>
+            <node x="" y="">com.cwardcode.TranTracker.LocReceiver.SendLocationData</node>
+            <node x="" y="">com.cwardcode.TranTracker.R.id</node>
+            <node x="" y="">com.cwardcode.TranTracker.TranTracker</node>
+            <node x="" y="">com.cwardcode.TranTracker.R.attr</node>
+            <node x="" y="">com.cwardcode.TranTracker.Manifest.permission_group</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.2000000000000002" x="490.0" y="418.0" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Constructors</Category>
+            <Category>Fields</Category>
+            <Category>Methods</Category>
+            <Category>Inner Classes</Category>
+            <Category>Properties</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://DATABASE/1666c9f7-461a-403d-ad68-23b4df3071a5">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>DATABASE</ID>
+          <OriginalElement>1666c9f7-461a-403d-ad68-23b4df3071a5</OriginalElement>
+          <nodes>
+            <node x="" y="">1666c9f7-461a-403d-ad68-23b4df3071a5.table:tracker.Location</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="101.0" y="75.0" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Columns</Category>
+            <Category>Key columns</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://DATABASE/1666c9f7-461a-403d-ad68-23b4df3071a5.table:tracker.Location">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>DATABASE</ID>
+          <OriginalElement>1666c9f7-461a-403d-ad68-23b4df3071a5.table:tracker.Location</OriginalElement>
+          <nodes>
+            <node x="" y="">1666c9f7-461a-403d-ad68-23b4df3071a5.table:tracker.Location</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="101.0" y="75.0" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Columns</Category>
+            <Category>Key columns</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://db-console:/cad6e908/1666c9f7-461a-403d-ad68-23b4df3071a5/">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="0" selection-start="24" selection-end="24" vertical-scroll-proportion="0.02" vertical-offset="0" max-vertical-offset="850" />
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.IntelliJIdea13/system/compile-server/trantrackergpsapp_a52d5451/targets/java-production/TranTrackerGPSApp/android/generated_sources/aapt/com/cwardcode/TranTracker/R.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="31" selection-start="1139" selection-end="1139" vertical-scroll-proportion="0.42078364" vertical-offset="212" max-vertical-offset="799">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/cwardcode/TranTracker/LocReceiver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="112" column="0" selection-start="3876" selection-end="3876" vertical-scroll-proportion="0.0" vertical-offset="1419" max-vertical-offset="1938">
+        <state line="94" column="21" selection-start="3543" selection-end="3544" vertical-scroll-proportion="0.0" vertical-offset="1394" max-vertical-offset="2142">
           <folding>
-            <marker date="1384312904662" expanded="true" signature="2278:2484" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2848" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2825" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2805" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2859" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2857" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2855" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2855" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2855" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2855" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2852" placeholder="INSERT INTO ..." />
+            <marker date="1386604715873" expanded="true" signature="2611:2830" placeholder="INSERT INTO ..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/cwardcode/TranTracker/SendLoc.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="145" column="0" selection-start="4533" selection-end="4533" vertical-scroll-proportion="0.41040462" vertical-offset="2048" max-vertical-offset="2567">
+        <state line="115" column="77" selection-start="3741" selection-end="3741" vertical-scroll-proportion="0.0" vertical-offset="1449" max-vertical-offset="2635">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/values/vehicles.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="23" selection-start="258" selection-end="258" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="306">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/cwardcode/TranTracker/TranTracker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="101" column="46" selection-start="3330" selection-end="3330" vertical-scroll-proportion="0.0" vertical-offset="1373" max-vertical-offset="2499">
+          <folding>
+            <element signature="e#5156#5157#0" expanded="true" />
+            <element signature="e#5186#5187#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Documents/adt-bundle-windows-x86_64-20131030/sdk/sources/android-16/android/os/AsyncTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="178" column="0" selection-start="8667" selection-end="8667" vertical-scroll-proportion="0.0" vertical-offset="2346" max-vertical-offset="10846">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="49" column="39" selection-start="1849" selection-end="1849" vertical-scroll-proportion="-14.04" vertical-offset="482" max-vertical-offset="1156">
+          <folding>
+            <element signature="e#479#506#0" expanded="true" />
+            <element signature="e#812#832#0" expanded="true" />
+            <element signature="e#1141#1160#0" expanded="true" />
+            <element signature="e#2025#2045#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="45" selection-start="505" selection-end="505" vertical-scroll-proportion="0.28858024" vertical-offset="0" max-vertical-offset="648">
           <folding />
         </state>
       </provider>
@@ -665,6 +1402,17 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="Copyright.UI">
+        <settings>
           <splitter-proportions>
             <option name="proportions">
               <list>
