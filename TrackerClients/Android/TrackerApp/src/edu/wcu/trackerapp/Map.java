@@ -214,7 +214,7 @@ public class Map extends Activity implements OnItemSelectedListener {
 	    offSouth.setVisible(true);
 	    
 	    Polyline offNorth = googleMap.addPolyline(new PolylineOptions()
-	    		 .addAll(routeHolder.getOffSouth()).width(5).color(Color.GREEN));
+	    		 .addAll(routeHolder.getOffNorth()).width(5).color(Color.GREEN));
 	    offNorth.setVisible(true);
 				
 		

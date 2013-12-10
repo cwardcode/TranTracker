@@ -59,7 +59,8 @@ int drawable ic_plusone_medium_off_client 0x7f020019
 int drawable ic_plusone_small_off_client 0x7f02001a
 int drawable ic_plusone_standard_off_client 0x7f02001b
 int drawable ic_plusone_tall_off_client 0x7f02001c
-int drawable map 0x7f02001d
+int drawable logo 0x7f02001d
+int drawable map 0x7f02001e
 int id action_settings 0x7f050010
 int id homeButtonAbout 0x7f050005
 int id homeButtonContact 0x7f050007

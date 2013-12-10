@@ -13,7 +13,7 @@
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@color/white"
+        android:background="@color/dark_grey"
         android:orientation="horizontal"
         android:weightSum="3" >
 
@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:contentDescription="@string/contentDescription"
-            android:src="@drawable/ic_launcher" />
+            android:src="@drawable/logo" />
 
         <Spinner
             android:id="@+id/menuSpinner"
