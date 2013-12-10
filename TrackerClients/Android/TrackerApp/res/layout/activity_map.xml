@@ -31,6 +31,7 @@
             android:layout_height="fill_parent"
             android:layout_weight="2"
             android:entries="@array/menu_array"
+            android:gravity="center"
             android:textSize="12sp" />
     </LinearLayout>
 
