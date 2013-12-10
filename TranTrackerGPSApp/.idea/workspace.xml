@@ -121,31 +121,22 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="LocReceiver.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="LocReceiver.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/cwardcode/TranTracker/LocReceiver.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="94" column="21" selection-start="3543" selection-end="3544" vertical-scroll-proportion="0.0" vertical-offset="1394" max-vertical-offset="2142">
+            <state line="33" column="46" selection-start="1005" selection-end="1005" vertical-scroll-proportion="0.6903553" vertical-offset="153" max-vertical-offset="2295">
               <folding>
-                <marker date="1386604715873" expanded="true" signature="2611:2848" placeholder="INSERT INTO ..." />
-                <marker date="1386604715873" expanded="true" signature="2611:2825" placeholder="INSERT INTO ..." />
-                <marker date="1386604715873" expanded="true" signature="2611:2805" placeholder="INSERT INTO ..." />
-                <marker date="1386604715873" expanded="true" signature="2611:2859" placeholder="INSERT INTO ..." />
-                <marker date="1386604715873" expanded="true" signature="2611:2857" placeholder="INSERT INTO ..." />
-                <marker date="1386604715873" expanded="true" signature="2611:2855" placeholder="INSERT INTO ..." />
-                <marker date="1386604715873" expanded="true" signature="2611:2855" placeholder="INSERT INTO ..." />
-                <marker date="1386604715873" expanded="true" signature="2611:2855" placeholder="INSERT INTO ..." />
-                <marker date="1386604715873" expanded="true" signature="2611:2855" placeholder="INSERT INTO ..." />
-                <marker date="1386604715873" expanded="true" signature="2611:2852" placeholder="INSERT INTO ..." />
-                <marker date="1386604715873" expanded="true" signature="2611:2830" placeholder="INSERT INTO ..." />
+                <element signature="imports" expanded="true" />
+                <marker date="1386643414133" expanded="true" signature="2526:2772" placeholder="INSERT INTO ..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="strings.xml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="strings.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="45" selection-start="505" selection-end="505" vertical-scroll-proportion="0.28858024" vertical-offset="0" max-vertical-offset="648">
+            <state line="11" column="45" selection-start="505" selection-end="505" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="357">
               <folding />
             </state>
           </provider>
@@ -154,7 +145,7 @@
       <file leaf-file-name="vehicles.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/res/values/vehicles.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="23" selection-start="258" selection-end="258" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="306">
+            <state line="8" column="23" selection-start="258" selection-end="258" vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="306">
               <folding />
             </state>
           </provider>
@@ -163,11 +154,8 @@
       <file leaf-file-name="TranTracker.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/cwardcode/TranTracker/TranTracker.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="101" column="46" selection-start="3330" selection-end="3330" vertical-scroll-proportion="0.0" vertical-offset="1373" max-vertical-offset="2499">
-              <folding>
-                <element signature="e#5156#5157#0" expanded="true" />
-                <element signature="e#5186#5187#0" expanded="true" />
-              </folding>
+            <state line="101" column="46" selection-start="3330" selection-end="3330" vertical-scroll-proportion="0.0" vertical-offset="1717" max-vertical-offset="2669">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -179,12 +167,7 @@
           </provider>
           <provider selected="true" editor-type-id="text-editor">
             <state line="49" column="39" selection-start="1849" selection-end="1849" vertical-scroll-proportion="-14.04" vertical-offset="482" max-vertical-offset="1156">
-              <folding>
-                <element signature="e#479#506#0" expanded="true" />
-                <element signature="e#812#832#0" expanded="true" />
-                <element signature="e#1141#1160#0" expanded="true" />
-                <element signature="e#2025#2045#0" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -192,17 +175,34 @@
       <file leaf-file-name="SendLoc.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/cwardcode/TranTracker/SendLoc.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="115" column="77" selection-start="3741" selection-end="3741" vertical-scroll-proportion="0.0" vertical-offset="1449" max-vertical-offset="2635">
+            <state line="115" column="77" selection-start="3741" selection-end="3741" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2635">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="AsyncTask.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/Documents/adt-bundle-windows-x86_64-20131030/sdk/sources/android-16/android/os/AsyncTask.java">
+        <entry file="file://$PROJECT_DIR$/src/com/cwardcode/TranTracker/AsyncTask.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="178" column="0" selection-start="8667" selection-end="8667" vertical-scroll-proportion="0.0" vertical-offset="2346" max-vertical-offset="10846">
-              <folding />
+            <state line="39" column="45" selection-start="1358" selection-end="1358" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="11577">
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#9389#9399#0" expanded="true" />
+                <element signature="e#10628#10638#0" expanded="true" />
+                <element signature="e#10755#10992#0" expanded="true" />
+                <element signature="e#10977#10978#0" expanded="true" />
+                <element signature="e#11957#11958#0" expanded="true" />
+                <element signature="e#11996#11997#0" expanded="true" />
+                <element signature="e#12149#12495#0" expanded="true" />
+                <element signature="e#12484#12485#0" expanded="true" />
+                <element signature="e#13379#13409#1" expanded="true" />
+                <element signature="e#13744#13745#0" expanded="true" />
+                <element signature="e#13774#13775#0" expanded="true" />
+                <element signature="e#14980#15020#0" expanded="true" />
+                <element signature="e#15373#15413#0" expanded="true" />
+                <element signature="e#16041#16080#0" expanded="true" />
+                <element signature="e#26438#26486#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -229,20 +229,21 @@
         <option value="$USER_HOME$/Downloads/Topological.java" />
         <option value="$USER_HOME$/Downloads/TopoSort.java" />
         <option value="db-console:/cad6e908/1666c9f7-461a-403d-ad68-23b4df3071a5/" />
-        <option value="$PROJECT_DIR$/src/com/cwardcode/TranTracker/LocReceiver.java" />
         <option value="$PROJECT_DIR$/res/values/vehicles.xml" />
         <option value="$PROJECT_DIR$/src/com/cwardcode/TranTracker/TranTracker.java" />
         <option value="$PROJECT_DIR$/src/com/cwardcode/TranTracker/SendLoc.java" />
         <option value="$USER_HOME$/Documents/adt-bundle-windows-x86_64-20131030/sdk/sources/android-16/android/os/AsyncTask.java" />
         <option value="$PROJECT_DIR$/res/layout/main.xml" />
         <option value="$PROJECT_DIR$/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/src/com/cwardcode/TranTracker/AsyncTask.java" />
+        <option value="$PROJECT_DIR$/src/com/cwardcode/TranTracker/LocReceiver.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1932" />
+    <option name="width" value="1936" />
     <option name="height" value="1066" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -603,12 +604,6 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="true" type="com.intellij.persistence.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
-      <option name="VM_PARAMETERS" value="" />
-      <option name="USER_CFG_CLASS" />
-      <option name="CONTEXT_PROVIDER" />
-      <method />
-    </configuration>
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
       <module name="" />
       <option name="ACTIVITY_CLASS" value="" />
@@ -626,6 +621,12 @@
       <option name="NETWORK_LATENCY" value="none" />
       <option name="CLEAR_LOGCAT" value="false" />
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="com.intellij.persistence.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
+      <option name="VM_PARAMETERS" value="" />
+      <option name="USER_CFG_CLASS" />
+      <option name="CONTEXT_PROVIDER" />
       <method />
     </configuration>
     <configuration default="false" name="TranTrackerGPSApp" type="AndroidRunConfigurationType" factoryName="Android Application">
@@ -702,11 +703,12 @@
       <workItem from="1386432503834" duration="249000" />
       <workItem from="1386432816655" duration="6000" />
       <workItem from="1386602733947" duration="5488000" />
+      <workItem from="1386642337428" duration="2262000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="38219000" />
+    <option name="totallyTimeSpent" value="40481000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -729,13 +731,13 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1932" height="1066" extended-state="0" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32893288" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32959402" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32942432" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32893288" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960597" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -748,13 +750,13 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32930845" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26015368" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3227223" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32893288" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19263607" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19222577" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32711306" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32968238" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
@@ -786,26 +788,12 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/Documents/adt-bundle-windows-x86_64-20131030/sdk/sources/android-16/java/lang/Thread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1018" column="0" selection-start="33798" selection-end="33798" vertical-scroll-proportion="0.0" vertical-offset="17306" max-vertical-offset="22321" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/cwardcode/TranTracker/LocReceiver.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="116" column="0" selection-start="4070" selection-end="4070" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2074">
           <folding>
-            <marker date="1386604715873" expanded="true" signature="2611:2848" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2825" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2805" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2859" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2857" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2855" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2855" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2855" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2855" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2852" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2830" placeholder="INSERT INTO ..." />
+            <element signature="imports" expanded="true" />
+            <marker date="1386643414133" expanded="true" signature="2526:2772" placeholder="INSERT INTO ..." />
           </folding>
         </state>
       </provider>
@@ -883,10 +871,7 @@
     <entry file="file://$PROJECT_DIR$/src/com/cwardcode/TranTracker/TranTracker.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="59" column="22" selection-start="1938" selection-end="1939" vertical-scroll-proportion="0.0" vertical-offset="1003" max-vertical-offset="2006">
-          <folding>
-            <element signature="e#5156#5157#0" expanded="true" />
-            <element signature="e#5186#5187#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -894,17 +879,8 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="116" column="0" selection-start="4070" selection-end="4070" vertical-scroll-proportion="0.0" vertical-offset="1972" max-vertical-offset="2074">
           <folding>
-            <marker date="1386604715873" expanded="true" signature="2611:2848" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2825" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2805" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2859" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2857" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2855" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2855" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2855" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2855" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2852" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2830" placeholder="INSERT INTO ..." />
+            <element signature="imports" expanded="true" />
+            <marker date="1386643414133" expanded="true" signature="2526:2772" placeholder="INSERT INTO ..." />
           </folding>
         </state>
       </provider>
@@ -941,10 +917,7 @@
     <entry file="file://$PROJECT_DIR$/src/com/cwardcode/TranTracker/TranTracker.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="19" column="13" selection-start="499" selection-end="499" vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="2006">
-          <folding>
-            <element signature="e#5156#5157#0" expanded="true" />
-            <element signature="e#5186#5187#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -952,17 +925,8 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="116" column="0" selection-start="4070" selection-end="4070" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2074">
           <folding>
-            <marker date="1386604715873" expanded="true" signature="2611:2848" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2825" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2805" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2859" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2857" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2855" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2855" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2855" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2855" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2852" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2830" placeholder="INSERT INTO ..." />
+            <element signature="imports" expanded="true" />
+            <marker date="1386643414133" expanded="true" signature="2526:2772" placeholder="INSERT INTO ..." />
           </folding>
         </state>
       </provider>
@@ -984,10 +948,7 @@
     <entry file="file://$PROJECT_DIR$/src/com/cwardcode/TranTracker/TranTracker.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="19" column="13" selection-start="499" selection-end="499" vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="2006">
-          <folding>
-            <element signature="e#5156#5157#0" expanded="true" />
-            <element signature="e#5186#5187#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -995,17 +956,8 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="116" column="0" selection-start="4070" selection-end="4070" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2074">
           <folding>
-            <marker date="1386604715873" expanded="true" signature="2611:2848" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2825" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2805" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2859" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2857" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2855" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2855" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2855" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2855" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2852" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2830" placeholder="INSERT INTO ..." />
+            <element signature="imports" expanded="true" />
+            <marker date="1386643414133" expanded="true" signature="2526:2772" placeholder="INSERT INTO ..." />
           </folding>
         </state>
       </provider>
@@ -1027,10 +979,7 @@
     <entry file="file://$PROJECT_DIR$/src/com/cwardcode/TranTracker/TranTracker.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="19" column="13" selection-start="499" selection-end="499" vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="2006">
-          <folding>
-            <element signature="e#5156#5157#0" expanded="true" />
-            <element signature="e#5186#5187#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1038,17 +987,8 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="113" column="80" selection-start="4059" selection-end="4059" vertical-scroll-proportion="0.0" vertical-offset="1921" max-vertical-offset="1921">
           <folding>
-            <marker date="1386604715873" expanded="true" signature="2611:2848" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2825" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2805" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2859" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2857" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2855" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2855" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2855" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2855" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2852" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2830" placeholder="INSERT INTO ..." />
+            <element signature="imports" expanded="true" />
+            <marker date="1386643414133" expanded="true" signature="2526:2772" placeholder="INSERT INTO ..." />
           </folding>
         </state>
       </provider>
@@ -1070,10 +1010,7 @@
     <entry file="file://$PROJECT_DIR$/src/com/cwardcode/TranTracker/TranTracker.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="19" column="13" selection-start="499" selection-end="499" vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="2006">
-          <folding>
-            <element signature="e#5156#5157#0" expanded="true" />
-            <element signature="e#5186#5187#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1081,17 +1018,8 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="112" column="0" selection-start="3876" selection-end="3876" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2091">
           <folding>
-            <marker date="1386604715873" expanded="true" signature="2611:2848" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2825" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2805" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2859" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2857" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2855" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2855" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2855" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2855" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2852" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2830" placeholder="INSERT INTO ..." />
+            <element signature="imports" expanded="true" />
+            <marker date="1386643414133" expanded="true" signature="2526:2772" placeholder="INSERT INTO ..." />
           </folding>
         </state>
       </provider>
@@ -1205,10 +1133,10 @@
             <node x="" y="">com.cwardcode.TranTracker.BuildConfig</node>
             <node x="" y="">com.cwardcode.TranTracker.R</node>
             <node x="" y="">com.cwardcode.TranTracker.R.layout</node>
-            <node x="" y="">com.cwardcode.TranTracker.SendLoc</node>
             <node x="" y="">com.cwardcode.TranTracker.LocReceiver.SendLocationData</node>
-            <node x="" y="">com.cwardcode.TranTracker.R.id</node>
+            <node x="" y="">com.cwardcode.TranTracker.SendLoc</node>
             <node x="" y="">com.cwardcode.TranTracker.TranTracker</node>
+            <node x="" y="">com.cwardcode.TranTracker.R.id</node>
             <node x="" y="">com.cwardcode.TranTracker.Manifest.permission_group</node>
           </nodes>
           <notes />
@@ -1249,12 +1177,12 @@
             <node x="" y="">com.cwardcode.TranTracker.BuildConfig</node>
             <node x="" y="">com.cwardcode.TranTracker.R</node>
             <node x="" y="">com.cwardcode.TranTracker.R.layout</node>
-            <node x="" y="">com.cwardcode.TranTracker.SendLoc</node>
             <node x="" y="">com.cwardcode.TranTracker.LocReceiver.SendLocationData</node>
-            <node x="" y="">com.cwardcode.TranTracker.R.id</node>
+            <node x="" y="">com.cwardcode.TranTracker.SendLoc</node>
             <node x="" y="">com.cwardcode.TranTracker.TranTracker</node>
-            <node x="" y="">com.cwardcode.TranTracker.R.attr</node>
+            <node x="" y="">com.cwardcode.TranTracker.R.id</node>
             <node x="" y="">com.cwardcode.TranTracker.Manifest.permission_group</node>
+            <node x="" y="">com.cwardcode.TranTracker.R.attr</node>
           </nodes>
           <notes />
           <edges />
@@ -1319,35 +1247,7 @@
     </entry>
     <entry file="file://$USER_HOME$/.IntelliJIdea13/system/compile-server/trantrackergpsapp_a52d5451/targets/java-production/TranTrackerGPSApp/android/generated_sources/aapt/com/cwardcode/TranTracker/R.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="31" selection-start="1139" selection-end="1139" vertical-scroll-proportion="0.42078364" vertical-offset="212" max-vertical-offset="799">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/cwardcode/TranTracker/LocReceiver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="94" column="21" selection-start="3543" selection-end="3544" vertical-scroll-proportion="0.0" vertical-offset="1394" max-vertical-offset="2142">
-          <folding>
-            <marker date="1386604715873" expanded="true" signature="2611:2848" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2825" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2805" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2859" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2857" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2855" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2855" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2855" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2855" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2852" placeholder="INSERT INTO ..." />
-            <marker date="1386604715873" expanded="true" signature="2611:2830" placeholder="INSERT INTO ..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/cwardcode/TranTracker/SendLoc.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="115" column="77" selection-start="3741" selection-end="3741" vertical-scroll-proportion="0.0" vertical-offset="1449" max-vertical-offset="2635">
-          <folding />
-        </state>
+        <state line="32" column="31" selection-start="1139" selection-end="1139" vertical-scroll-proportion="0.42078364" vertical-offset="212" max-vertical-offset="799" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/values/vehicles.xml">
@@ -1360,16 +1260,13 @@
     <entry file="file://$PROJECT_DIR$/src/com/cwardcode/TranTracker/TranTracker.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="101" column="46" selection-start="3330" selection-end="3330" vertical-scroll-proportion="0.0" vertical-offset="1373" max-vertical-offset="2499">
-          <folding>
-            <element signature="e#5156#5157#0" expanded="true" />
-            <element signature="e#5186#5187#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Documents/adt-bundle-windows-x86_64-20131030/sdk/sources/android-16/android/os/AsyncTask.java">
+    <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="178" column="0" selection-start="8667" selection-end="8667" vertical-scroll-proportion="0.0" vertical-offset="2346" max-vertical-offset="10846">
+        <state line="11" column="45" selection-start="505" selection-end="505" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="357">
           <folding />
         </state>
       </provider>
@@ -1380,19 +1277,55 @@
       </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state line="49" column="39" selection-start="1849" selection-end="1849" vertical-scroll-proportion="-14.04" vertical-offset="482" max-vertical-offset="1156">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Documents/adt-bundle-windows-x86_64-20131030/sdk/sources/android-16/android/os/AsyncTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="90" selection-start="1565" selection-end="1565" vertical-scroll-proportion="-3.6353846" vertical-offset="2550" max-vertical-offset="10846">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/cwardcode/TranTracker/SendLoc.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="115" column="77" selection-start="3741" selection-end="3741" vertical-scroll-proportion="0.0" vertical-offset="1449" max-vertical-offset="2635">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/cwardcode/TranTracker/AsyncTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="45" selection-start="1358" selection-end="1358" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="11577">
           <folding>
-            <element signature="e#479#506#0" expanded="true" />
-            <element signature="e#812#832#0" expanded="true" />
-            <element signature="e#1141#1160#0" expanded="true" />
-            <element signature="e#2025#2045#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#9389#9399#0" expanded="true" />
+            <element signature="e#10628#10638#0" expanded="true" />
+            <element signature="e#10755#10992#0" expanded="true" />
+            <element signature="e#10977#10978#0" expanded="true" />
+            <element signature="e#11957#11958#0" expanded="true" />
+            <element signature="e#11996#11997#0" expanded="true" />
+            <element signature="e#12149#12495#0" expanded="true" />
+            <element signature="e#12484#12485#0" expanded="true" />
+            <element signature="e#13379#13409#1" expanded="true" />
+            <element signature="e#13744#13745#0" expanded="true" />
+            <element signature="e#13774#13775#0" expanded="true" />
+            <element signature="e#14980#15020#0" expanded="true" />
+            <element signature="e#15373#15413#0" expanded="true" />
+            <element signature="e#16041#16080#0" expanded="true" />
+            <element signature="e#26438#26486#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
+    <entry file="file://$PROJECT_DIR$/src/com/cwardcode/TranTracker/LocReceiver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="45" selection-start="505" selection-end="505" vertical-scroll-proportion="0.28858024" vertical-offset="0" max-vertical-offset="648">
-          <folding />
+        <state line="33" column="46" selection-start="1005" selection-end="1005" vertical-scroll-proportion="0.6903553" vertical-offset="153" max-vertical-offset="2295">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <marker date="1386643414133" expanded="true" signature="2526:2772" placeholder="INSERT INTO ..." />
+          </folding>
         </state>
       </provider>
     </entry>

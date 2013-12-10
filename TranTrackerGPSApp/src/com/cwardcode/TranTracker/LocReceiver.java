@@ -3,7 +3,6 @@ package com.cwardcode.TranTracker;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.util.Log;
 
 import java.sql.Connection;
@@ -11,7 +10,6 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.concurrent.RejectedExecutionException;
 
 /**
  * Receives location and identification information and sends them to a remote
