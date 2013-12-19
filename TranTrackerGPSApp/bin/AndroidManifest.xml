@@ -31,14 +31,14 @@
         <service
             android:name=".SendLoc"
             android:enabled="true" />
-        <!--
+
         <receiver android:name=".LocReceiver"
                   android:enabled="true">
             <intent-filter>
                 <action android:name="com.cwardcode.intent.action.LOCATION" />
             </intent-filter>
         </receiver>
-        -->
+
     </application>
 
 </manifest>

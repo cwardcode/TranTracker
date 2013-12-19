@@ -27,7 +27,8 @@ public class SendLoc extends Service {
     private LocationListener locListener;
     /**Used to identify the vehicle that is being tracked by this device.*/
     private static int vehicleID;
-    
+    /**Used to identify the vehicle by name*/
+    private static String title;
     /**
      * Listens for changes in the device's location.
      */
@@ -82,6 +83,7 @@ public class SendLoc extends Service {
      */
     public void onCreate() {
         super.onCreate();
+        addLocationListener();
     }
     
     /**
@@ -90,9 +92,10 @@ public class SendLoc extends Service {
      * @param intent The Intent that provides the service with the vehicleID.
      * @param startID a unique identifier for this request.
      */
-    public void onStart(Intent intent, int startID){
-        addLocationListener();
+    public int onStartCommand(Intent intent, int startID, int startId){
         vehicleID = intent.getIntExtra("VehicleID", -1);
+        title = intent.getStringExtra("title");
+        return START_STICKY;
     }
 
     /**
@@ -106,11 +109,11 @@ public class SendLoc extends Service {
                     Looper.prepare();
                     lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
 
-                    Criteria c = new Criteria();
+                       Criteria c = new Criteria();
                     c.setAccuracy(Criteria.ACCURACY_FINE);
 
                     locListener = new MyLocationListener();
-                    lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 0, locListener);
+                    lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 500, 0, locListener);
                     Looper.loop();
                 }catch(Exception ex){
                     ex.printStackTrace();
@@ -143,6 +146,7 @@ public class SendLoc extends Service {
         filterRes.putExtra("longitude", longitude);
         filterRes.putExtra("speed", speed);
         filterRes.putExtra("VehicleID",vehicleID);
+        filterRes.putExtra("title",title);
         context.sendBroadcast(filterRes);
     }
 

@@ -1,0 +1,14 @@
+com.cwardcode.TranTracker.BuildConfig
+com.cwardcode.TranTracker.LocReceiver:
+    private static final java.lang.String DB_DRIVER
+    private static final java.lang.String DB_CONNECTION
+    private static final java.lang.String DB_USER
+    private static final java.lang.String DB_PASSWORD
+com.cwardcode.TranTracker.R
+com.cwardcode.TranTracker.R$array
+com.cwardcode.TranTracker.R$attr
+com.cwardcode.TranTracker.R$drawable
+com.cwardcode.TranTracker.R$id
+com.cwardcode.TranTracker.R$layout
+com.cwardcode.TranTracker.R$string
+org.gjt.mm.mysql.Driver

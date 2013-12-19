@@ -5,4 +5,9 @@
         <item>@string/v2</item>
         <item>@string/v3</item>
     </string-array>
+    <string-array name="nameID">
+        <item>@string/n1</item>
+        <item>@string/n2</item>
+        <item>@string/n3</item>
+    </string-array>
 </resources>

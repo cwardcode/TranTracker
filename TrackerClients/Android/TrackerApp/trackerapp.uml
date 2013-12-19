@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>edu.wcu.trackerapp</OriginalElement>
+  <nodes>
+    <node x="855.0000000000002" y="338.0">edu.wcu.trackerapp.R.id</node>
+    <node x="549.0" y="961.0">edu.wcu.trackerapp.Contact</node>
+    <node x="136.44444444444446" y="1701.6666666666665">edu.wcu.trackerapp.Manifest</node>
+    <node x="4357.0" y="358.0">edu.wcu.trackerapp.R.color</node>
+    <node x="2654.0" y="488.0">edu.wcu.trackerapp.R.style</node>
+    <node x="198.0" y="348.0">edu.wcu.trackerapp.R.attr</node>
+    <node x="2174.0" y="328.0">edu.wcu.trackerapp.R.styleable</node>
+    <node x="4118.0" y="458.0">edu.wcu.trackerapp.R.layout</node>
+    <node x="1338.0000000000002" y="124.66666666666666">edu.wcu.trackerapp.R.drawable</node>
+    <node x="619.0000000000002" y="488.0">edu.wcu.trackerapp.R.dimen</node>
+    <node x="3072.0" y="128.0">edu.wcu.trackerapp.R.string</node>
+    <node x="1452.0" y="961.0">edu.wcu.trackerapp.Help</node>
+    <node x="854.0" y="1176.0">edu.wcu.trackerapp.ParseXML</node>
+    <node x="2838.0" y="498.0">edu.wcu.trackerapp.R.integer</node>
+    <node x="3970.0" y="498.0">edu.wcu.trackerapp.R.array</node>
+    <node x="2549.5" y="0.0">edu.wcu.trackerapp.R</node>
+    <node x="850.0" y="961.0">edu.wcu.trackerapp.About</node>
+    <node x="0.0" y="458.0">edu.wcu.trackerapp.R.menu</node>
+    <node x="321.44444444444446" y="1701.6666666666665">edu.wcu.trackerapp.BuildConfig</node>
+    <node x="1151.0" y="961.0">edu.wcu.trackerapp.Key</node>
+    <node x="0.0" y="961.0">edu.wcu.trackerapp.Map</node>
+    <node x="192.44444444444446" y="1779.6666666666665">edu.wcu.trackerapp.Manifest.permission</node>
+    <node x="54.44444444444446" y="1779.6666666666665">edu.wcu.trackerapp.Manifest.permission_group</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="edu.wcu.trackerapp.R.id" target="edu.wcu.trackerapp.R">
+      <point x="0.0" y="-184.0" />
+      <point x="1086.5000000000002" y="88.0" />
+      <point x="2561.458333333334" y="88.0" />
+      <point x="-8.541666666666515" y="14.0" />
+    </edge>
+    <edge source="edu.wcu.trackerapp.R.style" target="edu.wcu.trackerapp.R">
+      <point x="0.0" y="-34.0" />
+      <point x="2736.0" y="98.0" />
+      <point x="2571.708333333334" y="98.0" />
+      <point x="1.708333333333485" y="14.0" />
+    </edge>
+    <edge source="edu.wcu.trackerapp.R.menu" target="edu.wcu.trackerapp.R">
+      <point x="0.0" y="-64.0" />
+      <point x="89.0" y="58.0" />
+      <point x="2551.208333333334" y="58.0" />
+      <point x="-18.791666666666515" y="14.0" />
+    </edge>
+    <edge source="edu.wcu.trackerapp.Manifest.permission_group" target="edu.wcu.trackerapp.Manifest">
+      <point x="0.0" y="-14.0" />
+      <point x="113.44444444444446" y="1754.6666666666665" />
+      <point x="155.19444444444446" y="1754.6666666666665" />
+      <point x="-18.75" y="14.0" />
+    </edge>
+    <edge source="edu.wcu.trackerapp.R.layout" target="edu.wcu.trackerapp.R">
+      <point x="0.0" y="-64.0" />
+      <point x="4227.5" y="58.0" />
+      <point x="2585.375" y="58.0" />
+      <point x="15.375" y="14.0" />
+    </edge>
+    <edge source="edu.wcu.trackerapp.R.drawable" target="edu.wcu.trackerapp.R">
+      <point x="-2.2737367544323206E-13" y="-324.0" />
+      <point x="1746.0" y="98.0" />
+      <point x="2564.875" y="98.0" />
+      <point x="-5.125" y="14.0" />
+    </edge>
+    <edge source="edu.wcu.trackerapp.R.styleable" target="edu.wcu.trackerapp.R">
+      <point x="0.0" y="-194.0" />
+      <point x="2404.0" y="108.0" />
+      <point x="2568.291666666667" y="108.0" />
+      <point x="-1.708333333333485" y="14.0" />
+    </edge>
+    <edge source="edu.wcu.trackerapp.R.attr" target="edu.wcu.trackerapp.R">
+      <point x="0.0" y="-174.0" />
+      <point x="398.5" y="68.0" />
+      <point x="2554.625" y="68.0" />
+      <point x="-15.375" y="14.0" />
+    </edge>
+    <edge source="edu.wcu.trackerapp.R.array" target="edu.wcu.trackerapp.R">
+      <point x="0.0" y="-24.0" />
+      <point x="4034.0" y="68.0" />
+      <point x="2581.958333333334" y="68.0" />
+      <point x="11.958333333333485" y="14.0" />
+    </edge>
+    <edge source="edu.wcu.trackerapp.Map" target="edu.wcu.trackerapp.ParseXML">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="edu.wcu.trackerapp.Manifest.permission" target="edu.wcu.trackerapp.Manifest">
+      <point x="0.0" y="-14.0" />
+      <point x="234.44444444444446" y="1754.6666666666665" />
+      <point x="192.69444444444446" y="1754.6666666666665" />
+      <point x="18.75" y="14.0" />
+    </edge>
+    <edge source="edu.wcu.trackerapp.R.color" target="edu.wcu.trackerapp.R">
+      <point x="0.0" y="-164.0" />
+      <point x="4599.5" y="48.0" />
+      <point x="2588.791666666667" y="48.0" />
+      <point x="18.791666666666515" y="14.0" />
+    </edge>
+    <edge source="edu.wcu.trackerapp.R.string" target="edu.wcu.trackerapp.R">
+      <point x="0.0" y="-394.0" />
+      <point x="3511.0" y="78.0" />
+      <point x="2578.541666666667" y="78.0" />
+      <point x="8.541666666666515" y="14.0" />
+    </edge>
+    <edge source="edu.wcu.trackerapp.R.dimen" target="edu.wcu.trackerapp.R">
+      <point x="0.0" y="-34.0" />
+      <point x="727.0000000000002" y="78.0" />
+      <point x="2558.041666666667" y="78.0" />
+      <point x="-11.958333333333485" y="14.0" />
+    </edge>
+    <edge source="edu.wcu.trackerapp.R.integer" target="edu.wcu.trackerapp.R">
+      <point x="0.0" y="-24.0" />
+      <point x="2945.0" y="88.0" />
+      <point x="2575.125" y="88.0" />
+      <point x="5.125" y="14.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.9" x="855.0" y="1161.5555555555557" />
+  <SelectedNodes>
+    <node>edu.wcu.trackerapp.R.drawable</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Methods</Category>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
