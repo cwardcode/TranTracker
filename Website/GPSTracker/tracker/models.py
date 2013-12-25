@@ -7,3 +7,7 @@ class Location(models.Model):
     Longitude = models.DecimalField(max_digits=10, decimal_places=6)
     Speed = models.DecimalField(max_digits=4, decimal_places=1)
     Title = models.CharField(max_length=40)
+    
+    def __unicode__(self):
+        return "Location ID:" + str(self.LocID)
+
