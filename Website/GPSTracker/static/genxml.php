@@ -27,7 +27,7 @@ if (!$db_selected) {
 $query = "SELECT * 
 FROM (
     SELECT *
-    FROM Location
+    FROM tracker_location
     ORDER BY LocID DESC
 ) AS tmp
 GROUP BY `VehicleID`";
