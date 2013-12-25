@@ -28,7 +28,7 @@ public class LocReceiver extends BroadcastReceiver {
     private static final String DB_DRIVER = "com.mysql.jdbc.Driver";
     
     /** The connection string that allows DB_DRIVER to connect to the server.*/
-    private static final String DB_CONNECTION = "jdbc:mysql://tracker.cwardcode.com:3306/tracker";
+    private static final String DB_CONNECTION = "jdbc:mysql://tracker.cwardcode.com:3306/gpstracker";
     
     /** The username used for this connection */
     private static final String DB_USER = "gpstracker";
@@ -72,7 +72,7 @@ public class LocReceiver extends BroadcastReceiver {
                 Connection dbConnection = null;
                 Statement statement = null;
 
-                String insertTableSQL = "INSERT INTO Location"
+                String insertTableSQL = "INSERT INTO tracker_location"
                         + "(VehicleID, Latitude, Longitude, Speed, Title) " + "VALUES"
                         + "(" + strings[0] + "," + strings[1] + "," + strings[2] + "," + strings[3] +  "," + "\"" + strings[4] + "\"" +")";
                 Log.e("com.cwardcode.TranTracker", "Attempting to execute:" +insertTableSQL);
