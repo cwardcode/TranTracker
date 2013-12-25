@@ -67,6 +67,44 @@ to be definied within the <head  /> tags, we have to simulate that here.-->
                             "invert_lightness": true
                         }]
                 }];
+
+                var style = [{
+                   "stylers": [
+                      {
+                        "elementType": "geometry.fill",
+                        "stylers": [
+                          { "color": "#c1bc95" }
+                        ]
+                      },{
+                        "elementType": "labels.text.stroke",
+                        "stylers": [
+                          { "color": "#c1bc94" }
+                        ]
+                      },{
+                        "featureType": "road",
+                        "elementType": "geometry",
+                        "stylers": [
+                          { "color": "#000000" }
+                        ]
+                      },{
+                        "featureType": "road",
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                          { "color": "#000000" }
+                        ]
+                      },{
+                        "featureType": "landscape",
+                        "elementType": "geometry.fill",
+                        "stylers": [
+                          { "invert_lightness": true },
+                          { "color": "#000000" }
+                        ]
+                      },{
+                        "featureType": "landscape",
+                        "elementType": "geometry"  }
+                    ] 
+                }];
+
                 //Shuttle marker image
                 image = '/static/images/shuttle.png';
                 //Location at which to center map.
@@ -81,7 +119,7 @@ to be definied within the <head  /> tags, we have to simulate that here.-->
                       }
                 }
                 //Our styled map object
-                var styledMap = new google.maps.StyledMapType(styles, {name: "Black-White"});
+                var styledMap = new google.maps.StyledMapType(style, {name: "Black-White"});
                 //Apply mapOptions to map element
                 map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
 
