@@ -113,7 +113,7 @@ public class SendLoc extends Service {
                     c.setAccuracy(Criteria.ACCURACY_FINE);
 
                     locListener = new MyLocationListener();
-                    lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 500, 0, locListener);
+                    lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 2000, 0, locListener);
                     Looper.loop();
                 }catch(Exception ex){
                     ex.printStackTrace();
