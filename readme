@@ -1,22 +1,17 @@
 ## MASTER BRANCH ##
 
-Moved entire project to one repository to keep everything tidy, hopefully.
-
 This is the main working directory for our capstone project. 
 
-I figure we could put anything extra related to the project here, if need be.
+Even though this is the main repo for the project, the site isn't served from here,
+instead it's served from the Website subfolder since it is a Django project.
 
-Even though this is the main directory for the site, it isn't served from here,
-instead it's served from the Website subfolder as it's a Django project.
 The actual capstone site can be accessed at: http://tracker.cwardcode.com
 
 
 Folder Layout:
-
- -TrackerClients <-- Holds mobile client applications
- |--Android <-- Holds andorid client app
- |--iOS <-- Holds apple client app
-
- --TranTrackerGPSApp <-- Holds the GPS Transmitter app
-
- --Website <-- Holds our django website - see its readme for more details
+ -Dist - Not currently used, in the future, we can put alpha/beta apks here.
+ -TrackerClients <-- Holds mobile client applications.
+ |--Android <-- Holds andorid client app.
+ |--iOS <-- Holds apple client app.
+ -TranTrackerGPSApp <-- Holds the GPS Transmitter app.
+ -Website <-- Holds our django website - see its readme for more details.
