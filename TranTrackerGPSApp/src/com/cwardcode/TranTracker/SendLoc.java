@@ -23,12 +23,16 @@ public class SendLoc extends Service {
 	
 	/**Provides access to the device's GPS services.*/
     private LocationManager lm;
+
     /**Listens for location updates from the LocationManager.*/
     private LocationListener locListener;
+
     /**Used to identify the vehicle that is being tracked by this device.*/
     private static int vehicleID;
+
     /**Used to identify the vehicle by name*/
     private static String title;
+
     /**
      * Listens for changes in the device's location.
      */

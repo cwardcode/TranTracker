@@ -3,14 +3,17 @@ package com.cwardcode.TranTracker;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.Spinner;
-
-import java.lang.reflect.Array;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import java.util.ArrayList;
 
 /**
  * Provides a user interface that allows the user to select which vehicle is
@@ -20,87 +23,113 @@ import java.lang.reflect.Array;
  * @author Chris Ward
  * @version September 9, 2013
  */
-public class TranTracker extends Activity {
+public class TranTracker extends Activity implements AdapterView.OnItemSelectedListener {
+
+    /** URL which returns JSON array of vehicles. */
+    private static final String VID_URL = "http://tracker.cwardcode.com/static/getvid.php";
+
+    /** Holds whether the application is tracking. */
+
     public static boolean IS_TRACKING;
+
+    /** Holds whether a vehicle is selected. */
     public static boolean VEH_SELECT;
-    public static boolean NID_SELECT;
+
+    /** Holds current application context. */
     private static Context context;
+
+    /** Intent to hold sendLoc service. */
     private Intent srvIntent;
 
+    /** Spinner to hold trackable vehicles. */
+    Spinner gridSpinner;
+
+    /** ArrayList of trackable vehicles. */
+    private ArrayList<Vehicle> VehList;
 
     /**
-     * Listens for user input from a drop-down menu.
+     * Pulls vehicle list from database.
      */
-    private class VehicleSelectionListener implements AdapterView.OnItemSelectedListener {
+    private class GetVehicles extends AsyncTask<Void, Void, Void> {
 
         /**
-         * Triggered when an item within the spinner's list is selected.
+         * Threaded processes, parses JSON output from server.
          *
-         * @param parent - the <code>AdapterView</code> in which the view
-         *                 exists.
-         * @param view   - the <code>View</code> in from which the item was
-         *               selected.
-         * @param pos    - the position of the menu item seected.
-         * @param id     - the id of the item pressed, if available.
+         * @param arg0 not used
+         * @return null to end task
          */
-        public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-           VEH_SELECT = true;
-           srvIntent.putExtra("VehicleID", ++pos);
-           srvIntent.putExtra("title", parent.getSelectedItem().toString());
+        @Override
+        protected Void doInBackground(Void... arg0) {
+            ParseJson jsonParser = new ParseJson();
+            String json = jsonParser.makeServiceCall(VID_URL, ParseJson.GET);
+
+            if (json != null) {
+                try {
+                    JSONObject jsonObj = new JSONObject(json);
+                    JSONArray categories = jsonObj.getJSONArray("vehicles");
+                    for (int i = 0; i < categories.length(); i++) {
+                        JSONObject catObj = (JSONObject) categories.get(i);
+                        Vehicle cat = new Vehicle(catObj.getInt("id"),
+                                catObj.getString("name"));
+                        VehList.add(cat);
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            } else {
+                Log.e("JSON Data", "Didn't receive any data from server!");
+            }
+
+            return null;
         }
 
         /**
-         * If nothing is selected, does nothing.
-         *
-         * @param arg0 - nothing.
+         * After main thread has finished, populate spinner with vehicles.
+         * @param result return status of main thread.
          */
-        public void onNothingSelected(AdapterView<?> arg0) {
-            VEH_SELECT = false;
+        @Override
+        protected void onPostExecute(Void result) {
+            super.onPostExecute(result);
+            populateSpinner();
         }
+
     }
-
 
     /**
-     * Listens for user input from a drop-down menu.
+     * Triggered when an item within the spinner's list is selected.
+     *
+     * @param parent - the <code>AdapterView</code> in which the view
+     *                 exists.
+     * @param view   - the <code>View</code> in from which the item was
+     *               selected.
+     * @param pos    - the position of the menu item seected.
+     * @param id     - the id of the item pressed, if available.
      */
-    private class NameIDSelectionListener implements AdapterView.OnItemSelectedListener {
+     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+        VEH_SELECT = true;
+        srvIntent.putExtra("VehicleID", ++pos);
+        srvIntent.putExtra("title", parent.getSelectedItem().toString());
+     }
 
-        /**
-         * Triggered when an item within the spinner's list is selected.
-         *
-         * @param parent - the <code>AdapterView</code> in which the view
-         *                 exists.
-         * @param view   - the <code>View</code> in from which the item was
-         *               selected.
-         * @param pos    - the position of the menu item seected.
-         * @param id     - the id of the item pressed, if available.
-         */
-        public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-            NID_SELECT = true;
-            srvIntent.putExtra("VehicleID", ++pos);
-        }
-
-        /**
-         * If nothing is selected, does nothing.
-         *
-         * @param arg0 - nothing.
-         */
-        public void onNothingSelected(AdapterView<?> arg0) {
-            NID_SELECT = false;
-        }
-    }
+     /**
+      * If nothing is selected, does nothing.
+      *
+      * @param arg0 - nothing.
+      */
+     public void onNothingSelected(AdapterView<?> arg0) {
+         VEH_SELECT = false;
+     }
 
     /**
      * Starts the service that allows the device to be tracked.
-     * 
+     * Suppressing unused warning for param, needed only for Android to know
+     * calling view.
      * @param view the area of the screen for the button calling this method.
      */
+    @SuppressWarnings("unused")
     public void startTracking(View view) {
-        if(NID_SELECT){
-            EditText nameText= (EditText)findViewById(R.id.nameField);
-            String name = nameText.getText().toString();
-            srvIntent.putExtra("title", name);
-        }
         if(!IS_TRACKING){
             startService(srvIntent);
             IS_TRACKING = true;
@@ -120,25 +149,33 @@ public class TranTracker extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        IS_TRACKING = false;
-        srvIntent = new Intent(this, SendLoc.class);
         TranTracker.context = getApplicationContext();
 
-        Spinner gridSpinner = (Spinner) findViewById(R.id.VehicleSelect);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.vehicles,
-                android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(
-                android.R.layout.simple_spinner_dropdown_item);
-        gridSpinner.setAdapter(adapter);
-        gridSpinner.setOnItemSelectedListener(new VehicleSelectionListener());
+        IS_TRACKING = false;
+        srvIntent = new Intent(this, SendLoc.class);
+        VehList = new ArrayList<Vehicle>();
 
-        Spinner nameIDSpinner = (Spinner)findViewById(R.id.nameIDSelect);
-        ArrayAdapter<CharSequence> nameIDAdapter = ArrayAdapter.createFromResource(this, R.array.nameID,
-                android.R.layout.simple_spinner_item);
-        nameIDAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        nameIDSpinner.setAdapter(nameIDAdapter);
-        nameIDSpinner.setOnItemSelectedListener(new NameIDSelectionListener());
+        gridSpinner = (Spinner) findViewById(R.id.VehicleSelect);
+        gridSpinner.setOnItemSelectedListener(this);
+        new GetVehicles().execute();
+    }
 
+    /**
+     * Creates and attaches ArrayAdapter to populate spinner.
+     */
+    private void populateSpinner() {
+        ArrayList<String> vehicles = new ArrayList<String>();
+        for (Vehicle aVehList : VehList) {
+            vehicles.add(aVehList.getName());
+        }
+
+        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, vehicles);
+
+        spinnerAdapter
+                .setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        gridSpinner.setAdapter(spinnerAdapter);
     }
 
     /**
