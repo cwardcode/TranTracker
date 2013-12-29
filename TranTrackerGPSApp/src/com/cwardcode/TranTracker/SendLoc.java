@@ -88,8 +88,9 @@ public class SendLoc extends Service {
     public void onCreate() {
         super.onCreate();
         addLocationListener();
+
     }
-    
+
     /**
      * Initializes the service.
      * 

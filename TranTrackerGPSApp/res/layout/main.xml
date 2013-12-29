@@ -15,7 +15,6 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:id="@+id/VehicleSelect"/>
-
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -23,40 +22,5 @@
             android:id="@+id/trackButton"
             android:onClick="startTracking"
             android:layout_gravity="center"/>
-<!--    <TextView
-            android:id="@+id/enterName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/enterName"
-            android:layout_gravity="center"
-            android:paddingTop="30dp"
-            android:paddingBottom="30dp"
-            android:textSize="20dp"
-            />
-
-    <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-        <Spinner
-                android:layout_width="70dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/nameIDSelect"/>
-    <EditText
-            android:id="@+id/nameField"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/nameField"
-            />
-    </LinearLayout>
-
-    <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/nameButton"
-            android:id="@+id/trackWithNameButton"
-            android:onClick="startTracking"
-            android:layout_gravity="center"/>-->
 </LinearLayout>
 

@@ -1,6 +1,7 @@
 package com.cwardcode.TranTracker;
 
 import android.app.Activity;
+import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -126,7 +127,7 @@ public class TranTracker extends Activity implements AdapterView.OnItemSelectedL
      * Starts the service that allows the device to be tracked.
      * Suppressing unused warning for param, needed only for Android to know
      * calling view.
-     * @param view the area of the screen for the button calling this method.
+     * @param view the view for the button calling this method.
      */
     @SuppressWarnings("unused")
     public void startTracking(View view) {

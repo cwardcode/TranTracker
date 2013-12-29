@@ -44,11 +44,11 @@ public class LocReceiver extends BroadcastReceiver {
      * @param intent the intent being received.
      */
     public void onReceive(Context context, Intent intent) {
-        int vehicleID =  intent.getIntExtra("VehicleID", -1);
+        String vehicleName =  intent.getStringExtra("title");
         Double latitude = intent.getDoubleExtra("latitude", -1);
         Double longitude = intent.getDoubleExtra("longitude", -1);
         Double speed = intent.getDoubleExtra("speed", -1);
-        updateRemote(vehicleID, latitude, longitude, speed);
+        updateRemote(vehicleName, latitude, longitude, speed);
     }
     
     /**
@@ -69,10 +69,11 @@ public class LocReceiver extends BroadcastReceiver {
             try {
                 Connection dbConnection = null;
                 Statement statement = null;
-
+                //insert into tracker_location (VehID_id, Latitude, Longitude, Speed)
+                //VALUES ((select VehID from tracker_vehicle WHERE title="Chris"), 35.42, -84.31, 34.4);
                 String insertTableSQL = "INSERT INTO tracker_location"
-                        + "(VehID, Latitude, Longitude, Speed) " + "VALUES"
-                        + "(" + strings[0] + "," + strings[1] + "," + strings[2] + "," + strings[3] +")";
+                        + "(VehID_id, Latitude, Longitude, Speed) " + "VALUES"
+                        + "((select VehID from tracker_vehicle WHERE title=\"" + strings[0] + "\")," + strings[1] + "," + strings[2] + "," + strings[3] +")";
                 Log.e("com.cwardcode.TranTracker", "Attempting to execute:" +insertTableSQL);
                 try {
                     Class.forName(DB_DRIVER);
@@ -115,17 +116,17 @@ public class LocReceiver extends BroadcastReceiver {
      * Logs all of the data to the Android debug log and then executes the
      * SendLocationData method.
      * 
-     * @param vid the ID number of the vehicle.
+     * @param vehName the ID name of the vehicle.
      * @param latitude the vehicle's latitude.
      * @param longitude the vehicle's longitude.
      * @param speed the vehicle's speed.
      */
-    private void updateRemote(int vid, double latitude, double longitude, double speed) {
+    private void updateRemote(String vehName, double latitude, double longitude, double speed) {
         Log.e("Latitude:", latitude + "");
         Log.e("Longitude:", longitude + "");
         Log.e("Speed:", speed + "");
         //Now that the local visualizations are out of the way, let's actually send it to the server.
         SendLocationData send = new SendLocationData();
-        send.execute(vid + "", latitude + "", longitude + "", speed + "");
+        send.execute(vehName + "", latitude + "", longitude + "", speed + "");
     }
 }

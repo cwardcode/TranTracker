@@ -6,7 +6,7 @@
   <component name="IdProvider" IDEtalkID="65DE0482958191651891BE364295DCF4" />
   <component name="JavadocGenerationManager">
     <option name="OUTPUT_DIRECTORY" value="$USER_HOME$/Desktop/TranTrackerDocs" />
-    <option name="OPTION_SCOPE" value="private" />
+    <option name="OPTION_SCOPE" value="package" />
     <option name="OPTION_HIERARCHY" value="true" />
     <option name="OPTION_NAVIGATOR" value="true" />
     <option name="OPTION_INDEX" value="true" />

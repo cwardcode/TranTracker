@@ -9,7 +9,5 @@
     <string name="n3">3</string>
     <string name="vehicleSelectText">Please select your current vehicle:</string>
     <string name="buttonText">Start Tracking!</string>
-    <string name="enterName">Or Enter ID and Name:</string>
-    <string name="nameField">Enter name here</string>
-    <string name="nameButton">Track with Name</string>
+    <string name="stopText">Stop Tracking</string>
 </resources>
