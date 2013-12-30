@@ -30,7 +30,7 @@ FROM (
     FROM tracker_location
     ORDER BY LocID DESC
 ) AS tmp
-GROUP BY `VehID`";
+GROUP BY `VehID_id`";
 $result = mysql_query($query);
 
 if (!$result) {
