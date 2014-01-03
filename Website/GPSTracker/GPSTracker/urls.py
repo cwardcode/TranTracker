@@ -6,6 +6,7 @@ urlpatterns = patterns('',
 # Examples:
             url(r'^$', 'tracker.views.home', name='home'),
             url(r'^about', 'tracker.views.about', name='about'),
+            url(r'^chat', 'tracker.views.chat', name='chat'),
             url(r'^contact', 'tracker.views.contact', name='contact'),
             url(r'^help', 'tracker.views.help', name='help'),
             url(r'^test', 'tracker.views.test', name='test'),

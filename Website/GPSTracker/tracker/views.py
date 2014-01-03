@@ -8,6 +8,9 @@ def home(request):
 def test(request):
     return render_to_response('test.html')
 
+def chat(request):
+    return render_to_response('chat.html')
+
 def help(request):
     return render_to_response('help.html')
 
