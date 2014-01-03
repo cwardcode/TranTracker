@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="ConcurrencyUtilities-1.0" type="ConcurrencyUtilsForJavaee">
+    <properties version="1.0" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/javax.enterprise.concurrent-api.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eclipse-userlibraries>
+  <library name="WebSocket-1.0">
+    <archive path="C:/Users/chris/Dropbox/CWardCode/ChatApplet/lib/tyrus-container-glassfish-cdi.jar" />
+    <archive path="C:/Users/chris/Dropbox/CWardCode/ChatApplet/lib/tyrus-container-servlet.jar" />
+    <archive path="C:/Users/chris/Dropbox/CWardCode/ChatApplet/lib/tyrus-container-grizzly.jar" />
+    <archive path="C:/Users/chris/Dropbox/CWardCode/ChatApplet/lib/javax.websocket-api.jar" />
+    <archive path="C:/Users/chris/Dropbox/CWardCode/ChatApplet/lib/tyrus-spi.jar" />
+    <archive path="C:/Users/chris/Dropbox/CWardCode/ChatApplet/lib/tyrus-server.jar" />
+    <archive path="C:/Users/chris/Dropbox/CWardCode/ChatApplet/lib/tyrus-core.jar" />
+    <archive path="C:/Users/chris/Dropbox/CWardCode/ChatApplet/lib/tyrus-client.jar" />
+    <archive path="C:/Users/chris/Dropbox/CWardCode/ChatApplet/lib/tyrus-websocket-core.jar" />
+  </library>
+  <library name="ConcurrencyUtilities-1.0">
+    <archive path="C:/Users/chris/Dropbox/CWardCode/ChatApplet/lib/javax.enterprise.concurrent-api.jar" />
+  </library>
+  <library name="mysql-connector-java-3.0.17-ga-bin">
+    <archive path="C:/Users/chris/Dropbox/mysql-connector-java-3.0.17-ga-bin.jar" />
+  </library>
+</eclipse-userlibraries>
+

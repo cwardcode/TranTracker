@@ -9,4 +9,5 @@ The actual capstone site can be accessed at: http://tracker.cwardcode.com
 
 
 Folder Layout:
- --GPSTracker <---Holds our django website - see its readme for more details
+ --GPSTracker  <---Holds our django website - see its readme for more details
+ --ChatService <---Holds the Chat service system for users to interact with each                   other

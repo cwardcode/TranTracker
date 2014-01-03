@@ -1,0 +1,18 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="ChatApplet:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/ChatApplet_jar</output-path>
+    <root id="archive" name="ChatApplet_jar.jar">
+      <element id="module-output" name="ChatApplet" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/javax.enterprise.concurrent-api.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/tyrus-container-glassfish-cdi.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/tyrus-container-servlet.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/tyrus-container-grizzly.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/javax.websocket-api.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/tyrus-spi.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/tyrus-server.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/tyrus-core.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/tyrus-client.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/tyrus-websocket-core.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
