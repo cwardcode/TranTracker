@@ -30,7 +30,7 @@ FROM (
     FROM tracker_location
     ORDER BY LocID DESC
 ) AS tmp
-GROUP BY `VehicleID`";
+GROUP BY `VehID_id`";
 $result = mysql_query($query);
 
 if (!$result) {
@@ -46,11 +46,10 @@ echo '<markers>';
 while ($row = @mysql_fetch_assoc($result)){
   // ADD TO XML DOCUMENT NODE
   echo '<marker ';
-  echo 'VID="' . parseToXML($row['VehicleID']) . '" ';
+  echo 'VID="' . parseToXML($row['VehID']) . '" ';
   echo 'latitude="' . $row['Latitude'] . '" ';
   echo 'longitude="' . $row['Longitude'] . '" ';
   echo 'speed="' . $row['Speed'] . '" ';
-  echo 'title="' . $row['Title'] . '" ';
   echo '/>';
 }
 

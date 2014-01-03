@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+<!-- Content override -->
+{% block content %}
+<p>
+<h3>Welcome to Shuttle Speak!</h3>
+<h3>Here you may talk with others currently riding shuttles.</p><br>
+    <APPLET CODE="ChatApplet.class" ARCHIVE="/static/ChatApplet.jar"       
+        WIDTH=400
+          HEIGHT=300>
+
+{% endblock %}
+
+<!-- Sidebar override -->
+{% block sidebar %}
+{% endblock %}
