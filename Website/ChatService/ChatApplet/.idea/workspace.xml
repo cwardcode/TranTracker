@@ -67,36 +67,7 @@
       <file leaf-file-name="ChatApplet.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ChatApplet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="49" column="0" selection-start="1866" selection-end="1866" vertical-scroll-proportion="0.5930101" vertical-offset="307" max-vertical-offset="2516">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MultiuserChatClient.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/MultiuserChatClient.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="109" column="5" selection-start="3546" selection-end="3546" vertical-scroll-proportion="0.0" vertical-offset="1853" max-vertical-offset="2414">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NetworkInterface.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/NetworkInterface.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="81" column="33" selection-start="2309" selection-end="2309" vertical-scroll-proportion="0.0" vertical-offset="962" max-vertical-offset="1615">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MessageSource.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/MessageSource.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="49" column="19" selection-start="1285" selection-end="1285" vertical-scroll-proportion="0.0" vertical-offset="833" max-vertical-offset="1598">
+            <state line="5" column="0" selection-start="142" selection-end="142" vertical-scroll-proportion="0.14529915" vertical-offset="0" max-vertical-offset="2992">
               <folding />
             </state>
           </provider>
@@ -188,8 +159,8 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -202,7 +173,7 @@
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="last_opened_file_path" value="C:/Program Files (x86)/Git/bin/git.exe" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="options.lastSelected" value="settings.github" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
@@ -491,16 +462,18 @@
       <created>1388733990378</created>
       <updated>1388733990378</updated>
       <workItem from="1388734236983" duration="11498000" />
-      <workItem from="1388766416729" duration="88000" />
+      <workItem from="1388766416729" duration="6014000" />
+      <workItem from="1388777702392" duration="7793000" />
+      <workItem from="1388852105776" duration="61000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11586000" />
+    <option name="totallyTimeSpent" value="25366000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -516,6 +489,7 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32858709" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -527,7 +501,6 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32930845" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -554,10 +527,22 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/ChatApplet.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state line="155" column="25" selection-start="5235" selection-end="5235" vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="3026">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ChatApplet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="112" column="31" selection-start="3995" selection-end="3995" vertical-scroll-proportion="0.0" vertical-offset="1377" max-vertical-offset="2737">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ChatApplet.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state line="28" column="40" selection-start="948" selection-end="948" vertical-scroll-proportion="0.0" vertical-offset="307" max-vertical-offset="2516">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -596,31 +581,34 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/NetworkInterface.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="81" column="33" selection-start="2309" selection-end="2309" vertical-scroll-proportion="0.0" vertical-offset="962" max-vertical-offset="1615">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MessageSource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="19" selection-start="1285" selection-end="1285" vertical-scroll-proportion="0.0" vertical-offset="604" max-vertical-offset="1564">
+        <state line="72" column="0" selection-start="1965" selection-end="2080" vertical-scroll-proportion="0.94188035" vertical-offset="605" max-vertical-offset="1547">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MultiuserChatClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="109" column="5" selection-start="3546" selection-end="3546" vertical-scroll-proportion="0.0" vertical-offset="1853" max-vertical-offset="2414">
+        <state line="20" column="0" selection-start="561" selection-end="561" vertical-scroll-proportion="0.11623932" vertical-offset="187" max-vertical-offset="2295">
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/MessageSource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="80" column="55" selection-start="2484" selection-end="2486" vertical-scroll-proportion="0.57423973" vertical-offset="1005" max-vertical-offset="1564">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/intellij-13-keygen/keygen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="2957" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2465" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/ChatApplet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="0" selection-start="1866" selection-end="1866" vertical-scroll-proportion="0.5930101" vertical-offset="307" max-vertical-offset="2516">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state line="5" column="0" selection-start="142" selection-end="142" vertical-scroll-proportion="0.14529915" vertical-offset="0" max-vertical-offset="2992">
+          <folding />
         </state>
       </provider>
     </entry>
@@ -631,10 +619,10 @@
         <settings>
           <artifact-editor>
             <show-content>
-              <type id="javaee-facet-resources" />
-              <type id="artifact" />
               <type id="jpa-descriptors" />
               <type id="library" />
+              <type id="javaee-facet-resources" />
+              <type id="artifact" />
             </show-content>
           </artifact-editor>
           <last-edited>ChatApplet:jar</last-edited>

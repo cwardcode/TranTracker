@@ -3,7 +3,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.io.PrintStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
@@ -26,14 +25,17 @@ public class ChatApplet extends JApplet implements MessageListener{
             }
         }
     }
+
     private JPanel south = new JPanel();
-    private PrintStream stream = System.out;
+    private JList userList;
     private JTextArea display = new JTextArea();
     private JTextField input = new JTextField();
     private JOptionPane dialogOptions = new JOptionPane("Please enter a username:",JOptionPane.QUESTION_MESSAGE, JOptionPane.OK_CANCEL_OPTION);
     private JButton send = new JButton("Send");
     private JButton connect = new JButton("Connect");
     private JButton quit = new JButton("Quit");
+    private Socket socket;
+    private DefaultListModel model = new DefaultListModel();
     private String serverName = "http://tracker.cwardcode.com";
     private int serverPort = 3389;
     private NetworkInterface netInter;
@@ -53,16 +55,25 @@ public class ChatApplet extends JApplet implements MessageListener{
         keys.add(quit);
         keys.add(connect);
 
-        south.setSize(new Dimension(400,300));
+        south.setSize(new Dimension(400, 300));
         south.setLayout(new BorderLayout());
         south.add("West", keys);
         south.add("Center", input);
         south.add("East", send);
 
+        userList = new JList(model);
+        userList.setSelectedIndex(0);
+        userList.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        userList.setLayoutOrientation(JList.VERTICAL_WRAP);
+
+        JScrollPane dispScroll = new JScrollPane(display);
+        JScrollPane userScroll = new JScrollPane(userList);
+        userScroll.setPreferredSize(new Dimension(75,280));
         setLayout(new BorderLayout());
 
-        add("Center", display);
+        add("Center", dispScroll);
         add("South", south);
+        add("West", userScroll);
 
         quit.setEnabled(false);
         send.setEnabled(false);
@@ -71,10 +82,10 @@ public class ChatApplet extends JApplet implements MessageListener{
     }
 
     public void connect(String serverName, int serverPort) {
+        model.removeAllElements();
         println("Establishing connection. Please wait ...");
         try {
-            Socket socket = new Socket(serverName, serverPort);
-            listener = new PrintStreamMessageListener(stream);
+            socket = new Socket(serverName, serverPort);
             netInter = new NetworkInterface(socket);
             open(getHandle());
             println("Connected");
@@ -98,10 +109,16 @@ public class ChatApplet extends JApplet implements MessageListener{
     private void send(String message) {
             try {
                 netInter.sendMessage(message);
+                input.setText("");
             } catch (IOException e) {
-                stream.println("could not send message");
+                println("could not send message");
             }
 
+    }
+
+    public void addToUL(String msg){
+        model.addElement(msg);
+        userList.validate();
     }
 
     public void open(String nick) {
@@ -109,15 +126,17 @@ public class ChatApplet extends JApplet implements MessageListener{
         try {
             t.start();
             netInter.addMessageListener(this);
-            stream.println("User client is joining");
+            println("User client is joining");
             send("/hello " + nick);
+
         } catch (IllegalThreadStateException e) {
-            stream.println("Couldn't start network interface thread in client");
+            println("Couldn't start network interface thread in client");
         }
     }
 
     private void println(String msg) {
         display.append(msg + "\n");
+        display.setCaretPosition(display.getDocument().getLength());
     }
 
     public void getParameters() {
@@ -127,8 +146,17 @@ public class ChatApplet extends JApplet implements MessageListener{
 
     @Override
     public void messageReceived(String message, MessageSource source) throws IOException {
-        listener.messageReceived(message, source); /* what to do with source? */
-        println(message);
+        if (message.contains("!!!") && message.contains("has joined.")){
+            model.removeAllElements();
+            send("/who");
+        } else if(message.contains("has quit.")) {
+            model.removeAllElements();
+            send("/who");
+        } else if(message.contains("-_user:")){
+            addToUL(message.substring(8, message.length()));
+        } else {
+                println(message);
+        } 
     }
 
     @Override
@@ -137,7 +165,7 @@ public class ChatApplet extends JApplet implements MessageListener{
             netInter.close();
             System.exit(0);
         } catch (IOException e) {
-            stream.println("could not close");
+            println("could not close");
         }
     }
 }
