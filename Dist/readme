@@ -1,0 +1,5 @@
+This is where we can store finished, distributable versions of our products. 
+
+Folder Layout:
+ -ChatApplet    <-- Current version of the website's chat applet. 
+                 -- May switch to a python implementation in future.

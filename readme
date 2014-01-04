@@ -3,7 +3,7 @@
 This is the main working directory for our capstone project. 
 
 Folder Layout:
- -Dist              <-- Not currently used, in the future, we can put alpha/beta apks here.
+ -Dist              <-- Holds destributable products here.
  -TrackerClients    <-- Holds mobile client applications.
    -Android         <-- Holds andorid client app.
    -iOS             <-- Holds apple client app.
