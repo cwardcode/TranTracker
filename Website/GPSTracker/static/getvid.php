@@ -1,8 +1,13 @@
 <?php
+/**
+ * Allows the GPSTracker Mobile App to obtain the current list of vehicles
+ * on start. This way, there will always be an up-to-date vehicle list.
+ */
+
 include './config.php';
-
-$con = mysql_connect('localhost', "gpstracker", "tracker") or die (mysql_error());
-
+//Connect to database
+$con = mysql_connect($hostname, $username, $password) or die (mysql_error());
+//Select database
 mysql_select_db($database) or die (mysql_error());
 
 // array for json response
@@ -12,20 +17,20 @@ $response["vehicles"] = array();
 // Mysql select query
 $result = mysql_query("SELECT * FROM tracker_vehicle");
 
+//Get list of vids
 while($row = mysql_fetch_array($result)){
-    // temporary array to create single category
     $tmp = array();
-    $tmp["id"] = $row["VehID"];
-    $tmp["name"] = $row["Title"];
+    $tmp["id"] = $row["VehID"];   //vehicle id
+    $tmp["name"] = $row["Title"]; //vehicle title
     // push category to final json array
     array_push($response["vehicles"], $tmp);
 }
 
-// keeping response header to json
+//set header encoding to json
 header('Content-Type: application/json');
 
-// echoing json result
+//print json array
 echo json_encode($response);
-
+//close connection
 mysql_close($con);
 ?>
