@@ -1,3 +1,0 @@
-Permissions: all-permissions
-Codebase: *.cwardcode.com
-Application-Name: ChatApplet/ChatApplet
