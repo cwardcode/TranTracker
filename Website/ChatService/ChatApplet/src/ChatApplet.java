@@ -7,6 +7,34 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 public class ChatApplet extends JApplet implements MessageListener{
+
+    private JPanel south;
+    private JList userList;
+    private JTextArea display;
+    private JTextField input;
+    private JOptionPane dialogOptions;
+    private JButton send;
+    private JButton connect;
+    private JButton quit;
+    private Socket socket;
+    private DefaultListModel model;
+    private String serverName;
+    private int serverPort;
+    private NetworkInterface netInter;
+
+    public ChatApplet() {
+        south = new JPanel();
+        display = new JTextArea();
+        input = new JTextField();
+        dialogOptions = new JOptionPane("Please enter a username:",JOptionPane.QUESTION_MESSAGE, JOptionPane.OK_CANCEL_OPTION);
+        connect = new JButton("Connect");
+        send = new JButton("Send");
+        quit = new JButton("Quit");
+        model = new DefaultListModel();
+        serverName = "tracker.cwardcode.com";
+        serverPort = 1723;
+    }
+
     private class ActionList implements ActionListener {
 
         @Override
@@ -15,6 +43,7 @@ public class ChatApplet extends JApplet implements MessageListener{
                 connect(serverName, serverPort);
             } else if (e.getActionCommand().equals("q")) {
                 send("/quit");
+                model.removeAllElements();
                 quit.setEnabled(false);
                 send.setEnabled(false);
                 connect.setEnabled(true);
@@ -25,22 +54,6 @@ public class ChatApplet extends JApplet implements MessageListener{
             }
         }
     }
-
-    private JPanel south = new JPanel();
-    private JList userList;
-    private JTextArea display = new JTextArea();
-    private JTextField input = new JTextField();
-    private JOptionPane dialogOptions = new JOptionPane("Please enter a username:",JOptionPane.QUESTION_MESSAGE, JOptionPane.OK_CANCEL_OPTION);
-    private JButton send = new JButton("Send");
-    private JButton connect = new JButton("Connect");
-    private JButton quit = new JButton("Quit");
-    private Socket socket;
-    private DefaultListModel model = new DefaultListModel();
-    private String serverName = "http://tracker.cwardcode.com";
-    private int serverPort = 3389;
-    private NetworkInterface netInter;
-    private PrintStreamMessageListener listener;
-
 
     public void init() {
         quit.setActionCommand("q");
@@ -55,7 +68,6 @@ public class ChatApplet extends JApplet implements MessageListener{
         keys.add(quit);
         keys.add(connect);
 
-        south.setSize(new Dimension(400, 300));
         south.setLayout(new BorderLayout());
         south.add("West", keys);
         south.add("Center", input);
@@ -69,18 +81,18 @@ public class ChatApplet extends JApplet implements MessageListener{
         JScrollPane dispScroll = new JScrollPane(display);
         JScrollPane userScroll = new JScrollPane(userList);
         userScroll.setPreferredSize(new Dimension(75,280));
-        setLayout(new BorderLayout());
 
+        setLayout(new BorderLayout());
         add("Center", dispScroll);
         add("South", south);
         add("West", userScroll);
 
         quit.setEnabled(false);
         send.setEnabled(false);
-
-        getParameters();
+        this.getRootPane().setDefaultButton(send);
+        this.setSize(new Dimension(800, 500));
     }
-
+   
     public void connect(String serverName, int serverPort) {
         model.removeAllElements();
         println("Establishing connection. Please wait ...");
@@ -138,10 +150,11 @@ public class ChatApplet extends JApplet implements MessageListener{
         display.append(msg + "\n");
         display.setCaretPosition(display.getDocument().getLength());
     }
-
-    public void getParameters() {
-        serverName = "tracker.cwardcode.com";
-        serverPort = 1723;
+    
+    @Override
+    public void destroy() {
+    	send("/quit");
+    	super.destroy();
     }
 
     @Override
