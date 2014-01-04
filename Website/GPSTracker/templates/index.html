@@ -135,7 +135,7 @@ function getMarkers() {
                 parseFloat(markers[i].getAttribute("latitude")),
                 parseFloat(markers[i].getAttribute("longitude")));
             //The info that is displayed when a marker is clicked.
-            var html ="<br> VID: " + vid + "<br>speed: " + 
+            var html = "<b>" + name + "</b>" + "<br>speed: " + 
                                        Math.round(speed*METER_CONVERS) + " mph";
 
             //The marker object to be placed on the map.

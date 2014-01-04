@@ -31,6 +31,7 @@ FROM (
     ORDER BY LocID DESC
 ) AS tmp
 GROUP BY `VehID_id`";
+
 $result = mysql_query($query);
 
 if (!$result) {
@@ -41,12 +42,15 @@ header("Content-type: text/xml");
 
 // Start XML file, echo parent node
 echo '<markers>';
-
 // Iterate through the rows, printing XML nodes for each
 while ($row = @mysql_fetch_assoc($result)){
+$vehNameQuery = "SELECT Title from tracker_vehicle where VehID ='" . $row['VehID_id']."'";
+$vehNameResult = mysql_query($vehNameQuery);
+$vehNameActual = @mysql_fetch_assoc($vehNameResult);
   // ADD TO XML DOCUMENT NODE
   echo '<marker ';
-  echo 'VID="' . parseToXML($row['VehID']) . '" ';
+  echo 'VID="' . parseToXML($row['VehID_id']) . '" ';
+  echo 'title="' . $vehNameActual['Title'] . '" ';
   echo 'latitude="' . $row['Latitude'] . '" ';
   echo 'longitude="' . $row['Longitude'] . '" ';
   echo 'speed="' . $row['Speed'] . '" ';
