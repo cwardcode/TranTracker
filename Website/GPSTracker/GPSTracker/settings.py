@@ -1,4 +1,5 @@
 # Django settings for GPSTracker project.
+from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
 
 DEBUG = True
 #DEBUG = False
@@ -63,7 +64,7 @@ MEDIA_URL = ''
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/var/www/example.com/static/"
-STATIC_ROOT = '/var/www/GPSTracker/static/'
+STATIC_ROOT = '/var/www/capstone/Website/GPSTracker/static/'
 
 # URL prefix for static files.
 # Example: "http://example.com/static/", "http://static.example.com/"
@@ -74,7 +75,7 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    '/var/www/GPSTracker/static'
+    '/var/www/capstone/Website/GPSTracker/staticDir',
 )
 
 # List of finder classes that know how to find static files in
@@ -105,6 +106,9 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+TEMPLATE_CONTEXT_PROCESSORS = TCP + (
+    'django.core.context_processors.request',
+)
 ROOT_URLCONF = 'GPSTracker.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
@@ -118,6 +122,7 @@ TEMPLATE_DIRS = (
 )
 
 INSTALLED_APPS = (
+    'suit',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
