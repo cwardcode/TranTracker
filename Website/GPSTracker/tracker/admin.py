@@ -1,6 +1,8 @@
 from django.contrib import admin
 from tracker.models import Location
 from tracker.models import Vehicle
+from tracker.models import PeopleCount
 
 admin.site.register(Location)
 admin.site.register(Vehicle)
+admin.site.register(PeopleCount)
