@@ -64,13 +64,22 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ChatApplet.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="ChatApplet.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ChatApplet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="92" column="46" selection-start="3076" selection-end="3076" vertical-scroll-proportion="0.42218247" vertical-offset="1328" max-vertical-offset="3213">
+            <state line="92" column="46" selection-start="3076" selection-end="3076" vertical-scroll-proportion="-9.076923" vertical-offset="1328" max-vertical-offset="3213">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MANIFEST.MF" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/META-INF/MANIFEST.MF">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="5" column="0" selection-start="117" selection-end="117" vertical-scroll-proportion="0.14529915" vertical-offset="0" max-vertical-offset="585">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -103,6 +112,7 @@
         <option value="$PROJECT_DIR$/src/MultiuserChatClient.java" />
         <option value="$PROJECT_DIR$/src/ChatApplet.java" />
         <option value="$PROJECT_DIR$/ChatApplet.eml" />
+        <option value="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
       </list>
     </option>
   </component>
@@ -170,6 +180,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ChatApplet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ChatApplet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="META-INF" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -480,12 +508,12 @@
       <workItem from="1388766416729" duration="6014000" />
       <workItem from="1388777702392" duration="7793000" />
       <workItem from="1388852105776" duration="61000" />
-      <workItem from="1388868631329" duration="3292000" />
+      <workItem from="1388868631329" duration="3387000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28658000" />
+    <option name="totallyTimeSpent" value="28753000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
@@ -648,10 +676,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ChatApplet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="92" column="46" selection-start="3076" selection-end="3076" vertical-scroll-proportion="0.42218247" vertical-offset="1328" max-vertical-offset="3213">
+        <state line="92" column="46" selection-start="3076" selection-end="3076" vertical-scroll-proportion="-9.076923" vertical-offset="1328" max-vertical-offset="3213">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/META-INF/MANIFEST.MF">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="0" selection-start="117" selection-end="117" vertical-scroll-proportion="0.14529915" vertical-offset="0" max-vertical-offset="585">
+          <folding />
         </state>
       </provider>
     </entry>

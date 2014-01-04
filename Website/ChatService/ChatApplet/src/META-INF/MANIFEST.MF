@@ -1,3 +1,5 @@
 Manifest-Version: 1.0
-Main-Class: ChatApplet
-
+Sealed: true
+Permissions: sandbox
+Codebase: *.cwardcode.com
+Application-Name: ChatApplet.class
