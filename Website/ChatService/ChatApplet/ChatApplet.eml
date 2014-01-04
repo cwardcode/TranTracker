@@ -4,7 +4,5 @@
 	<exclude-output/>
 	<contentEntry url="file://$MODULE_DIR$"/>
 	<levels>
-		<level name="WebSocket-1.0" value="project"/>
-		<level name="ConcurrencyUtilities-1.0" value="project"/>
 	</levels>
 </component>
