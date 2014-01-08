@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source source="LOCAL" name="Django default" product="" version="" jdbc-version="" driver-name="" driver-version="" uuid="c46e368e-a059-404b-8282-40759288928c">
+    <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+    <jdbc-url>jdbc:mysql://127.0.0.1/gpstracker</jdbc-url>
+    <user-name>gpstracker</user-name>
+    <user-password>dfdedfd8dfcbdfc9dfc1dfcfdfd8</user-password>
+    <libraries>
+      <library>
+        <url>file://$USER_HOME$/.PyCharm30/config/jdbc-drivers/mysql-connector-license.txt</url>
+      </library>
+      <library>
+        <url>jar://$USER_HOME$/.PyCharm30/config/jdbc-drivers/mysql-connector-java-5.1.26-bin.jar!/</url>
+      </library>
+    </libraries>
+  </data-source>
+</component>

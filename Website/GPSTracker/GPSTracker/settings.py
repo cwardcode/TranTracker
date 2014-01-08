@@ -1,9 +1,12 @@
 # Django settings for GPSTracker project.
 from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
-
+import os
+import django
 DEBUG = True
 #DEBUG = False
 TEMPLATE_DEBUG = DEBUG
+#Get pwd for relative paths
+PWD = os.path.join(os.path.dirname(os.path.realpath(__file__)), os.path.pardir)
 
 ADMINS = (
     ('Chris Ward', 'cdward4@catamount.wcu.edu'),
@@ -14,14 +17,13 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'gpstracker',                      # Or path to database file if using sqlite3.
-        # The following settings are not used with sqlite3:
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'gpstracker',
         'USER': 'gpstracker',
         'PASSWORD': 'tracker',
-        'HOST': 'localhost',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
-        'PORT': '',                      # Set to empty string for default.
-    }
+        'HOST': 'tracker.cwardcode.com',
+        'PORT': '3306',
+        }
 }
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
@@ -75,7 +77,7 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    '/var/www/capstone/Website/GPSTracker/staticDir',
+    os.path.join(PWD, 'static'),
 )
 
 # List of finder classes that know how to find static files in
@@ -118,7 +120,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    "/var/www/capstone/Website/GPSTracker/templates",
+    os.path.join(PWD, 'templates'),
 )
 
 INSTALLED_APPS = (
