@@ -20,7 +20,7 @@ def chart(request):
         DataPool(
             series=
             [{'options': {
-                'source': PeopleCount.objects.get_queryset()}, # PeopleCount.objects.all()},
+                'source': PeopleCount.objects.all()}, # PeopleCount.objects.all()},
               'terms': [
                   'Count',
                   'StopID',
