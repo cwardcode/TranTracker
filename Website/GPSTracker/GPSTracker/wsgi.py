@@ -15,6 +15,7 @@ framework.
 """
 import os
 import sys
+
 sys.path.append("/var/www/capstone/Website/GPSTracker")
 
 # We defer to a DJANGO_SETTINGS_MODULE already in the environment. This breaks
@@ -27,6 +28,7 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "GPSTracker.settings")
 # file. This includes Django's development server, if the WSGI_APPLICATION
 # setting points here.
 from django.core.wsgi import get_wsgi_application
+
 application = get_wsgi_application()
 
 # Apply WSGI middleware here.

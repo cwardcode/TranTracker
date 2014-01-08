@@ -1,17 +1,19 @@
 {% extends "base.html" %}
 {% block header %}
-<script type="text/javascript" src="/static/js/highcharts/highcharts.js"></script>
-<script src ="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
-<script type ="text/javascript" src ="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-{% endblock %}    
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/highcharts/highcharts.js"></script>
+{% comment %}
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+{% endcomment %}
+{% endblock %}
 <!-- Content override -->
 {% block content %}
-<p>
-<h3>Welcome to Shuttle View!</h3>
-<h3>A test site for our HighChart functionality</p><br>
+    <p>
+    <h3>Welcome to Shuttle View!</h3>
+    <h3>A test site for our HighChart functionality</p><br>
     {% load chartit %}
     <div id="container">
-    {{ ridershipChart|load_charts:"container" }}
+        {{ ridershipChart|load_charts:"container" }}
     </div>
 {% endblock %}
 

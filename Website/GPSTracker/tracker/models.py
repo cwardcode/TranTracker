@@ -1,12 +1,14 @@
 from django.db import models
 
+
 class Vehicle(models.Model):
-    VehID  = models.AutoField(primary_key=True)
-    Title  = models.CharField(max_length=40)
+    VehID = models.AutoField(primary_key=True)
+    Title = models.CharField(max_length=40)
     Driver = models.CharField(max_length=25)
 
     def __unicode__(self):
         return self.Title
+
 
 class Location(models.Model):
     LocID = models.AutoField(primary_key=True)
@@ -14,7 +16,7 @@ class Location(models.Model):
     Latitude = models.DecimalField(max_digits=10, decimal_places=6)
     Longitude = models.DecimalField(max_digits=10, decimal_places=6)
     Speed = models.DecimalField(max_digits=4, decimal_places=1)
-    
+
     def __unicode__(self):
         #VehID + LocID Identifier
         return str(self.LocID)
@@ -22,25 +24,26 @@ class Location(models.Model):
 
 class PeopleCount(models.Model):
     CountID = models.AutoField(primary_key=True)
-    StopID  = models.ForeignKey('StopLocation')
-    VehID   = models.ForeignKey('Vehicle')
-    LocID   = models.ForeignKey('Location')
-    Date    = models.DateField(auto_now_add=True, blank=False)
-    Time    = models.TimeField(auto_now_add=True)
-    Count   = models.IntegerField()
+    StopID = models.ForeignKey('StopLocation')
+    VehID = models.ForeignKey('Vehicle')
+    LocID = models.ForeignKey('Location')
+    Date = models.DateField(auto_now_add=True, blank=False)
+    Time = models.TimeField(auto_now_add=True)
+    Count = models.IntegerField()
 
-    Date.editable=True
-    Time.editable=True
+    Date.editable = True
+    Time.editable = True
 
     def __unicode__(self):
         return str(self.CountID) + "|" + str(self.VehID) + "/" + str(self.StopID)
 
+
 class StopLocation(models.Model):
-    StopID    = models.AutoField(primary_key=True)
-    StopName  = models.CharField(max_length = 40)
-    Latitude  = models.DecimalField(max_digits=10, decimal_places=6)
+    StopID = models.AutoField(primary_key=True)
+    StopName = models.CharField(max_length=40)
+    Latitude = models.DecimalField(max_digits=10, decimal_places=6)
     Longitude = models.DecimalField(max_digits=10, decimal_places=6)
-    
+
     def __unicode__(self):
         #VehID + LocID Identifier
         return str(self.StopName)

@@ -1,7 +1,9 @@
 # Django settings for GPSTracker project.
-from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
 import os
-import django
+
+from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
+
+
 DEBUG = True
 #DEBUG = False
 TEMPLATE_DEBUG = DEBUG
@@ -23,7 +25,7 @@ DATABASES = {
         'PASSWORD': 'tracker',
         'HOST': 'tracker.cwardcode.com',
         'PORT': '3306',
-        }
+    }
 }
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
@@ -85,7 +87,7 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
 # Make this unique, and don't share it with anybody.
@@ -95,7 +97,7 @@ SECRET_KEY = 'sh66r^#@n0(9lq(^c2r^x@j)_=u5*66afc6t#rn+mhihff)+h4'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
+    #     'django.template.loaders.eggs.Loader',
 )
 
 MIDDLEWARE_CLASSES = (

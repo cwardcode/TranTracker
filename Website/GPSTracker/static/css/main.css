@@ -10,58 +10,56 @@ body, p, img {
     outline: 0;
     border: 0;
 }
+
 * {
     outline: 0;
     color: black;
 }
+
 body {
-    font-family:Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 13px;
     color: #ffffff;
     background-color: #1E1E1E;
     background-image: url(../images/body-bg.png);
     background-repeat: no-repeat;
     background-position: center top;
-    line-height:20px;
+    line-height: 20px;
 }
 
-
-
-body.products_results #sidebar { 
+body.products_results #sidebar {
     display: block;
 }
+
 body.products_results #page {
     margin-right: 240px;
 }
 
-
-
 h1 {
     color: #ffffff;
     font-size: 1.5em;
-    padding:0 0 15px 0;
+    padding: 0 0 15px 0;
 }
+
 h2 {
     text-shadow: #f1740d 2px 2px 2px;
     font-size: 1.2em;
     padding-bottom: 5px;
 }
+
 h3 {
     color: #ffffff;
     font-size: 1.2em;
     padding-bottom: 5px;
 }
 
-
-
 a {
     color: #ED9B31;
 }
+
 a:hover {
     text-decoration: underline;
 }
-
-
 
 .content {
     margin: 0 auto;
@@ -69,19 +67,17 @@ a:hover {
     color: white;
 }
 
-
-
 #header-wrapper {
 }
+
 #header {
     overflow: hidden;
 }
+
 #header .logo {
     float: left;
     padding: 30px 0 20px 0;
 }
-
-
 
 #header-menu {
     float: right;
@@ -89,82 +85,89 @@ a:hover {
     margin: 80px 0 0 0;
     padding: 0;
 }
+
 #header-menu li {
     float: left;
 }
+
 #header-menu li a:hover {
-    text-decoration:underline;
+    text-decoration: underline;
 }
-
-
 
 #top-wrapper {
     height: 55px;
     background: transparent;
 }
+
 #top {
     position: relative;
-    height:40px;
+    height: 40px;
     background-image: url(../images/header-bg.png);
 }
-
-
 
 #top-menu {
     height: 40px;
     z-index: 2000;
     position: absolute;
 }
+
 #top-menu {
     margin: 0;
     padding: 0;
     list-style: none;
 }
+
 #top-menu li {
     position: relative;
     float: left;
     margin: 0;
     padding: 0;
 }
+
 #top-menu a {
     display: block;
     line-height: 40px;
     text-decoration: none;
     padding: 0 20px;
 }
+
 #top-menu li:hover > ul {
     display: block;
 }
+
 #top-menu li li:hover > ul {
     display: block;
     left: 100%;
     top: 0;
 }
+
 #top-menu ul a, #top-menu li:hover a, #top-menu li:hover li:hover li:hover a {
-    background:transparent;
-    color:#ffffff;
+    background: transparent;
+    color: #ffffff;
     background-color: #000000;
 }
+
 #top-menu li:hover li:hover a, #top-menu li:hover li:hover li:hover li:hover a {
-    background: #222222; 
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f4be6c', endColorstr='#e78226'); 
-    background: -webkit-gradient(linear, left top, left bottom, from(#f4be6c), to(#e78226)); 
-    background: -moz-linear-gradient(top,  #f4be6c,  #e78226); 
-    color:#000000;
+    background: #222222;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f4be6c', endColorstr='#e78226');
+    background: -webkit-gradient(linear, left top, left bottom, from(#f4be6c), to(#e78226));
+    background: -moz-linear-gradient(top, #f4be6c, #e78226);
+    color: #000000;
 }
+
 #top-search-query:focus {
     background-color: #fff;
 }
+
 #top-search-submit:hover {
     background-color: #F2F2F2;
     color: #000;
 }
 
-
-
 #content-wrapper {
     overflow: hidden;
 }
+
 #content {
     padding: 20px 0;
     overflow: hidden;
@@ -180,78 +183,81 @@ a:hover {
 }
 
 #page {
-    margin:0 20px;
+    margin: 0 20px;
 }
-
-
 
 #sidebar {
     width: 205px;
     float: right;
     display: none;
-    margin-right:15px;
+    margin-right: 15px;
 }
-
-
 
 #side-menu {
     overflow: hidden;
 }
+
 #side-menu, #side-menu ul {
     list-style: none;
     margin: 0;
     padding: 0;
 }
+
 #side-menu li a {
     padding: 10px 12px;
     color: #fff;
     display: block;
-    margin-bottom:10px;
+    margin-bottom: 10px;
     text-decoration: none;
-    background-color:#1e1e1e;
-    text-shadow:2px 2px 2px #e19430;
-    font-size:1.2em;
+    background-color: #1e1e1e;
+    text-shadow: 2px 2px 2px #e19430;
+    font-size: 1.2em;
 }
+
 #side-menu li a:hover {
     color: #e19430;
-    text-shadow:2px 2px 2px #000000;
+    text-shadow: 2px 2px 2px #000000;
 }
+
 #side-menu li li a {
-    background:transparent;
+    background: transparent;
     padding-left: 20px;
-    margin:0;
-    font-size:1.0em;
+    margin: 0;
+    font-size: 1.0em;
 }
+
 #footer ul li a:hover {
-    text-decoration:underline;
+    text-decoration: underline;
 }
-
-
 
 fieldset {
     padding: 15px 0 0 0;
     overflow: hidden;
 }
-fieldset input[type=text], fieldset input[type=password]{
-    border:#e19430 solid 1px;
+
+fieldset input[type=text], fieldset input[type=password] {
+    border: #e19430 solid 1px;
     padding: 8px 5px;
     outline: 0;
     width: 430px;
     font-size: 0.9em;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
 }
+
 fieldset input[type=text]:focus, fieldset input[type=password]:focus, fieldset textarea:focus {
     border-color: #999;
 }
+
 fieldset textarea {
     height: 160px;
 }
+
 fieldset.narrow input[type=text], fieldset.narrow input[type=password] {
     width: 370px;
 }
 
 #atc-form input[type=text] {
-    border:#ccc solid 1px;
+    border: #ccc solid 1px;
     padding: 4px 5px;
     outline: 0;
     font-size: 0.9em;
@@ -260,29 +266,31 @@ fieldset.narrow input[type=text], fieldset.narrow input[type=password] {
 .button {
     color: #fff;
     padding: 6px 12px;
-    font-weight:bold;
-    text-transform:lowercase;
+    font-weight: bold;
+    text-transform: lowercase;
     text-align: center;
     font-size: 1.0em;
     background-color: #F06E0B;
     display: block;
     float: left;
     border: #E99425 1px solid;
-    border-radius:6px;
-    -moz-border-radius:6px;
-    -webkit-border-radius:6px;
-    font-family:Arial, Helvetica, sans-serif;
-    background: #F06E0B; 
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F06E0B', endColorstr='#F58C18'); 
-    background: -webkit-gradient(linear, left top, left bottom, from(#F06E0B), to(#F58C18)); 
-    background: -moz-linear-gradient(top,  #F06E0B,  #F58C18);  
+    border-radius: 6px;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #F06E0B;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F06E0B', endColorstr='#F58C18');
+    background: -webkit-gradient(linear, left top, left bottom, from(#F06E0B), to(#F58C18));
+    background: -moz-linear-gradient(top, #F06E0B, #F58C18);
 }
+
 .button:hover {
-    background: #F58C18; 
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F58C18', endColorstr='#F06E0B'); 
-    background: -webkit-gradient(linear, left top, left bottom, from(#F58C18), to(#F06E0B)); 
-    background: -moz-linear-gradient(top,  #F58C18,  #F06E0B);  
+    background: #F58C18;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F58C18', endColorstr='#F06E0B');
+    background: -webkit-gradient(linear, left top, left bottom, from(#F58C18), to(#F06E0B));
+    background: -moz-linear-gradient(top, #F58C18, #F06E0B);
 }
+
 .pagination a:hover, .pagination a.selected:hover {
     background-color: #2f2f2f;
     color: #fff;
@@ -293,8 +301,9 @@ fieldset.narrow input[type=text], fieldset.narrow input[type=password] {
 }
 
 .product-list-item:hover {
-    opacity:0.9;
+    opacity: 0.9;
 }
+
 .product-list-item:hover .image img {
     border-color: #ccc;
 }
@@ -307,6 +316,7 @@ fieldset.narrow input[type=text], fieldset.narrow input[type=password] {
     font-size: 1.0em;
     font-weight: normal;
 }
+
 .cart-display .quantity input[type=text] {
     width: 40px;
     text-align: center;
@@ -314,16 +324,14 @@ fieldset.narrow input[type=text], fieldset.narrow input[type=password] {
     margin-top: -10px;
 }
 
-
-
-
 #home-wrapper {
-    overflow:hidden;
+    overflow: hidden;
 }
 
 .pg-sd-thumbnails a:hover {
     background-color: #666 !important;
 }
+
 .split-column fieldset input[type=text], .split-column fieldset input[type=password], {
     width: 200px;
 }
