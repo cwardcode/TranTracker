@@ -38,9 +38,8 @@ class PeopleCount(models.Model):
         return str(self.CountID)
 
     def peoplecountchart(self):
-        lu = { 'categories' : self.StopID,\
+        lu = { 'categories' : self.StopID.objects.all(),\
              'count' : self.Count,}
-        lu['total_riders'] = self.Count]
 
         return render_to_string('admin/tracker/peoplecount_chart.html', lu )
     peoplecountchart.allow_tags = True
