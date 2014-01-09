@@ -37,6 +37,13 @@ class PeopleCount(models.Model):
     def __unicode__(self):
         return str(self.CountID) + "|" + str(self.VehID) + "/" + str(self.StopID)
 
+    def peoplecountchart(self):
+        lu = { 'categories' : self.StopID.objects.all(),\
+             'count' : self.Count,}
+        lu['total_riders'] = [sum(a) for a in zip(lu['count'])]
+
+        return render_to_string('admin/tracker/peoplecount_chart.html', lu )
+    peoplecountchart.allow_tags = True
 
 class StopLocation(models.Model):
     StopID = models.AutoField(primary_key=True)
