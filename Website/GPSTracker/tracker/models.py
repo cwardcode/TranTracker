@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.template.loader import render_to_string
 
 class Vehicle(models.Model):
     VehID = models.AutoField(primary_key=True)
@@ -35,12 +35,12 @@ class PeopleCount(models.Model):
     Time.editable = True
 
     def __unicode__(self):
-        return str(self.CountID) + "|" + str(self.VehID) + "/" + str(self.StopID)
+        return str(self.CountID)
 
     def peoplecountchart(self):
-        lu = { 'categories' : self.StopID.objects.all(),\
+        lu = { 'categories' : self.StopID,\
              'count' : self.Count,}
-        lu['total_riders'] = [sum(a) for a in zip(lu['count'])]
+        lu['total_riders'] = self.Count]
 
         return render_to_string('admin/tracker/peoplecount_chart.html', lu )
     peoplecountchart.allow_tags = True

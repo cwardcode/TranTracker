@@ -1,7 +1,57 @@
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<script type="text/javascript" src="/static/js/highcharts/highcharts.js"></script>
+<script type="text/javascript">
+var chart;
+jQuery(document).ready(function() {
+    chart = new Highcharts.Chart({
+        chart: {
+            renderTo: 'ridership_container',
+            defaultSeriesType: 'pie',
+            marginRight: 130,
+            marginBottom: 30
+        },
+        title: {
+            text: 'Riders per stop ',
+            x: -20 //center
+        },
+        subtitle: {
+            text: '',
+            x: -20
+        },
+        xAxis: {
+            categories: [ '{{ categories|join:"','" }}']
+        },
+        yAxis: {
+            title: {
+                text: 'Number of Riders'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+            formatter: function() {
+                    return ''+ this.series.name +''+this.x +': '+ this.y;
+            }
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'top',
+            x: -10,
+            y: 100,
+            borderWidth: 0
+        },
+        series: [{
+            name: 'Total Riders',
 
-{% load chartit %}
-    <div id="container">
-        {{ ridershipChart|load_charts:"container" }}
-    </div>
+            data: [{{ total_riders|join:"," }}]
+        }, {
+            name: 'Counts',
+            data: [{{ count|join:"," }}]
+        }]
+    });
+
+});
+</script>
+<div id="ridership_container" style="width: 700px;height: 500px"></div>
