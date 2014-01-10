@@ -34,7 +34,7 @@ class StopLocationAdmin(admin.ModelAdmin):
     search_fields = ('StopName',)
     list_filter = ('StopName',)
 
-    readonly_fields = ('StopID', 'StopName', 'Latitude', 'Longitude')
+    readonly_fields = ('StopID',)
     fieldsets = [
         ('StopLocation', {'fields': ['StopID', 'StopName', 'Latitude', 'Longitude']}), ]
 

@@ -1,6 +1,7 @@
 from chartit import DataPool, Chart
 from django.shortcuts import render_to_response
 from tracker.models import PeopleCount
+from tracker.models import StopLocation
 
 
 def home(request):
@@ -13,6 +14,11 @@ def test(request):
 
 def chat(request):
     return render_to_response('chat.html')
+
+
+def stopNames(nameID):
+    stop = StopLocation.objects.filter(StopID = nameID).values()[0]['StopName'].split(' ')[0]
+    return stop
 
 
 def chart(request):
@@ -33,7 +39,7 @@ def chart(request):
             'type': 'pie',
             'stacking': False},
           'terms': {
-              'LocID': [
+              'StopID': [
                   'Count']
           }}],
         chart_options=
@@ -41,7 +47,8 @@ def chart(request):
             'text': 'Ridership Data'},
          'xAxis': {
              'title': {
-                 'text': 'Rider Count'}}})
+                 'text': 'Rider Count'}}},
+             x_sortf_mapf_mts=(None, stopNames, False))
 
     return render_to_response('chart.html', {'ridershipChart': riderchart})
 
