@@ -20,11 +20,7 @@ public final class R {
     public static final class id {
         public static final int GPSDataView=0x7f060000;
         public static final int VehicleSelect=0x7f060001;
-        public static final int enterName=0x7f060003;
-        public static final int nameField=0x7f060005;
-        public static final int nameIDSelect=0x7f060004;
         public static final int trackButton=0x7f060002;
-        public static final int trackWithNameButton=0x7f060006;
     }
     public static final class layout {
         public static final int main=0x7f030000;
@@ -32,12 +28,10 @@ public final class R {
     public static final class string {
         public static final int app_name=0x7f040000;
         public static final int buttonText=0x7f040008;
-        public static final int enterName=0x7f040009;
         public static final int n1=0x7f040004;
         public static final int n2=0x7f040005;
         public static final int n3=0x7f040006;
-        public static final int nameButton=0x7f04000b;
-        public static final int nameField=0x7f04000a;
+        public static final int stopText=0x7f040009;
         public static final int v1=0x7f040001;
         public static final int v2=0x7f040002;
         public static final int v3=0x7f040003;
