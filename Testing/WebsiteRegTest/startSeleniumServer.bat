@@ -1,1 +1,1 @@
-java -jar "C:\Users\chris\IdeaProjects\Capstone\Testing\WebsiteRegTest\lib\selenium-server-standalone-2.39.0.jar"
+java -jar .\lib\selenium-server-standalone-2.39.0.jar
