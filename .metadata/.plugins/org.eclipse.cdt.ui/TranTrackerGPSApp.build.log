@@ -1,0 +1,9 @@
+17:41:00 **** Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+
+17:41:00 Build Finished (took 329ms)
+
