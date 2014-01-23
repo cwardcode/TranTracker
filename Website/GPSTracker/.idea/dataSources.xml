@@ -2,6 +2,7 @@
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" hash="3254054392">
     <data-source source="LOCAL" name="Django default" uuid="c46e368e-a059-404b-8282-40759288928c">
+      <driver-ref>mysql</driver-ref>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://tracker.cwardcode.com:3306/gpstracker</jdbc-url>
       <user-name>gpstracker</user-name>
