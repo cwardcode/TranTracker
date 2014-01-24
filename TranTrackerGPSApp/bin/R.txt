@@ -7,6 +7,7 @@ int id GPSDataView 0x7f040003
 int id VehicleSelect 0x7f040004
 int id any 0x7f040000
 int id back 0x7f040001
+int id cameraView 0x7f040006
 int id front 0x7f040002
 int id trackButton 0x7f040005
 int layout main 0x7f030000
