@@ -27,7 +27,6 @@ public class Vehicle {
      * Returns Vehicle ID.
      * @return id vehicle ID.
      */
-    @SuppressWarnings("unused")
     public int getId(){
         return id;
     }

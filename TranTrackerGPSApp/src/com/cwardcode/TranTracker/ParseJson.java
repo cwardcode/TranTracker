@@ -18,6 +18,7 @@ import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.impl.client.DefaultHttpClient;
 
 import android.util.Log;
+import android.widget.Toast;
 
 /**
  * @author Chris Ward
@@ -91,11 +92,11 @@ public class ParseJson {
             input = httpEntity.getContent();
 
         } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
+        	Toast.makeText(TranTracker.getAppContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
         } catch (ClientProtocolException e) {
-            e.printStackTrace();
+        	Toast.makeText(TranTracker.getAppContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
         } catch (IOException e) {
-            e.printStackTrace();
+        	Toast.makeText(TranTracker.getAppContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
         }
 
         try {

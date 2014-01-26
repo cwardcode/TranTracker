@@ -1,20 +1,29 @@
 package com.cwardcode.TranTracker;
 
+import java.util.ArrayList;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.opencv.android.BaseLoaderCallback;
+import org.opencv.android.CameraBridgeViewBase;
+import org.opencv.android.CameraBridgeViewBase.CvCameraViewFrame;
+import org.opencv.android.CameraBridgeViewBase.CvCameraViewListener2;
+import org.opencv.android.LoaderCallbackInterface;
+import org.opencv.android.OpenCVLoader;
+import org.opencv.core.Mat;
+
 import android.app.Activity;
-import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.SurfaceView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import java.util.ArrayList;
 
 /**
  * Provides a user interface that allows the user to select which vehicle is
@@ -24,29 +33,42 @@ import java.util.ArrayList;
  * @author Chris Ward
  * @version September 9, 2013
  */
-public class TranTracker extends Activity implements AdapterView.OnItemSelectedListener {
+public class TranTracker extends Activity implements AdapterView.OnItemSelectedListener, CvCameraViewListener2 {
 
     /** URL which returns JSON array of vehicles. */
     private static final String VID_URL = "http://tracker.cwardcode.com/static/getvid.php";
-
     /** Holds whether the application is tracking. */
-
     public static boolean IS_TRACKING;
-
     /** Holds whether a vehicle is selected. */
     public static boolean VEH_SELECT;
-
     /** Holds current application context. */
     private static Context context;
-
     /** Intent to hold sendLoc service. */
     private Intent srvIntent;
-
     /** Spinner to hold trackable vehicles. */
     Spinner gridSpinner;
-
     /** ArrayList of trackable vehicles. */
     private ArrayList<Vehicle> VehList;
+    /** OpenCV Camera View */
+    private CameraBridgeViewBase mOpenCvCameraView;
+    
+
+    
+    private BaseLoaderCallback mLoaderCallback = new BaseLoaderCallback(this) {
+        @Override
+        public void onManagerConnected(int status) {
+            switch (status) {
+                case LoaderCallbackInterface.SUCCESS:
+                {
+                    mOpenCvCameraView.enableView();
+                } break;
+                default:
+                {
+                    super.onManagerConnected(status);
+                } break;
+            }
+        }
+    };
 
     /**
      * Pulls vehicle list from database.
@@ -129,7 +151,6 @@ public class TranTracker extends Activity implements AdapterView.OnItemSelectedL
      * calling view.
      * @param view the view for the button calling this method.
      */
-    @SuppressWarnings("unused")
     public void startTracking(View view) {
         if(!IS_TRACKING){
             startService(srvIntent);
@@ -159,6 +180,9 @@ public class TranTracker extends Activity implements AdapterView.OnItemSelectedL
         gridSpinner = (Spinner) findViewById(R.id.VehicleSelect);
         gridSpinner.setOnItemSelectedListener(this);
         new GetVehicles().execute();
+        mOpenCvCameraView = (CameraBridgeViewBase) findViewById(R.id.cameraView);
+        mOpenCvCameraView.setVisibility(SurfaceView.VISIBLE);
+        mOpenCvCameraView.setCvCameraViewListener(this);
     }
 
     /**
@@ -186,4 +210,38 @@ public class TranTracker extends Activity implements AdapterView.OnItemSelectedL
     public static Context getAppContext() {
         return context;
     }
+    @Override
+    public void onPause()
+    {
+        super.onPause();
+        if (mOpenCvCameraView != null)
+            mOpenCvCameraView.disableView();
+    }
+
+    @Override
+    public void onResume()
+    {
+        super.onResume();
+        OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION_2_4_3, this, mLoaderCallback);
+    }
+
+    public void onDestroy() {
+        super.onDestroy();
+        if (mOpenCvCameraView != null)
+            mOpenCvCameraView.disableView();
+    }
+   
+	@Override
+	public void onCameraViewStarted(int width, int height) {		
+	}
+
+	@Override
+	public void onCameraViewStopped() {
+		
+	}
+
+	@Override
+	public Mat onCameraFrame(CvCameraViewFrame inputFrame) {
+		return inputFrame.rgba();
+	}
 }

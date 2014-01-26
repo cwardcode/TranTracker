@@ -1,0 +1,6 @@
+## MASTER BRANCH ##
+
+This is the main working directory for our capstone project's testing suite 
+
+Folder Layout:
+  --WebsiteRegTests -- Holds the regression testing project for our website.

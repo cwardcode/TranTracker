@@ -1,0 +1,438 @@
+17:22:41 **** Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+17:37:57 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+17:41:00 **** Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+00:08:24 **** Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+00:32:01 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+00:33:49 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+00:34:46 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+00:36:29 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+00:36:31 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+00:37:35 **** Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+00:37:55 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+00:44:46 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+01:03:12 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+01:03:40 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+01:04:14 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+01:04:19 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+01:04:59 **** Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+01:05:17 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+01:05:49 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+01:06:01 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+01:06:39 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+01:11:41 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+01:18:29 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+01:20:56 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+01:27:34 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+01:29:08 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+01:30:08 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+01:35:13 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+01:35:33 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+01:35:56 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+01:41:08 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+01:41:46 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+01:43:15 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+01:44:01 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+01:45:13 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+01:46:12 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+01:46:19 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+01:48:20 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+01:49:18 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+01:49:26 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+01:49:35 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+01:49:35 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+01:49:44 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+01:49:50 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+01:50:54 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+01:51:00 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+01:51:46 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+01:54:43 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+01:55:04 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+01:55:36 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+01:55:52 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+01:56:23 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+01:56:29 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+01:57:04 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+01:57:46 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+02:01:13 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+02:01:24 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+02:03:09 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+02:15:41 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+02:15:42 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+02:25:25 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+02:27:31 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+02:28:43 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+02:30:23 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+02:32:47 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+02:38:09 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+02:38:37 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+02:38:46 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+02:38:51 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+02:39:59 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+02:45:20 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+02:47:51 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+02:49:47 **** Incremental Build of configuration Default for project TranTrackerGPSApp ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING: APP_PLATFORM android-16 is larger than android:minSdkVersion 10 in ./AndroidManifest.xml    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
