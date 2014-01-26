@@ -170,7 +170,7 @@
          */
         function clearShuttleMarkers() {
             for (var i = 0; i < markersArray.length; i++) {
-                markersArray[i].setMap(null);
+                markersArray[i].mapMarker.setMap(null);
             }
             markersArray = [];
         }
@@ -203,12 +203,14 @@
                             Math.round(speed * METER_CONVERS) + " mph";
 
                     //The marker object to be placed on the map.
-                    var marker = new google.maps.Marker({
-                        map: map,
-                        position: point,
-                        icon: image,
-                        title: name
-                    });
+                    var marker = new Object();
+                        marker.mapMarker =  new google.maps.Marker({
+                            map: map,
+                            position: point,
+                            icon: image,
+                            title: name
+                        });
+                        marker.isOpen = false;
                     //Add each marker to the array of markers.
                     markersArray.push(marker);
                     //Apply markers to map.
@@ -307,7 +309,7 @@
                 icon: stopMarker,
                 title: title
             });
-//Add each stop to the stops array.
+            //Add each stop to the stops array.
             stops.push(marker);
         }
 
@@ -315,18 +317,18 @@
          * Initializes all routes that will appear on the map.
          */
         function initRoutes() {
-//The All Campus Shuttle encoded route.
+            //The All Campus Shuttle encoded route.
             var allCampusPath = google.maps.geometry.encoding.decodePath('cbnvE`muzNVCVJTPP@XCLWpBeC@KQ[@O`CsC^Uj@G`@@pATtD_@HpAqCXIGY_Ai@Ks@M_@Ak@FKFSLaCrCAJP^AJsBdCKVYBQAUQWKWBOH?DxCzC?JYd@_@T{@b@mLpDiCh@gAHy@Oc@r@mBjBqC|DEDaEsGk@m@[W}@SqAOiBlJ[u@Uu@[sBMY][m@ScAMk@I_ACo@JiBb@_AFcF}@}B]c@RUX}@zDIPeAlAU^KZAj@@|ABf@NxAGb@@TTJD?DGBI?OGQYI@GOyACg@AyABo@H[T_@dAmAHQ|@{DTYb@S|B\\bF|@~@GhBc@n@K~@B@QPcAGwBScDOi@[oCISOScAg@_@IaA?[Gi@_@_AsAeAsABGnByBxBkBnAtA@i@IqA@oAJm@l@_BRYlAu@vAUj@kAb@WPQHQJg@JaBNg@JW?Ga@iADKDCx@[Y^MB[N^`A?FKVOf@KdBKb@IPQRc@Ti@jARTR`@VbAB^@vAFt@QjBI`Ba@dASVQJQFW@[GSI_@[IRDXRPv@b@N@VCXMLMHQ@a@BIf@w@x@oBvBcEhB_ExAoC`B}A`@UAUe@aBMUMMKAI?o@h@]^a@^_Ad@Z`BB@l@LJBTX@NeArBiB|DwBbEc@dAEPHBNX`@|Af@~B\\nAVh@l@d@VH|@FfBAl@RfCbBZHjACpA@R@b@N\\XPZRl@ZbBDd@AlAEb@@J');
-//The HHS Express Shuttle encoded route.
+            //The HHS Express Shuttle encoded route.
             var hhsPath = google.maps.geometry.encoding.decodePath('}invE|tyzN[sAHoBIoCaAqFg@aE{@gEoA}Gk@eFe@oB_@uAUoBCaBIgC?cD@_CGmC_@eCoAqEgBsGkLDCo@v@}CIOEMAIc@a@SQcB}@m@kA[s@Uo@O_AKu@Sa@e@[c@OgBQ@[Nw@A{@IuAIqA');
-//The Off-Campus North Shuttle encoded route.
+            //The Off-Campus North Shuttle encoded route.
             var offNorthPath = google.maps.geometry.encoding.decodePath('oyovEnsuzNEcAOc@QwAQcAIQSQDQXUZKh@KlASVK`@]p@u@t@c@[sASe@QM[h@e@r@_@Rg@Hi@IYK[a@uA{B]c@Y]WOa@q@Wg@Sg@Ke@?sAC}A[k@m@]e@q@gBrCkA~@Kd@[h@_@Vi@Di@Te@p@oDxE_AfASHi@Fm@Ae@KYOSjEEhB@f@@j@Bl@Hz@?r@G^Ib@Kd@Eb@Cb@Cv@E~BCdA?REjAGlAGzBIbCLhA\\dBInBQhA?ANeAFsAB]Mo@Qs@MgAB_AFkADuBFgABm@@_@BeABwABkA@i@BY@YFa@Ha@Ha@F]Ac@Co@G_AAUAk@?g@Bs@BaAJyBDy@[YUWEa@Kw@EUMm@GOUm@]aA]eAMg@Ow@a@sBq@gDSaAQ_@CKm@m@gAaAkA{@eAy@{@g@c@Qc@GYEe@HUP[`@Sd@K^AlA?RCrAa@vCKvAUvAMpAIpCSpBu@K');
-//The Off-Campus South Shuttle encoded  route.
+            //The Off-Campus South Shuttle encoded  route.
             var offSouthPath = google.maps.geometry.encoding.decodePath('myovErsuzNGeAMi@M_AM_ASi@SULURSfDm@xAyAp@c@|@bEx@hA~@XdD@bAh@b@[t@DzCb@pDSrCw@|Cu@zBI^m@`@?`DdAt@D~AwBvE_FnCoBfAo@pBs@fBFfBj@zCH|BMl@KM{AiDmDwDjAYOA[~BiCh@yASu@e@Kg@vAcAfA_A^sAJtAS`Aa@n@o@\\o@Zy@\\DVn@g@`B{BjC@f@VLfDeAZCzC`DNbBhBK`CYdDS~Ao@`De@hCRt@TgElCqIbCgKhCiKbDgCrBsE`EeBlBhAzAlA`AKF_Aw@qAcBgBzBmLlPgCvBoEzAwBZ{DHjAlEhBvGh@fCB|IClAJnCHdCRvA~@rDhAbJhAdFnAjIz@bFFfCE?E_C_AuFe@kDc@kC_AkEOo@o@eFQeBcAyDSuAIuCKmC@_B?iD?kCg@oCiBwGoAsEeE@eEJY@Gs@x@cDKO?SYUQUq@]_Ag@m@mA_@o@Oo@O}@My@Q_@]]k@Ok@Gg@EYEPkA@c@E}@G}@??EcA');
-//The Village Shuttle encoded route.
+            //The Village Shuttle encoded route.
             var villagePath = google.maps.geometry.encoding.decodePath('myovEpsuzNR~DCZQrAkAAiAR_AVaAJaAUoCe@kCc@_@J[Zi@xB]rA}AlBMn@?tABhAPdB');
 
-//Initializes polyline for route 
+            //Initializes polyline for route 
             AllCampusRegion = new google.maps.Polyline({
                 path: allCampusPath,
                 levels: "",
@@ -334,7 +336,7 @@
                 strokeOpacity: 1.0,
                 strokeWeight: 2,
             });
-//Adds created polyline to routesArray.
+            //Adds created polyline to routesArray.
 
             HHSRegion = new google.maps.Polyline({
                 path: hhsPath,
@@ -368,7 +370,7 @@
                 strokeWeight: 2,
             });
 
-//Adds created polyline to routesArray.
+            //Adds created polyline to routesArray.
             routesArray.push(AllCampusRegion);
             routesArray.push(VillageRegion);
             routesArray.push(HHSRegion);
@@ -387,9 +389,15 @@
          * @param html        - The HTML to be displayed when a marker is clicked
          */
         function bindInfoWindow(marker, map, infoWindow, html) {
-            google.maps.event.addListener(marker, 'click', function () {
-                infoWindow.setContent(html);
-                infoWindow.open(map, marker);
+            google.maps.event.addListener(marker.mapMarker, 'click', function () {
+                if(marker.mapMarker.isOpen) {
+                    infoWindow.setConetent(html);
+                    infoWindow.open(map, marker.mapMarker);
+                } else {
+                    infoWindow.setContent(html);
+                    marker.mapMarker.isOpen = true;
+                    infoWindow.open(map, marker.mapMarker);
+                }
             });
         }
 
