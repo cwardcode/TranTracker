@@ -2,10 +2,13 @@ package edu.wcu.trackerapp;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.Fragment;
 import android.content.Intent;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -18,21 +21,47 @@ import android.widget.AdapterView.OnItemSelectedListener;
  * @verison 10/27/13
  *
  */
-public class Key extends Activity implements OnItemSelectedListener, OnClickListener {
+public class Key extends Activity implements OnClickListener {
 
-	private Button home;
-	private Spinner menu;
+	/**
+	 * The map button.
+	 */
+	private Button map;
+	
+	private Button key;
+	
+	private Button help;
+	
+	private Button about;
+	//private Spinner menu;
+	
+	/*
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, 
+			                 Bundle savedInstanceState) {
+		View rootView = inflater.inflate(R.layout.activity_key, container, 
+				                         false);
+		return rootView;
+	}
+	*/
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_key);
 		
-		menu = (Spinner) findViewById(R.id.menuSpinnerKey);
-		home = (Button) findViewById(R.id.homeButtonKey);
+		//menu = (Spinner) findViewById(R.id.menuSpinnerKey);
 		
-		menu.setOnItemSelectedListener(this);
-		home.setOnClickListener(this);
+		//menu.setOnItemSelectedListener(this);
+		
+		map = (Button) findViewById(R.id.keyMapButton);
+		key = (Button) findViewById(R.id.keyKeyButton);
+		about = (Button) findViewById(R.id.keyAboutButton);
+		help = (Button) findViewById(R.id.keyHelpButton);
+		
+		map.setOnClickListener(this);
+		key.setOnClickListener(this);
+		about.setOnClickListener(this);
+		help.setOnClickListener(this);
 	}
 
 	@Override
@@ -50,6 +79,7 @@ public class Key extends Activity implements OnItemSelectedListener, OnClickList
      * @param pos the items position.
      * @param id ?
      */
+	/*
 	@Override
 	public void onItemSelected(AdapterView<?> parent, View view, int pos,
 			long id) {
@@ -58,6 +88,7 @@ public class Key extends Activity implements OnItemSelectedListener, OnClickList
 		handleSelection(item);
 		
 	}
+	*/
 	
 	/**
 	 * Performs the action that is appropriate for the given selection. In this
@@ -65,6 +96,7 @@ public class Key extends Activity implements OnItemSelectedListener, OnClickList
 	 * 
 	 * @param selection a string representing the user's selection.
 	 */
+	/*
 	private void handleSelection(String selection) {
 		Intent next = null;
 		if (selection.equals("Key")) {
@@ -81,28 +113,38 @@ public class Key extends Activity implements OnItemSelectedListener, OnClickList
 			this.startActivity(next);
 		}
 	}
+	*/
 
 	/**
 	 * Returns to the home screen when the home button is pressed.
 	 * 
 	 * @param v the view that was pressed.
 	 */
+	
 	@Override
 	public void onClick(View v) {
-		Button button = (Button) v;
-		Intent next = new Intent(this, edu.wcu.trackerapp.Map.class);
+        Button button = (Button) v;
 		
-		if (button.equals(home)) {
+		if (button.equals(map)) {
+			Intent next = new Intent(this, edu.wcu.trackerapp.Map.class);
+			this.startActivity(next);
+		} else if (button.equals(about)) {
+			Intent next = new Intent(this, edu.wcu.trackerapp.About.class);
+			this.startActivity(next);
+		} else if (button.equals(help)) {
+			Intent next = new Intent(this, edu.wcu.trackerapp.Help.class);
 			this.startActivity(next);
 		}
 		
 	}
-
+    
+	/*
 	@Override
 	public void onNothingSelected(AdapterView<?> arg0) {
 		// TODO Auto-generated method stub
 		
 	}
+	*/
 
 
 }

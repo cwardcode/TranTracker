@@ -18,17 +18,18 @@ import android.widget.Spinner;
  * @version 10/28/13
  * 
  */
-public class Help extends Activity implements OnItemSelectedListener, OnClickListener {
+public class Help extends Activity implements OnClickListener {
 	
 	/**
-	 * The home button.
+	 * The map button.
 	 */
-	private Button home;
+	private Button map;
 	
-	/**
-	 * The menu spinner.
-	 */
-	private Spinner menu;
+	private Button key;
+	
+	private Button help;
+	
+	private Button about;
 	
 	/**
 	 * Initializes the activity.
@@ -40,11 +41,15 @@ public class Help extends Activity implements OnItemSelectedListener, OnClickLis
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_help);
 		
-		menu = (Spinner) findViewById(R.id.menuSpinnerHelp);
-		home = (Button) findViewById(R.id.homeButtonHelp);
+		map = (Button) findViewById(R.id.helpMapButton);
+		key = (Button) findViewById(R.id.helpKeyButton);
+		about = (Button) findViewById(R.id.helpAboutButton);
+		help = (Button) findViewById(R.id.helpHelpButton);
 		
-		menu.setOnItemSelectedListener(this);
-		home.setOnClickListener(this);
+		map.setOnClickListener(this);
+		key.setOnClickListener(this);
+		about.setOnClickListener(this);
+		help.setOnClickListener(this);
 	}
 
 	@Override
@@ -62,6 +67,7 @@ public class Help extends Activity implements OnItemSelectedListener, OnClickLis
      * @param pos the items position.
      * @param id ?
      */
+	/*
 	@Override
 	public void onItemSelected(AdapterView<?> parent, View view, int pos,
 			long id) {
@@ -70,6 +76,7 @@ public class Help extends Activity implements OnItemSelectedListener, OnClickLis
 		handleSelection(item);
 		
 	}
+	*/
 	
 	/**
 	 * Performs the action that is appropriate for the given selection. In this
@@ -101,20 +108,28 @@ public class Help extends Activity implements OnItemSelectedListener, OnClickLis
 	 */
 	@Override
 	public void onClick(View v) {
-		Button button = (Button) v;
-		Intent next = new Intent(this, edu.wcu.trackerapp.Map.class);
+		Button button = (Button) v;	
 		
-		if (button.equals(home)) {
+		if (button.equals(map)) {
+			Intent next = new Intent(this, edu.wcu.trackerapp.Map.class);
+			this.startActivity(next);
+		} else if (button.equals(key)) {
+			Intent next = new Intent(this, edu.wcu.trackerapp.Key.class);
+			this.startActivity(next);
+		} else if (button.equals(about)) {
+			Intent next = new Intent(this, edu.wcu.trackerapp.About.class);
 			this.startActivity(next);
 		}
 		
 	}
 
+	/*
 	@Override
 	public void onNothingSelected(AdapterView<?> arg0) {
 		// TODO Auto-generated method stub
 		
 	}
+	*/
 
 
 }

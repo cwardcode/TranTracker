@@ -11,34 +11,44 @@
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="0dp"
+        android:layout_height="0dp" 
         android:layout_weight="1"
-        android:background="@color/dark_grey"
-        android:orientation="horizontal"
-        android:weightSum="3" >
+        android:weightSum="4" >
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:contentDescription="@string/contentDescription"
-            android:src="@drawable/logo" />
-
-        <Spinner
-            android:id="@+id/menuSpinner"
+        <Button
+            android:id="@+id/mapMapButton"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
-            android:layout_weight="2"
-            android:entries="@array/menu_array"
-            android:gravity="center"
-            android:textSize="12sp" />
+            android:layout_weight="1"
+            android:text="@string/title_activity_map" />
+
+        <Button
+            android:id="@+id/mapKeyButton"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:text="@string/title_activity_key" />
+
+        <Button
+            android:id="@+id/mapHelpButton"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:text="@string/title_activity_help" />
+
+        <Button
+            android:id="@+id/mapAboutButton"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:text="@string/title_activity_about" />
+
     </LinearLayout>
 
     <fragment
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.MapFragment"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="9" />
 
