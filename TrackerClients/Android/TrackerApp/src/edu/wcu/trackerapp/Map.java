@@ -1,37 +1,20 @@
 package edu.wcu.trackerapp;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.NodeList;
-
-import android.app.ActionBar;
 import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Button;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
-import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 
@@ -43,17 +26,15 @@ import com.google.android.gms.maps.model.PolylineOptions;
  * @version 11/21/13
  * 
  */
+@SuppressWarnings("unused")
 public class Map extends Activity implements OnClickListener {
 
 	// URL that generates XML\\
 	private static final String XMLURL = "http://tracker.cwardcode.com/static/genxml.php";
 	// XML Root Node
 	private static final String RootNode = "marker";
-	@SuppressWarnings("unused")
 	private static final String VidElement = "VID";
-	@SuppressWarnings("unused")
 	private static final String LatElement = "Latitude";
-	@SuppressWarnings("unused")
 	private static final String LngElement = "Longitude";
 
 	private static final String ALL_CAMPUS = "";

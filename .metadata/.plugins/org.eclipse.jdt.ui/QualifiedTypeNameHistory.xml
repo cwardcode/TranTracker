@@ -18,4 +18,5 @@
 <fullyQualifiedTypeName name="com.cwardcode.TranTracker.test.TranTrackerTest"/>
 <fullyQualifiedTypeName name="com.robotium.solo.Solo"/>
 <fullyQualifiedTypeName name="android.widget.Spinner"/>
+<fullyQualifiedTypeName name="com.cwardcode.TranTracker.SplashActivity"/>
 </qualifiedTypeNameHistroy>

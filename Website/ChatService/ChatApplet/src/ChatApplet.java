@@ -8,7 +8,11 @@ import java.net.UnknownHostException;
 
 public class ChatApplet extends JApplet implements MessageListener{
 
-    private JPanel south;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private JPanel south;
     private JList userList;
     private JTextArea display;
     private JTextField input;
