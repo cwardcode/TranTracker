@@ -22,7 +22,7 @@ class VehicleAdmin(admin.ModelAdmin):
     search_fields = ('Title', 'Driver')
     list_filter = ('Title', 'Driver',)
 
-    readonly_fields = ('VehID', 'Title')
+    readonly_fields = ('VehID',)
     fieldsets = [
         ('Vehicle', {'fields': ['VehID', 'Title', 'Driver']}), ]
 
