@@ -1,18 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
+	<classpathentry excluding="src/com/cwardcode/TranTracker/|gen/|res/" kind="src" path=""/>
+	<classpathentry kind="src" path="src/com/cwardcode/TranTracker"/>
+	<classpathentry kind="src" path="gen"/>
+	<classpathentry kind="src" path="res"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
-	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="src" path="gen"/>
-	<classpathentry kind="lib" path="/OpenCV Library - 2.4.5/gen/org"/>
-	<classpathentry kind="lib" path="C:/NVPACK/android-sdk-windows/platforms/android-15/android.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="http://developer.android.com/reference/"/>
-		</attributes>
-		<accessrules>
-			<accessrule kind="nonaccessible" pattern="com/android/internal/**"/>
-		</accessrules>
-	</classpathentry>
+	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
