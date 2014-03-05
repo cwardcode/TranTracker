@@ -19,4 +19,7 @@
 <fullyQualifiedTypeName name="com.robotium.solo.Solo"/>
 <fullyQualifiedTypeName name="android.widget.Spinner"/>
 <fullyQualifiedTypeName name="com.cwardcode.TranTracker.SplashActivity"/>
+<fullyQualifiedTypeName name="org.opencv.video.BackgroundSubtractorMOG"/>
+<fullyQualifiedTypeName name="org.opencv.core.Rect"/>
+<fullyQualifiedTypeName name="org.opencv.core.Size"/>
 </qualifiedTypeNameHistroy>

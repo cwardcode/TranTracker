@@ -1,5 +1,9 @@
 package com.cwardcode.TranTracker;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 
 import org.json.JSONArray;
@@ -11,7 +15,15 @@ import org.opencv.android.CameraBridgeViewBase.CvCameraViewFrame;
 import org.opencv.android.CameraBridgeViewBase.CvCameraViewListener2;
 import org.opencv.android.LoaderCallbackInterface;
 import org.opencv.android.OpenCVLoader;
+import org.opencv.core.Core;
+import org.opencv.core.CvType;
 import org.opencv.core.Mat;
+import org.opencv.core.MatOfRect;
+import org.opencv.core.Rect;
+import org.opencv.core.Scalar;
+import org.opencv.core.Size;
+import org.opencv.objdetect.CascadeClassifier;
+import org.opencv.video.BackgroundSubtractorMOG;
 
 import android.app.Activity;
 import android.content.Context;
@@ -51,15 +63,56 @@ public class TranTracker extends Activity implements AdapterView.OnItemSelectedL
     private ArrayList<Vehicle> VehList;
     /** OpenCV Camera View */
     private CameraBridgeViewBase mOpenCvCameraView;
-    
+    /** Caputured image for processing */
+	private Mat mRgba;
+	/** Foreground mask **/
+	private Mat mFGMask;
+	/** Background Subtraction **/
+	private BackgroundSubtractorMOG mBVSub;
+    /** Greyscale image*/
+	private Mat mGrey;
+	
+	private static final Scalar    FACE_RECT_COLOR     = new Scalar(0, 255, 0, 255);
+	private File                   mCascadeFile;
+    private CascadeClassifier      mJavaDetector;
 
-    
+    private float                  mRelativeFaceSize   = 0.2f;
+    private int                    mAbsoluteFaceSize   = 0;
+
     private BaseLoaderCallback mLoaderCallback = new BaseLoaderCallback(this) {
         @Override
         public void onManagerConnected(int status) {
             switch (status) {
                 case LoaderCallbackInterface.SUCCESS:
                 {
+                	try {
+                        // load cascade file from application resources
+                        InputStream is = getResources().openRawResource(R.raw.haarcascade_mcs_upperbody);
+                        File cascadeDir = getDir("cascade", Context.MODE_PRIVATE);
+                        mCascadeFile = new File(cascadeDir, "lbpcascade_frontalface.xml");
+                        FileOutputStream os = new FileOutputStream(mCascadeFile);
+
+                        byte[] buffer = new byte[4096];
+                        int bytesRead;
+                        while ((bytesRead = is.read(buffer)) != -1) {
+                            os.write(buffer, 0, bytesRead);
+                        }
+                        is.close();
+                        os.close();
+
+                        mJavaDetector = new CascadeClassifier(mCascadeFile.getAbsolutePath());
+                        if (mJavaDetector.empty()) {
+                            Log.e(this.getClass().toString(), "Failed to load cascade classifier");
+                            mJavaDetector = null;
+                        } else
+                        cascadeDir.delete();
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        Log.e(this.getClass().toString(), "Failed to load cascade. Exception thrown: " + e);
+                    }
+                	mBVSub = new BackgroundSubtractorMOG();
+                	mFGMask = new Mat();
                     mOpenCvCameraView.enableView();
                 } break;
                 default:
@@ -233,15 +286,42 @@ public class TranTracker extends Activity implements AdapterView.OnItemSelectedL
    
 	@Override
 	public void onCameraViewStarted(int width, int height) {		
+       mRgba = new Mat(height, width, CvType.CV_8UC4);
+
 	}
 
 	@Override
 	public void onCameraViewStopped() {
-		
+		mRgba.release();
 	}
 
 	@Override
 	public Mat onCameraFrame(CvCameraViewFrame inputFrame) {
-		return inputFrame.rgba();
+		//mRgba = inputFrame.gray();
+		//mBVSub.apply(mRgba, mFGMask);
+		//return mFGMask;
+		mRgba = inputFrame.rgba();
+        mGrey = inputFrame.gray();
+
+        if (mAbsoluteFaceSize == 0) {
+            int height = mGrey.rows();
+            if (Math.round(height * mRelativeFaceSize) > 0) {
+                mAbsoluteFaceSize = Math.round(height * mRelativeFaceSize);
+            }
+        }
+
+        MatOfRect faces = new MatOfRect();
+
+            if (mJavaDetector != null) {
+                mJavaDetector.detectMultiScale(mGrey, faces, 1.1, 2, 2, // TODO: objdetect.CV_HAAR_SCALE_IMAGE
+                        new Size(mAbsoluteFaceSize, mAbsoluteFaceSize), new Size());
+        }
+        
+
+        Rect[] facesArray = faces.toArray();
+        for (int i = 0; i < facesArray.length; i++)
+            Core.rectangle(mRgba, facesArray[i].tl(), facesArray[i].br(), FACE_RECT_COLOR, 3);
+
+        return mRgba;
 	}
 }

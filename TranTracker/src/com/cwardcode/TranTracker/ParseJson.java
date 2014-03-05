@@ -19,7 +19,6 @@ import org.apache.http.impl.client.DefaultHttpClient;
 
 import android.util.Log;
 import android.widget.Toast;
-import com.cwardcode.TranTracker.TranTracker;
 /**
  * @author Chris Ward
  * @version 12/25/2013
