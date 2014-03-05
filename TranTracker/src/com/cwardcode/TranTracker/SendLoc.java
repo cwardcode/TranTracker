@@ -26,6 +26,8 @@ public class SendLoc extends Service {
 
     /**Listens for location updates from the LocationManager.*/
     private LocationListener locListener;
+    /**The amount of people using a particular stop */
+	private static int numPeople;
 
     /**Used to identify the vehicle that is being tracked by this device.*/
     private static int vehicleID;
@@ -46,6 +48,12 @@ public class SendLoc extends Service {
         @Override
         public void onLocationChanged(Location location)
         {
+        	//TODO:
+        	// Check if location is near a stop, if so updateWithPeopleData
+        	// How would we count from here when only at a stop?
+        	// How could we send numPeople as an extra after the service has
+        	//     already started?
+        	
             if(location != null) {
                 updateLocation(location);
             }
@@ -100,6 +108,7 @@ public class SendLoc extends Service {
     public int onStartCommand(Intent intent, int startID, int startId){
         vehicleID = intent.getIntExtra("VehicleID", -1);
         title = intent.getStringExtra("title");
+        numPeople = intent.getIntExtra("people", -1);
         return START_STICKY;
     }
 
@@ -152,6 +161,28 @@ public class SendLoc extends Service {
         filterRes.putExtra("speed", speed);
         filterRes.putExtra("VehicleID",vehicleID);
         filterRes.putExtra("title",title);
+        context.sendBroadcast(filterRes);
+    }
+    
+    public static void updateWithPeopleData(Location location){
+    	Context context;
+        context = TranTracker.getAppContext();//getAppContext();
+
+        double latitude, longitude, speed;
+
+        latitude = location.getLatitude();
+        longitude = location.getLongitude();
+        speed = location.getSpeed();
+
+        Intent filterRes = new Intent();
+        filterRes.setAction("com.cwardcode.intent.action.LOCATION");
+        filterRes.putExtra("latitude", latitude);
+        filterRes.putExtra("longitude", longitude);
+        filterRes.putExtra("speed", speed);
+        filterRes.putExtra("VehicleID",vehicleID);
+        filterRes.putExtra("title",title);
+        //TODO how to get numPeople from TranTracker class?
+        filterRes.putExtra("people", numPeople);
         context.sendBroadcast(filterRes);
     }
 

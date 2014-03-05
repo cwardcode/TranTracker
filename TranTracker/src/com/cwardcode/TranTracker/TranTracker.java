@@ -23,7 +23,6 @@ import org.opencv.core.Rect;
 import org.opencv.core.Scalar;
 import org.opencv.core.Size;
 import org.opencv.objdetect.CascadeClassifier;
-import org.opencv.video.BackgroundSubtractorMOG;
 
 import android.app.Activity;
 import android.content.Context;
@@ -31,297 +30,455 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.SurfaceView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 /**
  * Provides a user interface that allows the user to select which vehicle is
  * being tracked and begin tracking.
- *  
+ * 
  * @author Hayden Thomas
  * @author Chris Ward
  * @version September 9, 2013
  */
-public class TranTracker extends Activity implements AdapterView.OnItemSelectedListener, CvCameraViewListener2 {
+public class TranTracker extends Activity implements
+		AdapterView.OnItemSelectedListener, CvCameraViewListener2 {
 
-    /** URL which returns JSON array of vehicles. */
-    private static final String VID_URL = "http://tracker.cwardcode.com/static/getvid.php";
-    /** Holds whether the application is tracking. */
-    public static boolean IS_TRACKING;
-    /** Holds whether a vehicle is selected. */
-    public static boolean VEH_SELECT;
-    /** Holds current application context. */
-    private static Context context;
-    /** Intent to hold sendLoc service. */
-    private Intent srvIntent;
-    /** Spinner to hold trackable vehicles. */
-    Spinner gridSpinner;
-    /** ArrayList of trackable vehicles. */
-    private ArrayList<Vehicle> VehList;
-    /** OpenCV Camera View */
-    private CameraBridgeViewBase mOpenCvCameraView;
-    /** Caputured image for processing */
+	/** URL which returns JSON array of vehicles. */
+	private static final String VID_URL = "http://tracker.cwardcode.com/static/getvid.php";
+	/** Holds whether the application is tracking. */
+	public static boolean IS_TRACKING;
+	/** Holds whether a vehicle is selected. */
+	public static boolean VEH_SELECT;
+	/** Color of the rectangle drawn around bodies */
+	private static final Scalar BODY_RECT_COLOR = new Scalar(0, 255, 0, 255);
+	/** Determines if we're using the android/Java camera */
+	public static final int JAVA_DETECTOR = 0;
+	/** Determines if we're using the native camera */
+	public static final int NATIVE_DETECTOR = 1;
+	/** Set default detector to java */
+	private int mDetectorType = JAVA_DETECTOR;
+	/** Holds current application context. */
+	private static Context context;
+	/** Intent to hold sendLoc service. */
+	private Intent srvIntent;
+	/** Shows the current number of people in the frame */
+	TextView peopleData;
+	/** Spinner to hold trackable vehicles. */
+	private Spinner gridSpinner;
+	/** ArrayList of trackable vehicles. */
+	private ArrayList<Vehicle> VehList;
+	/** OpenCV Camera View */
+	private CameraBridgeViewBase mOpenCvCameraView;
+	/** Caputured image for processing */
 	private Mat mRgba;
-	/** Foreground mask **/
-	private Mat mFGMask;
-	/** Background Subtraction **/
-	private BackgroundSubtractorMOG mBVSub;
-    /** Greyscale image*/
+	/** Greyscale image */
 	private Mat mGrey;
-	
-	private static final Scalar    FACE_RECT_COLOR     = new Scalar(0, 255, 0, 255);
-	private File                   mCascadeFile;
-    private CascadeClassifier      mJavaDetector;
+	/** Holds the haar cascade file used to find bodies */
+	private File mCascadeFile;
+	/** Interprets mCascadeFile */
+	private CascadeClassifier mJavaDetector;
+	/** Size of body relative to screen */
+	private float mRelativeBodySize = 0.2f;
+	/** Size of body */
+	private int mAbsoluteBodySize = 0;
+	/** Holds our native OpenCV detector */
+	private DetectionBasedTracker mNativeDetector;
+	/** Holds all detector types */
+	private String[] mDetectorName;
 
-    private float                  mRelativeFaceSize   = 0.2f;
-    private int                    mAbsoluteFaceSize   = 0;
+	/** Initializes OpenCV */
+	private BaseLoaderCallback mLoaderCallback = new BaseLoaderCallback(this) {
 
-    private BaseLoaderCallback mLoaderCallback = new BaseLoaderCallback(this) {
-        @Override
-        public void onManagerConnected(int status) {
-            switch (status) {
-                case LoaderCallbackInterface.SUCCESS:
-                {
-                	try {
-                        // load cascade file from application resources
-                        InputStream is = getResources().openRawResource(R.raw.haarcascade_mcs_upperbody);
-                        File cascadeDir = getDir("cascade", Context.MODE_PRIVATE);
-                        mCascadeFile = new File(cascadeDir, "lbpcascade_frontalface.xml");
-                        FileOutputStream os = new FileOutputStream(mCascadeFile);
+		@Override
+		public void onManagerConnected(int status) {
+			switch (status) {
+			case LoaderCallbackInterface.SUCCESS: {
+				// System.loadLibrary("opencv_java");
+				System.loadLibrary("TranTracker");
+				try {
+					// load cascade file from application resources
+					InputStream is = getResources().openRawResource(
+							R.raw.haarcascade_mcs_upperbody);
+					// Create 'cascade' directory on android device
+					File cascadeDir = getDir("cascade", Context.MODE_PRIVATE);
+					mCascadeFile = new File(cascadeDir,
+							"haarcascade_mcs_upperbody.xml");
+					FileOutputStream os = new FileOutputStream(mCascadeFile);
 
-                        byte[] buffer = new byte[4096];
-                        int bytesRead;
-                        while ((bytesRead = is.read(buffer)) != -1) {
-                            os.write(buffer, 0, bytesRead);
-                        }
-                        is.close();
-                        os.close();
+					byte[] buffer = new byte[4096];
+					int bytesRead;
+					// write cascade file to android file system
+					while ((bytesRead = is.read(buffer)) != -1) {
+						os.write(buffer, 0, bytesRead);
+					}
+					// close file streams
+					is.close();
+					os.close();
+					// Set up java camera
+					mJavaDetector = new CascadeClassifier(
+							mCascadeFile.getAbsolutePath());
+					if (mJavaDetector.empty()) {
+						Log.e(this.getClass().toString(),
+								"Failed to load cascade classifier :(");
+						mJavaDetector = null;
+					} else {
+						mNativeDetector = new DetectionBasedTracker(
+								mCascadeFile.getAbsolutePath(), 0);
+						cascadeDir.delete();
+					}
+				} catch (IOException e) {
+					Log.e(this.getClass().toString(),
+							"Failed to load cascade. Exception thrown: "
+									+ e.getMessage());
+				}
+				// Allow us to view OpenCV window.
+				mOpenCvCameraView.enableView();
+			}
+				break;
+			default: {
+				super.onManagerConnected(status);
+			}
+				break;
+			}
+		}
+	};
+	private MenuItem mItemFace40;
+	private MenuItem mItemFace50;
+	private MenuItem mItemFace30;
+	private MenuItem mItemFace20;
+	private MenuItem mItemType;
 
-                        mJavaDetector = new CascadeClassifier(mCascadeFile.getAbsolutePath());
-                        if (mJavaDetector.empty()) {
-                            Log.e(this.getClass().toString(), "Failed to load cascade classifier");
-                            mJavaDetector = null;
-                        } else
-                        cascadeDir.delete();
+	/**
+	 * Pulls vehicle list from database.
+	 */
+	private class GetVehicles extends AsyncTask<Void, Void, Void> {
 
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                        Log.e(this.getClass().toString(), "Failed to load cascade. Exception thrown: " + e);
-                    }
-                	mBVSub = new BackgroundSubtractorMOG();
-                	mFGMask = new Mat();
-                    mOpenCvCameraView.enableView();
-                } break;
-                default:
-                {
-                    super.onManagerConnected(status);
-                } break;
-            }
-        }
-    };
+		/**
+		 * Threaded processes, parses JSON output from server.
+		 * 
+		 * @param arg0
+		 *            not used
+		 * @return null to end task
+		 */
+		@Override
+		protected Void doInBackground(Void... arg0) {
+			ParseJson jsonParser = new ParseJson();
+			String json = jsonParser.makeServiceCall(VID_URL, ParseJson.GET);
 
-    /**
-     * Pulls vehicle list from database.
-     */
-    private class GetVehicles extends AsyncTask<Void, Void, Void> {
+			if (json != null) {
+				try {
+					JSONObject jsonObj = new JSONObject(json);
+					JSONArray categories = jsonObj.getJSONArray("vehicles");
+					for (int i = 0; i < categories.length(); i++) {
+						JSONObject catObj = (JSONObject) categories.get(i);
+						Vehicle cat = new Vehicle(catObj.getInt("id"),
+								catObj.getString("name"));
+						VehList.add(cat);
+					}
 
-        /**
-         * Threaded processes, parses JSON output from server.
-         *
-         * @param arg0 not used
-         * @return null to end task
-         */
-        @Override
-        protected Void doInBackground(Void... arg0) {
-            ParseJson jsonParser = new ParseJson();
-            String json = jsonParser.makeServiceCall(VID_URL, ParseJson.GET);
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
 
-            if (json != null) {
-                try {
-                    JSONObject jsonObj = new JSONObject(json);
-                    JSONArray categories = jsonObj.getJSONArray("vehicles");
-                    for (int i = 0; i < categories.length(); i++) {
-                        JSONObject catObj = (JSONObject) categories.get(i);
-                        Vehicle cat = new Vehicle(catObj.getInt("id"),
-                                catObj.getString("name"));
-                        VehList.add(cat);
-                    }
+			} else {
+				Log.e("JSON Data", "Didn't receive any data from server!");
+			}
 
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+			return null;
+		}
 
-            } else {
-                Log.e("JSON Data", "Didn't receive any data from server!");
-            }
-
-            return null;
-        }
-
-        /**
-         * After main thread has finished, populate spinner with vehicles.
-         * @param result return status of main thread.
-         */
-        @Override
-        protected void onPostExecute(Void result) {
-            super.onPostExecute(result);
-            populateSpinner();
-        }
-
-    }
-
-    /**
-     * Triggered when an item within the spinner's list is selected.
-     *
-     * @param parent - the <code>AdapterView</code> in which the view
-     *                 exists.
-     * @param view   - the <code>View</code> in from which the item was
-     *               selected.
-     * @param pos    - the position of the menu item seected.
-     * @param id     - the id of the item pressed, if available.
-     */
-     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-        VEH_SELECT = true;
-        srvIntent.putExtra("VehicleID", ++pos);
-        srvIntent.putExtra("title", parent.getSelectedItem().toString());
-     }
-
-     /**
-      * If nothing is selected, does nothing.
-      *
-      * @param arg0 - nothing.
-      */
-     public void onNothingSelected(AdapterView<?> arg0) {
-         VEH_SELECT = false;
-     }
-
-    /**
-     * Starts the service that allows the device to be tracked.
-     * Suppressing unused warning for param, needed only for Android to know
-     * calling view.
-     * @param view the view for the button calling this method.
-     */
-    public void startTracking(View view) {
-        if(!IS_TRACKING){
-            startService(srvIntent);
-            IS_TRACKING = true;
-        }   else {
-            stopService(srvIntent);
-            startService(srvIntent);
-        }
-    }
-
-    /**
-     * Called when the activity is first created.
-     * 
-     * @param savedInstanceState allows the application to return to its
-     *                           previous configuration after being closed
-     */
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
-        TranTracker.context = getApplicationContext();
-
-        IS_TRACKING = false;
-        srvIntent = new Intent(this, SendLoc.class);
-        VehList = new ArrayList<Vehicle>();
-
-        gridSpinner = (Spinner) findViewById(R.id.VehicleSelect);
-        gridSpinner.setOnItemSelectedListener(this);
-        new GetVehicles().execute();
-        mOpenCvCameraView = (CameraBridgeViewBase) findViewById(R.id.cameraView);
-        mOpenCvCameraView.setVisibility(SurfaceView.VISIBLE);
-        mOpenCvCameraView.setCvCameraViewListener(this);
-    }
-
-    /**
-     * Creates and attaches ArrayAdapter to populate spinner.
-     */
-    private void populateSpinner() {
-        ArrayList<String> vehicles = new ArrayList<String>();
-        for (Vehicle aVehList : VehList) {
-            vehicles.add(aVehList.getName());
-        }
-
-        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item, vehicles);
-
-        spinnerAdapter
-                .setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        gridSpinner.setAdapter(spinnerAdapter);
-    }
-
-    /**
-     * Returns the current application's context. Allows the service to send
-     * a message to the broadcast receiver.
-     */
-    public static Context getAppContext() {
-        return context;
-    }
-    @Override
-    public void onPause()
-    {
-        super.onPause();
-        if (mOpenCvCameraView != null)
-            mOpenCvCameraView.disableView();
-    }
-
-    @Override
-    public void onResume()
-    {
-        super.onResume();
-        OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION_2_4_3, this, mLoaderCallback);
-    }
-
-    public void onDestroy() {
-        super.onDestroy();
-        if (mOpenCvCameraView != null)
-            mOpenCvCameraView.disableView();
-    }
-   
-	@Override
-	public void onCameraViewStarted(int width, int height) {		
-       mRgba = new Mat(height, width, CvType.CV_8UC4);
+		/**
+		 * After main thread has finished, populate spinner with vehicles.
+		 * 
+		 * @param result
+		 *            return status of main thread.
+		 */
+		@Override
+		protected void onPostExecute(Void result) {
+			super.onPostExecute(result);
+			populateSpinner();
+		}
 
 	}
 
+	/**
+	 * Triggered when an item within the spinner's list is selected.
+	 * 
+	 * @param parent
+	 *            the <code>AdapterView</code> in which the view exists.
+	 * @param view
+	 *            the <code>View</code> in from which the item was selected.
+	 * @param pos
+	 *            the position of the menu item seected.
+	 * @param id
+	 *            the id of the item pressed, if available.
+	 */
+	public void onItemSelected(AdapterView<?> parent, View view, int pos,
+			long id) {
+		VEH_SELECT = true;
+		srvIntent.putExtra("VehicleID", ++pos);
+		srvIntent.putExtra("title", parent.getSelectedItem().toString());
+	}
+
+	/**
+	 * If nothing is selected, does nothing.
+	 * 
+	 * @param arg0
+	 *            - nothing.
+	 */
+	public void onNothingSelected(AdapterView<?> arg0) {
+		VEH_SELECT = false;
+	}
+
+	/**
+	 * Starts the service that allows the device to be tracked. Suppressing
+	 * unused warning for param, needed only for Android to know calling view.
+	 * 
+	 * @param view
+	 *            the view for the button calling this method.
+	 */
+	public void startTracking(View view) {
+		if (!IS_TRACKING) {
+			startService(srvIntent);
+			IS_TRACKING = true;
+		} else {
+			stopService(srvIntent);
+			startService(srvIntent);
+		}
+	}
+
+	/**
+	 * Called when the activity is first created.
+	 * 
+	 * @param savedInstanceState
+	 *            allows the application to return to its previous configuration
+	 *            after being closed
+	 */
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.main);
+		TranTracker.context = getApplicationContext();
+		peopleData = (TextView) findViewById(R.id.PeopleDataView);
+
+		mDetectorName = new String[2];
+		mDetectorName[JAVA_DETECTOR] = "Java";
+		mDetectorName[NATIVE_DETECTOR] = "Native (tracking)";
+
+		IS_TRACKING = false;
+		srvIntent = new Intent(this, SendLoc.class);
+		VehList = new ArrayList<Vehicle>();
+
+		gridSpinner = (Spinner) findViewById(R.id.VehicleSelect);
+		gridSpinner.setOnItemSelectedListener(this);
+
+		new GetVehicles().execute();
+
+		mOpenCvCameraView = (CameraBridgeViewBase) findViewById(R.id.cameraView);
+		mOpenCvCameraView.setVisibility(SurfaceView.VISIBLE);
+		mOpenCvCameraView.setCvCameraViewListener(this);
+	}
+
+	/**
+	 * Allows us to update the peopleData TextView with the current number of
+	 * people found in an image.
+	 * 
+	 * @param numPeople
+	 */
+	private void setPeopleData(final int numPeople) {
+		runOnUiThread(new Runnable() {
+			@Override
+			public void run() {
+				peopleData.setText("People: " + numPeople);
+
+			}
+		});
+	}
+
+	/**
+	 * Creates and attaches ArrayAdapter to populate spinner.
+	 */
+	private void populateSpinner() {
+		ArrayList<String> vehicles = new ArrayList<String>();
+		for (Vehicle aVehList : VehList) {
+			vehicles.add(aVehList.getName());
+		}
+
+		ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(this,
+				android.R.layout.simple_spinner_item, vehicles);
+
+		spinnerAdapter
+				.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+		gridSpinner.setAdapter(spinnerAdapter);
+	}
+
+	/**
+	 * Returns the current application's context. Allows the service to send a
+	 * message to the broadcast receiver.
+	 */
+	public static Context getAppContext() {
+		return context;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void onPause() {
+		super.onPause();
+		if (mOpenCvCameraView != null)
+			mOpenCvCameraView.disableView();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void onResume() {
+		super.onResume();
+		OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION_2_4_3, this,
+				mLoaderCallback);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void onDestroy() {
+		super.onDestroy();
+		if (mOpenCvCameraView != null)
+			mOpenCvCameraView.disableView();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void onCameraViewStarted(int width, int height) {
+		mRgba = new Mat(height, width, CvType.CV_8UC4);
+		mGrey = new Mat(height, width, CvType.CV_8UC4);
+
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void onCameraViewStopped() {
 		mRgba.release();
+		mGrey.release();
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * Generates rectangles around upper-body objects.
+	 */
 	@Override
 	public Mat onCameraFrame(CvCameraViewFrame inputFrame) {
-		//mRgba = inputFrame.gray();
-		//mBVSub.apply(mRgba, mFGMask);
-		//return mFGMask;
+		// Holds color frame
 		mRgba = inputFrame.rgba();
-        mGrey = inputFrame.gray();
+		// Holds grey frame
+		mGrey = inputFrame.gray();
 
-        if (mAbsoluteFaceSize == 0) {
-            int height = mGrey.rows();
-            if (Math.round(height * mRelativeFaceSize) > 0) {
-                mAbsoluteFaceSize = Math.round(height * mRelativeFaceSize);
-            }
-        }
+		if (mAbsoluteBodySize == 0) {
+			int height = mGrey.rows();
+			if (Math.round(height * mRelativeBodySize) > 0) {
+				mAbsoluteBodySize = Math.round(height * mRelativeBodySize);
+			}
+			mNativeDetector.setMinFaceSize(mAbsoluteBodySize);
+		}
 
-        MatOfRect faces = new MatOfRect();
+		MatOfRect faces = new MatOfRect();
 
-            if (mJavaDetector != null) {
-                mJavaDetector.detectMultiScale(mGrey, faces, 1.1, 2, 2, // TODO: objdetect.CV_HAAR_SCALE_IMAGE
-                        new Size(mAbsoluteFaceSize, mAbsoluteFaceSize), new Size());
-        }
-        
+		if (mJavaDetector != null) {
+			mJavaDetector.detectMultiScale(mGrey, faces, 1.1, 2, 2, new Size(
+					mAbsoluteBodySize, mAbsoluteBodySize), new Size());
+		}
 
-        Rect[] facesArray = faces.toArray();
-        for (int i = 0; i < facesArray.length; i++)
-            Core.rectangle(mRgba, facesArray[i].tl(), facesArray[i].br(), FACE_RECT_COLOR, 3);
+		Rect[] facesArray = faces.toArray();
+		//Draw rect around detected person. 
+		//TODO: label and track person so not counted twice.
+		//      Find way to send data to service.
+		for (int i = 0; i < facesArray.length; i++) {
+			Core.rectangle(mRgba, facesArray[i].tl(), facesArray[i].br(),
+					BODY_RECT_COLOR, 3);
+		}
+		setPeopleData(facesArray.length);
+		return mRgba;
+	}
 
-        return mRgba;
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		Log.i("", "called onCreateOptionsMenu");
+		mItemFace50 = menu.add("Face size 50%");
+		mItemFace40 = menu.add("Face size 40%");
+		mItemFace30 = menu.add("Face size 30%");
+		mItemFace20 = menu.add("Face size 20%");
+		mItemType = menu.add(mDetectorName[mDetectorType]);
+		return true;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		Log.i("", "called onOptionsItemSelected; selected item: " + item);
+
+		if (item == mItemFace50)
+			setMinFaceSize(0.5f);
+		else if (item == mItemFace40)
+			setMinFaceSize(0.4f);
+		else if (item == mItemFace30)
+			setMinFaceSize(0.3f);
+		else if (item == mItemFace20)
+			setMinFaceSize(0.2f);
+		else if (item == mItemType) {
+			mDetectorType = (mDetectorType + 1) % mDetectorName.length;
+			item.setTitle(mDetectorName[mDetectorType]);
+			setDetectorType(mDetectorType);
+		}
+		return true;
+	}
+
+	/**
+	 * Sets the minimum threshold for a face
+	 * 
+	 * @param faceSize
+	 */
+	private void setMinFaceSize(float faceSize) {
+		mRelativeBodySize = faceSize;
+		mAbsoluteBodySize = 0;
+	}
+
+	/**
+	 * Sets whether to use a native detector or the android java detector.
+	 * 
+	 * @param type
+	 */
+	private void setDetectorType(int type) {
+		if (mDetectorType != type) {
+			mDetectorType = type;
+
+			if (type == NATIVE_DETECTOR) {
+				Log.i("", "Detection Based Tracker enabled");
+				mNativeDetector.start();
+			} else {
+				Log.i("", "Cascade detector enabled");
+				mNativeDetector.stop();
+			}
+		}
 	}
 }

@@ -22,4 +22,7 @@
 <fullyQualifiedTypeName name="org.opencv.video.BackgroundSubtractorMOG"/>
 <fullyQualifiedTypeName name="org.opencv.core.Rect"/>
 <fullyQualifiedTypeName name="org.opencv.core.Size"/>
+<fullyQualifiedTypeName name="org.opencv.core.Point"/>
+<fullyQualifiedTypeName name="com.cwardcode.TranTracker.DetectionBasedTracker"/>
+<fullyQualifiedTypeName name="com.cwardcode.TranTracker.R.id"/>
 </qualifiedTypeNameHistroy>

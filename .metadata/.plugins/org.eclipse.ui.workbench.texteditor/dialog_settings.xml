@@ -9,22 +9,23 @@
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="true" key="wrap"/>
-		<item value="false" key="casesensitive"/>
+		<item value="true" key="casesensitive"/>
 		<item value="false" key="isRegEx"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="Canvas" key="selection"/>
+		<item value="Body" key="selection"/>
 		<list key="findhistory">
+			<item value="numP"/>
+			<item value="Face"/>
+			<item value="SetMinFace"/>
 			<item value="mRgba"/>
 			<item value="Canvas"/>
 			<item value="canvas"/>
 			<item value="mcam"/>
 			<item value="mrg"/>
-			<item value="mr"/>
-			<item value="mrbga"/>
-			<item value="fps"/>
 		</list>
 		<list key="replacehistory">
+			<item value="Body"/>
 		</list>
 	</section>
 </section>
