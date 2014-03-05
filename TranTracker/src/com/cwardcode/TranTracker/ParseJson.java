@@ -59,7 +59,7 @@ public class ParseJson {
      * @param method http request method
      * @param params http request params
      * */
-    public String makeServiceCall(String url, int method,
+	public String makeServiceCall(String url, int method,
                                   List<NameValuePair> params) {
         try {
             // http client
@@ -95,7 +95,7 @@ public class ParseJson {
         } catch (ClientProtocolException e) {
         	Toast.makeText(TranTracker.getAppContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
         } catch (IOException e) {
-        	Toast.makeText(TranTracker.getAppContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+        	Log.e(this.getClass().getName(), "Could not access server. Are you online?");
         }
 
         try {

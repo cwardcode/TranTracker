@@ -52,7 +52,7 @@ public class SplashActivity extends Activity {
 	private void gotoNextScreen()
 	{
 		//Start screen menu1
-		Intent menu = new Intent(this, com.cwardcode.TranTracker.TranTracker.class);
+		Intent menu = new Intent(this, TranTracker.class);
     	this.startActivity(menu);
     	this.finish();
 

@@ -25,7 +25,10 @@ import org.opencv.core.Size;
 import org.opencv.objdetect.CascadeClassifier;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -66,6 +69,8 @@ public class TranTracker extends Activity implements
 	private int mDetectorType = JAVA_DETECTOR;
 	/** Holds current application context. */
 	private static Context context;
+	/** Holds alert notifying user of no network */
+	private static Builder noNetworkAlert;
 	/** Intent to hold sendLoc service. */
 	private Intent srvIntent;
 	/** Shows the current number of people in the frame */
@@ -159,6 +164,7 @@ public class TranTracker extends Activity implements
 	 * Pulls vehicle list from database.
 	 */
 	private class GetVehicles extends AsyncTask<Void, Void, Void> {
+		String json;
 
 		/**
 		 * Threaded processes, parses JSON output from server.
@@ -170,7 +176,7 @@ public class TranTracker extends Activity implements
 		@Override
 		protected Void doInBackground(Void... arg0) {
 			ParseJson jsonParser = new ParseJson();
-			String json = jsonParser.makeServiceCall(VID_URL, ParseJson.GET);
+			json = jsonParser.makeServiceCall(VID_URL, ParseJson.GET);
 
 			if (json != null) {
 				try {
@@ -189,10 +195,16 @@ public class TranTracker extends Activity implements
 
 			} else {
 				Log.e("JSON Data", "Didn't receive any data from server!");
+				this.cancel(true);
 			}
 
 			return null;
 		}
+
+		@Override
+		protected void onCancelled() {
+			noNetworkAlert.show();
+		};
 
 		/**
 		 * After main thread has finished, populate spinner with vehicles.
@@ -254,6 +266,10 @@ public class TranTracker extends Activity implements
 		}
 	}
 
+	public static void showDialog() {
+		noNetworkAlert.show();
+	}
+
 	/**
 	 * Called when the activity is first created.
 	 * 
@@ -266,6 +282,27 @@ public class TranTracker extends Activity implements
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 		TranTracker.context = getApplicationContext();
+
+		Intent intent = getIntent();
+		if (intent.hasExtra("exit")) {
+			finish();
+		}
+
+		noNetworkAlert = new AlertDialog.Builder(this).setTitle("No Network!")
+				.setPositiveButton("Exit",
+						new DialogInterface.OnClickListener() {
+							@Override
+							public void onClick(DialogInterface dialog,
+									int which) {
+								Intent intent = new Intent(TranTracker.context,
+										TranTracker.class);
+								intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+								intent.putExtra("exit", "true");
+								startActivity(intent);
+							}
+
+						});
+
 		peopleData = (TextView) findViewById(R.id.PeopleDataView);
 
 		mDetectorName = new String[2];
@@ -405,9 +442,9 @@ public class TranTracker extends Activity implements
 		}
 
 		Rect[] facesArray = faces.toArray();
-		//Draw rect around detected person. 
-		//TODO: label and track person so not counted twice.
-		//      Find way to send data to service.
+		// Draw rect around detected person.
+		// TODO: label and track person so not counted twice.
+		// Find way to send data to service.
 		for (int i = 0; i < facesArray.length; i++) {
 			Core.rectangle(mRgba, facesArray[i].tl(), facesArray[i].br(),
 					BODY_RECT_COLOR, 3);

@@ -3,18 +3,15 @@
 <fullyQualifiedTypeName name="org.opencv.core.Core"/>
 <fullyQualifiedTypeName name="android.os.AsyncTask"/>
 <fullyQualifiedTypeName name="com.cwardcode.TranTracker.TranTracker.GetCamera"/>
-<fullyQualifiedTypeName name="android.widget.Toast"/>
 <fullyQualifiedTypeName name="android.hardware.Camera"/>
 <fullyQualifiedTypeName name="android.graphics.Camera"/>
 <fullyQualifiedTypeName name="org.opencv.android.CameraBridgeViewBase"/>
 <fullyQualifiedTypeName name="org.opencv.android.CameraBridgeViewBase.CvCameraViewListener2"/>
 <fullyQualifiedTypeName name="android.graphics.Matrix"/>
-<fullyQualifiedTypeName name="android.os.Handler"/>
 <fullyQualifiedTypeName name="android.os.Parcelable"/>
 <fullyQualifiedTypeName name="android.os.Parcelable.Creator"/>
 <fullyQualifiedTypeName name="com.cwardcode.TranTracker.Vehicle"/>
 <fullyQualifiedTypeName name="android.content.Context"/>
-<fullyQualifiedTypeName name="com.cwardcode.TranTracker.TranTracker"/>
 <fullyQualifiedTypeName name="com.cwardcode.TranTracker.test.TranTrackerTest"/>
 <fullyQualifiedTypeName name="com.robotium.solo.Solo"/>
 <fullyQualifiedTypeName name="android.widget.Spinner"/>
@@ -25,4 +22,12 @@
 <fullyQualifiedTypeName name="org.opencv.core.Point"/>
 <fullyQualifiedTypeName name="com.cwardcode.TranTracker.DetectionBasedTracker"/>
 <fullyQualifiedTypeName name="com.cwardcode.TranTracker.R.id"/>
+<fullyQualifiedTypeName name="android.widget.Toast"/>
+<fullyQualifiedTypeName name="android.app.AlertDialog.Builder"/>
+<fullyQualifiedTypeName name="android.content.Intent"/>
+<fullyQualifiedTypeName name="android.widget.Button"/>
+<fullyQualifiedTypeName name="android.app.AlertDialog"/>
+<fullyQualifiedTypeName name="android.os.Handler"/>
+<fullyQualifiedTypeName name="android.content.DialogInterface.OnClickListener"/>
+<fullyQualifiedTypeName name="com.cwardcode.TranTracker.TranTracker"/>
 </qualifiedTypeNameHistroy>
