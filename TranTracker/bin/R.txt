@@ -17,6 +17,9 @@ int layout main 0x7f030001
 int raw haarcascade_frontalface_default 0x7f040000
 int raw haarcascade_fullbody 0x7f040001
 int raw haarcascade_mcs_upperbody 0x7f040002
+int raw haarcascade_upperbody 0x7f040003
+int raw lbpcascade_frontalface 0x7f040004
+int raw lbpcascade_profileface 0x7f040005
 int string app_name 0x7f060000
 int string buttonText 0x7f060008
 int string n1 0x7f060004

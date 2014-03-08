@@ -12,6 +12,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/GPSTracker$WebRegTest.coverage" NAME="WebRegTest Coverage Results" MODIFIED="1394037530131" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/GPSTracker$Unnamed.coverage" NAME="WebRegTest Coverage Results" MODIFIED="1390509836802" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
   <component name="CreatePatchCommitExecutor">
@@ -67,82 +68,95 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="base.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://C:/Python33/Lib/site-packages/django/db/backends/mysql/base.py">
+      <file leaf-file-name="404.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/404.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="0" selection-start="323" selection-end="323" vertical-scroll-proportion="0.0" vertical-offset="272" max-vertical-offset="9146">
+            <state line="3" column="11" selection-start="82" selection-end="82" vertical-scroll-proportion="-1.9615384" vertical-offset="0" max-vertical-offset="272">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="settings.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="settings.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/GPSTracker/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="12" selection-start="156" selection-end="156" vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="2992">
+            <state line="7" column="0" selection-start="144" selection-end="144" vertical-scroll-proportion="0.1450512" vertical-offset="0" max-vertical-offset="2958">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SeleniumTests.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SeleniumTests.py">
+      <file leaf-file-name="importlib.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/AppData/Roaming/Python/Python27/site-packages/django/utils/importlib.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="96" column="0" selection-start="5344" selection-end="5344" vertical-scroll-proportion="0.0" vertical-offset="796" max-vertical-offset="1683">
+            <state line="39" column="0" selection-start="1326" selection-end="1326" vertical-scroll-proportion="0.0" vertical-offset="179" max-vertical-offset="765">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Tutorial2Activity.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://C:/NVPACK/OpenCV-2.4.5-Tegra-sdk-r2/samples/tutorial-2-mixedprocessing/src/org/opencv/samples/tutorial2/Tutorial2Activity.java">
+      <file leaf-file-name="base.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/base.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="160" column="8" selection-start="5499" selection-end="5499" vertical-scroll-proportion="0.789177" vertical-offset="1765" max-vertical-offset="2669">
+            <state line="18" column="0" selection-start="716" selection-end="716" vertical-scroll-proportion="-11.769231" vertical-offset="0" max-vertical-offset="1394">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tracker/views.py">
+      <file leaf-file-name="contact.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/contact.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="6" selection-start="499" selection-end="499" vertical-scroll-proportion="0.0" vertical-offset="391" max-vertical-offset="1207">
+            <state line="2" column="0" selection-start="44" selection-end="44" vertical-scroll-proportion="-1.3076923" vertical-offset="0" max-vertical-offset="340">
+              <folding>
+                <marker date="1394038154112" expanded="false" signature="110:147" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="help.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/help.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="2" column="0" selection-start="44" selection-end="44" vertical-scroll-proportion="-1.3076923" vertical-offset="0" max-vertical-offset="425">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tests.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tracker/tests.py">
+      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="374">
+            <state line="2" column="0" selection-start="44" selection-end="44" vertical-scroll-proportion="-1.3076923" vertical-offset="0" max-vertical-offset="8143">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="chart.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/chart.html">
+      <file leaf-file-name="test.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/test.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="4" selection-start="49" selection-end="49" vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="476">
+            <state line="2" column="0" selection-start="44" selection-end="44" vertical-scroll-proportion="-1.3076923" vertical-offset="0" max-vertical-offset="9044">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="urls.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tracker/urls.py">
+      <file leaf-file-name="admin.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tracker/admin.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="221">
-              <folding />
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1071">
+              <folding>
+                <element signature="e#0#32#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="urls.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/GPSTracker/urls.py">
+      <file leaf-file-name="wsgi.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/GPSTracker/wsgi.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="23" selection-start="873" selection-end="873" vertical-scroll-proportion="0.0" vertical-offset="272" max-vertical-offset="391">
+            <state line="17" column="0" selection-start="685" selection-end="685" vertical-scroll-proportion="0.0" vertical-offset="111" max-vertical-offset="697">
               <folding />
             </state>
           </provider>
@@ -159,12 +173,21 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/GPSTracker/urls.py" />
-        <option value="$PROJECT_DIR$/templates/chart.html" />
         <option value="$PROJECT_DIR$/tracker/views.py" />
         <option value="$PROJECT_DIR$/tracker/test_location.py" />
-        <option value="$PROJECT_DIR$/GPSTracker/settings.py" />
         <option value="$PROJECT_DIR$/SeleniumTests.py" />
         <option value="C:/NVPACK/OpenCV-2.4.5-Tegra-sdk-r2/samples/tutorial-2-mixedprocessing/src/org/opencv/samples/tutorial2/Tutorial2Activity.java" />
+        <option value="$PROJECT_DIR$/templates/404.html" />
+        <option value="$PROJECT_DIR$/templates/about.html" />
+        <option value="$PROJECT_DIR$/templates/chart.html" />
+        <option value="$PROJECT_DIR$/templates/chat.html" />
+        <option value="$PROJECT_DIR$/templates/contact.html" />
+        <option value="$PROJECT_DIR$/templates/help.html" />
+        <option value="$PROJECT_DIR$/templates/index.html" />
+        <option value="$PROJECT_DIR$/templates/test.html" />
+        <option value="$PROJECT_DIR$/templates/base.html" />
+        <option value="$PROJECT_DIR$/GPSTracker/wsgi.py" />
+        <option value="$PROJECT_DIR$/GPSTracker/settings.py" />
       </list>
     </option>
   </component>
@@ -285,7 +308,7 @@
       <console-settings />
     </option>
   </component>
-  <component name="RunManager" selected="Django tests.WebRegTest">
+  <component name="RunManager" selected="Django server.GPSTracker">
     <configuration default="true" type="DjangoTestsConfigurationType" factoryName="Django tests">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -370,7 +393,27 @@
       <option name="PARAMETERS" value="" />
       <method />
     </configuration>
-    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
+    <configuration default="true" type="Python.DjangoServer" factoryName="Django server">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="GPSTracker" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
       <method />
     </configuration>
     <configuration default="true" type="tests" factoryName="Unittests">
@@ -396,27 +439,7 @@
       <option name="USE_PARAM" value="false" />
       <method />
     </configuration>
-    <configuration default="true" type="Python.DjangoServer" factoryName="Django server">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="GPSTracker" />
-      <option name="launchJavascriptDebuger" value="false" />
-      <option name="port" value="8000" />
-      <option name="host" value="" />
-      <option name="additionalOptions" value="" />
-      <option name="browserUrl" value="" />
-      <option name="runTestServer" value="false" />
-      <option name="runNoReload" value="false" />
-      <option name="useCustomRunCommand" value="false" />
-      <option name="customRunCommand" value="" />
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
       <method />
     </configuration>
     <configuration default="true" type="tests" factoryName="Doctests">
@@ -549,15 +572,16 @@
       <workItem from="1393461037489" duration="6000" />
       <workItem from="1393884708660" duration="1769000" />
       <workItem from="1393911012125" duration="2613000" />
+      <workItem from="1394037509240" duration="2476000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7530000" />
+    <option name="totallyTimeSpent" value="10006000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -567,7 +591,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37152034" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37102085" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -603,76 +627,22 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="2" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/GPSTracker/settings.py</url>
+          <line>88</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/GPSTracker/settings.py</url>
+          <line>82</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="9" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/tracker/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="221">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GPSTracker/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="23" selection-start="873" selection-end="873" vertical-scroll-proportion="0.0" vertical-offset="272" max-vertical-offset="391">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python33/Lib/site-packages/django/db/backends/mysql/base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="0" selection-start="323" selection-end="323" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="9146">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GPSTracker/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="12" selection-start="156" selection-end="156" vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="2975">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SeleniumTests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="96" column="0" selection-start="5344" selection-end="5344" vertical-scroll-proportion="0.0" vertical-offset="1632" max-vertical-offset="1683">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tracker/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="6" selection-start="499" selection-end="499" vertical-scroll-proportion="0.0" vertical-offset="391" max-vertical-offset="1207">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tracker/tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="374">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tracker/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="31" selection-start="681" selection-end="681" vertical-scroll-proportion="0.0" vertical-offset="340" max-vertical-offset="1071" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/chat.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="374" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/chart.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="4" selection-start="49" selection-end="49" vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="476">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tracker/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="221">
@@ -866,39 +836,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tracker/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="556">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GPSTracker/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="23" selection-start="873" selection-end="873" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/chat.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="561" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/chart.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="4" selection-start="49" selection-end="49" vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="476">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tracker/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="6" selection-start="499" selection-end="499" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1156">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tracker/tests.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="908">
@@ -906,30 +843,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tracker/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="31" selection-start="681" selection-end="681" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1071" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GPSTracker/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="12" selection-start="156" selection-end="156" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2958">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/NVPACK/OpenCV-2.4.5-Tegra-sdk-r2/samples/color-blob-detection/src/org/opencv/samples/colorblobdetect/ColorBlobDetectionActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="100" column="51" selection-start="3375" selection-end="3431" vertical-scroll-proportion="0.0" vertical-offset="1190" max-vertical-offset="2907">
-          <folding />
-        </state>
+        <state line="100" column="51" selection-start="3375" selection-end="3431" vertical-scroll-proportion="0.0" vertical-offset="1190" max-vertical-offset="2907" />
       </provider>
     </entry>
     <entry file="file://C:/NVPACK/OpenCV-2.4.5-Tegra-sdk-r2/samples/color-blob-detection/src/org/opencv/samples/colorblobdetect/ColorBlobDetector.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="28" selection-start="2284" selection-end="2284" vertical-scroll-proportion="0.17587373" vertical-offset="762" max-vertical-offset="1649">
-          <folding />
-        </state>
+        <state line="69" column="28" selection-start="2284" selection-end="2284" vertical-scroll-proportion="0.17587373" vertical-offset="762" max-vertical-offset="1649" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/SeleniumTests.py">
@@ -941,7 +862,132 @@
     </entry>
     <entry file="file://C:/NVPACK/OpenCV-2.4.5-Tegra-sdk-r2/samples/tutorial-2-mixedprocessing/src/org/opencv/samples/tutorial2/Tutorial2Activity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="160" column="8" selection-start="5499" selection-end="5499" vertical-scroll-proportion="0.789177" vertical-offset="1765" max-vertical-offset="2669">
+        <state line="160" column="8" selection-start="5499" selection-end="5499" vertical-scroll-proportion="0.0" vertical-offset="1761" max-vertical-offset="2669">
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/about.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="0" selection-start="44" selection-end="44" vertical-scroll-proportion="-1.3076923" vertical-offset="0" max-vertical-offset="595">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/chat.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="0" selection-start="44" selection-end="44" vertical-scroll-proportion="-1.3076923" vertical-offset="0" max-vertical-offset="391">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/contact.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="0" selection-start="44" selection-end="44" vertical-scroll-proportion="-1.3076923" vertical-offset="0" max-vertical-offset="340">
+          <folding>
+            <marker date="1394038154112" expanded="false" signature="110:147" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/help.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="0" selection-start="44" selection-end="44" vertical-scroll-proportion="-1.3076923" vertical-offset="0" max-vertical-offset="425">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="0" selection-start="44" selection-end="44" vertical-scroll-proportion="-1.3076923" vertical-offset="0" max-vertical-offset="8143">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/test.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="0" selection-start="44" selection-end="44" vertical-scroll-proportion="-1.3076923" vertical-offset="0" max-vertical-offset="9044">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/chart.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="0" selection-start="44" selection-end="44" vertical-scroll-proportion="-1.3076923" vertical-offset="0" max-vertical-offset="510">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="0" selection-start="716" selection-end="716" vertical-scroll-proportion="-11.769231" vertical-offset="0" max-vertical-offset="1394">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tracker/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="53" column="0" selection-start="1362" selection-end="1362" vertical-scroll-proportion="0.0" vertical-offset="337" max-vertical-offset="1156">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tracker/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="556">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tracker/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1071">
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tracker/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="31" selection-start="681" selection-end="681" vertical-scroll-proportion="0.03107861" vertical-offset="306" max-vertical-offset="1054">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GPSTracker/wsgi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="0" selection-start="685" selection-end="685" vertical-scroll-proportion="0.0" vertical-offset="111" max-vertical-offset="697">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GPSTracker/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="23" selection-start="873" selection-end="873" vertical-scroll-proportion="0.43515357" vertical-offset="0" max-vertical-offset="586">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/404.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="11" selection-start="82" selection-end="82" vertical-scroll-proportion="-1.9615384" vertical-offset="0" max-vertical-offset="272">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Roaming/Python/Python27/site-packages/django/utils/importlib.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="0" selection-start="1326" selection-end="1326" vertical-scroll-proportion="0.0" vertical-offset="179" max-vertical-offset="765">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GPSTracker/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="0" selection-start="144" selection-end="144" vertical-scroll-proportion="0.1450512" vertical-offset="0" max-vertical-offset="2958">
           <folding />
         </state>
       </provider>

@@ -1,11 +1,12 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
     <title>Where's Da Bus?</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link rel="shortcut icon" href="../static/images/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="../static/images/favicon.ico" type="image/x-icon">
-    <link id="main-css" href="../static/css/main.css" rel="stylesheet"/>
+    <link rel="icon" href="{% static 'images/logo.png' %}" type="image/x-icon">
+    <link id="main-css" href="{% static 'css/main.css' %}" rel="stylesheet"/>
     <meta http-equiv="description" content="">
     <meta http-equiv="keywords" content="">
     {% block header %}

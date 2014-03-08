@@ -5,7 +5,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -23,7 +22,7 @@ import org.opencv.core.Rect;
 import org.opencv.core.Scalar;
 import org.opencv.core.Size;
 import org.opencv.objdetect.CascadeClassifier;
-
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
@@ -31,6 +30,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -50,6 +50,7 @@ import android.widget.TextView;
  * @author Chris Ward
  * @version September 9, 2013
  */
+@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class TranTracker extends Activity implements
 		AdapterView.OnItemSelectedListener, CvCameraViewListener2 {
 
@@ -114,7 +115,7 @@ public class TranTracker extends Activity implements
 					// Create 'cascade' directory on android device
 					File cascadeDir = getDir("cascade", Context.MODE_PRIVATE);
 					mCascadeFile = new File(cascadeDir,
-							"haarcascade_mcs_upperbody.xml");
+							"haarcascade_upperbody.xml");
 					FileOutputStream os = new FileOutputStream(mCascadeFile);
 
 					byte[] buffer = new byte[4096];
@@ -321,6 +322,7 @@ public class TranTracker extends Activity implements
 		mOpenCvCameraView = (CameraBridgeViewBase) findViewById(R.id.cameraView);
 		mOpenCvCameraView.setVisibility(SurfaceView.VISIBLE);
 		mOpenCvCameraView.setCvCameraViewListener(this);
+
 	}
 
 	/**
