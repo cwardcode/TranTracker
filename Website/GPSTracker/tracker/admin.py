@@ -1,4 +1,6 @@
 from django.contrib import admin
+from django.shortcuts import render_to_response
+from chartit import DataPool, Chart 
 from tracker.models import Location
 from tracker.models import Vehicle
 from tracker.models import PeopleCount
@@ -40,6 +42,40 @@ class StopLocationAdmin(admin.ModelAdmin):
 
 admin.site.register(StopLocation, StopLocationAdmin)
 
+class ChartChangeList(admin.ModelAdmin):
+    list_display = ('StopID', 'VehID','Date', 'Time', 'Count',)
+    list_filter = ('StopID',)
+
+    def changelist_view(self, request, extra_context=None):
+        ridershipdata = \
+            DataPool(
+                series=
+                [{'options': {
+                    'source': PeopleCount.objects.all()},
+                  'terms': [
+                      'Count',
+                      'StopID',
+                      'LocID']}
+                ])
+        riderchart = Chart(
+            datasource=ridershipdata,
+            series_options=
+            [{'options': {
+                'type': 'pie',
+                'stacking': False},
+              'terms': {
+                  'StopID': [
+                      'Count']
+              }}],
+            chart_options=
+            {'title': {
+                'text': 'Ridership Data'},
+             'xAxis': {
+                 'title': {
+                     'text': 'Rider Count'}}},
+                 x_sortf_mapf_mts=(None, stopNames, False))
+
+        return render_to_response('chart.html', {'ridershipChart': riderchart})
 
 class PeopleCountAdmin(admin.ModelAdmin):
     list_display = ('CountID', 'StopID', 'VehID', 'LocID', 'Date', 'Time',
@@ -47,7 +83,7 @@ class PeopleCountAdmin(admin.ModelAdmin):
     search_fields = ('StopID', 'Date', 'Time', 'Count')
     list_filter = ('Time',)
 
-    readonly_fields = ('CountID', 'Date', 'Time', 'peoplecount_chart')
+    readonly_fields = ('CountID', 'StopID', 'VehID', 'LocID','Count','Date', 'Time', 'peoplecount_chart')
     fieldsets = [
         ('PeopleCount', {'fields': ['CountID', 'StopID', 'VehID', 'LocID', 'Date', 'Time',
                                     'Count', ]}),

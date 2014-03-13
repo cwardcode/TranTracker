@@ -168,3 +168,10 @@ LOGGING = {
         },
     }
 }
+
+# Configure Django Suit
+SUIT_CONFIG = {
+    'ADMIN_NAME': 'TranTracker Admin',
+    'HEADER_DATE_FORMAT': 'l, j. F Y',
+    'HEADER_TIME_FORMAT': 'H:i',
+}
