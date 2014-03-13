@@ -1,0 +1,37 @@
+<script type="text/javascript">
+var chart;
+jQuery(document).ready(function() {
+    chart = new Highcharts.Chart({
+        chart: {
+            renderTo: 'peoplecount_container',
+            defaultSeriesType: 'pie',
+        },
+        title: {
+            text: 'Ridership Data',
+            x: -20 //center
+        },
+        tooltip: {
+            formatter: function() {
+            return ''+ this.series.name + ':<br>'+ this.point.name + ":"
+                     + this.point.y
+            }
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'top',
+            x: -10,
+            y: 100,
+            borderWidth: 0
+        },
+        series: [{
+            name: 'Total Riders',
+            //data: [{{ tot_riders|join:"," }}]
+            data: [['Just picked up',{{ tot_riders|join:"," }}],
+                   ['At location', {{ tot_riders_at_stop|join:"," }}]]
+        }]
+    });
+
+});
+</script>
+<div id="peoplecount_container" style="width: 700px;height: 500px"></div>

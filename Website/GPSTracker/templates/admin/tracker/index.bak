@@ -21,6 +21,7 @@
                 {% blocktrans with name=app.name %}{{ name }}{% endblocktrans %}
             </a>
         </caption>
+    <p>{% trans "Hello world!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!." %}</p>
         {% for model in app.models %}
             <tr>
             {% if model.admin_url %}
@@ -43,7 +44,6 @@
             </tr>
         {% endfor %}
         </table>
-    <p>{% trans "Hello world!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!." %}</p>
         </div>
     {% endfor %}
 {% else %}

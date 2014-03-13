@@ -47,11 +47,11 @@ class PeopleCountAdmin(admin.ModelAdmin):
     search_fields = ('StopID', 'Date', 'Time', 'Count')
     list_filter = ('Time',)
 
-    readonly_fields = ('CountID', 'Date', 'Time', 'peoplecountchart')
+    readonly_fields = ('CountID', 'Date', 'Time', 'peoplecount_chart')
     fieldsets = [
         ('PeopleCount', {'fields': ['CountID', 'StopID', 'VehID', 'LocID', 'Date', 'Time',
                                     'Count', ]}),
-        ('PeopleCount Chart', {'fields': ['peoplecountchart', ]}), ]
+        ('PeopleCount Chart', {'fields': ['peoplecount_chart', ]}), ]
 
 admin.site.register(PeopleCount, PeopleCountAdmin)
 

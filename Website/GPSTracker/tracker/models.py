@@ -33,16 +33,25 @@ class PeopleCount(models.Model):
 
     Date.editable = True
     Time.editable = True
+    def totalPeople():
+        totPeople = 0
+        for model in PeopleCount:
+            totPeople += model.Count
+        return tot_people
 
     def __unicode__(self):
         return str(self.CountID)
 
-    def peoplecountchart(self):
-        lu = { 'categories' : self.StopID.objects.all(),\
-             'count' : self.Count,}
+    def peoplecount_chart(self):
+        #        lu = { 'categories' : self.StopID.objects.all(),\
+                #     'count' : self.Count,}
 
-        return render_to_string('admin/tracker/peoplecount_chart.html', lu )
-    peoplecountchart.allow_tags = True
+       lu = { 'categories' : [self.StopID],\
+               'tot_riders' : [self.Count],\
+               'tot_riders_at_stop' : [200]} 
+
+       return render_to_string('admin/tracker/peoplecount/peoplecount_chart.html', lu )
+    peoplecount_chart.allow_tags = True
 
 class StopLocation(models.Model):
     StopID = models.AutoField(primary_key=True)
