@@ -82,8 +82,9 @@ class PeopleCountAdmin(admin.ModelAdmin):
                     'Count',)
     search_fields = ('StopID', 'Date', 'Time', 'Count')
     list_filter = ('Time',)
-
-    readonly_fields = ('CountID', 'StopID', 'VehID', 'LocID','Count','Date', 'Time', 'peoplecount_chart')
+    #Re-enable this when we can automatically post ridership counts from app
+    #readonly_fields = ('CountID', 'StopID', 'VehID', 'LocID','Count','Date', 'Time', 'peoplecount_chart')
+    readonly_fields = ('CountID', 'Date', 'Time', 'peoplecount_chart')
     fieldsets = [
         ('PeopleCount', {'fields': ['CountID', 'StopID', 'VehID', 'LocID', 'Date', 'Time',
                                     'Count', ]}),
