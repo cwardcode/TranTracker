@@ -1,10 +1,20 @@
 package edu.wcu.trackerapp;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
+
+import org.xmlpull.v1.XmlPullParserException;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -15,8 +25,12 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
+
+import edu.wcu.trackerapp.MarkerParser.MarkerDef;
 
 /**
  * The application's map screen and main page.
@@ -72,6 +86,82 @@ public class Map extends Activity implements OnClickListener {
 	
 	private Button about;
 
+	private List<MarkerDef> markerDefs;
+	
+	private List<Marker> markers;
+	
+	private class DownloadXmlTask extends AsyncTask<String, Void, String> {
+		@Override
+		protected String doInBackground(String... urls) {
+			try {
+				return loadXmlFromNetwork(urls[0]);
+			} catch (IOException ex) {
+				//TODO: Handle this properly with strings from resources
+				return "IO Error";
+			} catch (XmlPullParserException ex) {
+				return "Parser Erorr";
+			}
+		}
+		
+		@Override
+		protected void onPostExecute(String result) {
+			addMarkers();
+		}
+		
+		private String loadXmlFromNetwork(String urlString) throws XmlPullParserException, IOException {
+			InputStream stream = null;
+			MarkerParser parser = new MarkerParser();
+			
+			try {
+				stream = downloadUrl(urlString);
+				parser.parseXML(stream);
+				markerDefs = parser.getMarkerList();
+			} finally {
+				if (stream != null) {
+					stream.close();
+				}
+			}
+			
+			return "success";
+			
+		}
+		
+		private InputStream downloadUrl(String urlString) throws IOException {
+			URL url = new URL(urlString);
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			conn.setReadTimeout(10000);
+			conn.setConnectTimeout(15000 /* milliseconds */);
+		    conn.setRequestMethod("GET");
+		    conn.setDoInput(true);
+		    conn.connect();
+		    return conn.getInputStream();
+		}
+		
+		private void addMarkers() {
+			int id = 0;
+			String name = "";
+			double vLat = 0.0;
+			double vLong = 0.0;
+			double speed = 0.0;
+			
+			String info = "";
+			
+			for (MarkerDef def : markerDefs) {
+				id = def.id;
+				name = def.title;
+				vLat = def.vLat;
+				vLong = def.vLong;
+				speed = def.speed;
+				
+				info = "ID: " + id + " Name: " + name + " Speed: " + speed;
+				
+				googleMap.addMarker(new MarkerOptions()
+				                    .position(new LatLng(vLat, vLong))
+				                    .title(info));
+			}
+		}
+	}
+	
 	/**
 	 * Initializes the activity.
 	 * 
@@ -98,6 +188,15 @@ public class Map extends Activity implements OnClickListener {
 		about.setOnClickListener(this);
 		help.setOnClickListener(this);
 		
+		//Initializing it here will keep the app from breaking under 
+		//certain errors. Since I'm too lazy to write log messages
+		//right now and I want to see these errors, I'm going to let it break.
+		
+		//markerDefs = new ArrayList<MarkerDef>();
+		markers = new ArrayList<Marker>();
+		
+		retrieveData();
+		
 		try {
 			// Loading map
 			initializeMap();
@@ -107,6 +206,24 @@ public class Map extends Activity implements OnClickListener {
 		}
 		
 	
+	}
+	
+	public void retrieveData() {
+		if (isConnected()) {
+			new DownloadXmlTask().execute(XMLURL);
+		} else {
+			//TODO: Handle error here
+		}
+	}
+	
+	private boolean isConnected() {
+		ConnectivityManager cm = 
+				(ConnectivityManager)this.getSystemService(this.CONNECTIVITY_SERVICE);
+		
+		NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+		boolean isConnected = activeNetwork != null &&
+				              activeNetwork.isConnectedOrConnecting();
+		return isConnected;
 	}
 	
 	
