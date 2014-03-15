@@ -104,7 +104,11 @@ public class MarkerParser {
 	private void readFeed(XmlPullParser parser) throws XmlPullParserException, IOException {
 		
 		parser.require(XmlPullParser.START_TAG, ns, "markers");
+<<<<<<< HEAD
 		//parser.require(XmlPullParser.END_TAG, ns, "/markers");
+=======
+		parser.require(XmlPullParser.END_TAG, ns, "markers");
+>>>>>>> 97abb18efbc44ee3feef38c78dd8e49d88211597
 		while (parser.next() != XmlPullParser.END_TAG) {
 			if (parser.getEventType() != XmlPullParser.START_TAG) {
 				continue;
