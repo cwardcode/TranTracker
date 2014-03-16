@@ -174,7 +174,9 @@ public class Chat extends Activity implements OnClickListener, MessageListener {
 		key.setOnClickListener(this);
 		about.setOnClickListener(this);
 		help.setOnClickListener(this);
-
+		
+		//Disable anyone from pressing "send" until connected.
+		sendButton.setEnabled(false);
 		new ConnectToNetwork().execute("");
 	}
 	/**
@@ -196,6 +198,7 @@ public class Chat extends Activity implements OnClickListener, MessageListener {
 			netInter = new NetworkInterface(socket);
 			//prompt for username
 			DialogFragment dialog = new HandleDialogFragment();
+			dialog.setCancelable(false);
 			dialog.show(getFragmentManager(), "username");
 			runOnUiThread(new Runnable() {
 				@Override

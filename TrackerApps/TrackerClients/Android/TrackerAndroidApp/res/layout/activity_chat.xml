@@ -2,14 +2,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/dark_grey"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
     android:weightSum="10"
     tools:context=".Chat" >
-    
+
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="0dp" 
+        android:layout_height="0dp"
         android:layout_weight="1"
         android:weightSum="4" >
 
@@ -19,12 +21,14 @@
             android:layout_height="fill_parent"
             android:layout_weight="1"
             android:text="@string/title_activity_map" />
-		<Button
+
+        <Button
             android:id="@+id/chatChatButton"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
             android:layout_weight="1"
             android:text="@string/title_activity_chat" />
+
         <Button
             android:id="@+id/chatKeyButton"
             android:layout_width="0dp"
@@ -45,44 +49,46 @@
             android:layout_height="fill_parent"
             android:layout_weight="1"
             android:text="@string/title_activity_about" />
-
     </LinearLayout>
- 
+
     <ScrollView
         android:id="@+id/chatScroll"
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="8.96" >
 
-	    <TextView 
-	        android:id="@+id/outputTextView"
-	        android:layout_width="fill_parent" 
-	        android:layout_height="wrap_content" 
-	        android:textColor="#FFFFFF"/>
-	</ScrollView>
+        <TextView
+            android:id="@+id/outputTextView"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF" />
+    </ScrollView>
 
-	<LinearLayout 
-	    android:id="@+id/inputLinLayout"
-	    android:orientation="horizontal" 
-	    android:layout_width="fill_parent"
-	    android:layout_height="wrap_content" 
-	    android:paddingLeft="5dp" 
-	    android:paddingRight="5dp"
-	    android:paddingBottom="5dp"
-	    android:baselineAligned="true">
-	    <EditText 
-	        android:layout_weight="1" 
-	        android:id="@+id/inputEditText"
-	        android:hint="@string/hint"
-	        android:layout_height="45dp" 
-	        android:layout_width="0dip" >
-	    </EditText>
-	    <Button 
-	        android:text="@string/send"
-	        android:layout_height="45dp" 
-	        android:layout_width="wrap_content"
-	        android:onClick="onSendClicked"
-	        android:id="@+id/sendBtn">
-	    </Button>
+    <LinearLayout
+        android:id="@+id/inputLinLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="true"
+        android:orientation="horizontal"
+        android:paddingBottom="5dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp" >
+
+        <EditText
+            android:id="@+id/inputEditText"
+            android:layout_width="0dip"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:hint="@string/hint" >
+        </EditText>
+
+        <Button
+            android:id="@+id/sendBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:onClick="onSendClicked"
+            android:text="@string/send" >
+        </Button>
     </LinearLayout>
+
 </LinearLayout>
