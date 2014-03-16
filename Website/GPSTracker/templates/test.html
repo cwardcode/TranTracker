@@ -87,51 +87,6 @@
                     ]
                 }
             ];
-
-            var style = [
-                {
-                    "stylers": [
-                        {
-                            "elementType": "geometry.fill",
-                            "stylers": [
-                                { "color": "#c1bc95" }
-                            ]
-                        },
-                        {
-                            "elementType": "labels.text.stroke",
-                            "stylers": [
-                                { "color": "#c1bc94" }
-                            ]
-                        },
-                        {
-                            "featureType": "road",
-                            "elementType": "geometry",
-                            "stylers": [
-                                { "color": "#000000" }
-                            ]
-                        },
-                        {
-                            "featureType": "road",
-                            "elementType": "labels.text.fill",
-                            "stylers": [
-                                { "color": "#000000" }
-                            ]
-                        },
-                        {
-                            "featureType": "landscape",
-                            "elementType": "geometry.fill",
-                            "stylers": [
-                                { "invert_lightness": true },
-                                { "color": "#000000" }
-                            ]
-                        },
-                        {
-                            "featureType": "landscape",
-                            "elementType": "geometry"  }
-                    ]
-                }
-            ];
-
             //Shuttle marker image
             image = '/static/images/shuttle.png';
             //Location at which to center map.
@@ -146,7 +101,7 @@
                 }
             }
             //Our styled map object
-            var styledMap = new google.maps.StyledMapType(style, {name: "Black-White"});
+            var styledMap = new google.maps.StyledMapType(styles, {name: "Black-White"});
             //Apply mapOptions to map element
             map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
 
@@ -171,7 +126,7 @@
          */
         function clearShuttleMarkers() {
             for (var i = 0; i < markersArray.length; i++) {
-                markersArray[i].mapMarker.setMap(null);
+                markersArray[i].setMap(null);
             }
             markersArray = [];
         }
@@ -192,26 +147,25 @@
                 var markers = xml.documentElement.getElementsByTagName("marker");
                 //for each marker, get info from its tag and build marker.
                 for (var i = 0; i < markers.length; i++) {
-                    var vid = markers[i].getAttribute("VID");
-                    var name = markers[i].getAttribute("title");
-                    var speed = markers[i].getAttribute("speed");
+                    //get child nodes of marker
+                    var vid = markers[i].childNodes[0].textContent;
+                    var name =  markers[i].childNodes[1].textContent;
                     //The location where the marker is to be placed.
                     var point = new google.maps.LatLng(
-                            parseFloat(markers[i].getAttribute("latitude")),
-                            parseFloat(markers[i].getAttribute("longitude")));
+                            parseFloat(markers[i].childNodes[2].textContent),
+                            parseFloat(markers[i].childNodes[3].textContent));
+                    var speed = markers[i].childNodes[4].textContent;
                     //The info that is displayed when a marker is clicked.
-                    var html = "<br> VID: " + vid + "<br>speed: " +
+                    var html = "<b>" + name + "</b>" + "<br>speed: " +
                             Math.round(speed * METER_CONVERS) + " mph";
 
                     //The marker object to be placed on the map.
-                    var marker = new Object();
-                        marker.mapMarker =  new google.maps.Marker({
-                            map: map,
-                            position: point,
-                            icon: image,
-                            title: name
-                        });
-                        marker.isOpen = false;
+                    var marker = new google.maps.Marker({
+                        map: map,
+                        position: point,
+                        icon: image,
+                        title: name
+                    });
                     //Add each marker to the array of markers.
                     markersArray.push(marker);
                     //Apply markers to map.
@@ -259,17 +213,17 @@
             var title7 = 'Walker';
             var title8 = 'The Village';
             var title9 = 'Norton';
-            var title10 = 'University Center Rear';
-            var title11 = 'Library Front';
+            var title10 = 'UC';
+            var title11 = 'Hunter Library';
             var title12 = 'Moore';
-            var title13 = 'Reynolds/Robertson';
+            var title13 = 'Reynolds';
             var title14 = 'Mckee';
             var title15 = 'Albright/Benton';
             var title16 = 'Harrill';
             var title17 = 'Central';
             var title18 = 'OneStop';
             var title19 = 'Coulter';
-            var title20 = 'C.A.T./Kimmell';
+            var title20 = 'Kimmell';
 
             //Adds each stop as a marker on the map.
             addStop(stops, map, loc1, title1);
@@ -310,7 +264,7 @@
                 icon: stopMarker,
                 title: title
             });
-            //Add each stop to the stops array.
+//Add each stop to the stops array.
             stops.push(marker);
         }
 
@@ -318,18 +272,18 @@
          * Initializes all routes that will appear on the map.
          */
         function initRoutes() {
-            //The All Campus Shuttle encoded route.
+//The All Campus Shuttle encoded route.
             var allCampusPath = google.maps.geometry.encoding.decodePath('cbnvE`muzNVCVJTPP@XCLWpBeC@KQ[@O`CsC^Uj@G`@@pATtD_@HpAqCXIGY_Ai@Ks@M_@Ak@FKFSLaCrCAJP^AJsBdCKVYBQAUQWKWBOH?DxCzC?JYd@_@T{@b@mLpDiCh@gAHy@Oc@r@mBjBqC|DEDaEsGk@m@[W}@SqAOiBlJ[u@Uu@[sBMY][m@ScAMk@I_ACo@JiBb@_AFcF}@}B]c@RUX}@zDIPeAlAU^KZAj@@|ABf@NxAGb@@TTJD?DGBI?OGQYI@GOyACg@AyABo@H[T_@dAmAHQ|@{DTYb@S|B\\bF|@~@GhBc@n@K~@B@QPcAGwBScDOi@[oCISOScAg@_@IaA?[Gi@_@_AsAeAsABGnByBxBkBnAtA@i@IqA@oAJm@l@_BRYlAu@vAUj@kAb@WPQHQJg@JaBNg@JW?Ga@iADKDCx@[Y^MB[N^`A?FKVOf@KdBKb@IPQRc@Ti@jARTR`@VbAB^@vAFt@QjBI`Ba@dASVQJQFW@[GSI_@[IRDXRPv@b@N@VCXMLMHQ@a@BIf@w@x@oBvBcEhB_ExAoC`B}A`@UAUe@aBMUMMKAI?o@h@]^a@^_Ad@Z`BB@l@LJBTX@NeArBiB|DwBbEc@dAEPHBNX`@|Af@~B\\nAVh@l@d@VH|@FfBAl@RfCbBZHjACpA@R@b@N\\XPZRl@ZbBDd@AlAEb@@J');
-            //The HHS Express Shuttle encoded route.
+//The HHS Express Shuttle encoded route.
             var hhsPath = google.maps.geometry.encoding.decodePath('}invE|tyzN[sAHoBIoCaAqFg@aE{@gEoA}Gk@eFe@oB_@uAUoBCaBIgC?cD@_CGmC_@eCoAqEgBsGkLDCo@v@}CIOEMAIc@a@SQcB}@m@kA[s@Uo@O_AKu@Sa@e@[c@OgBQ@[Nw@A{@IuAIqA');
-            //The Off-Campus North Shuttle encoded route.
+//The Off-Campus North Shuttle encoded route.
             var offNorthPath = google.maps.geometry.encoding.decodePath('oyovEnsuzNEcAOc@QwAQcAIQSQDQXUZKh@KlASVK`@]p@u@t@c@[sASe@QM[h@e@r@_@Rg@Hi@IYK[a@uA{B]c@Y]WOa@q@Wg@Sg@Ke@?sAC}A[k@m@]e@q@gBrCkA~@Kd@[h@_@Vi@Di@Te@p@oDxE_AfASHi@Fm@Ae@KYOSjEEhB@f@@j@Bl@Hz@?r@G^Ib@Kd@Eb@Cb@Cv@E~BCdA?REjAGlAGzBIbCLhA\\dBInBQhA?ANeAFsAB]Mo@Qs@MgAB_AFkADuBFgABm@@_@BeABwABkA@i@BY@YFa@Ha@Ha@F]Ac@Co@G_AAUAk@?g@Bs@BaAJyBDy@[YUWEa@Kw@EUMm@GOUm@]aA]eAMg@Ow@a@sBq@gDSaAQ_@CKm@m@gAaAkA{@eAy@{@g@c@Qc@GYEe@HUP[`@Sd@K^AlA?RCrAa@vCKvAUvAMpAIpCSpBu@K');
-            //The Off-Campus South Shuttle encoded  route.
+//The Off-Campus South Shuttle encoded  route.
             var offSouthPath = google.maps.geometry.encoding.decodePath('myovErsuzNGeAMi@M_AM_ASi@SULURSfDm@xAyAp@c@|@bEx@hA~@XdD@bAh@b@[t@DzCb@pDSrCw@|Cu@zBI^m@`@?`DdAt@D~AwBvE_FnCoBfAo@pBs@fBFfBj@zCH|BMl@KM{AiDmDwDjAYOA[~BiCh@yASu@e@Kg@vAcAfA_A^sAJtAS`Aa@n@o@\\o@Zy@\\DVn@g@`B{BjC@f@VLfDeAZCzC`DNbBhBK`CYdDS~Ao@`De@hCRt@TgElCqIbCgKhCiKbDgCrBsE`EeBlBhAzAlA`AKF_Aw@qAcBgBzBmLlPgCvBoEzAwBZ{DHjAlEhBvGh@fCB|IClAJnCHdCRvA~@rDhAbJhAdFnAjIz@bFFfCE?E_C_AuFe@kDc@kC_AkEOo@o@eFQeBcAyDSuAIuCKmC@_B?iD?kCg@oCiBwGoAsEeE@eEJY@Gs@x@cDKO?SYUQUq@]_Ag@m@mA_@o@Oo@O}@My@Q_@]]k@Ok@Gg@EYEPkA@c@E}@G}@??EcA');
-            //The Village Shuttle encoded route.
+//The Village Shuttle encoded route.
             var villagePath = google.maps.geometry.encoding.decodePath('myovEpsuzNR~DCZQrAkAAiAR_AVaAJaAUoCe@kCc@_@J[Zi@xB]rA}AlBMn@?tABhAPdB');
 
-            //Initializes polyline for route 
+//Initializes polyline for route 
             AllCampusRegion = new google.maps.Polyline({
                 path: allCampusPath,
                 levels: "",
@@ -337,7 +291,7 @@
                 strokeOpacity: 1.0,
                 strokeWeight: 2,
             });
-            //Adds created polyline to routesArray.
+//Adds created polyline to routesArray.
 
             HHSRegion = new google.maps.Polyline({
                 path: hhsPath,
@@ -371,7 +325,7 @@
                 strokeWeight: 2,
             });
 
-            //Adds created polyline to routesArray.
+//Adds created polyline to routesArray.
             routesArray.push(AllCampusRegion);
             routesArray.push(VillageRegion);
             routesArray.push(HHSRegion);
@@ -390,15 +344,9 @@
          * @param html        - The HTML to be displayed when a marker is clicked
          */
         function bindInfoWindow(marker, map, infoWindow, html) {
-            google.maps.event.addListener(marker.mapMarker, 'click', function () {
-                if(marker.mapMarker.isOpen) {
-                    infoWindow.setConetent(html);
-                    infoWindow.open(map, marker.mapMarker);
-                } else {
-                    infoWindow.setContent(html);
-                    marker.mapMarker.isOpen = true;
-                    infoWindow.open(map, marker.mapMarker);
-                }
+            google.maps.event.addListener(marker, 'click', function () {
+                infoWindow.setContent(html);
+                infoWindow.open(map, marker);
             });
         }
 
@@ -488,11 +436,11 @@
     <ul id="side-menu">
         <li class="first"><a href="#">Routes</a>
             <ul id="side-menu-5938">
-                <li class="first"><a href="#" onClick="toggleRoute(0);">All-Campus</a></li>
-                <li class="first"><a href="#" onClick="toggleRoute(1);">Village Express</a></li>
-                <li class="first"><a href="#" onClick="toggleRoute(2);">HHS Express</a></li>
-                <li class="first"><a href="#" onClick="toggleRoute(3);">Off-Campus North</a></li>
-                <li class="first"><a href="#" onClick="toggleRoute(4);">Off-Campus South</a></li>
+                <li class="first"><a onClick="toggleRoute(0);">All-Campus</a></li>
+                <li class="first"><a onClick="toggleRoute(1);">Village Express</a></li>
+                <li class="first"><a onClick="toggleRoute(2);">HHS Express</a></li>
+                <li class="first"><a onClick="toggleRoute(3);">Off-Campus North</a></li>
+                <li class="first"><a onClick="toggleRoute(4);">Off-Campus South</a></li>
             </ul>
         </li>
         <li class="last"><a href="#">Stops</a>

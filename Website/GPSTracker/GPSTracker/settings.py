@@ -11,7 +11,7 @@ TEMPLATE_DEBUG = DEBUG
 PWD = os.path.join(os.path.dirname(os.path.realpath(__file__)), os.path.pardir)
 
 ADMINS = (
-    ('Chris Ward', 'cdward4@catamount.wcu.edu'),
+    ('Chris Ward', 'chris.dev.ward@gmail.com'),
     ('Hayden Thomas', 'hlthomas2@catamount.wcu.edu'),
 )
 

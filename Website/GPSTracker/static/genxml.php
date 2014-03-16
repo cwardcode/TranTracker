@@ -41,22 +41,24 @@ if (!$result) {
 header("Content-type: text/xml");
 
 // Start XML file, echo parent node
-echo '<markers>';
+$xml = '<markers>';
 // Iterate through the rows, printing XML nodes for each
 while ($row = @mysql_fetch_assoc($result)){
 $vehNameQuery = "SELECT Title from tracker_vehicle where VehID ='" . $row['VehID_id']."'";
 $vehNameResult = mysql_query($vehNameQuery);
 $vehNameActual = @mysql_fetch_assoc($vehNameResult);
   // ADD TO XML DOCUMENT NODE
-  echo '<marker ';
-  echo 'VID="' . parseToXML($row['VehID_id']) . '" ';
-  echo 'title="' . $vehNameActual['Title'] . '" ';
-  echo 'latitude="' . $row['Latitude'] . '" ';
-  echo 'longitude="' . $row['Longitude'] . '" ';
-  echo 'speed="' . $row['Speed'] . '" ';
-  echo '/>';
+  $xml .= "<marker>";
+  $xml .= "<VID>".parseToXML($row['VehID_id'])."</VID>";
+  $xml .= "<title>".$vehNameActual['Title']."</title>";
+  $xml .= "<latitude>".$row['Latitude']."</latitude>";
+  $xml .= "<longitude>".$row['Longitude']."</longitude>";
+  $xml .= "<speed>".$row['Speed']."</speed>";
+  $xml .= "</marker>";
 }
 
 // End XML file
-echo '</markers>';
+$xml .='</markers>';
+$sxe = new SimpleXMLElement($xml);
+echo $sxe->asXML();
 ?>
