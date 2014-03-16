@@ -24,5 +24,12 @@
     <string name="key_header">Map Key</string>
     <string name="contentDescription">AppLogo</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_chat">Chat</string>
+    <string name="send">Send</string>
+    <string name="hint">Enter message</string>
+    <string name="dialogTitle">Enter a username</string>
+    <string name="enterHandle">username</string>
+    <string name="signin">Log in</string>
+    <string name="cancel">Cancel</string>
 
 </resources>

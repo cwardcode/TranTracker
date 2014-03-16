@@ -39,6 +39,10 @@
             android:label="@string/title_activity_contact" >
         </activity>
         <activity
+            android:name="edu.wcu.trackerapp.Chat"
+            android:label="@string/title_activity_chat" >
+        </activity>
+        <activity
             android:name="edu.wcu.trackerapp.Key"
             android:label="@string/title_activity_key" >
         </activity>

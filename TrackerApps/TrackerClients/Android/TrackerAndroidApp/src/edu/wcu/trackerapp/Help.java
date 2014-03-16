@@ -22,6 +22,8 @@ public class Help extends Activity implements OnClickListener {
 	 */
 	private Button map;
 	
+	private Button chat;
+	
 	private Button key;
 	
 	private Button help;
@@ -39,11 +41,13 @@ public class Help extends Activity implements OnClickListener {
 		setContentView(R.layout.activity_help);
 		
 		map = (Button) findViewById(R.id.helpMapButton);
+		chat = (Button) findViewById(R.id.helpChatButton);
 		key = (Button) findViewById(R.id.helpKeyButton);
 		about = (Button) findViewById(R.id.helpAboutButton);
 		help = (Button) findViewById(R.id.helpHelpButton);
 		
 		map.setOnClickListener(this);
+		chat.setOnClickListener(this);
 		key.setOnClickListener(this);
 		about.setOnClickListener(this);
 		help.setOnClickListener(this);
@@ -110,6 +114,9 @@ public class Help extends Activity implements OnClickListener {
 		
 		if (button.equals(map)) {
 			Intent next = new Intent(this, edu.wcu.trackerapp.Map.class);
+			this.startActivity(next);
+		} else if (button.equals(chat)) {
+			Intent next = new Intent(this, edu.wcu.trackerapp.Chat.class);
 			this.startActivity(next);
 		} else if (button.equals(key)) {
 			Intent next = new Intent(this, edu.wcu.trackerapp.Key.class);

@@ -22,6 +22,8 @@ public class Key extends Activity implements OnClickListener {
 	 */
 	private Button map;
 	
+	private Button chat;
+	
 	private Button key;
 	
 	private Button help;
@@ -48,11 +50,13 @@ public class Key extends Activity implements OnClickListener {
 		//menu.setOnItemSelectedListener(this);
 		
 		map = (Button) findViewById(R.id.keyMapButton);
+		chat = (Button) findViewById(R.id.keyChatButton);
 		key = (Button) findViewById(R.id.keyKeyButton);
 		about = (Button) findViewById(R.id.keyAboutButton);
 		help = (Button) findViewById(R.id.keyHelpButton);
 		
 		map.setOnClickListener(this);
+		chat.setOnClickListener(this);
 		key.setOnClickListener(this);
 		about.setOnClickListener(this);
 		help.setOnClickListener(this);
@@ -119,8 +123,11 @@ public class Key extends Activity implements OnClickListener {
 	public void onClick(View v) {
         Button button = (Button) v;
 		
-		if (button.equals(map)) {
+        if (button.equals(map)) {
 			Intent next = new Intent(this, edu.wcu.trackerapp.Map.class);
+			this.startActivity(next);
+		} else if (button.equals(chat)) {
+			Intent next = new Intent(this, edu.wcu.trackerapp.Chat.class);
 			this.startActivity(next);
 		} else if (button.equals(about)) {
 			Intent next = new Intent(this, edu.wcu.trackerapp.About.class);
