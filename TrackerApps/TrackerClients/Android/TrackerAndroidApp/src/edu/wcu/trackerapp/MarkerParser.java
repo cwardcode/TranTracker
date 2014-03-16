@@ -103,7 +103,6 @@ public class MarkerParser {
 		
 		parser.require(XmlPullParser.START_TAG, ns, "markers");
 		
-		//parser.require(XmlPullParser.END_TAG, ns, "markers");
 		while (parser.next() != XmlPullParser.END_TAG) {
 			if (parser.getEventType() != XmlPullParser.START_TAG) {
 				continue;
@@ -133,16 +132,25 @@ public class MarkerParser {
 		double speed = 0.0;
 		//String tag = "";
 		
-		//while (parser.next() != XmlPullParser.END_TAG) {
-			//tag = parser.getName();
-			//if (tag.equals("marker")) {
-				vId = Integer.parseInt(parser.getAttributeValue(null, "VID"));
-				title = parser.getAttributeValue(null, "title");
-				vLat = Double.parseDouble(parser.getAttributeValue(null, "latitude"));
-				vLong = Double.parseDouble(parser.getAttributeValue(null, "longitude"));
-				speed = Double.parseDouble(parser.getAttributeValue(null, "speed"));
-			//}
-		//}
+		while (parser.next() != XmlPullParser.END_TAG) {
+            if (parser.getEventType() != XmlPullParser.START_TAG) {
+                continue;
+            }
+            String tagname = parser.getName();
+            if (tagname.equals("VID")) {
+                vId = readId(parser);
+            } else if (tagname.equals("title")) {
+                title = readTitle(parser);
+            } else if (tagname.equals("latitude")) {
+                vLat = readLat(parser);
+            } else if (tagname.equals("longitude")) {
+                vLong = readLong(parser);
+            } else if (tagname.equals("speed")) {
+                speed = readSpeed(parser);
+            } else {
+                skip(parser);
+            }
+        }
 		
 		return new MarkerDef(vId, title, vLat, vLong, speed);
 	}
