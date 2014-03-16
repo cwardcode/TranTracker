@@ -147,13 +147,14 @@
                 var markers = xml.documentElement.getElementsByTagName("marker");
                 //for each marker, get info from its tag and build marker.
                 for (var i = 0; i < markers.length; i++) {
-                    var vid = markers[i].getAttribute("VID");
-                    var name = markers[i].getAttribute("title");
-                    var speed = markers[i].getAttribute("speed");
+                    //get child nodes of marker
+                    var vid = markers[i].childNodes[0].textContent;
+                    var name =  markers[i].childNodes[1].textContent;
                     //The location where the marker is to be placed.
                     var point = new google.maps.LatLng(
-                            parseFloat(markers[i].getAttribute("latitude")),
-                            parseFloat(markers[i].getAttribute("longitude")));
+                            parseFloat(markers[i].childNodes[2].textContent),
+                            parseFloat(markers[i].childNodes[3].textContent));
+                    var speed = markers[i].childNodes[4].textContent;
                     //The info that is displayed when a marker is clicked.
                     var html = "<b>" + name + "</b>" + "<br>speed: " +
                             Math.round(speed * METER_CONVERS) + " mph";
