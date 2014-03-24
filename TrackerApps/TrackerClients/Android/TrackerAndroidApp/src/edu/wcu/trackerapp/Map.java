@@ -10,6 +10,7 @@ import java.util.List;
 import org.xmlpull.v1.XmlPullParserException;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
@@ -79,7 +80,7 @@ public class Map extends Activity implements OnClickListener {
 	 * The map button.
 	 */
 	private Button map;
-	
+	private Button chat;
 	private Button key;
 	
 	private Button help;
@@ -145,7 +146,7 @@ public class Map extends Activity implements OnClickListener {
 			double speed = 0.0;
 			
 			String info = "";
-			
+			try{
 			for (MarkerDef def : markerDefs) {
 				id = def.id;
 				name = def.title;
@@ -153,11 +154,15 @@ public class Map extends Activity implements OnClickListener {
 				vLong = def.vLong;
 				speed = def.speed;
 				
-				info = "ID: " + id + " Name: " + name + " Speed: " + speed;
+				info = " Name: " + name + " Speed: " + speed;
 				
 				googleMap.addMarker(new MarkerOptions()
 				                    .position(new LatLng(vLat, vLong))
 				                    .title(info));
+			}
+			}catch(NullPointerException ex){
+				Toast.makeText(getApplicationContext(), 
+  					  "Could not connect to server",Toast.LENGTH_SHORT).show();
 			}
 		}
 	}
@@ -179,11 +184,13 @@ public class Map extends Activity implements OnClickListener {
 		//menu.setOnItemSelectedListener(this);
 		
 		map = (Button) findViewById(R.id.mapMapButton);
+		chat = (Button) findViewById(R.id.mapChatButton);
 		key = (Button) findViewById(R.id.mapKeyButton);
 		about = (Button) findViewById(R.id.mapAboutButton);
 		help = (Button) findViewById(R.id.mapHelpButton);
 		
 		map.setOnClickListener(this);
+		chat.setOnClickListener(this);
 		key.setOnClickListener(this);
 		about.setOnClickListener(this);
 		help.setOnClickListener(this);
@@ -218,7 +225,7 @@ public class Map extends Activity implements OnClickListener {
 	
 	private boolean isConnected() {
 		ConnectivityManager cm = 
-				(ConnectivityManager)this.getSystemService(this.CONNECTIVITY_SERVICE);
+				(ConnectivityManager)this.getSystemService(Context.CONNECTIVITY_SERVICE);
 		
 		NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
 		boolean isConnected = activeNetwork != null &&
@@ -385,8 +392,11 @@ public class Map extends Activity implements OnClickListener {
 	public void onClick(View v) {
         Button button = (Button) v;
 		
-		if (button.equals(about)) {
+        if (button.equals(about)) {
 			Intent next = new Intent(this, edu.wcu.trackerapp.About.class);
+			this.startActivity(next);
+		} else if (button.equals(chat)) {
+			Intent next = new Intent(this, edu.wcu.trackerapp.Chat.class);
 			this.startActivity(next);
 		} else if (button.equals(key)) {
 			Intent next = new Intent(this, edu.wcu.trackerapp.Key.class);

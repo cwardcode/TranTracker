@@ -159,3 +159,289 @@ Android NDK:     current module
 [armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
 [armeabi-v7a] Install        : libTranTracker.so => libs/armeabi-v7a/libTranTracker.so
 [x86] Install        : libTranTracker.so => libs/x86/libTranTracker.so
+02:41:48 **** Build of configuration Default for project TranTracker ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING:jni/Android.mk:TranTracker: non-system libraries in linker flags: -lopencv_java    
+Android NDK:     This is likely to result in incorrect builds. Try using LOCAL_STATIC_LIBRARIES    
+Android NDK:     or LOCAL_SHARED_LIBRARIES instead to list the library dependencies of the    
+Android NDK:     current module    
+Android NDK: WARNING:jni/Android.mk:TranTracker: non-system libraries in linker flags: -lopencv_java    
+Android NDK:     This is likely to result in incorrect builds. Try using LOCAL_STATIC_LIBRARIES    
+Android NDK:     or LOCAL_SHARED_LIBRARIES instead to list the library dependencies of the    
+Android NDK:     current module    
+Android NDK: WARNING:jni/Android.mk:TranTracker: non-system libraries in linker flags: -lopencv_java    
+Android NDK:     This is likely to result in incorrect builds. Try using LOCAL_STATIC_LIBRARIES    
+Android NDK:     or LOCAL_SHARED_LIBRARIES instead to list the library dependencies of the    
+Android NDK:     current module    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi-v7a] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi-v7a/gdbserver
+[armeabi-v7a] Gdbsetup       : libs/armeabi-v7a/gdb.setup
+[x86] Gdbserver      : [x86-4.6] libs/x86/gdbserver
+[x86] Gdbsetup       : libs/x86/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+[armeabi-v7a] Install        : libTranTracker.so => libs/armeabi-v7a/libTranTracker.so
+[x86] Install        : libTranTracker.so => libs/x86/libTranTracker.so
+03:15:00 **** Build of configuration Default for project TranTracker ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING:jni/Android.mk:TranTracker: non-system libraries in linker flags: -lopencv_java    
+Android NDK:     This is likely to result in incorrect builds. Try using LOCAL_STATIC_LIBRARIES    
+Android NDK:     or LOCAL_SHARED_LIBRARIES instead to list the library dependencies of the    
+Android NDK:     current module    
+Android NDK: WARNING:jni/Android.mk:TranTracker: non-system libraries in linker flags: -lopencv_java    
+Android NDK:     This is likely to result in incorrect builds. Try using LOCAL_STATIC_LIBRARIES    
+Android NDK:     or LOCAL_SHARED_LIBRARIES instead to list the library dependencies of the    
+Android NDK:     current module    
+Android NDK: WARNING:jni/Android.mk:TranTracker: non-system libraries in linker flags: -lopencv_java    
+Android NDK:     This is likely to result in incorrect builds. Try using LOCAL_STATIC_LIBRARIES    
+Android NDK:     or LOCAL_SHARED_LIBRARIES instead to list the library dependencies of the    
+Android NDK:     current module    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi-v7a] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi-v7a/gdbserver
+[armeabi-v7a] Gdbsetup       : libs/armeabi-v7a/gdb.setup
+[x86] Gdbserver      : [x86-4.6] libs/x86/gdbserver
+[x86] Gdbsetup       : libs/x86/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+[armeabi-v7a] Install        : libTranTracker.so => libs/armeabi-v7a/libTranTracker.so
+[x86] Install        : libTranTracker.so => libs/x86/libTranTracker.so
+04:07:45 **** Build of configuration Default for project TranTracker ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING:jni/Android.mk:TranTracker: non-system libraries in linker flags: -lopencv_java    
+Android NDK:     This is likely to result in incorrect builds. Try using LOCAL_STATIC_LIBRARIES    
+Android NDK:     or LOCAL_SHARED_LIBRARIES instead to list the library dependencies of the    
+Android NDK:     current module    
+Android NDK: WARNING:jni/Android.mk:TranTracker: non-system libraries in linker flags: -lopencv_java    
+Android NDK:     This is likely to result in incorrect builds. Try using LOCAL_STATIC_LIBRARIES    
+Android NDK:     or LOCAL_SHARED_LIBRARIES instead to list the library dependencies of the    
+Android NDK:     current module    
+Android NDK: WARNING:jni/Android.mk:TranTracker: non-system libraries in linker flags: -lopencv_java    
+Android NDK:     This is likely to result in incorrect builds. Try using LOCAL_STATIC_LIBRARIES    
+Android NDK:     or LOCAL_SHARED_LIBRARIES instead to list the library dependencies of the    
+Android NDK:     current module    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi-v7a] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi-v7a/gdbserver
+[armeabi-v7a] Gdbsetup       : libs/armeabi-v7a/gdb.setup
+[x86] Gdbserver      : [x86-4.6] libs/x86/gdbserver
+[x86] Gdbsetup       : libs/x86/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+[armeabi-v7a] Install        : libTranTracker.so => libs/armeabi-v7a/libTranTracker.so
+[x86] Install        : libTranTracker.so => libs/x86/libTranTracker.so
+04:08:53 **** Incremental Build of configuration Default for project TranTracker ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING:jni/Android.mk:TranTracker: non-system libraries in linker flags: -lopencv_java    
+Android NDK:     This is likely to result in incorrect builds. Try using LOCAL_STATIC_LIBRARIES    
+Android NDK:     or LOCAL_SHARED_LIBRARIES instead to list the library dependencies of the    
+Android NDK:     current module    
+Android NDK: WARNING:jni/Android.mk:TranTracker: non-system libraries in linker flags: -lopencv_java    
+Android NDK:     This is likely to result in incorrect builds. Try using LOCAL_STATIC_LIBRARIES    
+Android NDK:     or LOCAL_SHARED_LIBRARIES instead to list the library dependencies of the    
+Android NDK:     current module    
+Android NDK: WARNING:jni/Android.mk:TranTracker: non-system libraries in linker flags: -lopencv_java    
+Android NDK:     This is likely to result in incorrect builds. Try using LOCAL_STATIC_LIBRARIES    
+Android NDK:     or LOCAL_SHARED_LIBRARIES instead to list the library dependencies of the    
+Android NDK:     current module    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi-v7a] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi-v7a/gdbserver
+[armeabi-v7a] Gdbsetup       : libs/armeabi-v7a/gdb.setup
+[x86] Gdbserver      : [x86-4.6] libs/x86/gdbserver
+[x86] Gdbsetup       : libs/x86/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+[armeabi-v7a] Install        : libTranTracker.so => libs/armeabi-v7a/libTranTracker.so
+[x86] Install        : libTranTracker.so => libs/x86/libTranTracker.so
+04:09:00 **** Clean-only build of configuration Default for project TranTracker ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 clean 
+Android NDK: WARNING:jni/Android.mk:TranTracker: non-system libraries in linker flags: -lopencv_java    
+Android NDK:     This is likely to result in incorrect builds. Try using LOCAL_STATIC_LIBRARIES    
+Android NDK:     or LOCAL_SHARED_LIBRARIES instead to list the library dependencies of the    
+Android NDK:     current module    
+Android NDK: WARNING:jni/Android.mk:TranTracker: non-system libraries in linker flags: -lopencv_java    
+Android NDK:     This is likely to result in incorrect builds. Try using LOCAL_STATIC_LIBRARIES    
+Android NDK:     or LOCAL_SHARED_LIBRARIES instead to list the library dependencies of the    
+Android NDK:     current module    
+Android NDK: WARNING:jni/Android.mk:TranTracker: non-system libraries in linker flags: -lopencv_java    
+Android NDK:     This is likely to result in incorrect builds. Try using LOCAL_STATIC_LIBRARIES    
+Android NDK:     or LOCAL_SHARED_LIBRARIES instead to list the library dependencies of the    
+Android NDK:     current module    
+[armeabi] Clean          : TranTracker [armeabi]
+[armeabi] Clean          : gnustl_shared [armeabi]
+[armeabi] Clean          : gnustl_static [armeabi]
+[armeabi-v7a] Clean          : TranTracker [armeabi-v7a]
+[armeabi-v7a] Clean          : gnustl_shared [armeabi-v7a]
+[armeabi-v7a] Clean          : gnustl_static [armeabi-v7a]
+[x86] Clean          : TranTracker [x86]
+[x86] Clean          : gnustl_shared [x86]
+[x86] Clean          : gnustl_static [x86]
+04:09:05 **** Build of configuration Default for project TranTracker ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING:jni/Android.mk:TranTracker: non-system libraries in linker flags: -lopencv_java    
+Android NDK:     This is likely to result in incorrect builds. Try using LOCAL_STATIC_LIBRARIES    
+Android NDK:     or LOCAL_SHARED_LIBRARIES instead to list the library dependencies of the    
+Android NDK:     current module    
+Android NDK: WARNING:jni/Android.mk:TranTracker: non-system libraries in linker flags: -lopencv_java    
+Android NDK:     This is likely to result in incorrect builds. Try using LOCAL_STATIC_LIBRARIES    
+Android NDK:     or LOCAL_SHARED_LIBRARIES instead to list the library dependencies of the    
+Android NDK:     current module    
+Android NDK: WARNING:jni/Android.mk:TranTracker: non-system libraries in linker flags: -lopencv_java    
+Android NDK:     This is likely to result in incorrect builds. Try using LOCAL_STATIC_LIBRARIES    
+Android NDK:     or LOCAL_SHARED_LIBRARIES instead to list the library dependencies of the    
+Android NDK:     current module    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi-v7a] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi-v7a/gdbserver
+[armeabi-v7a] Gdbsetup       : libs/armeabi-v7a/gdb.setup
+[x86] Gdbserver      : [x86-4.6] libs/x86/gdbserver
+[x86] Gdbsetup       : libs/x86/gdb.setup
+[armeabi] Compile++ thumb: TranTracker <= TranTracker.cpp
+[armeabi] Compile++ thumb: TranTracker <= DetectionBasedTracker_jni.cpp
+[armeabi] SharedLibrary  : libTranTracker.so
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+[armeabi-v7a] Compile++ thumb: TranTracker <= TranTracker.cpp
+[armeabi-v7a] Compile++ thumb: TranTracker <= DetectionBasedTracker_jni.cpp
+[armeabi-v7a] SharedLibrary  : libTranTracker.so
+C:/NVPACK/android-ndk-r9b/toolchains/arm-linux-androideabi-4.6/prebuilt/windows/bin/../lib/gcc/arm-linux-androideabi/4.6/../../../../arm-linux-androideabi/bin/ld.exe: warning: hidden symbol '__aeabi_atexit' in C:/NVPACK/android-ndk-r9b/sources/cxx-stl/gnu-libstdc++/4.6/libs/armeabi-v7a/libgnustl_static.a(atexit_arm.o) is referenced by DSO C:/NVPACK/OpenCV-2.4.5-Tegra-sdk-r2/sdk/native/jni/../libs/tegra3/libopencv_java.so
+[armeabi-v7a] Install        : libTranTracker.so => libs/armeabi-v7a/libTranTracker.so
+[x86] Compile++      : TranTracker <= TranTracker.cpp
+[x86] Compile++      : TranTracker <= DetectionBasedTracker_jni.cpp
+[x86] SharedLibrary  : libTranTracker.so
+[x86] Install        : libTranTracker.so => libs/x86/libTranTracker.so
+04:13:07 **** Incremental Build of configuration Default for project TranTracker ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING:jni/Android.mk:TranTracker: non-system libraries in linker flags: -lopencv_java    
+Android NDK:     This is likely to result in incorrect builds. Try using LOCAL_STATIC_LIBRARIES    
+Android NDK:     or LOCAL_SHARED_LIBRARIES instead to list the library dependencies of the    
+Android NDK:     current module    
+Android NDK: WARNING:jni/Android.mk:TranTracker: non-system libraries in linker flags: -lopencv_java    
+Android NDK:     This is likely to result in incorrect builds. Try using LOCAL_STATIC_LIBRARIES    
+Android NDK:     or LOCAL_SHARED_LIBRARIES instead to list the library dependencies of the    
+Android NDK:     current module    
+Android NDK: WARNING:jni/Android.mk:TranTracker: non-system libraries in linker flags: -lopencv_java    
+Android NDK:     This is likely to result in incorrect builds. Try using LOCAL_STATIC_LIBRARIES    
+Android NDK:     or LOCAL_SHARED_LIBRARIES instead to list the library dependencies of the    
+Android NDK:     current module    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi-v7a] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi-v7a/gdbserver
+[armeabi-v7a] Gdbsetup       : libs/armeabi-v7a/gdb.setup
+[x86] Gdbserver      : [x86-4.6] libs/x86/gdbserver
+[x86] Gdbsetup       : libs/x86/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+[armeabi-v7a] Install        : libTranTracker.so => libs/armeabi-v7a/libTranTracker.so
+[x86] Install        : libTranTracker.so => libs/x86/libTranTracker.so
+04:15:04 **** Incremental Build of configuration Default for project TranTracker ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING:jni/Android.mk:TranTracker: non-system libraries in linker flags: -lopencv_java    
+Android NDK:     This is likely to result in incorrect builds. Try using LOCAL_STATIC_LIBRARIES    
+Android NDK:     or LOCAL_SHARED_LIBRARIES instead to list the library dependencies of the    
+Android NDK:     current module    
+Android NDK: WARNING:jni/Android.mk:TranTracker: non-system libraries in linker flags: -lopencv_java    
+Android NDK:     This is likely to result in incorrect builds. Try using LOCAL_STATIC_LIBRARIES    
+Android NDK:     or LOCAL_SHARED_LIBRARIES instead to list the library dependencies of the    
+Android NDK:     current module    
+Android NDK: WARNING:jni/Android.mk:TranTracker: non-system libraries in linker flags: -lopencv_java    
+Android NDK:     This is likely to result in incorrect builds. Try using LOCAL_STATIC_LIBRARIES    
+Android NDK:     or LOCAL_SHARED_LIBRARIES instead to list the library dependencies of the    
+Android NDK:     current module    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi-v7a] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi-v7a/gdbserver
+[armeabi-v7a] Gdbsetup       : libs/armeabi-v7a/gdb.setup
+[x86] Gdbserver      : [x86-4.6] libs/x86/gdbserver
+[x86] Gdbsetup       : libs/x86/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+[armeabi-v7a] Install        : libTranTracker.so => libs/armeabi-v7a/libTranTracker.so
+[x86] Install        : libTranTracker.so => libs/x86/libTranTracker.so
+04:15:11 **** Incremental Build of configuration Default for project TranTracker ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING:jni/Android.mk:TranTracker: non-system libraries in linker flags: -lopencv_java    
+Android NDK:     This is likely to result in incorrect builds. Try using LOCAL_STATIC_LIBRARIES    
+Android NDK:     or LOCAL_SHARED_LIBRARIES instead to list the library dependencies of the    
+Android NDK:     current module    
+Android NDK: WARNING:jni/Android.mk:TranTracker: non-system libraries in linker flags: -lopencv_java    
+Android NDK:     This is likely to result in incorrect builds. Try using LOCAL_STATIC_LIBRARIES    
+Android NDK:     or LOCAL_SHARED_LIBRARIES instead to list the library dependencies of the    
+Android NDK:     current module    
+Android NDK: WARNING:jni/Android.mk:TranTracker: non-system libraries in linker flags: -lopencv_java    
+Android NDK:     This is likely to result in incorrect builds. Try using LOCAL_STATIC_LIBRARIES    
+Android NDK:     or LOCAL_SHARED_LIBRARIES instead to list the library dependencies of the    
+Android NDK:     current module    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi-v7a] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi-v7a/gdbserver
+[armeabi-v7a] Gdbsetup       : libs/armeabi-v7a/gdb.setup
+[x86] Gdbserver      : [x86-4.6] libs/x86/gdbserver
+[x86] Gdbsetup       : libs/x86/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+[armeabi-v7a] Install        : libTranTracker.so => libs/armeabi-v7a/libTranTracker.so
+[x86] Install        : libTranTracker.so => libs/x86/libTranTracker.so
+04:15:25 **** Incremental Build of configuration Default for project TranTracker ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING:jni/Android.mk:TranTracker: non-system libraries in linker flags: -lopencv_java    
+Android NDK:     This is likely to result in incorrect builds. Try using LOCAL_STATIC_LIBRARIES    
+Android NDK:     or LOCAL_SHARED_LIBRARIES instead to list the library dependencies of the    
+Android NDK:     current module    
+Android NDK: WARNING:jni/Android.mk:TranTracker: non-system libraries in linker flags: -lopencv_java    
+Android NDK:     This is likely to result in incorrect builds. Try using LOCAL_STATIC_LIBRARIES    
+Android NDK:     or LOCAL_SHARED_LIBRARIES instead to list the library dependencies of the    
+Android NDK:     current module    
+Android NDK: WARNING:jni/Android.mk:TranTracker: non-system libraries in linker flags: -lopencv_java    
+Android NDK:     This is likely to result in incorrect builds. Try using LOCAL_STATIC_LIBRARIES    
+Android NDK:     or LOCAL_SHARED_LIBRARIES instead to list the library dependencies of the    
+Android NDK:     current module    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi-v7a] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi-v7a/gdbserver
+[armeabi-v7a] Gdbsetup       : libs/armeabi-v7a/gdb.setup
+[x86] Gdbserver      : [x86-4.6] libs/x86/gdbserver
+[x86] Gdbsetup       : libs/x86/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+[armeabi-v7a] Install        : libTranTracker.so => libs/armeabi-v7a/libTranTracker.so
+[x86] Install        : libTranTracker.so => libs/x86/libTranTracker.so
+04:16:49 **** Incremental Build of configuration Default for project TranTracker ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING:jni/Android.mk:TranTracker: non-system libraries in linker flags: -lopencv_java    
+Android NDK:     This is likely to result in incorrect builds. Try using LOCAL_STATIC_LIBRARIES    
+Android NDK:     or LOCAL_SHARED_LIBRARIES instead to list the library dependencies of the    
+Android NDK:     current module    
+Android NDK: WARNING:jni/Android.mk:TranTracker: non-system libraries in linker flags: -lopencv_java    
+Android NDK:     This is likely to result in incorrect builds. Try using LOCAL_STATIC_LIBRARIES    
+Android NDK:     or LOCAL_SHARED_LIBRARIES instead to list the library dependencies of the    
+Android NDK:     current module    
+Android NDK: WARNING:jni/Android.mk:TranTracker: non-system libraries in linker flags: -lopencv_java    
+Android NDK:     This is likely to result in incorrect builds. Try using LOCAL_STATIC_LIBRARIES    
+Android NDK:     or LOCAL_SHARED_LIBRARIES instead to list the library dependencies of the    
+Android NDK:     current module    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi-v7a] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi-v7a/gdbserver
+[armeabi-v7a] Gdbsetup       : libs/armeabi-v7a/gdb.setup
+[x86] Gdbserver      : [x86-4.6] libs/x86/gdbserver
+[x86] Gdbsetup       : libs/x86/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+[armeabi-v7a] Install        : libTranTracker.so => libs/armeabi-v7a/libTranTracker.so
+[x86] Install        : libTranTracker.so => libs/x86/libTranTracker.so
+04:17:22 **** Build of configuration Default for project TranTracker ****
+"C:\\NVPACK\\android-ndk-r9b\\ndk-build.cmd" NDK_DEBUG=1 all 
+Android NDK: WARNING:jni/Android.mk:TranTracker: non-system libraries in linker flags: -lopencv_java    
+Android NDK:     This is likely to result in incorrect builds. Try using LOCAL_STATIC_LIBRARIES    
+Android NDK:     or LOCAL_SHARED_LIBRARIES instead to list the library dependencies of the    
+Android NDK:     current module    
+Android NDK: WARNING:jni/Android.mk:TranTracker: non-system libraries in linker flags: -lopencv_java    
+Android NDK:     This is likely to result in incorrect builds. Try using LOCAL_STATIC_LIBRARIES    
+Android NDK:     or LOCAL_SHARED_LIBRARIES instead to list the library dependencies of the    
+Android NDK:     current module    
+Android NDK: WARNING:jni/Android.mk:TranTracker: non-system libraries in linker flags: -lopencv_java    
+Android NDK:     This is likely to result in incorrect builds. Try using LOCAL_STATIC_LIBRARIES    
+Android NDK:     or LOCAL_SHARED_LIBRARIES instead to list the library dependencies of the    
+Android NDK:     current module    
+[armeabi] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi/gdbserver
+[armeabi] Gdbsetup       : libs/armeabi/gdb.setup
+[armeabi-v7a] Gdbserver      : [arm-linux-androideabi-4.6] libs/armeabi-v7a/gdbserver
+[armeabi-v7a] Gdbsetup       : libs/armeabi-v7a/gdb.setup
+[x86] Gdbserver      : [x86-4.6] libs/x86/gdbserver
+[x86] Gdbsetup       : libs/x86/gdb.setup
+[armeabi] Install        : libTranTracker.so => libs/armeabi/libTranTracker.so
+[armeabi-v7a] Install        : libTranTracker.so => libs/armeabi-v7a/libTranTracker.so
+[x86] Install        : libTranTracker.so => libs/x86/libTranTracker.so

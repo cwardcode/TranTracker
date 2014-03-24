@@ -25,7 +25,7 @@ public class ChatApplet extends JApplet implements MessageListener{
     private String serverName;
     private int serverPort;
     private NetworkInterface netInter;
-
+    
     public ChatApplet() {
         south = new JPanel();
         display = new JTextArea();
