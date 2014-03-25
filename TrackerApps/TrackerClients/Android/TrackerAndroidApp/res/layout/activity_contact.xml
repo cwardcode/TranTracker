@@ -12,7 +12,7 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="horizontal"
-        android:weightSum="3"
+        android:weightSum="5"
         android:background="@color/dark_grey" >
         
         <Button
