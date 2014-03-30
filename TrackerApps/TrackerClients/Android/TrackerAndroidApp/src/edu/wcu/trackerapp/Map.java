@@ -17,6 +17,8 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -91,6 +93,8 @@ public class Map extends Activity implements OnClickListener {
 	
 	private List<Marker> markers;
 	
+	private Handler handler = new Handler();
+	
 	private class DownloadXmlTask extends AsyncTask<String, Void, String> {
 		@Override
 		protected String doInBackground(String... urls) {
@@ -156,9 +160,24 @@ public class Map extends Activity implements OnClickListener {
 				
 				info = " Name: " + name + " Speed: " + speed;
 				
-				googleMap.addMarker(new MarkerOptions()
+				boolean markerFound = false;
+				
+				for (Marker marker : markers) {
+					Log.d("asynctest", marker.getTitle());
+					if (marker.getTitle().equals(info)) {
+						
+						marker.setPosition(new LatLng(vLat, vLong));
+						setTitle(info);
+						markerFound = true;
+					}
+				}
+					
+				if (!markerFound) {
+				
+					markers.add(googleMap.addMarker(new MarkerOptions()
 				                    .position(new LatLng(vLat, vLong))
-				                    .title(info));
+				                    .title(info)));
+				}
 			}
 			}catch(NullPointerException ex){
 				Toast.makeText(getApplicationContext(), 
@@ -166,6 +185,19 @@ public class Map extends Activity implements OnClickListener {
 			}
 		}
 	}
+
+	/**
+	 * This is our little friend which continually makes calls to the 
+	 * DownloadXMLTask. This allows us to update the current positions
+	 * of the vehicles every 5 seconds.
+	 */
+	private Runnable runnable = new Runnable() {
+		
+		public void run() {
+			retrieveData();
+			handler.postDelayed(this, 5000);
+		}
+	};
 	
 	/**
 	 * Initializes the activity.
@@ -201,8 +233,8 @@ public class Map extends Activity implements OnClickListener {
 		
 		//markerDefs = new ArrayList<MarkerDef>();
 		markers = new ArrayList<Marker>();
+		runnable.run();
 		
-		retrieveData();
 		
 		try {
 			// Loading map
@@ -214,6 +246,7 @@ public class Map extends Activity implements OnClickListener {
 		
 	
 	}
+
 	
 	public void retrieveData() {
 		if (isConnected()) {
