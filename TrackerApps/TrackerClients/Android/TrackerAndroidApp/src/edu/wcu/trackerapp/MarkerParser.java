@@ -17,6 +17,7 @@ import android.util.Xml;
  * be used to generate map markers.
  * 
  * @author Hayden Thomas 
+ * @author Chris Ward
  * @version 3.14.14
  *
  */

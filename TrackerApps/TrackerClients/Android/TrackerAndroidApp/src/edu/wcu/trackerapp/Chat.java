@@ -175,8 +175,6 @@ public class Chat extends Activity implements OnClickListener, MessageListener {
 		about.setOnClickListener(this);
 		help.setOnClickListener(this);
 		
-		//Disable anyone from pressing "send" until connected.
-		sendButton.setEnabled(false);
 		new ConnectToNetwork().execute("");
 	}
 	/**
@@ -206,7 +204,6 @@ public class Chat extends Activity implements OnClickListener, MessageListener {
 					messages.setText("Connected");
 				}
 			});
-			sendButton.setEnabled(true);
 		} catch (final UnknownHostException uhe) {
 			runOnUiThread(new Runnable() {
 				@Override
