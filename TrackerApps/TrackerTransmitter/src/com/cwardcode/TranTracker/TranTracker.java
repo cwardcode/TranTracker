@@ -4,7 +4,11 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -22,16 +26,23 @@ import org.opencv.core.Rect;
 import org.opencv.core.Scalar;
 import org.opencv.core.Size;
 import org.opencv.objdetect.CascadeClassifier;
+import org.xmlpull.v1.XmlPullParserException;
+
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
+import android.content.ComponentName;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.ServiceConnection;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -41,6 +52,11 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.cwardcode.TranTracker.SendLoc.LocationBinder;
+import com.cwardcode.TranTracker.StopLocation.StopEntry;
+import com.cwardcode.TranTracker.StopParser.StopDef;
 
 /**
  * Provides a user interface that allows the user to select which vehicle is
@@ -50,14 +66,14 @@ import android.widget.TextView;
  * @author Chris Ward
  * @version September 9, 2013
  */
-@TargetApi(Build.VERSION_CODES.HONEYCOMB)
+@TargetApi(Build.VERSION_CODES.JELLY_BEAN)
 public class TranTracker extends Activity implements
 		AdapterView.OnItemSelectedListener, CvCameraViewListener2 {
-
 	/** URL which returns JSON array of vehicles. */
 	private static final String VID_URL = "http://tracker.cwardcode.com/static/getvid.php";
 	/** Holds whether the application is tracking. */
 	public static boolean IS_TRACKING;
+	public static boolean IS_BOUND;
 	/** Holds whether a vehicle is selected. */
 	public static boolean VEH_SELECT;
 	/** Color of the rectangle drawn around bodies */
@@ -66,6 +82,7 @@ public class TranTracker extends Activity implements
 	public static final int JAVA_DETECTOR = 0;
 	/** Determines if we're using the native camera */
 	public static final int NATIVE_DETECTOR = 1;
+	private static final String STOPURL = "http://tracker.cwardcode.com/static/genxml.php";
 	/** Set default detector to java */
 	private int mDetectorType = JAVA_DETECTOR;
 	/** Holds current application context. */
@@ -98,6 +115,8 @@ public class TranTracker extends Activity implements
 	private DetectionBasedTracker mNativeDetector;
 	/** Holds all detector types */
 	private String[] mDetectorName;
+	/** A service instance */
+	SendLoc locService;
 
 	/** Initializes OpenCV */
 	private BaseLoaderCallback mLoaderCallback = new BaseLoaderCallback(this) {
@@ -160,6 +179,85 @@ public class TranTracker extends Activity implements
 	private MenuItem mItemFace30;
 	private MenuItem mItemFace20;
 	private MenuItem mItemType;
+	private List<StopDef> stopDefs = new ArrayList<StopDef>();
+
+	private class DownloadXmlTask extends AsyncTask<String, Void, String> {
+		@Override
+		protected String doInBackground(String... urls) {
+			try {
+				return loadXmlFromNetwork(urls[0]);
+			} catch (IOException ex) {
+				Log.d("com.cwardcode.TranTracker", ex.getMessage());
+				return "IO Error";
+			} catch (XmlPullParserException ex) {
+				Log.d("com.cwardcode.TranTracker", ex.getMessage());
+				return "Parser Erorr";
+			}
+		}
+
+		@Override
+		protected void onPostExecute(String result) {
+			updateSQL();
+		}
+
+		private String loadXmlFromNetwork(String urlString)
+				throws XmlPullParserException, IOException {
+			InputStream stream = null;
+			StopParser parser = new StopParser();
+
+			try {
+				stream = downloadUrl(urlString);
+				parser.parseXML(stream);
+				stopDefs = parser.getStopList();
+			} finally {
+				if (stream != null) {
+					stream.close();
+				}
+			}
+
+			return "success";
+
+		}
+
+		private void updateSQL() {
+			StopLocationDbHelper stopHelper = new StopLocationDbHelper(
+					getApplicationContext());
+			SQLiteDatabase db = stopHelper.getWritableDatabase();
+			db.setVersion(0);
+			db.close();
+			db = stopHelper.getWritableDatabase();
+			if (db.needUpgrade(2)) {
+				ContentValues entry = new ContentValues();
+				for (StopDef stop : stopDefs) {
+					entry.put(StopEntry.COLUMN_NAME_STOP_ID, stop.id);
+					entry.put(StopEntry.COLUMN_NAME_NAME, stop.title);
+					entry.put(StopEntry.COLUMN_NAME_LAT, stop.sLat);
+					entry.put(StopEntry.COLUMN_NAME_LNG, stop.sLong);
+					long newRowID = db.insert(StopEntry.TABLE_NAME,
+							StopEntry.COLUMN_NAME_NULL, entry);
+					if (newRowID == -1) {
+						Toast.makeText(getApplicationContext(),
+								"Could not make" + " row for: " + stop.title,
+								Toast.LENGTH_SHORT).show();
+					}
+				}
+			}
+			List<StopDef> list = stopHelper.getAllEntries();
+			db.close();
+		}
+
+		private InputStream downloadUrl(String urlString) throws IOException {
+			URL url = new URL(urlString);
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			conn.setReadTimeout(10000);
+			conn.setConnectTimeout(15000 /* milliseconds */);
+			conn.setRequestMethod("GET");
+			conn.setDoInput(true);
+			conn.connect();
+			return conn.getInputStream();
+		}
+
+	}
 
 	/**
 	 * Pulls vehicle list from database.
@@ -250,6 +348,21 @@ public class TranTracker extends Activity implements
 		VEH_SELECT = false;
 	}
 
+	private ServiceConnection mConnection = new ServiceConnection() {
+
+		@Override
+		public void onServiceConnected(ComponentName className, IBinder service) {
+			LocationBinder binder = (LocationBinder) service;
+			locService = binder.getService();
+			IS_BOUND = true;
+		}
+
+		@Override
+		public void onServiceDisconnected(ComponentName arg0) {
+			IS_BOUND = false;
+		}
+	};
+
 	/**
 	 * Starts the service that allows the device to be tracked. Suppressing
 	 * unused warning for param, needed only for Android to know calling view.
@@ -264,6 +377,7 @@ public class TranTracker extends Activity implements
 		} else {
 			stopService(srvIntent);
 			startService(srvIntent);
+			bindService(srvIntent, mConnection, Context.BIND_AUTO_CREATE);
 		}
 	}
 
@@ -318,7 +432,7 @@ public class TranTracker extends Activity implements
 		gridSpinner.setOnItemSelectedListener(this);
 
 		new GetVehicles().execute();
-
+		new DownloadXmlTask().execute(STOPURL);
 		mOpenCvCameraView = (CameraBridgeViewBase) findViewById(R.id.cameraView);
 		mOpenCvCameraView.setVisibility(SurfaceView.VISIBLE);
 		mOpenCvCameraView.setCvCameraViewListener(this);
@@ -335,8 +449,12 @@ public class TranTracker extends Activity implements
 		runOnUiThread(new Runnable() {
 			@Override
 			public void run() {
-				peopleData.setText("People: " + numPeople);
-
+				if (IS_BOUND) {
+					peopleData.setText("People: " + locService.getRandomNum());
+					
+				} else {
+					peopleData.setText("People: " + numPeople);
+				}
 			}
 		});
 	}

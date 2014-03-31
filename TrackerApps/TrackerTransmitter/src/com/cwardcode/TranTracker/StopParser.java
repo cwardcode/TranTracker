@@ -1,4 +1,4 @@
-package edu.wcu.trackerapp;
+package com.cwardcode.TranTracker;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -12,20 +12,20 @@ import android.util.Xml;
 
 /**
  * This class defines an object that is used to parse an XML file that contains
- * information used to generate a Marker object for the map. This class 
- * parses the information then creates a list of MarkerDef objects that will
- * be used to generate map markers.
+ * information used to generate a Stop object for the map. This class 
+ * parses the information then creates a list of StopDef objects that will
+ * be used to generate map Stops.
  * 
  * @author Hayden Thomas 
  * @author Chris Ward
  * @version 3.14.14
  *
  */
-public class MarkerParser {
+public class StopParser {
 	
 	/**
-	 * This class is used to store the information about the map markers.
-	 * Since it is difficult to generate a marker without adding it directly
+	 * This class is used to store the information about the map Stops.
+	 * Since it is difficult to generate a Stop without adding it directly
 	 * to the map, this class provides a way to easily separate the XML
 	 * parsing functionality from the map's actual functionality.
 	 * 
@@ -33,31 +33,61 @@ public class MarkerParser {
 	 * @version 3.14.14
 	 *
 	 */
-	public static class MarkerDef {
-		public final int id;
-		public final String title;
-		public final double vLat;
-		public final double vLong;
-		public final double speed;
+	public static class StopDef {
+		public String title;
+		public double sLat;
+		public double sLong;
+		public int id;
 		
-		private MarkerDef(int id, String title, double vLat, double vLong, double speed) {
-			this.id = id;
+		public StopDef(int id, String title, double vLat, double vLong) {
 			this.title = title;
-			this.vLat = vLat;
-			this.vLong = vLong;
-			this.speed = speed;
+			this.sLat = vLat;
+			this.sLong = vLong;
+			this.id = id;
+		}
+				
+		public StopDef() {}
+		
+		public int getID(){
+			return this.id;
 		}
 		
+		public void setID(int id){
+			this.id = id;
+		}
+		public String getEntryName() {
+			return this.title;
+		}
+		
+		public void setEntryName(String name) {
+			this.title = name;
+		}
+		
+		public double getEntryLat(){
+			return this.sLat;
+		}
+		
+		public void setEntryLat(String lat){
+			this.sLat = Double.parseDouble(lat);
+		}
+		
+		public double getEntryLng(){
+			return this.sLong;
+		}
+		
+		public void setEntryLng(String lng){
+			this.sLong = Double.parseDouble(lng);
+		}
 		public String toString() {
-			String result = id + " " + title + " " + vLat + " " + vLong + " " + speed;
+			String result = title + " " + sLat + " " + sLong;
 			return result;
 		}
 	}
 	
 	/**
-	 * The list containing the marker definitions.
+	 * The list containing the Stop definitions.
 	 */
-	ArrayList<MarkerDef> markers;
+	ArrayList<StopDef> Stops;
 	
 	/**
 	 * Null String to be used in parsing functions instead of a namespace.
@@ -67,12 +97,12 @@ public class MarkerParser {
 	/**
 	 * Creates a new maker parser with an empty list.
 	 */
-	public MarkerParser() {
-		markers = new ArrayList<MarkerDef>();
+	public StopParser() {
+		Stops = new ArrayList<StopDef>();
 	}
 	
-	public List<MarkerDef> getMarkerList() {
-		return markers;
+	public List<StopDef> getStopList() {
+		return Stops;
 	}
 	
 
@@ -109,8 +139,8 @@ public class MarkerParser {
 				continue;
 			}
 			String name = parser.getName();
-			if (name.equals("marker")) {
-				markers.add(readMarker(parser));
+			if (name.equals("stop")) {
+				Stops.add(readStop(parser));
 			} else {
 				skip(parser);
 			}
@@ -118,42 +148,38 @@ public class MarkerParser {
 	}
 	
 	/**
-	 * Creates a new MarkerDef using the information in the XML feed.
+	 * Creates a new StopDef using the information in the XML feed.
 	 * 
 	 * @param parser
 	 * @throws XmlPullParserException
 	 * @throws IOException
 	 */
-	private MarkerDef readMarker(XmlPullParser parser) throws XmlPullParserException, IOException {
-		parser.require(XmlPullParser.START_TAG, ns, "marker");
-		int vId = 0;
-		String title = null;
+	private StopDef readStop(XmlPullParser parser) throws XmlPullParserException, IOException {
+		parser.require(XmlPullParser.START_TAG, ns, "stop");
+		String stopName = null;
 		double vLat = 0.0;
 		double vLong = 0.0;
-		double speed = 0.0;
-		//String tag = "";
+		int id = 0;
 		
 		while (parser.next() != XmlPullParser.END_TAG) {
             if (parser.getEventType() != XmlPullParser.START_TAG) {
                 continue;
             }
             String tagname = parser.getName();
-            if (tagname.equals("VID")) {
-                vId = readId(parser);
-            } else if (tagname.equals("title")) {
-                title = readTitle(parser);
-            } else if (tagname.equals("latitude")) {
+            if (tagname.equals("stopID")) {
+                stopName = readId(parser);
+            } else if (tagname.equals("stopName")) {
+                stopName = readName(parser);
+            } else if (tagname.equals("stopLat")) {
                 vLat = readLat(parser);
-            } else if (tagname.equals("longitude")) {
+            } else if (tagname.equals("stopLong")) {
                 vLong = readLong(parser);
-            } else if (tagname.equals("speed")) {
-                speed = readSpeed(parser);
             } else {
                 skip(parser);
             }
         }
 		
-		return new MarkerDef(vId, title, vLat, vLong, speed);
+		return new StopDef(id,stopName, vLat, vLong);
 	}
 	
 	/**
@@ -163,26 +189,24 @@ public class MarkerParser {
 	 * @throws IOException
 	 * @throws XmlPullParserException
 	 */
-	private int readId(XmlPullParser parser) throws IOException, XmlPullParserException {
-		parser.require(XmlPullParser.START_TAG, ns, "VID");
-		int vId = Integer.parseInt(readText(parser));
-		parser.require(XmlPullParser.END_TAG, ns, "VID");
-		return vId;
+	private String readId(XmlPullParser parser) throws IOException, XmlPullParserException {
+		parser.require(XmlPullParser.START_TAG, ns, "stopID");
+		String stopName = readText(parser);
+		parser.require(XmlPullParser.END_TAG, ns, "stopID");
+		return stopName;
 	}
-	
 	/**
-	 * Reads the vehicle's name from the XML
+	 * Reads the vehicle id from the XML.
 	 * @param parser
 	 * @return
 	 * @throws IOException
 	 * @throws XmlPullParserException
 	 */
-	private String readTitle(XmlPullParser parser) throws IOException, XmlPullParserException {
-		String title = "";
-		parser.require(XmlPullParser.START_TAG, ns, "title");
-		title = readText(parser);
-		parser.require(XmlPullParser.END_TAG, ns, "title");
-		return title;
+	private String readName(XmlPullParser parser) throws IOException, XmlPullParserException {
+		parser.require(XmlPullParser.START_TAG, ns, "stopName");
+		String stopName = readText(parser);
+		parser.require(XmlPullParser.END_TAG, ns, "stopName");
+		return stopName;
 	}
 	
 	/**
@@ -190,9 +214,9 @@ public class MarkerParser {
 	 */
 	private double readLat(XmlPullParser parser) throws IOException, XmlPullParserException {
 		double vLat = 0.0;
-		parser.require(XmlPullParser.START_TAG, ns, "latitude");
+		parser.require(XmlPullParser.START_TAG, ns, "stopLat");
 		vLat = Double.parseDouble(readText(parser));
-		parser.require(XmlPullParser.END_TAG, ns, "latitude");
+		parser.require(XmlPullParser.END_TAG, ns, "stopLat");
 		return vLat;
 	}
 	
@@ -201,18 +225,10 @@ public class MarkerParser {
 	 */
 	private double readLong(XmlPullParser parser) throws IOException, XmlPullParserException {
 		double vLong = 0.0;
-		parser.require(XmlPullParser.START_TAG, ns, "longitude");
+		parser.require(XmlPullParser.START_TAG, ns, "stopLong");
 		vLong = Double.parseDouble(readText(parser));
-		parser.require(XmlPullParser.END_TAG, ns, "longitude");
+		parser.require(XmlPullParser.END_TAG, ns, "stopLong");
 		return vLong;
-	}
-	
-	private double readSpeed(XmlPullParser parser) throws IOException, XmlPullParserException {
-		double speed = 0.0;
-		parser.require(XmlPullParser.START_TAG, ns, "speed");
-		speed = Double.parseDouble(readText(parser));
-		parser.require(XmlPullParser.END_TAG, ns, "speed");
-		return speed;
 	}
 	
 	private String readText(XmlPullParser parser) throws IOException, XmlPullParserException {
