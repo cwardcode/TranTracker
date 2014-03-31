@@ -38,6 +38,15 @@ if (!$result) {
   die('Invalid query: ' . mysql_error());
 }
 
+$query2 = "SELECT *
+FROM tracker_stoplocation";
+
+$result2 = mysql_query($query2);
+
+if (!$result2) {
+    die('Invalid query: ' . mysql_error());
+}
+
 header("Content-type: text/xml");
 
 // Start XML file, echo parent node
@@ -56,7 +65,16 @@ $vehNameActual = @mysql_fetch_assoc($vehNameResult);
   $xml .= "<speed>".$row['Speed']."</speed>";
   $xml .= "</marker>";
 }
-
+while ($row = @mysql_fetch_assoc($result2)){
+    $stopNameQuery = "SELECT StopName from tracker_stoplocation where StopID='" . $row['StopID']."'";
+    $stopNameResult = mysql_query($stopNameQuery);
+    $stopNameActual = @mysql_fetch_array($stopNameResult);
+    $xml .= "<stop>";  
+    $xml .= "<stopID>".$stopNameActual[0]."</stopID>";    
+    $xml .= "<stopLat>".parseToXML($row['Latitude'])."</stopLat>";
+    $xml .= "<stopLong>".parseToXML($row['Longitude'])."</stopLong>";
+    $xml .= "</stop>"; 
+}
 // End XML file
 $xml .='</markers>';
 $sxe = new SimpleXMLElement($xml);

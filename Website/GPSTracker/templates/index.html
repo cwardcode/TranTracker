@@ -130,6 +130,22 @@
             }
             markersArray = [];
         }
+        var rad = function(x) {
+            return x * Math.PI / 180;
+        };
+
+        var getHaversineDist = function(location1, location2) {
+            var R = 6378137; // Earth’s mean radius in meter
+            var meterToMile = 0.000621371;
+            var dLat = rad(location2.lat() - location1.lat());
+            var dLong = rad(location2.lng() - location1.lng());
+            var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                Math.cos(rad(location1.lat())) * Math.cos(rad(location2.lat())) *
+                Math.sin(dLong / 2) * Math.sin(dLong / 2);
+            var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+            var d = R * c;
+            return d*meterToMile; // returns the distance in meter
+        };        
 
         /**
          * Renders the current locations for each shuttle to our map as a marker.
@@ -155,6 +171,10 @@
                             parseFloat(markers[i].childNodes[2].textContent),
                             parseFloat(markers[i].childNodes[3].textContent));
                     var speed = markers[i].childNodes[4].textContent;
+                    //Distance between shuttle and stop.
+                    var shuttle;
+                    var stop;      
+                    //var distance = getHaversineDist(shuttle, stop);
                     //The info that is displayed when a marker is clicked.
                     var html = "<b>" + name + "</b>" + "<br>speed: " +
                             Math.round(speed * METER_CONVERS) + " mph";
