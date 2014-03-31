@@ -27,6 +27,7 @@ import android.widget.Toast;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -34,6 +35,7 @@ import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 
 import edu.wcu.trackerapp.MarkerParser.MarkerDef;
+import edu.wcu.trackerapp.MarkerParser.StopDef;
 
 /**
  * The application's map screen and main page.
@@ -91,11 +93,20 @@ public class Map extends Activity implements OnClickListener {
 
 	private List<MarkerDef> markerDefs;
 	
+	private List<StopDef> stopDefs;
+	
+	private List<Marker> stops;
+	
 	private List<Marker> markers;
 	
 	private Handler handler = new Handler();
 	
 	private class DownloadXmlTask extends AsyncTask<String, Void, String> {
+		
+		private List<MarkerDef> markerDefs;
+		
+		private List<StopDef> stopDefs;
+		
 		@Override
 		protected String doInBackground(String... urls) {
 			try {
@@ -111,6 +122,7 @@ public class Map extends Activity implements OnClickListener {
 		@Override
 		protected void onPostExecute(String result) {
 			addMarkers();
+			addStops();
 		}
 		
 		private String loadXmlFromNetwork(String urlString) throws XmlPullParserException, IOException {
@@ -121,6 +133,7 @@ public class Map extends Activity implements OnClickListener {
 				stream = downloadUrl(urlString);
 				parser.parseXML(stream);
 				markerDefs = parser.getMarkerList();
+				stopDefs = parser.getStopList();
 			} finally {
 				if (stream != null) {
 					stream.close();
@@ -142,6 +155,45 @@ public class Map extends Activity implements OnClickListener {
 		    return conn.getInputStream();
 		}
 		
+		private void addStops() {
+			String name = "";
+			double sLat = 0.0;
+			double sLong = 0.0;
+			
+			//try{
+			for (StopDef def : stopDefs) {
+				name = def.title;
+				sLat = def.sLat;
+				sLong = def.sLong;
+				
+				
+				boolean markerFound = false;
+				
+				for (Marker stop : stops) {
+					Log.d("asynctest", stop.getTitle());
+					if (stop.getTitle().equals(name)) {
+						
+						stop.setPosition(new LatLng(sLat, sLong));
+						markerFound = true;
+					}
+				}
+					
+				if (!markerFound) {
+				
+					stops.add(googleMap.addMarker(new MarkerOptions()
+				                    .position(new LatLng(sLat, sLong))
+				                    .title(name)
+				                    .icon(BitmapDescriptorFactory
+				                    .defaultMarker(BitmapDescriptorFactory
+				                    		.HUE_RED))));
+				}
+			}
+			//}catch(NullPointerException ex){
+			//	Toast.makeText(getApplicationContext(), 
+  			//		  "Could not connect to server (stop)",Toast.LENGTH_SHORT).show();
+			//}
+		}
+		
 		private void addMarkers() {
 			int id = 0;
 			String name = "";
@@ -150,7 +202,7 @@ public class Map extends Activity implements OnClickListener {
 			double speed = 0.0;
 			
 			String info = "";
-			try{
+			//try{
 			for (MarkerDef def : markerDefs) {
 				id = def.id;
 				name = def.title;
@@ -176,13 +228,16 @@ public class Map extends Activity implements OnClickListener {
 				
 					markers.add(googleMap.addMarker(new MarkerOptions()
 				                    .position(new LatLng(vLat, vLong))
-				                    .title(info)));
+				                    .title(info)
+				                    .icon(BitmapDescriptorFactory
+						             .defaultMarker(BitmapDescriptorFactory
+						                    		.HUE_YELLOW))));
 				}
 			}
-			}catch(NullPointerException ex){
-				Toast.makeText(getApplicationContext(), 
-  					  "Could not connect to server",Toast.LENGTH_SHORT).show();
-			}
+			//}catch(NullPointerException ex){
+			//	Toast.makeText(getApplicationContext(), 
+  			//		  "Could not connect to server (marker)",Toast.LENGTH_SHORT).show();
+			//}
 		}
 	}
 
@@ -233,6 +288,7 @@ public class Map extends Activity implements OnClickListener {
 		
 		//markerDefs = new ArrayList<MarkerDef>();
 		markers = new ArrayList<Marker>();
+		stops = new ArrayList<Marker>();
 		runnable.run();
 		
 		

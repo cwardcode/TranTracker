@@ -8,6 +8,7 @@ import java.util.List;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
+import android.util.Log;
 import android.util.Xml;
 
 /**
@@ -54,10 +55,32 @@ public class MarkerParser {
 		}
 	}
 	
+	public static class StopDef {
+		public final String title;
+		public final double sLat;
+		public final double sLong;
+		
+		private StopDef(String title, double sLat, double sLong) {
+			this.title = title;
+			this.sLat = sLat;
+			this.sLong = sLong;
+		}
+		
+		public String toString() {
+			String result = title + " " + sLat + " " + sLong;
+			return result;
+		}
+	}
+	
 	/**
 	 * The list containing the marker definitions.
 	 */
 	ArrayList<MarkerDef> markers;
+	
+	/**
+	 * The list containing the stop marker definitions.
+	 */
+	ArrayList<StopDef> stops;
 	
 	/**
 	 * Null String to be used in parsing functions instead of a namespace.
@@ -69,10 +92,15 @@ public class MarkerParser {
 	 */
 	public MarkerParser() {
 		markers = new ArrayList<MarkerDef>();
+		stops = new ArrayList<StopDef>();
 	}
 	
 	public List<MarkerDef> getMarkerList() {
 		return markers;
+	}
+	
+	public List<StopDef> getStopList() {
+		return stops;
 	}
 	
 
@@ -110,7 +138,15 @@ public class MarkerParser {
 			}
 			String name = parser.getName();
 			if (name.equals("marker")) {
-				markers.add(readMarker(parser));
+				MarkerDef marker = readMarker(parser);
+				Log.d("markerParser", marker.toString());
+				markers.add(marker);
+				//markers.add(readMarker(parser));
+			} else if (name.equals("stop")) {
+				//stops.add(readStop(parser));
+				StopDef stop = readStop(parser);
+				Log.d("markerParser", stop.toString());
+				stops.add(stop);
 			} else {
 				skip(parser);
 			}
@@ -156,6 +192,31 @@ public class MarkerParser {
 		return new MarkerDef(vId, title, vLat, vLong, speed);
 	}
 	
+	private StopDef readStop(XmlPullParser parser) throws XmlPullParserException, IOException {
+		parser.require(XmlPullParser.START_TAG, ns, "stop");
+		String title = null;
+		double sLat = 0.0;
+		double sLong = 0.0;
+		
+		while (parser.next() != XmlPullParser.END_TAG) {
+            if (parser.getEventType() != XmlPullParser.START_TAG) {
+                continue;
+            }
+            String tagname = parser.getName();
+            if (tagname.equals("stopID")) {
+                title = readStopTitle(parser);
+            } else if (tagname.equals("stopLat")) {
+                sLat = readStopLat(parser);
+            } else if (tagname.equals("stopLong")) {
+                sLong = readStopLong(parser);
+            } else {
+                skip(parser);
+            }
+        }
+		
+		return new StopDef(title, sLat, sLong);
+	}
+	
 	/**
 	 * Reads the vehicle id from the XML.
 	 * @param parser
@@ -185,6 +246,14 @@ public class MarkerParser {
 		return title;
 	}
 	
+	private String readStopTitle(XmlPullParser parser) throws IOException, XmlPullParserException {
+		String title = "";
+		parser.require(XmlPullParser.START_TAG, ns, "stopID");
+		title = readText(parser);
+		parser.require(XmlPullParser.END_TAG, ns, "stopID");
+		return title;
+	}
+	
 	/**
 	 * Reads the vehicle's current latitude from the XML.
 	 */
@@ -194,6 +263,25 @@ public class MarkerParser {
 		vLat = Double.parseDouble(readText(parser));
 		parser.require(XmlPullParser.END_TAG, ns, "latitude");
 		return vLat;
+	}
+	
+	/**
+	 * Reads the vehicle's current latitude from the XML.
+	 */
+	private double readStopLat(XmlPullParser parser) throws IOException, XmlPullParserException {
+		double vLat = 0.0;
+		parser.require(XmlPullParser.START_TAG, ns, "stopLat");
+		vLat = Double.parseDouble(readText(parser));
+		parser.require(XmlPullParser.END_TAG, ns, "stopLat");
+		return vLat;
+	}
+	
+	private double readStopLong(XmlPullParser parser) throws IOException, XmlPullParserException {
+		double vLong = 0.0;
+		parser.require(XmlPullParser.START_TAG, ns, "stopLong");
+		vLong = Double.parseDouble(readText(parser));
+		parser.require(XmlPullParser.END_TAG, ns, "stopLong");
+		return vLong;
 	}
 	
 	/**
