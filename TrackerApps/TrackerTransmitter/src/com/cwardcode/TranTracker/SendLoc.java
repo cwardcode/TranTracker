@@ -1,6 +1,5 @@
 package com.cwardcode.TranTracker;
 
-import java.util.List;
 import java.util.Random;
 
 import android.app.Service;
@@ -15,9 +14,6 @@ import android.os.Binder;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.Looper;
-import android.util.Log;
-
-import com.cwardcode.TranTracker.StopParser.StopDef;
 
 /**
  * Uses the device's GPS to determine it's location and sends this infomration
@@ -28,6 +24,8 @@ import com.cwardcode.TranTracker.StopParser.StopDef;
  * @version September 9, 2013
  */
 public class SendLoc extends Service {
+
+	private static final double SPEED_THRESHOLD = 0.5;
 
 	/** Provides access to the device's GPS services. */
 	private LocationManager lm;
@@ -50,9 +48,11 @@ public class SendLoc extends Service {
 
 	/** Binder to return to client (TranTracker) */
 	private final IBinder rtnBinder = new LocationBinder();
+	/** Holds current speed of shuttle. */
+	private static double curSpeed;
 
 	/***
-	 * Class to for allowing clients to access this service's public methodsl
+	 * Class to for allowing clients to access this service's public methods.
 	 * 
 	 * @author Chris Ward
 	 * 
@@ -178,9 +178,18 @@ public class SendLoc extends Service {
 	}
 
 	public int getRandomNum() {
-	/*	List<StopDef> stopList = dbHelper.getAllEntries();
-		Log.d("SendLoc", stopList.toString());
-	*/	return new Random().nextInt(10);
+		return new Random().nextInt(10);
+	}
+	
+	/**
+	 * Determines if vehicle is moving.
+	 */
+	public boolean isStopped() {
+		boolean isMoving = false;
+		if(curSpeed < SPEED_THRESHOLD){
+			isMoving = true;
+		}
+		return isMoving;
 	}
 
 	/**
@@ -193,11 +202,11 @@ public class SendLoc extends Service {
 		Context context;
 		context = TranTracker.getAppContext();// getAppContext();
 		double latitude, longitude, speed;
-
+		
 		latitude = location.getLatitude();
 		longitude = location.getLongitude();
 		speed = location.getSpeed();
-
+		curSpeed = speed;
 		Intent filterRes = new Intent();
 		filterRes.setAction("com.cwardcode.intent.action.LOCATION");
 		filterRes.putExtra("latitude", latitude);
@@ -208,7 +217,13 @@ public class SendLoc extends Service {
 		stopLocations.close();
 		context.sendBroadcast(filterRes);
 	}
-
+	
+	/**
+	 * Updates the current location, along with ridership data.
+	 * 
+	 * @param location
+	 *            the device's current Location.
+	 */
 	public static void updateWithPeopleData(Location location) {
 		Context context;
 		context = TranTracker.getAppContext();
@@ -225,7 +240,6 @@ public class SendLoc extends Service {
 		filterRes.putExtra("speed", speed);
 		filterRes.putExtra("VehicleID", vehicleID);
 		filterRes.putExtra("title", title);
-		// TODO how to get numPeople from TranTracker class?
 		filterRes.putExtra("people", numPeople);
 		context.sendBroadcast(filterRes);
 	}

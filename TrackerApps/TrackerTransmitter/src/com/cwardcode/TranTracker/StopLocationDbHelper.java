@@ -36,49 +36,51 @@ public class StopLocationDbHelper extends SQLiteOpenHelper {
 		db.execSQL(SQL_DELETE_ENTRIES);
 		db.execSQL(SQL_CREATE_ENTRIES);
 	}
+
 	/**
 	 * Equivalent to SELECT * WHERE STOP_ID = id
+	 * 
 	 * @param id
 	 */
 	public StopDef getEntry(int id) {
 		SQLiteDatabase db = this.getReadableDatabase();
-		Cursor cur = db.rawQuery("SELECT stopID, name, latitude, longitude FROM stop WHERE _ID = '"+id+"'",null);
+		Cursor cur = db.rawQuery(
+				"SELECT stopID, name, latitude, longitude FROM stop WHERE _ID = '"
+						+ id + "'", null);
 		cur.moveToFirst();
-		StopDef stop = new StopDef(Integer.parseInt(cur.getString(0)),cur.getString(1), Double.parseDouble(cur.getString(2)), Double.parseDouble(cur.getString(3)));
+		StopDef stop = new StopDef(Integer.parseInt(cur.getString(0)),
+				cur.getString(1), Double.parseDouble(cur.getString(2)),
+				Double.parseDouble(cur.getString(3)));
 		return stop;
 	}
-	
+
 	public List<StopDef> getAllEntries() {
 		List<StopDef> list = new ArrayList<StopDef>();
 		String query = "SELECT * FROM stop";
 		SQLiteDatabase db = this.getReadableDatabase();
 		Cursor cursor = db.rawQuery(query, null);
-		 
-	    // looping through all rows and adding to list
-	    if (cursor.moveToFirst()) {
-	        do {
-	            StopDef stop = new StopDef();
-	            String zero = cursor.getString(0);
-	            String one = cursor.getString(1);
-	            String two = cursor.getString(2);
-	            String thre = cursor.getString(3);
-	            String thfour = cursor.getString(4);
-	            stop.setID(Integer.parseInt(cursor.getString(0)));
-	            stop.setEntryName(cursor.getString(2));
-	            stop.setEntryLat(cursor.getString(3));
-	            stop.setEntryLng(cursor.getString(4));
-	            // Adding contact to list
-	            list.add(stop);
-	        } while (cursor.moveToNext());
-	    }
-	 
-	    // return contact list
-	    return list;
+
+		// looping through all rows and adding to list
+		if (cursor.moveToFirst()) {
+			do {
+				StopDef stop = new StopDef();
+				stop.setID(Integer.parseInt(cursor.getString(0)));
+				stop.setEntryName(cursor.getString(2));
+				stop.setEntryLat(cursor.getString(3));
+				stop.setEntryLng(cursor.getString(4));
+				// Adding contact to list
+				list.add(stop);
+			} while (cursor.moveToNext());
+		}
+
+		return list;
 	}
+
 	public void onUpgrade(SQLiteDatabase db, int oldVer, int newVer) {
-		db.execSQL(SQL_DELETE_ENTRIES);
-		// Trash and recreate for now - just to test, ensure version later TODO
-		onCreate(db);
+		if (oldVer < newVer) {
+			db.execSQL(SQL_DELETE_ENTRIES);
+			onCreate(db);
+		}
 	}
 
 	public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
