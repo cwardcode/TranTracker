@@ -57,6 +57,7 @@ public class Chat extends Activity implements OnClickListener, MessageListener {
 	/** Allows user to enter a message. */
 	private EditText input;
 	/** Button used to send message to server. */
+	@SuppressWarnings("unused")
 	private Button sendButton;
 	
 	/**
