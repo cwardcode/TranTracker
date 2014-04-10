@@ -16,7 +16,8 @@ import com.google.android.gms.maps.model.LatLng;
 
 public class RouteArrayHolder {
 
-  private LatLng[] allCampusPtsList = {new LatLng(35.3029, -83.18177),
+  private LatLng[] allCampusPtsList = {
+            new LatLng(35.3029, -83.18177),
             new LatLng(35.302780000000006, -83.18175000000001),
             new LatLng(35.30266, -83.18181000000001),
             new LatLng(35.302550000000004, -83.18190000000001),
