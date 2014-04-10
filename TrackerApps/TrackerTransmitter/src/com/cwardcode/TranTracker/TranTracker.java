@@ -118,6 +118,14 @@ public class TranTracker extends Activity implements
 	/** A service instance */
 	SendLoc locService;
 
+	private MenuItem mItemFace40;
+	private MenuItem mItemFace50;
+	private MenuItem mItemFace30;
+	private MenuItem mItemFace20;
+	private MenuItem mItemType;
+	private List<StopDef> stopDefs = new ArrayList<StopDef>();
+
+
 	/** Initializes OpenCV */
 	private BaseLoaderCallback mLoaderCallback = new BaseLoaderCallback(this) {
 
@@ -173,15 +181,7 @@ public class TranTracker extends Activity implements
 				break;
 			}
 		}
-	};
-	private MenuItem mItemFace40;
-	private MenuItem mItemFace50;
-	private MenuItem mItemFace30;
-	private MenuItem mItemFace20;
-	private MenuItem mItemType;
-	private List<StopDef> stopDefs = new ArrayList<StopDef>();
-
-	private class DownloadXmlTask extends AsyncTask<String, Void, String> {
+	};	private class DownloadXmlTask extends AsyncTask<String, Void, String> {
 		@Override
 		protected String doInBackground(String... urls) {
 			try {
@@ -242,7 +242,7 @@ public class TranTracker extends Activity implements
 					}
 				}
 			}
-			List<StopDef> list = stopHelper.getAllEntries();
+			//List<StopDef> list = stopHelper.getAllEntries();
 			db.close();
 		}
 
@@ -318,6 +318,7 @@ public class TranTracker extends Activity implements
 		}
 
 	}
+
 
 	/**
 	 * Triggered when an item within the spinner's list is selected.
@@ -564,7 +565,6 @@ public class TranTracker extends Activity implements
 		Rect[] facesArray = faces.toArray();
 		// Draw rect around detected person.
 		// TODO: label and track person so not counted twice.
-		// Find way to send data to service.
 		for (int i = 0; i < facesArray.length; i++) {
 			Core.rectangle(mRgba, facesArray[i].tl(), facesArray[i].br(),
 					BODY_RECT_COLOR, 3);

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="MLPostFactor V0.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="8YX-ce-x5E">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3746"/>
+    </dependencies>
+    <scenes>
+        <!--First View Controller - First-->
+        <scene sceneID="W3I-pn-N6e">
+            <objects>
+                <viewController title="First" id="CZ4-MO-1fc" customClass="FirstViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3FF-zc-EU4"/>
+                        <viewControllerLayoutGuide type="bottom" id="rsW-Aj-jdv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2VE-Yg-loa" customClass="GMSMapView">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Map" image="second" id="u1e-5L-l1D"/>
+                    <connections>
+                        <outlet property="mapView_" destination="2VE-Yg-loa" id="DCd-SY-bJL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qh2-T1-AhA" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="653" y="-138"/>
+        </scene>
+        <!--View Controller - About-->
+        <scene sceneID="eVl-dt-Phv">
+            <objects>
+                <viewController id="Q9h-04-hvq" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qbC-Ke-1s7"/>
+                        <viewControllerLayoutGuide type="bottom" id="LjE-Cx-sML"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0Zv-ES-gxR">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="About TranTracker" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kHp-BR-sct">
+                                <rect key="frame" x="90" y="40" width="140" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Developed by Chris Ward." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="51C-Xc-djq">
+                                <rect key="frame" x="60" y="350" width="201" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="(c) 2014 Chris Ward. " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Rt-Bz-xyT">
+                                <rect key="frame" x="80" y="379" width="161" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="All rights reserved." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MVI-q8-GcF">
+                                <rect key="frame" x="89" y="408" width="143" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="first" translatesAutoresizingMaskIntoConstraints="NO" id="cSI-Iq-ww9">
+                                <rect key="frame" x="40" y="80" width="240" height="184"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&lt;insert logo here>" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MCH-Bw-ot3">
+                                <rect key="frame" x="90" y="286" width="140" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="kHp-BR-sct" secondAttribute="centerX" id="Avz-Bt-G0Y"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="About" image="second" id="i2G-7C-ajb"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e9Y-O2-e6G" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1036" y="-138"/>
+        </scene>
+        <!--Second View Controller - Second-->
+        <scene sceneID="ot8-2e-RuS">
+            <objects>
+                <viewController title="Second" id="QUy-BD-bpt" customClass="SecondViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Gud-Oa-CTI"/>
+                        <viewControllerLayoutGuide type="bottom" id="Z5z-6h-uOh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gMD-aP-Fq6">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" text="Shuttle Speak" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="29h-N2-YGT">
+                                <rect key="frame" x="20" y="20" width="280" height="42"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="16"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" bouncesZoom="NO" editable="NO" text="Will, in the future, contain the iOS implementation of our chat system" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="DcM-Fx-MKR">
+                                <rect key="frame" x="20" y="240" width="280" height="88"/>
+                                <fontDescription key="fontDescription" type="system" size="system"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Chat" image="first" id="Z7h-1E-pvt"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3qq-4t-Ow8" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="653" y="546"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="Vex-rW-GRa">
+            <objects>
+                <tabBarController id="8YX-ce-x5E" sceneMemberID="viewController">
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="JQR-rB-NYL">
+                        <rect key="frame" x="0.0" y="431" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="CZ4-MO-1fc" kind="relationship" relationship="viewControllers" id="SUk-Ux-ee1"/>
+                        <segue destination="QUy-BD-bpt" kind="relationship" relationship="viewControllers" id="M8t-EP-wfW"/>
+                        <segue destination="Q9h-04-hvq" kind="relationship" relationship="viewControllers" id="a44-Lr-B9X"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FNP-y4-bzi" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="132" y="180"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="first" width="30" height="30"/>
+        <image name="second" width="30" height="30"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>
