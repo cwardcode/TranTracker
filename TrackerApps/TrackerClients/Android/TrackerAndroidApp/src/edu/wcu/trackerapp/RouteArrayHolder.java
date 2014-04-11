@@ -329,7 +329,7 @@ public class RouteArrayHolder {
             new LatLng(35.31611, -83.18614000000001),
             new LatLng(35.31611, -83.18657),
             new LatLng(35.31609, -83.18694),
-            new LatLng(35.316, -83.18745000000001)
+            new LatLng(35.316, -83.18745000000001),
     };
 
     private LatLng[] offCampusNorthRoutePtsList = {
@@ -638,7 +638,7 @@ public class RouteArrayHolder {
             new LatLng(35.31168, -83.18347),
             new LatLng(35.31172, -83.18316),
             new LatLng(35.31172, -83.18316),
-            new LatLng(35.31175, -83.18282)
+            new LatLng(35.31175, -83.18282),
     };
     
     public ArrayList<LatLng> getAllCampus() {

@@ -10,6 +10,8 @@
 		AA40438118F6675600737E03 /* TrackerParser.m in Sources */ = {isa = PBXBuildFile; fileRef = AA40438018F6675600737E03 /* TrackerParser.m */; };
 		AA40438418F6676D00737E03 /* Shuttle.m in Sources */ = {isa = PBXBuildFile; fileRef = AA40438318F6676D00737E03 /* Shuttle.m */; };
 		AA40438818F684A000737E03 /* ThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA40438618F684A000737E03 /* ThirdViewController.m */; };
+		AAA9D8B518F75976002494DB /* RouteHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA9D8B418F75976002494DB /* RouteHolder.m */; };
+		AAA9D8B718F75A87002494DB /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = AAA9D8B618F75A87002494DB /* logo.png */; };
 		AAD2A23518EBF3ED00EFD3E3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAD2A23418EBF3ED00EFD3E3 /* Foundation.framework */; };
 		AAD2A23718EBF3ED00EFD3E3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAD2A23618EBF3ED00EFD3E3 /* CoreGraphics.framework */; };
 		AAD2A23918EBF3ED00EFD3E3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAD2A23818EBF3ED00EFD3E3 /* UIKit.framework */; };
@@ -40,7 +42,6 @@
 		AAD2A28A18EBF7EC00EFD3E3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAD2A28918EBF7EC00EFD3E3 /* SystemConfiguration.framework */; };
 		AAD2A33818EC206F00EFD3E3 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AAD2A33718EC206F00EFD3E3 /* GoogleMaps.bundle */; };
 		AAD2A33A18EC214300EFD3E3 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAD2A33918EC214300EFD3E3 /* GoogleMaps.framework */; };
-		AAE2F8C518F655DE0039D7D3 /* RouteHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE2F8C418F655DE0039D7D3 /* RouteHolder.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,9 @@
 		AA40438318F6676D00737E03 /* Shuttle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Shuttle.m; sourceTree = "<group>"; };
 		AA40438518F684A000737E03 /* ThirdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdViewController.h; sourceTree = "<group>"; };
 		AA40438618F684A000737E03 /* ThirdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdViewController.m; sourceTree = "<group>"; };
+		AAA9D8B318F75976002494DB /* RouteHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteHolder.h; sourceTree = "<group>"; };
+		AAA9D8B418F75976002494DB /* RouteHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteHolder.m; sourceTree = "<group>"; };
+		AAA9D8B618F75A87002494DB /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		AAD2A23118EBF3ED00EFD3E3 /* TrackerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrackerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAD2A23418EBF3ED00EFD3E3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		AAD2A23618EBF3ED00EFD3E3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -96,8 +100,6 @@
 		AAD2A28918EBF7EC00EFD3E3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		AAD2A33718EC206F00EFD3E3 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 		AAD2A33918EC214300EFD3E3 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
-		AAE2F8C318F655DE0039D7D3 /* RouteHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteHolder.h; sourceTree = "<group>"; };
-		AAE2F8C418F655DE0039D7D3 /* RouteHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteHolder.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,14 +196,14 @@
 				AAD2A25018EBF3ED00EFD3E3 /* SecondViewController.m */,
 				AAD2A25218EBF3ED00EFD3E3 /* Images.xcassets */,
 				AAD2A23B18EBF3ED00EFD3E3 /* Supporting Files */,
-				AAE2F8C318F655DE0039D7D3 /* RouteHolder.h */,
-				AAE2F8C418F655DE0039D7D3 /* RouteHolder.m */,
 				AA40437F18F6675600737E03 /* TrackerParser.h */,
 				AA40438018F6675600737E03 /* TrackerParser.m */,
 				AA40438218F6676D00737E03 /* Shuttle.h */,
 				AA40438318F6676D00737E03 /* Shuttle.m */,
 				AA40438518F684A000737E03 /* ThirdViewController.h */,
 				AA40438618F684A000737E03 /* ThirdViewController.m */,
+				AAA9D8B318F75976002494DB /* RouteHolder.h */,
+				AAA9D8B418F75976002494DB /* RouteHolder.m */,
 			);
 			path = TrackerApp;
 			sourceTree = "<group>";
@@ -209,6 +211,7 @@
 		AAD2A23B18EBF3ED00EFD3E3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				AAA9D8B618F75A87002494DB /* logo.png */,
 				AAD2A23C18EBF3ED00EFD3E3 /* TrackerApp-Info.plist */,
 				AAD2A23D18EBF3ED00EFD3E3 /* InfoPlist.strings */,
 				AAD2A24018EBF3ED00EFD3E3 /* main.m */,
@@ -316,6 +319,7 @@
 			files = (
 				AAD2A24B18EBF3ED00EFD3E3 /* Main_iPad.storyboard in Resources */,
 				AAD2A25318EBF3ED00EFD3E3 /* Images.xcassets in Resources */,
+				AAA9D8B718F75A87002494DB /* logo.png in Resources */,
 				AAD2A24818EBF3ED00EFD3E3 /* Main_iPhone.storyboard in Resources */,
 				AAD2A23F18EBF3ED00EFD3E3 /* InfoPlist.strings in Resources */,
 				AAD2A33818EC206F00EFD3E3 /* GoogleMaps.bundle in Resources */,
@@ -342,7 +346,7 @@
 				AA40438818F684A000737E03 /* ThirdViewController.m in Sources */,
 				AA40438118F6675600737E03 /* TrackerParser.m in Sources */,
 				AAD2A24518EBF3ED00EFD3E3 /* AppDelegate.m in Sources */,
-				AAE2F8C518F655DE0039D7D3 /* RouteHolder.m in Sources */,
+				AAA9D8B518F75976002494DB /* RouteHolder.m in Sources */,
 				AAD2A24E18EBF3ED00EFD3E3 /* FirstViewController.m in Sources */,
 				AAD2A24118EBF3ED00EFD3E3 /* main.m in Sources */,
 			);

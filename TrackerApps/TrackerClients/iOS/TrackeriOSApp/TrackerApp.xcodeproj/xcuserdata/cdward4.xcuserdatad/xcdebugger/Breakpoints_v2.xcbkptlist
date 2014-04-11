@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TrackerApp/FirstViewController.m"
-            timestampString = "418808708.164455"
+            timestampString = "418875689.491909"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
             landmarkName = "-refreshmarkers"
             landmarkType = "5">
          </BreakpointContent>
@@ -73,13 +73,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TrackerApp/FirstViewController.m"
-            timestampString = "418808708.164455"
+            filePath = "TrackerApp/RouteHolder.m"
+            timestampString = "418874885.092726"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
-            landmarkName = "-refreshmarkers"
+            startingLineNumber = "492"
+            endingLineNumber = "492"
+            landmarkName = "+drawOffCampusSouth"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -7,6 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+@class GMSMutablePath;
 @interface RouteHolder : NSObject
-+ (NSArray *) getAllCampusRoute;
++(GMSMutablePath*) drawAllCampusRoute;
++(GMSMutablePath*) drawHHSRoute;
++(GMSMutablePath*) drawVillageRoute;
++(GMSMutablePath*) drawOffCampusNorth;
++(GMSMutablePath*) drawOffCampusSouth;
+
 @end
