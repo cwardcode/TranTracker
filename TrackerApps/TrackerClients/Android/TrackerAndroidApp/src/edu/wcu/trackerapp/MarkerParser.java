@@ -35,12 +35,42 @@ public class MarkerParser {
 	 *
 	 */
 	public static class MarkerDef {
+		/**
+		 * The ID number of the vehicle represented by the marker.
+		 */
 		public final int id;
+		
+		/**
+		 * The title displayed by the marker.
+		 */
 		public final String title;
+		
+		/**
+		 * The marker's latitude coordinate.
+		 */
 		public final double vLat;
+		
+		/**
+		 * The marker's longitude coordinate.
+		 */
 		public final double vLong;
+		
+		/**
+		 * The current speed of the vehicle represented by the marker.
+		 */
 		public final double speed;
 		
+		/**
+		 * Creates a new marker def with the given properties.
+		 * 
+		 * @param id the vehicle's ID.
+		 * @param title the marker's title.
+		 * @param vLat the marker's latitude coordinate.
+		 * @param vLong the marker's longitude coordinate.
+		 * @param speed the vehicle's speed.
+		 * 
+		 * @return a new marker def object.
+		 */
 		private MarkerDef(int id, String title, double vLat, double vLong, double speed) {
 			this.id = id;
 			this.title = title;
@@ -49,23 +79,64 @@ public class MarkerParser {
 			this.speed = speed;
 		}
 		
+		/**
+		 * Creates a string representing the marker def.
+		 * 
+		 * @return a String listing the information contained by the 
+		 *         marker def.
+		 */
 		public String toString() {
 			String result = id + " " + title + " " + vLat + " " + vLong + " " + speed;
 			return result;
 		}
 	}
 	
+	/**
+	 * This class defines a stop def, which is an object that contains the
+	 * fields needed to create a stop marker.
+	 * 
+	 * @author Hayden Thomas
+	 * @version 4/1/2014
+	 *
+	 */
 	public static class StopDef {
+		/**
+		 * The marker's title.
+		 */
 		public final String title;
+		
+		/**
+		 * The marker's latitude coordinate.
+		 */
 		public final double sLat;
+		
+		/**
+		 * The marker's longitude coordinate.
+		 */
 		public final double sLong;
 		
+		/**
+		 * Creates a new stop def with the given properties.
+		 * 
+		 * @param title the marker's title.
+		 * @param sLat the marker's latitude coordinate.
+		 * @param sLong the marker's longitude coordinate.
+		 * 
+		 * @return a new StopDef object.
+		 */
 		private StopDef(String title, double sLat, double sLong) {
 			this.title = title;
 			this.sLat = sLat;
 			this.sLong = sLong;
 		}
 		
+		/**
+		 * Creates a string with listing the information contained by the
+		 * stop def.
+		 * 
+		 * @return a String containing the information contained in the
+		 * stop def.
+		 */
 		public String toString() {
 			String result = title + " " + sLat + " " + sLong;
 			return result;
@@ -88,21 +159,30 @@ public class MarkerParser {
 	private static final String ns = null;
 	
 	/**
-	 * Creates a new maker parser with an empty list.
+	 * Creates a new maker parser with empty lists.
 	 */
 	public MarkerParser() {
 		markers = new ArrayList<MarkerDef>();
 		stops = new ArrayList<StopDef>();
 	}
 	
+	/**
+	 * Returns the list of vehicle marker defs.
+	 * 
+	 * @return a List of MarkerDefs
+	 */
 	public List<MarkerDef> getMarkerList() {
 		return markers;
 	}
 	
+	/**
+	 * Returns the list of stop marker defs.
+	 * 
+	 * @return a List of StopDefs
+	 */
 	public List<StopDef> getStopList() {
 		return stops;
 	}
-	
 
     /**
 	 * Parses the XML from the site into information that the app can use.
@@ -192,6 +272,14 @@ public class MarkerParser {
 		return new MarkerDef(vId, title, vLat, vLong, speed);
 	}
 	
+	/**
+	 * Parses the information required to create a StopDef.
+	 * 
+	 * @param parser the parser used to parse the XML.
+	 * @return a new StopDef with the information gathered by the parser.
+	 * @throws XmlPullParserException
+	 * @throws IOException
+	 */
 	private StopDef readStop(XmlPullParser parser) throws XmlPullParserException, IOException {
 		parser.require(XmlPullParser.START_TAG, ns, "stop");
 		String title = null;
@@ -220,7 +308,7 @@ public class MarkerParser {
 	/**
 	 * Reads the vehicle id from the XML.
 	 * @param parser
-	 * @return
+	 * @return the vehicle ID as an int.
 	 * @throws IOException
 	 * @throws XmlPullParserException
 	 */
@@ -234,7 +322,7 @@ public class MarkerParser {
 	/**
 	 * Reads the vehicle's name from the XML
 	 * @param parser
-	 * @return
+	 * @return returns the vehicle name as a String.
 	 * @throws IOException
 	 * @throws XmlPullParserException
 	 */
@@ -246,6 +334,14 @@ public class MarkerParser {
 		return title;
 	}
 	
+	/**
+	 * Reads the stop's name from the XML
+	 * 
+	 * @param parser the XML parser
+	 * @return the stop name as a String.
+	 * @throws IOException
+	 * @throws XmlPullParserException
+	 */
 	private String readStopTitle(XmlPullParser parser) throws IOException, XmlPullParserException {
 		String title = "";
 		parser.require(XmlPullParser.START_TAG, ns, "stopID");
