@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SecondViewController : UIViewController
+@interface SecondViewController : UIViewController  <UIPickerViewDataSource,UIPickerViewDelegate>
 
+@property (strong, nonatomic) IBOutlet UIPickerView *picker;
+@property (strong, nonatomic)          NSArray *routeArray;
 @end
