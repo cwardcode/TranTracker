@@ -57,4 +57,18 @@
         android:layout_weight="1"
         android:gravity="center" />
 
+    <Button
+        android:id="@+id/route_button"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="Button" />
+
+    <Button
+        android:id="@+id/stop_button"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="Button" />
+
 </LinearLayout>

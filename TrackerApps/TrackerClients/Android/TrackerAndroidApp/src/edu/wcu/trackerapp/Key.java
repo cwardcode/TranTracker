@@ -1,7 +1,9 @@
 package edu.wcu.trackerapp;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -29,6 +31,12 @@ public class Key extends Activity implements OnClickListener {
 	private Button help;
 	
 	private Button about;
+	
+	private Button routes;
+	
+	private Button stops;
+	
+	SharedPreferences settings;
 	//private Spinner menu;
 	
 	/*
@@ -45,6 +53,9 @@ public class Key extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_key);
 		
+		settings = getSharedPreferences(AppConstants.PREFS, 
+					Context.MODE_PRIVATE);
+		
 		//menu = (Spinner) findViewById(R.id.menuSpinnerKey);
 		
 		//menu.setOnItemSelectedListener(this);
@@ -54,12 +65,16 @@ public class Key extends Activity implements OnClickListener {
 		key = (Button) findViewById(R.id.keyKeyButton);
 		about = (Button) findViewById(R.id.keyAboutButton);
 		help = (Button) findViewById(R.id.keyHelpButton);
+		routes = (Button) findViewById(R.id.route_button);
+		stops = (Button) findViewById(R.id.stop_button);
 		
 		map.setOnClickListener(this);
 		chat.setOnClickListener(this);
 		key.setOnClickListener(this);
 		about.setOnClickListener(this);
 		help.setOnClickListener(this);
+		routes.setOnClickListener(this);
+		stops.setOnClickListener(this);
 	}
 
 	@Override
@@ -125,15 +140,25 @@ public class Key extends Activity implements OnClickListener {
 		
         if (button.equals(map)) {
 			Intent next = new Intent(this, edu.wcu.trackerapp.Map.class);
+			next.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			this.startActivity(next);
 		} else if (button.equals(chat)) {
 			Intent next = new Intent(this, edu.wcu.trackerapp.Chat.class);
+			next.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			this.startActivity(next);
 		} else if (button.equals(about)) {
 			Intent next = new Intent(this, edu.wcu.trackerapp.About.class);
+			next.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			this.startActivity(next);
 		} else if (button.equals(help)) {
 			Intent next = new Intent(this, edu.wcu.trackerapp.Help.class);
+			next.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			this.startActivity(next);
+		} else if (button.equals(routes)) {
+			Intent next = new Intent(this, edu.wcu.trackerapp.RouteList.class);
+			this.startActivity(next);
+		} else if (button.equals(stops)) {
+			Intent next = new Intent(this, edu.wcu.trackerapp.StopList.class);
 			this.startActivity(next);
 		}
 		

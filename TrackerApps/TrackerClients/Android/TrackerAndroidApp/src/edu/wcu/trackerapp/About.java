@@ -89,12 +89,15 @@ public class About extends Activity implements OnClickListener {
 		
 		if (button.equals(map)) {
 			Intent next = new Intent(this, edu.wcu.trackerapp.Map.class);
+			next.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			this.startActivity(next);
 		} else if (button.equals(key)) {
 			Intent next = new Intent(this, edu.wcu.trackerapp.Key.class);
+			next.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			this.startActivity(next);
 		} else if (button.equals(help)) {
 			Intent next = new Intent(this, edu.wcu.trackerapp.Help.class);
+			next.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			this.startActivity(next);
 		}
 		
