@@ -11,7 +11,6 @@
 
 
 @interface SecondViewController ()
-
 @end
 
 @implementation SecondViewController
@@ -38,30 +37,22 @@
 }
 
 
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row   inComponent:(NSInteger)component{
-    
-    NSLog(@"Selected Row %ld", (long)row);
-    switch(row)
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
+        switch(row)
     {
-            
         case 0:
-            NSLog(@"All-Campus Sel'd");
             [FirstViewController setRouteID:0];
             break;
         case 1:
-            NSLog(@"Village Sel'd");
             [FirstViewController setRouteID:1];
             break;
         case 2:
-            NSLog(@"HHS Exp Sel'd");
             [FirstViewController setRouteID:2];
             break;
         case 3:
-            NSLog(@"OCN Sel'd");
             [FirstViewController setRouteID:3];
             break;
         case 4:
-            NSLog(@"OCS Sel'd");
             [FirstViewController setRouteID:4];
             break;
     }

@@ -13,14 +13,14 @@
     NSString    *title;
     double    latitude;
     double    longitude;
-    double    speed;
+    double    curSpeed;
 }
 
 @property (nonatomic, retain) NSString *VID;
 @property (nonatomic, retain) NSString *title;
 @property (nonatomic, assign) double lat;
 @property (nonatomic, assign) double lng;
-@property (nonatomic, assign) double speed;
+@property (nonatomic, assign) double curSpeed;
 
 
 @end

@@ -10,10 +10,11 @@
 
 @implementation TrackerParser
 @synthesize shuttles = shuttles;
-
+@synthesize stopLocs = stopLocs;
 -(id) loadXMLByURL:(NSString *)url
 {
     shuttles        = [[NSMutableArray alloc]   init];
+    stopLocs        = [[NSMutableArray alloc]    init];
     NSURL   *xmlURL = [NSURL URLWithString:url];
     NSData  *data   = [[NSData alloc] initWithContentsOfURL:xmlURL];
     parser          =[[NSXMLParser alloc] initWithData:data];
@@ -33,6 +34,9 @@
     if ([elementName isEqualToString:@"marker"]) {
         shuttle = [Shuttle alloc];
         isShuttle  = true;
+    } else if ([elementName isEqualToString:@"stop"]) {
+        stopLoc = [StopLocation alloc];
+        isStopLoc = true;
     }
     
 }
@@ -58,9 +62,25 @@
         }
         if([elementName isEqualToString:@"speed"])
         {
-            shuttle.speed = [currentNode doubleValue];
+            shuttle.curSpeed = [currentNode doubleValue];
         }
     }
+    if(isStopLoc) {
+        if([elementName isEqualToString:@"stopID"]) {
+            stopLoc.stopName = currentNode;
+        }
+        if([elementName isEqualToString:@"stopLat"]) {
+            stopLoc.stopLatitude = [currentNode doubleValue];
+        }
+        if([elementName isEqualToString:@"stopLong"]) {
+            stopLoc.stopLongitude = [currentNode doubleValue];
+        }
+    }
+    if ([elementName isEqualToString:@"stop"]) {
+        [stopLocs addObject:stopLoc];
+        stopLoc = nil;
+        currentNode = nil;
+    } 
     if ([elementName isEqualToString:@"marker"]) {
         [shuttles addObject:shuttle];
         shuttle = nil;

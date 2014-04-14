@@ -10,6 +10,13 @@
 		AA40438118F6675600737E03 /* TrackerParser.m in Sources */ = {isa = PBXBuildFile; fileRef = AA40438018F6675600737E03 /* TrackerParser.m */; };
 		AA40438418F6676D00737E03 /* Shuttle.m in Sources */ = {isa = PBXBuildFile; fileRef = AA40438318F6676D00737E03 /* Shuttle.m */; };
 		AA40438818F684A000737E03 /* ThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA40438618F684A000737E03 /* ThirdViewController.m */; };
+		AA8C4F9318FB7FC900D0C626 /* configIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8C4F9218FB7FC900D0C626 /* configIcon.png */; };
+		AA9B2CE618FB2BC100EE2710 /* stopMarker.ico in Resources */ = {isa = PBXBuildFile; fileRef = AA9B2CE518FB2BC100EE2710 /* stopMarker.ico */; };
+		AA9B2CE818FB2BD200EE2710 /* shuttle.png in Resources */ = {isa = PBXBuildFile; fileRef = AA9B2CE718FB2BD200EE2710 /* shuttle.png */; };
+		AA9B2CEB18FB331600EE2710 /* StopLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9B2CEA18FB331600EE2710 /* StopLocation.m */; };
+		AA9B2CF018FB7AAD00EE2710 /* settings2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA9B2CED18FB7AAD00EE2710 /* settings2x.png */; };
+		AA9B2CF118FB7AAD00EE2710 /* spotlight2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA9B2CEE18FB7AAD00EE2710 /* spotlight2x.png */; };
+		AA9B2CF318FB7C9600EE2710 /* appicon2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA9B2CF218FB7C9600EE2710 /* appicon2x.png */; };
 		AAA9D8B518F75976002494DB /* RouteHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA9D8B418F75976002494DB /* RouteHolder.m */; };
 		AAA9D8B718F75A87002494DB /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = AAA9D8B618F75A87002494DB /* logo.png */; };
 		AAD2A23518EBF3ED00EFD3E3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAD2A23418EBF3ED00EFD3E3 /* Foundation.framework */; };
@@ -61,6 +68,14 @@
 		AA40438318F6676D00737E03 /* Shuttle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Shuttle.m; sourceTree = "<group>"; };
 		AA40438518F684A000737E03 /* ThirdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdViewController.h; sourceTree = "<group>"; };
 		AA40438618F684A000737E03 /* ThirdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdViewController.m; sourceTree = "<group>"; };
+		AA8C4F9218FB7FC900D0C626 /* configIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = configIcon.png; sourceTree = "<group>"; };
+		AA9B2CE518FB2BC100EE2710 /* stopMarker.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; path = stopMarker.ico; sourceTree = "<group>"; };
+		AA9B2CE718FB2BD200EE2710 /* shuttle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shuttle.png; sourceTree = "<group>"; };
+		AA9B2CE918FB331600EE2710 /* StopLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopLocation.h; sourceTree = "<group>"; };
+		AA9B2CEA18FB331600EE2710 /* StopLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopLocation.m; sourceTree = "<group>"; };
+		AA9B2CED18FB7AAD00EE2710 /* settings2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings2x.png; sourceTree = "<group>"; };
+		AA9B2CEE18FB7AAD00EE2710 /* spotlight2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spotlight2x.png; sourceTree = "<group>"; };
+		AA9B2CF218FB7C9600EE2710 /* appicon2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appicon2x.png; sourceTree = "<group>"; };
 		AAA9D8B318F75976002494DB /* RouteHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteHolder.h; sourceTree = "<group>"; };
 		AAA9D8B418F75976002494DB /* RouteHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteHolder.m; sourceTree = "<group>"; };
 		AAA9D8B618F75A87002494DB /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
@@ -200,6 +215,8 @@
 				AA40438018F6675600737E03 /* TrackerParser.m */,
 				AA40438218F6676D00737E03 /* Shuttle.h */,
 				AA40438318F6676D00737E03 /* Shuttle.m */,
+				AA9B2CE918FB331600EE2710 /* StopLocation.h */,
+				AA9B2CEA18FB331600EE2710 /* StopLocation.m */,
 				AA40438518F684A000737E03 /* ThirdViewController.h */,
 				AA40438618F684A000737E03 /* ThirdViewController.m */,
 				AAA9D8B318F75976002494DB /* RouteHolder.h */,
@@ -211,6 +228,12 @@
 		AAD2A23B18EBF3ED00EFD3E3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				AA8C4F9218FB7FC900D0C626 /* configIcon.png */,
+				AA9B2CF218FB7C9600EE2710 /* appicon2x.png */,
+				AA9B2CED18FB7AAD00EE2710 /* settings2x.png */,
+				AA9B2CEE18FB7AAD00EE2710 /* spotlight2x.png */,
+				AA9B2CE718FB2BD200EE2710 /* shuttle.png */,
+				AA9B2CE518FB2BC100EE2710 /* stopMarker.ico */,
 				AAA9D8B618F75A87002494DB /* logo.png */,
 				AAD2A23C18EBF3ED00EFD3E3 /* TrackerApp-Info.plist */,
 				AAD2A23D18EBF3ED00EFD3E3 /* InfoPlist.strings */,
@@ -318,11 +341,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAD2A24B18EBF3ED00EFD3E3 /* Main_iPad.storyboard in Resources */,
+				AA9B2CF118FB7AAD00EE2710 /* spotlight2x.png in Resources */,
 				AAD2A25318EBF3ED00EFD3E3 /* Images.xcassets in Resources */,
 				AAA9D8B718F75A87002494DB /* logo.png in Resources */,
+				AA8C4F9318FB7FC900D0C626 /* configIcon.png in Resources */,
 				AAD2A24818EBF3ED00EFD3E3 /* Main_iPhone.storyboard in Resources */,
+				AA9B2CF018FB7AAD00EE2710 /* settings2x.png in Resources */,
 				AAD2A23F18EBF3ED00EFD3E3 /* InfoPlist.strings in Resources */,
 				AAD2A33818EC206F00EFD3E3 /* GoogleMaps.bundle in Resources */,
+				AA9B2CF318FB7C9600EE2710 /* appicon2x.png in Resources */,
+				AA9B2CE618FB2BC100EE2710 /* stopMarker.ico in Resources */,
+				AA9B2CE818FB2BD200EE2710 /* shuttle.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,6 +372,7 @@
 			files = (
 				AA40438418F6676D00737E03 /* Shuttle.m in Sources */,
 				AAD2A25118EBF3ED00EFD3E3 /* SecondViewController.m in Sources */,
+				AA9B2CEB18FB331600EE2710 /* StopLocation.m in Sources */,
 				AA40438818F684A000737E03 /* ThirdViewController.m in Sources */,
 				AA40438118F6675600737E03 /* TrackerParser.m in Sources */,
 				AAD2A24518EBF3ED00EFD3E3 /* AppDelegate.m in Sources */,
@@ -496,6 +526,7 @@
 				INFOPLIST_FILE = "TrackerApp/TrackerApp-Info.plist";
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -516,6 +547,7 @@
 				INFOPLIST_FILE = "TrackerApp/TrackerApp-Info.plist";
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

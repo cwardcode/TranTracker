@@ -34,12 +34,26 @@ int routeID;
 -(void) refreshMarkers {
     [mapView_ clear];
     [self drawRoutes];
+    [self drawStopLocations];
     parser = [[TrackerParser alloc] loadXMLByURL:@"http://tracker.cwardcode.com/static/genxml.php"];
     NSArray *shuttleArray = [parser shuttles];
     for(int i = 0; i < [shuttleArray count]; i++) {
         GMSMarker *marker = [[GMSMarker alloc]init];
         marker.position = CLLocationCoordinate2DMake([shuttleArray[i] lat], [shuttleArray[i] lng]);
         marker.title = [shuttleArray[i] title];
+        marker.snippet = [NSString stringWithFormat:@"Speed: %02f", [shuttleArray[i] curSpeed]];
+        marker.icon = [UIImage imageNamed:@"shuttle.png"];
+        marker.map = mapView_;
+    }
+}
+-(void) drawStopLocations {
+    parser = [[TrackerParser alloc] loadXMLByURL:@"http://tracker.cwardcode.com/static/genxml.php"];
+    NSArray *stopArray = [parser stopLocs];
+    for (int i = 0; i < [stopArray count]; i++) {
+        GMSMarker *marker = [[GMSMarker alloc]init];
+        marker.position = CLLocationCoordinate2DMake([stopArray[i] stopLatitude], [stopArray[i] stopLongitude]);
+        marker.icon = [UIImage imageNamed:@"stopMarker.ico"];
+        marker.title = [stopArray[i] stopName];
         marker.map = mapView_;
     }
 }
@@ -80,10 +94,14 @@ int routeID;
 
 - (void)viewDidLoad
 {
+    //Set first route to be all-campus by default.
     routeID = 0;
+    //Setup map camera
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:35.3067
                                                             longitude:-83.1814
                                                                  zoom:14.85];
+    //Draw set of Stop Markers
+    [self drawStopLocations];
     //Draw first set of markers
     [self refreshMarkers];
     //Draw Route

@@ -9,5 +9,5 @@
 #import "Shuttle.h"
 
 @implementation Shuttle
-@synthesize VID, title, lat, lng, speed;
+@synthesize VID, title, lat, lng, curSpeed;
 @end
