@@ -1,10 +1,12 @@
 package com.cwardcode.TranTracker;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.location.Criteria;
 import android.location.Location;
@@ -26,10 +28,11 @@ import android.os.Looper;
 public class SendLoc extends Service {
 
 	private static final double SPEED_THRESHOLD = 0.5;
+	private static final double R = 6372.8;
+	private static final double MILES_CONVERSION = 0.621371;
 
 	/** Provides access to the device's GPS services. */
 	private LocationManager lm;
-
 	/** Listens for location updates from the LocationManager. */
 	private LocationListener locListener;
 	/** The amount of people using a particular stop */
@@ -50,6 +53,19 @@ public class SendLoc extends Service {
 	private final IBinder rtnBinder = new LocationBinder();
 	/** Holds current speed of shuttle. */
 	private static double curSpeed;
+	/** Holds current latitude */
+	private static double curLat;
+	/** Holds current longitude */
+	private static double curLng;
+	/** ArrayList that holds each stop's latitude */
+	ArrayList<String> stopLatList = new ArrayList<String>();
+	/** ArrayList that holds each stop's longitude */
+	ArrayList<String> stopLngList = new ArrayList<String>();
+	/** Name of the nearest stop */
+	private String nameAtStop;
+	private static double distanceFromStop;
+	/** Global cursor for database */
+	private Cursor cursor = null;
 
 	/***
 	 * Class to for allowing clients to access this service's public methods.
@@ -75,12 +91,13 @@ public class SendLoc extends Service {
 		 */
 		@Override
 		public void onLocationChanged(Location location) {
-			// TODO:
 			// Check if location is near a stop, if so updateWithPeopleData
-			// How would we count from here when only at a stop?
-			// How could we send numPeople as an extra after the service has
-			// already started?
-
+			curLat = location.getLatitude();
+			curLng = location.getLongitude();
+			if (isNearLoc()) {
+				//Get peopleData from main activity
+				updateWithPeopleData(location);
+			}
 			if (location != null) {
 				updateLocation(location);
 			}
@@ -133,6 +150,15 @@ public class SendLoc extends Service {
 		addLocationListener();
 		dbHelper = new StopLocationDbHelper(getApplicationContext());
 		stopLocations = dbHelper.getReadableDatabase();
+		// setup Array with stopLocations
+		setupStopLocList();
+		// Just to test since location updates don't change on the transformer
+		// prime..
+		/**
+		curLat = 35.311575;// location.getLatitude();
+		curLng = -83.180500;// location.getLongitude();
+		isNearLoc();
+		**/
 	}
 
 	/**
@@ -177,19 +203,108 @@ public class SendLoc extends Service {
 		sendLocThread.start();
 	}
 
+	/**
+	 * generates a random number b/t 1-10
+	 * 
+	 * @return 'random' number
+	 */
 	public int getRandomNum() {
 		return new Random().nextInt(10);
 	}
-	
+
+	/**
+	 * Returns next closest stop name, if exists.
+	 * 
+	 * @return next closest stop
+	 */
+	public String getNextStop() {
+		return nameAtStop;
+	}
+	/**
+	 * Sets up the arraylists with coordinate points for each stoplocation.
+	 */
+	private void setupStopLocList() {
+		try {
+			String query = "select latitude from stop";
+			cursor = stopLocations.rawQuery(query, null);
+			if (cursor != null && cursor.moveToFirst()) {
+				stopLatList = new ArrayList<String>();
+				do {
+					stopLatList.add(cursor.getString(0));
+				} while (cursor.moveToNext());
+			}
+			cursor.close();
+			query = "select longitude from stop";
+
+			cursor = stopLocations.rawQuery(query, null);
+			if (cursor != null && cursor.moveToFirst()) {
+				stopLngList = new ArrayList<String>();
+				do {
+					stopLngList.add(cursor.getString(0));
+				} while (cursor.moveToNext());
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			stopLatList = null;
+			stopLngList = null;
+		}
+	}
+
 	/**
 	 * Determines if vehicle is moving.
+	 * 
+	 * @return true if shuttle is moving.
 	 */
 	public boolean isStopped() {
 		boolean isMoving = false;
-		if(curSpeed < SPEED_THRESHOLD){
+		if (curSpeed < SPEED_THRESHOLD) {
 			isMoving = true;
 		}
 		return isMoving;
+	}
+
+	/**
+	 * Determines if near stoplocation
+	 * 
+	 * @return true if within .5 miles of stop.
+	 */
+	public boolean isNearLoc() {
+		boolean isNear = false;
+		for (int i = 0; i < stopLatList.size(); i++) {
+
+			double lat1 = Double.parseDouble(stopLatList.get(i));
+			double lng2 = Double.parseDouble(stopLngList.get(i));
+
+			 distanceFromStop = haversine(curLat, curLng, lat1, lng2);
+
+			if (distanceFromStop <= SPEED_THRESHOLD) {
+				isNear = true;
+				cursor = stopLocations
+						.rawQuery("Select name from stop where stopid = " + i
+								+ ";", null);
+				cursor.moveToFirst();
+				if (cursor.getCount() > 0) {
+					nameAtStop = cursor.getString(0);
+				}
+			}
+		}
+		return isNear;
+	}
+
+	/**
+	 * Haversine function Ripped from Rosetta Code
+	 */
+	public static double haversine(double lat1, double lon1, double lat2,
+			double lon2) {
+		double dLat = Math.toRadians(lat2 - lat1);
+		double dLon = Math.toRadians(lon2 - lon1);
+		lat1 = Math.toRadians(lat1);
+		lat2 = Math.toRadians(lat2);
+
+		double a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.sin(dLon / 2)
+				* Math.sin(dLon / 2) * Math.cos(lat1) * Math.cos(lat2);
+		double c = 2 * Math.asin(Math.sqrt(a));
+		return R * c * MILES_CONVERSION;
 	}
 
 	/**
@@ -202,7 +317,7 @@ public class SendLoc extends Service {
 		Context context;
 		context = TranTracker.getAppContext();// getAppContext();
 		double latitude, longitude, speed;
-		
+
 		latitude = location.getLatitude();
 		longitude = location.getLongitude();
 		speed = location.getSpeed();
@@ -212,12 +327,13 @@ public class SendLoc extends Service {
 		filterRes.putExtra("latitude", latitude);
 		filterRes.putExtra("longitude", longitude);
 		filterRes.putExtra("speed", speed);
+		filterRes.putExtra("Distance", distanceFromStop);
 		filterRes.putExtra("VehicleID", vehicleID);
 		filterRes.putExtra("title", title);
-		stopLocations.close();
+		dbHelper.close();
 		context.sendBroadcast(filterRes);
 	}
-	
+
 	/**
 	 * Updates the current location, along with ridership data.
 	 * 
@@ -238,6 +354,7 @@ public class SendLoc extends Service {
 		filterRes.putExtra("latitude", latitude);
 		filterRes.putExtra("longitude", longitude);
 		filterRes.putExtra("speed", speed);
+		filterRes.putExtra("Distance", distanceFromStop);
 		filterRes.putExtra("VehicleID", vehicleID);
 		filterRes.putExtra("title", title);
 		filterRes.putExtra("people", numPeople);

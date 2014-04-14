@@ -125,7 +125,6 @@ public class TranTracker extends Activity implements
 	private MenuItem mItemType;
 	private List<StopDef> stopDefs = new ArrayList<StopDef>();
 
-
 	/** Initializes OpenCV */
 	private BaseLoaderCallback mLoaderCallback = new BaseLoaderCallback(this) {
 
@@ -181,7 +180,9 @@ public class TranTracker extends Activity implements
 				break;
 			}
 		}
-	};	private class DownloadXmlTask extends AsyncTask<String, Void, String> {
+	};
+
+	private class DownloadXmlTask extends AsyncTask<String, Void, String> {
 		@Override
 		protected String doInBackground(String... urls) {
 			try {
@@ -242,7 +243,7 @@ public class TranTracker extends Activity implements
 					}
 				}
 			}
-			//List<StopDef> list = stopHelper.getAllEntries();
+			// List<StopDef> list = stopHelper.getAllEntries();
 			db.close();
 		}
 
@@ -318,7 +319,6 @@ public class TranTracker extends Activity implements
 		}
 
 	}
-
 
 	/**
 	 * Triggered when an item within the spinner's list is selected.
@@ -452,7 +452,7 @@ public class TranTracker extends Activity implements
 			public void run() {
 				if (IS_BOUND) {
 					peopleData.setText("People: " + locService.getRandomNum());
-					
+
 				} else {
 					peopleData.setText("People: " + numPeople);
 				}
@@ -546,30 +546,33 @@ public class TranTracker extends Activity implements
 		mRgba = inputFrame.rgba();
 		// Holds grey frame
 		mGrey = inputFrame.gray();
-
-		if (mAbsoluteBodySize == 0) {
-			int height = mGrey.rows();
-			if (Math.round(height * mRelativeBodySize) > 0) {
-				mAbsoluteBodySize = Math.round(height * mRelativeBodySize);
+		//Check to see if near a stop, and it is stopped.
+		while (locService.isNearLoc() && locService.isStopped()) {
+			if (mAbsoluteBodySize == 0) {
+				int height = mGrey.rows();
+				if (Math.round(height * mRelativeBodySize) > 0) {
+					mAbsoluteBodySize = Math.round(height * mRelativeBodySize);
+				}
+				mNativeDetector.setMinFaceSize(mAbsoluteBodySize);
 			}
-			mNativeDetector.setMinFaceSize(mAbsoluteBodySize);
-		}
 
-		MatOfRect faces = new MatOfRect();
+			MatOfRect faces = new MatOfRect();
 
-		if (mJavaDetector != null) {
-			mJavaDetector.detectMultiScale(mGrey, faces, 1.1, 2, 2, new Size(
-					mAbsoluteBodySize, mAbsoluteBodySize), new Size());
-		}
+			if (mJavaDetector != null) {
+				mJavaDetector.detectMultiScale(mGrey, faces, 1.1, 2, 2,
+						new Size(mAbsoluteBodySize, mAbsoluteBodySize),
+						new Size());
+			}
 
-		Rect[] facesArray = faces.toArray();
-		// Draw rect around detected person.
-		// TODO: label and track person so not counted twice.
-		for (int i = 0; i < facesArray.length; i++) {
-			Core.rectangle(mRgba, facesArray[i].tl(), facesArray[i].br(),
-					BODY_RECT_COLOR, 3);
+			Rect[] facesArray = faces.toArray();
+			// Draw rect around detected person.
+			// TODO: label and track person so not counted twice.
+			for (int i = 0; i < facesArray.length; i++) {
+				Core.rectangle(mRgba, facesArray[i].tl(), facesArray[i].br(),
+						BODY_RECT_COLOR, 3);
+			}
+			setPeopleData(facesArray.length);
 		}
-		setPeopleData(facesArray.length);
 		return mRgba;
 	}
 
