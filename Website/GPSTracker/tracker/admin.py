@@ -14,7 +14,7 @@ class LocationAdmin(admin.ModelAdmin):
 
     readonly_fields = ('LocID')#('LocID', 'VehID', 'Latitude', 'Longitude', 'Speed')
     fieldsets = [
-        ('Location', {'fields': ['LocID', 'VehID', 'Latitude', 'Longitude', 'Speed', ]}), ]
+        ('Location', {'fields': ['LocID', 'VehID', 'Latitude', 'Longitude', 'Speed','Distance', ]}), ]
 
 admin.site.register(Location, LocationAdmin)
 
