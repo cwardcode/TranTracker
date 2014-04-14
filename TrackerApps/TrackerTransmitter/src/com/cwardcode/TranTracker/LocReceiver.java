@@ -30,7 +30,7 @@ public class LocReceiver extends BroadcastReceiver {
 	/** The connection string that allows DB_DRIVER to connect to the server. */
 	private static final String DB_CONNECTION = "jdbc:mysql://tracker.cwardcode.com:3306/gpstracker";
 
-	/** The username used for this connection */
+	/** The user name used for this connection */
 	private static final String DB_USER = "gpstracker";
 
 	/** The password used for this connection */
