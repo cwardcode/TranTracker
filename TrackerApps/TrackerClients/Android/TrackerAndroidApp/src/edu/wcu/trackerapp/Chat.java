@@ -20,7 +20,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ScrollView;
 import android.widget.TextView;
-
+import android.widget.Toast;
 
 @SuppressLint("ValidFragment")
 /**
@@ -59,12 +59,13 @@ public class Chat extends Activity implements OnClickListener, MessageListener {
 	/** Button used to send message to server. */
 	@SuppressWarnings("unused")
 	private Button sendButton;
-	
+
 	/**
 	 * Allows us to connect to the chat server
+	 * 
 	 * @author Chris Ward
 	 * @version 15/03/2014
-	 *
+	 * 
 	 */
 	private class ConnectToNetwork extends AsyncTask<String, Void, String> {
 
@@ -83,6 +84,7 @@ public class Chat extends Activity implements OnClickListener, MessageListener {
 
 	/**
 	 * Creates our "Enter username" dialog.
+	 * 
 	 * @author Chris Ward
 	 * @version 15/03/2014
 	 */
@@ -97,8 +99,9 @@ public class Chat extends Activity implements OnClickListener, MessageListener {
 			AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 			LayoutInflater inflater = getActivity().getLayoutInflater();
 			View content = inflater.inflate(R.layout.dialoglayout, null);
-			//Allow us to pass username to connect method
-			final EditText user = (EditText) content.findViewById(R.id.username);
+			// Allow us to pass username to connect method
+			final EditText user = (EditText) content
+					.findViewById(R.id.username);
 			// Inflate and set the layout for the dialog
 			// Pass null as the parent view because its going in the dialog
 			// layout
@@ -109,7 +112,18 @@ public class Chat extends Activity implements OnClickListener, MessageListener {
 								@Override
 								public void onClick(DialogInterface dialog,
 										int id) {
-									open(user.getText().toString());
+									if (user.getText().toString().isEmpty()) {
+										Toast.makeText(getApplicationContext(),
+												"Invalid username entered!",
+												Toast.LENGTH_SHORT).show();
+										Intent i = new Intent(
+												getApplicationContext(),
+												Chat.class);
+										i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+										startActivity(i);
+									} else {
+										open(user.getText().toString());
+									}
 								}
 							})
 					.setNegativeButton(R.string.cancel,
@@ -174,18 +188,22 @@ public class Chat extends Activity implements OnClickListener, MessageListener {
 		sendButton = (Button) findViewById(R.id.sendBtn);
 		input = (EditText) findViewById(R.id.inputEditText);
 		scroller = (ScrollView) findViewById(R.id.chatScroll);
-		
+
 		map.setOnClickListener(this);
 		key.setOnClickListener(this);
 		about.setOnClickListener(this);
 		help.setOnClickListener(this);
-		
+
 		new ConnectToNetwork().execute("");
 	}
+
 	/**
 	 * Connects to the server
-	 * @param serverName  URL of server 
-	 * @param serverPort  Port on server in which to connect
+	 * 
+	 * @param serverName
+	 *            URL of server
+	 * @param serverPort
+	 *            Port on server in which to connect
 	 */
 	public void connect(String serverName, int serverPort) {
 		runOnUiThread(new Runnable() {
@@ -197,9 +215,9 @@ public class Chat extends Activity implements OnClickListener, MessageListener {
 		});
 		try {
 			socket = new Socket(serverName, serverPort);
-			//Establish client with server
+			// Establish client with server
 			netInter = new NetworkInterface(socket);
-			//prompt for username
+			// prompt for username
 			DialogFragment dialog = new HandleDialogFragment();
 			dialog.setCancelable(false);
 			dialog.show(getFragmentManager(), "username");
@@ -226,10 +244,12 @@ public class Chat extends Activity implements OnClickListener, MessageListener {
 			});
 		}
 	}
-	
+
 	/**
 	 * Opens communication from client to server.
-	 * @param nick nickname of user
+	 * 
+	 * @param nick
+	 *            nickname of user
 	 */
 	public void open(String nick) {
 		Thread t = new Thread(netInter);
@@ -249,7 +269,7 @@ public class Chat extends Activity implements OnClickListener, MessageListener {
 				@Override
 				public void run() {
 					messages.append("Couldn't start network interface "
-													+ "thread in client");
+							+ "thread in client");
 				}
 			});
 		}
@@ -257,15 +277,19 @@ public class Chat extends Activity implements OnClickListener, MessageListener {
 
 	/**
 	 * Sends message when the 'send' button is pressed.
-	 * @param view the view from which the method is called.
+	 * 
+	 * @param view
+	 *            the view from which the method is called.
 	 */
 	public void onSendClicked(View view) {
 		send(input.getText().toString());
 	}
 
 	/**
-	 *  Sends user's message to server. 
-	 * @param message string sent to server 
+	 * Sends user's message to server.
+	 * 
+	 * @param message
+	 *            string sent to server
 	 */
 	private void send(String message) {
 		try {
