@@ -517,8 +517,6 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					/Users/cdward4/Code/capstone/TrackerApps/TrackerClients/iOS/TrackerApp,
 					/Users/cdward4/Code/capstone/TrackerApps/TrackerClients/iOS/TrackeriOSApp,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
