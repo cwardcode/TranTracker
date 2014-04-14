@@ -31,5 +31,8 @@
     <string name="enterHandle">username</string>
     <string name="signin">Log in</string>
     <string name="cancel">Cancel</string>
+    
+    <string name="route_select">Select a Route</string>
+    <string name="stop_select">Select a Stop</string>
 
 </resources>

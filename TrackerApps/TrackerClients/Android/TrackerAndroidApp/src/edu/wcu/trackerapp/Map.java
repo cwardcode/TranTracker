@@ -175,6 +175,13 @@ public class Map extends Activity implements OnClickListener {
 						
 						stop.setPosition(new LatLng(sLat, sLong));
 						markerFound = true;
+						
+						if (AppConstants.selectedStops.
+								contains(stop.getTitle())) {
+						
+							stop.setIcon(BitmapDescriptorFactory.
+									fromResource(R.drawable.bluestopmarker));
+						}
 					}
 				}
 					
@@ -184,8 +191,9 @@ public class Map extends Activity implements OnClickListener {
 				                    .position(new LatLng(sLat, sLong))
 				                    .title(name)
 				                    .icon(BitmapDescriptorFactory
-				                    .defaultMarker(BitmapDescriptorFactory
-				                    		.HUE_RED))));
+				                    .fromResource(R.drawable.stopmarker))));
+					
+					AppConstants.stopNames.add(name);
 				}
 			}
 			//}catch(NullPointerException ex){
@@ -230,8 +238,7 @@ public class Map extends Activity implements OnClickListener {
 				                    .position(new LatLng(vLat, vLong))
 				                    .title(info)
 				                    .icon(BitmapDescriptorFactory
-						             .defaultMarker(BitmapDescriptorFactory
-						                    		.HUE_YELLOW))));
+						             .fromResource(R.drawable.shuttle))));
 				}
 			}
 			//}catch(NullPointerException ex){
@@ -452,26 +459,36 @@ public class Map extends Activity implements OnClickListener {
 	private void initializePolylines() {
 		routes = new ArrayList<Polyline>();
 		//List<LatLng> route1 = decodePoly(OFF_SOUTH);
-
-		Polyline allCampus = googleMap.addPolyline(new PolylineOptions()
-				.addAll(routeHolder.getAllCampus()).width(5).color(Color.RED));
-		allCampus.setVisible(true);
+        
+		if (AppConstants.selectedRoutes.contains(AppConstants.ROUTE_ALL_CAMPUS)) {
+		    Polyline allCampus = googleMap.addPolyline(new PolylineOptions()
+				    .addAll(routeHolder.getAllCampus()).width(5).color(Color.RED));
+		    allCampus.setVisible(true);
+		}
 		
-		Polyline village = googleMap.addPolyline(new PolylineOptions()
-		         .addAll(routeHolder.getVillage()).width(5).color(Color.YELLOW));
-		village.setVisible(true);
+		if (AppConstants.selectedRoutes.contains(AppConstants.ROUTE_VILLAGE)) {
+		    Polyline village = googleMap.addPolyline(new PolylineOptions()
+		             .addAll(routeHolder.getVillage()).width(5).color(Color.YELLOW));
+		    village.setVisible(true);
+		}
 		
-		Polyline hhs = googleMap.addPolyline(new PolylineOptions()
-		         .addAll(routeHolder.getHHS()).width(5).color(Color.MAGENTA));
-		hhs.setVisible(true);
+		if (AppConstants.selectedRoutes.contains(AppConstants.ROUTE_HHS)) {
+		    Polyline hhs = googleMap.addPolyline(new PolylineOptions()
+		             .addAll(routeHolder.getHHS()).width(5).color(Color.MAGENTA));
+		    hhs.setVisible(true);
+		}
 		
-		Polyline offSouth = googleMap.addPolyline(new PolylineOptions()
-				 .addAll(routeHolder.getOffSouth()).width(5).color(Color.BLUE));
-	    offSouth.setVisible(true);
+		if (AppConstants.selectedRoutes.contains(AppConstants.ROUTE_OFF_SOUTH)) {
+		    Polyline offSouth = googleMap.addPolyline(new PolylineOptions()
+				     .addAll(routeHolder.getOffSouth()).width(5).color(Color.BLUE));
+	        offSouth.setVisible(true);
+		}
 	    
-	    Polyline offNorth = googleMap.addPolyline(new PolylineOptions()
-	    		 .addAll(routeHolder.getOffNorth()).width(5).color(Color.GREEN));
-	    offNorth.setVisible(true);
+		if (AppConstants.selectedRoutes.contains(AppConstants.ROUTE_OFF_NORTH)) {
+	        Polyline offNorth = googleMap.addPolyline(new PolylineOptions()
+	    		     .addAll(routeHolder.getOffNorth()).width(5).color(Color.GREEN));
+	        offNorth.setVisible(true);
+		}
 				
 		
 	}
@@ -483,15 +500,19 @@ public class Map extends Activity implements OnClickListener {
 		
         if (button.equals(about)) {
 			Intent next = new Intent(this, edu.wcu.trackerapp.About.class);
+			next.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			this.startActivity(next);
 		} else if (button.equals(chat)) {
 			Intent next = new Intent(this, edu.wcu.trackerapp.Chat.class);
+			next.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			this.startActivity(next);
 		} else if (button.equals(key)) {
 			Intent next = new Intent(this, edu.wcu.trackerapp.Key.class);
+			next.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			this.startActivity(next);
 		} else if (button.equals(help)) {
 			Intent next = new Intent(this, edu.wcu.trackerapp.Help.class);
+			next.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			this.startActivity(next);
 		}
 		

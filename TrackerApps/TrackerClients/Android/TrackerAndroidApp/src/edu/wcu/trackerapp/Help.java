@@ -114,15 +114,19 @@ public class Help extends Activity implements OnClickListener {
 		
 		if (button.equals(map)) {
 			Intent next = new Intent(this, edu.wcu.trackerapp.Map.class);
+			next.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			this.startActivity(next);
 		} else if (button.equals(chat)) {
 			Intent next = new Intent(this, edu.wcu.trackerapp.Chat.class);
+			next.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			this.startActivity(next);
 		} else if (button.equals(key)) {
 			Intent next = new Intent(this, edu.wcu.trackerapp.Key.class);
+			next.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			this.startActivity(next);
 		} else if (button.equals(about)) {
 			Intent next = new Intent(this, edu.wcu.trackerapp.About.class);
+			next.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			this.startActivity(next);
 		}
 		
