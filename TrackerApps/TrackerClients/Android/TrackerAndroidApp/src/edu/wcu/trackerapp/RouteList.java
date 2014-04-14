@@ -46,7 +46,8 @@ public class RouteList extends Activity implements OnItemClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.list);
 		
-		AppConstants.createRoutes(this);
+		//AppConstants.createRoutes(this);
+		
 		
 		list = (ListView) findViewById(R.id.listView1);
 		

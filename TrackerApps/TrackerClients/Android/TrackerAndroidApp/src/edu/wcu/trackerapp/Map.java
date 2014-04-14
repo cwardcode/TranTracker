@@ -296,6 +296,7 @@ public class Map extends Activity implements OnClickListener {
 		//markerDefs = new ArrayList<MarkerDef>();
 		markers = new ArrayList<Marker>();
 		stops = new ArrayList<Marker>();
+		AppConstants.createRoutes(this);
 		runnable.run();
 		
 		

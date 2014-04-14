@@ -96,8 +96,15 @@ public class AppConstants {
 	
 	public static RouteSelection getRouteSelection(int id, Context context) {
 		String name = getRouteName(id, context);
+		RouteSelection route = new RouteSelection(name, id);
 		
-		return new RouteSelection(name, id);
+		// This makes the map default to displaying the all-campus route only.
+		if (route.getRouteName().equals(ROUTE_ALL_CAMPUS)) {
+			route.setSelected(true);
+			selectedRoutes.add(route.getRouteName());
+		}
+		
+		return route;
 	}
 	
 	public static void createStops(Context context) {
