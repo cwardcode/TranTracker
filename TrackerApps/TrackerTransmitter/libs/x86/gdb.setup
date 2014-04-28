@@ -1,2 +1,0 @@
-set solib-search-path ./obj/local/x86
-directory C:/NVPACK/android-ndk-r9b/platforms/android-9/arch-x86/usr/include C:/NVPACK/OpenCV-2.4.5-Tegra-sdk-r2/sdk/native/jni/include/opencv C:/NVPACK/OpenCV-2.4.5-Tegra-sdk-r2/sdk/native/jni/include C:/NVPACK/android-ndk-r9b/sources/cxx-stl/gnu-libstdc++/4.6/include C:/NVPACK/android-ndk-r9b/sources/cxx-stl/gnu-libstdc++/4.6/libs/x86/include C:/NVPACK/android-ndk-r9b/sources/cxx-stl/gnu-libstdc++/4.6/include/backward

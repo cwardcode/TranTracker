@@ -25,7 +25,10 @@ import org.opencv.core.MatOfRect;
 import org.opencv.core.Rect;
 import org.opencv.core.Scalar;
 import org.opencv.core.Size;
+import org.opencv.imgproc.Imgproc;
 import org.opencv.objdetect.CascadeClassifier;
+import org.opencv.video.BackgroundSubtractorMOG;
+import org.opencv.video.BackgroundSubtractorMOG2;
 import org.xmlpull.v1.XmlPullParserException;
 
 import android.annotation.TargetApi;
@@ -118,6 +121,11 @@ public class TranTracker extends Activity implements
 	/** A service instance */
 	SendLoc locService;
 
+	//private BackgroundSubtractorMOG2 mBVSub;
+	private BackgroundSubtractorMOG mBVSub;
+	private Mat mFGMask;
+	private Mat mPyrDownMat;
+	
 	private MenuItem mItemFace40;
 	private MenuItem mItemFace50;
 	private MenuItem mItemFace30;
@@ -172,6 +180,10 @@ public class TranTracker extends Activity implements
 				}
 				// Allow us to view OpenCV window.
 				mOpenCvCameraView.enableView();
+				
+				// Initialize our background subtraction stuff.
+				mBVSub = new BackgroundSubtractorMOG(5, 3, .1);
+            	mFGMask = new Mat();
 			}
 				break;
 			default: {
@@ -535,6 +547,8 @@ public class TranTracker extends Activity implements
 		mGrey.release();
 	}
 
+	
+	
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -547,33 +561,42 @@ public class TranTracker extends Activity implements
 		// Holds grey frame
 		mGrey = inputFrame.gray();
 		//Check to see if near a stop, and it is stopped.
-		while (locService.isNearLoc() && locService.isStopped()) {
-			if (mAbsoluteBodySize == 0) {
-				int height = mGrey.rows();
-				if (Math.round(height * mRelativeBodySize) > 0) {
-					mAbsoluteBodySize = Math.round(height * mRelativeBodySize);
-				}
-				mNativeDetector.setMinFaceSize(mAbsoluteBodySize);
-			}
+		//while (locService.isNearLoc() && locService.isStopped()) {
+			//if (mAbsoluteBodySize == 0) {
+				//int height = mGrey.rows();
+				//if (Math.round(height * mRelativeBodySize) > 0) {
+				//	mAbsoluteBodySize = Math.round(height * mRelativeBodySize);
+				//}
+				//mNativeDetector.setMinFaceSize(mAbsoluteBodySize);
+			//}
+			
+			//MatOfRect faces = new MatOfRect();
 
-			MatOfRect faces = new MatOfRect();
+			//if (mJavaDetector != null) {
+			//	mJavaDetector.detectMultiScale(mGrey, faces, 1.1, 2, 2,
+			//			new Size(mAbsoluteBodySize, mAbsoluteBodySize),
+			//			new Size());
+			//}
 
-			if (mJavaDetector != null) {
-				mJavaDetector.detectMultiScale(mGrey, faces, 1.1, 2, 2,
-						new Size(mAbsoluteBodySize, mAbsoluteBodySize),
-						new Size());
-			}
-
-			Rect[] facesArray = faces.toArray();
+			//Rect[] facesArray = faces.toArray();
 			// Draw rect around detected person.
 			// TODO: label and track person so not counted twice.
-			for (int i = 0; i < facesArray.length; i++) {
-				Core.rectangle(mRgba, facesArray[i].tl(), facesArray[i].br(),
-						BODY_RECT_COLOR, 3);
-			}
-			setPeopleData(facesArray.length);
-		}
-		return mRgba;
+			//for (int i = 0; i < facesArray.length; i++) {
+			//	Core.rectangle(mRgba, facesArray[i].tl(), facesArray[i].br(),
+			//			BODY_RECT_COLOR, 3);
+			//}
+			//setPeopleData(facesArray.length);
+			
+			mBVSub.apply(mGrey, mFGMask, .2);
+			
+			//Imgproc.pyrDown(mGrey, mPyrDownMat);
+			//Imgproc.pyrDown(mPyrDownMat, mPyrDownMat);
+			
+			//List<MatOfPoint> contours = new ArrayList<MatofPoint>();
+			
+			//Imgproc.findContours(image, contours, hierarchy, mode, method);
+		//}
+		return mFGMask;
 	}
 
 	/**
