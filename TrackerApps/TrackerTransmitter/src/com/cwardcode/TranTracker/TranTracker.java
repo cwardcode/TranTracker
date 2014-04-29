@@ -14,6 +14,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.CameraBridgeViewBase;
+import org.opencv.android.Utils;
 import org.opencv.android.CameraBridgeViewBase.CvCameraViewFrame;
 import org.opencv.android.CameraBridgeViewBase.CvCameraViewListener2;
 import org.opencv.android.LoaderCallbackInterface;
@@ -21,6 +22,7 @@ import org.opencv.android.OpenCVLoader;
 import org.opencv.core.Core;
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;
+import org.opencv.core.MatOfPoint;
 import org.opencv.core.MatOfRect;
 import org.opencv.core.Rect;
 import org.opencv.core.Scalar;
@@ -42,6 +44,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -120,11 +123,14 @@ public class TranTracker extends Activity implements
 	private String[] mDetectorName;
 	/** A service instance */
 	SendLoc locService;
+	
+	private List<MatOfPoint> contours;
 
 	//private BackgroundSubtractorMOG2 mBVSub;
 	private BackgroundSubtractorMOG mBVSub;
 	private Mat mFGMask;
 	private Mat mPyrDownMat;
+	private Mat average;
 	
 	private MenuItem mItemFace40;
 	private MenuItem mItemFace50;
@@ -184,6 +190,7 @@ public class TranTracker extends Activity implements
 				// Initialize our background subtraction stuff.
 				mBVSub = new BackgroundSubtractorMOG(5, 3, .1);
             	mFGMask = new Mat();
+            	average = new Mat();
 			}
 				break;
 			default: {
@@ -449,6 +456,8 @@ public class TranTracker extends Activity implements
 		mOpenCvCameraView = (CameraBridgeViewBase) findViewById(R.id.cameraView);
 		mOpenCvCameraView.setVisibility(SurfaceView.VISIBLE);
 		mOpenCvCameraView.setCvCameraViewListener(this);
+		contours = new ArrayList<MatOfPoint>();
+		
 
 	}
 
@@ -587,7 +596,24 @@ public class TranTracker extends Activity implements
 			//}
 			//setPeopleData(facesArray.length);
 			
+		    List<MatOfPoint> contours = new ArrayList<MatOfPoint>();
+
 			mBVSub.apply(mGrey, mFGMask, .2);
+			
+			Mat hierarchy = new Mat();
+			
+			Scalar color = new Scalar(255);
+			
+			Imgproc.findContours(mFGMask, contours, hierarchy, 
+					             Imgproc.RETR_CCOMP, Imgproc.CHAIN_APPROX_NONE);
+			
+			Imgproc.drawContours(mFGMask, contours, -1, color, -1);
+			
+			Log.d("contours", "Number of contours found: " + contours.size());
+			
+			Bitmap bmp = Bitmap.createBitmap(mFGMask.cols(), mFGMask.rows(), Bitmap.Config.ARGB_8888);
+			
+			Utils.matToBitmap(mFGMask, bmp);
 			
 			//Imgproc.pyrDown(mGrey, mPyrDownMat);
 			//Imgproc.pyrDown(mPyrDownMat, mPyrDownMat);
