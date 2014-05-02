@@ -14,23 +14,18 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.CameraBridgeViewBase;
-import org.opencv.android.Utils;
 import org.opencv.android.CameraBridgeViewBase.CvCameraViewFrame;
 import org.opencv.android.CameraBridgeViewBase.CvCameraViewListener2;
 import org.opencv.android.LoaderCallbackInterface;
 import org.opencv.android.OpenCVLoader;
-import org.opencv.core.Core;
+import org.opencv.android.Utils;
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfPoint;
-import org.opencv.core.MatOfRect;
-import org.opencv.core.Rect;
 import org.opencv.core.Scalar;
-import org.opencv.core.Size;
 import org.opencv.imgproc.Imgproc;
 import org.opencv.objdetect.CascadeClassifier;
 import org.opencv.video.BackgroundSubtractorMOG;
-import org.opencv.video.BackgroundSubtractorMOG2;
 import org.xmlpull.v1.XmlPullParserException;
 
 import android.annotation.TargetApi;
@@ -45,6 +40,7 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -56,6 +52,7 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -79,6 +76,7 @@ public class TranTracker extends Activity implements
 	private static final String VID_URL = "http://tracker.cwardcode.com/static/getvid.php";
 	/** Holds whether the application is tracking. */
 	public static boolean IS_TRACKING;
+	/** Holds whether the service is currently bound. */
 	public static boolean IS_BOUND;
 	/** Holds whether a vehicle is selected. */
 	public static boolean VEH_SELECT;
@@ -109,6 +107,8 @@ public class TranTracker extends Activity implements
 	private Mat mRgba;
 	/** Greyscale image */
 	private Mat mGrey;
+	/** Holds non-counting image */
+	private Mat nonCountImg;
 	/** Holds the haar cascade file used to find bodies */
 	private File mCascadeFile;
 	/** Interprets mCascadeFile */
@@ -123,15 +123,15 @@ public class TranTracker extends Activity implements
 	private String[] mDetectorName;
 	/** A service instance */
 	SendLoc locService;
-	
+
 	private List<MatOfPoint> contours;
 
-	//private BackgroundSubtractorMOG2 mBVSub;
+	// private BackgroundSubtractorMOG2 mBVSub;
 	private BackgroundSubtractorMOG mBVSub;
 	private Mat mFGMask;
 	private Mat mPyrDownMat;
 	private Mat average;
-	
+
 	private MenuItem mItemFace40;
 	private MenuItem mItemFace50;
 	private MenuItem mItemFace30;
@@ -186,11 +186,10 @@ public class TranTracker extends Activity implements
 				}
 				// Allow us to view OpenCV window.
 				mOpenCvCameraView.enableView();
-				
+
 				// Initialize our background subtraction stuff.
 				mBVSub = new BackgroundSubtractorMOG(5, 3, .1);
-            	mFGMask = new Mat();
-            	average = new Mat();
+				average = new Mat();
 			}
 				break;
 			default: {
@@ -391,13 +390,22 @@ public class TranTracker extends Activity implements
 	 *            the view for the button calling this method.
 	 */
 	public void startTracking(View view) {
+		Button resetButton = (Button) findViewById(R.id.trackButton);
 		if (!IS_TRACKING) {
 			startService(srvIntent);
+			bindService(srvIntent, mConnection, Context.BIND_AUTO_CREATE);
+			resetButton.setText(R.string.resetText);
 			IS_TRACKING = true;
 		} else {
+			// clean up old service instance
+			resetButton.setText(R.string.resetting);
 			stopService(srvIntent);
+			unbindService(mConnection);
+			// create new service instance
 			startService(srvIntent);
 			bindService(srvIntent, mConnection, Context.BIND_AUTO_CREATE);
+			resetButton.setText(R.string.resetText);
+			Toast.makeText(context, "reset.", Toast.LENGTH_SHORT).show();
 		}
 	}
 
@@ -457,7 +465,6 @@ public class TranTracker extends Activity implements
 		mOpenCvCameraView.setVisibility(SurfaceView.VISIBLE);
 		mOpenCvCameraView.setCvCameraViewListener(this);
 		contours = new ArrayList<MatOfPoint>();
-		
 
 	}
 
@@ -544,7 +551,26 @@ public class TranTracker extends Activity implements
 	public void onCameraViewStarted(int width, int height) {
 		mRgba = new Mat(height, width, CvType.CV_8UC4);
 		mGrey = new Mat(height, width, CvType.CV_8UC4);
+		mFGMask = new Mat(height, width, CvType.CV_8UC4);
+		nonCountImg = new Mat(height, width, CvType.CV_8UC4);
 
+		InputStream bitmap;
+		Bitmap img = null;
+		try {
+			bitmap = getAssets().open("notinitailized.jpg");
+			img = BitmapFactory.decodeStream(bitmap);
+			if (bitmap != null) {
+				bitmap.close();
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		if (img != null) {
+			img.copy(Bitmap.Config.ARGB_8888, true);
+			Utils.bitmapToMat(img, nonCountImg.reshape(width, height));
+		} else {
+			Log.e("TranTracker", "Could not load image");
+		}
 	}
 
 	/**
@@ -554,10 +580,9 @@ public class TranTracker extends Activity implements
 	public void onCameraViewStopped() {
 		mRgba.release();
 		mGrey.release();
+		nonCountImg.release();
 	}
 
-	
-	
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -569,60 +594,62 @@ public class TranTracker extends Activity implements
 		mRgba = inputFrame.rgba();
 		// Holds grey frame
 		mGrey = inputFrame.gray();
-		//Check to see if near a stop, and it is stopped.
-		//while (locService.isNearLoc() && locService.isStopped()) {
-			//if (mAbsoluteBodySize == 0) {
-				//int height = mGrey.rows();
-				//if (Math.round(height * mRelativeBodySize) > 0) {
-				//	mAbsoluteBodySize = Math.round(height * mRelativeBodySize);
-				//}
-				//mNativeDetector.setMinFaceSize(mAbsoluteBodySize);
-			//}
-			
-			//MatOfRect faces = new MatOfRect();
+		// Check to see if near a stop, and it is stopped.
+		while (IS_BOUND && locService.isNearLoc() && locService.isStopped()) {
+			// if (mAbsoluteBodySize == 0) {
+			// int height = mGrey.rows();
+			// if (Math.round(height * mRelativeBodySize) > 0) {
+			// mAbsoluteBodySize = Math.round(height * mRelativeBodySize);
+			// }
+			// mNativeDetector.setMinFaceSize(mAbsoluteBodySize);
+			// }
 
-			//if (mJavaDetector != null) {
-			//	mJavaDetector.detectMultiScale(mGrey, faces, 1.1, 2, 2,
-			//			new Size(mAbsoluteBodySize, mAbsoluteBodySize),
-			//			new Size());
-			//}
+			// MatOfRect faces = new MatOfRect();
 
-			//Rect[] facesArray = faces.toArray();
+			// if (mJavaDetector != null) {
+			// mJavaDetector.detectMultiScale(mGrey, faces, 1.1, 2, 2,
+			// new Size(mAbsoluteBodySize, mAbsoluteBodySize),
+			// new Size());
+			// }
+
+			// Rect[] facesArray = faces.toArray();
 			// Draw rect around detected person.
 			// TODO: label and track person so not counted twice.
-			//for (int i = 0; i < facesArray.length; i++) {
-			//	Core.rectangle(mRgba, facesArray[i].tl(), facesArray[i].br(),
-			//			BODY_RECT_COLOR, 3);
-			//}
-			//setPeopleData(facesArray.length);
-			
-		    List<MatOfPoint> contours = new ArrayList<MatOfPoint>();
+			// for (int i = 0; i < facesArray.length; i++) {
+			// Core.rectangle(mRgba, facesArray[i].tl(), facesArray[i].br(),
+			// BODY_RECT_COLOR, 3);
+			// }
+			// setPeopleData(facesArray.length);
 
-			mBVSub.apply(mGrey, mFGMask, .2);
-			
+			List<MatOfPoint> contours = new ArrayList<MatOfPoint>();
+
+			mBVSub.apply(mGrey, mFGMask, 0.1);
+
 			Mat hierarchy = new Mat();
-			
+
 			Scalar color = new Scalar(255);
-			
-			Imgproc.findContours(mFGMask, contours, hierarchy, 
-					             Imgproc.RETR_CCOMP, Imgproc.CHAIN_APPROX_NONE);
-			
+
+			Imgproc.findContours(mFGMask, contours, hierarchy,
+					Imgproc.RETR_CCOMP, Imgproc.CHAIN_APPROX_NONE);
+
 			Imgproc.drawContours(mFGMask, contours, -1, color, -1);
-			
+
 			Log.d("contours", "Number of contours found: " + contours.size());
-			
-			Bitmap bmp = Bitmap.createBitmap(mFGMask.cols(), mFGMask.rows(), Bitmap.Config.ARGB_8888);
-			
+
+			Bitmap bmp = Bitmap.createBitmap(mFGMask.cols(), mFGMask.rows(),
+					Bitmap.Config.ARGB_8888);
+
 			Utils.matToBitmap(mFGMask, bmp);
-			
-			//Imgproc.pyrDown(mGrey, mPyrDownMat);
-			//Imgproc.pyrDown(mPyrDownMat, mPyrDownMat);
-			
-			//List<MatOfPoint> contours = new ArrayList<MatofPoint>();
-			
-			//Imgproc.findContours(image, contours, hierarchy, mode, method);
-		//}
-		return mFGMask;
+
+			// Imgproc.pyrDown(mGrey, mPyrDownMat);
+			// Imgproc.pyrDown(mPyrDownMat, mPyrDownMat);
+
+			// List<MatOfPoint> contours = new ArrayList<MatofPoint>();
+
+			// Imgproc.findContours(image, contours, hierarchy, mode, method);
+			return mFGMask;
+		}
+		return nonCountImg;
 	}
 
 	/**

@@ -25,7 +25,9 @@ int string buttonText 0x7f060008
 int string n1 0x7f060004
 int string n2 0x7f060005
 int string n3 0x7f060006
-int string splashDesc 0x7f06000a
+int string resetText 0x7f06000a
+int string resetting 0x7f06000c
+int string splashDesc 0x7f06000b
 int string stopText 0x7f060009
 int string v1 0x7f060001
 int string v2 0x7f060002

@@ -12,8 +12,8 @@ import android.view.WindowManager;
 
 @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
 public class SplashActivity extends Activity {
-
-	final int splashDelay = 4000;
+//TODO RESET THIS
+	final int splashDelay = 5000;
 	private Handler handler;
 	final Runnable r = new Runnable()
 	{

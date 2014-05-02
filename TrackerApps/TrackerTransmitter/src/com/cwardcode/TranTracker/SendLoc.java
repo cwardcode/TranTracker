@@ -27,6 +27,7 @@ import android.os.Looper;
  */
 public class SendLoc extends Service {
 
+	private static final double DIST_THRESHOLD = 0.5;
 	private static final double SPEED_THRESHOLD = 0.5;
 	private static final double R = 6372.8;
 	private static final double MILES_CONVERSION = 0.621371;
@@ -152,11 +153,12 @@ public class SendLoc extends Service {
 		stopLocations = dbHelper.getReadableDatabase();
 		// setup Array with stopLocations
 		setupStopLocList();
-		// Just to test since location updates don't change on the transformer
+		//  Just to test since location updates don't change on the transformer
 		// prime..
 		/**
 		curLat = 35.311575;// location.getLatitude();
 		curLng = -83.180500;// location.getLongitude();
+		curSpeed = .03;
 		isNearLoc();
 		**/
 	}
@@ -277,7 +279,7 @@ public class SendLoc extends Service {
 
 			 distanceFromStop = haversine(curLat, curLng, lat1, lng2);
 
-			if (distanceFromStop <= SPEED_THRESHOLD) {
+			if (distanceFromStop <= DIST_THRESHOLD) {
 				isNear = true;
 				cursor = stopLocations
 						.rawQuery("Select name from stop where stopid = " + i
@@ -298,6 +300,7 @@ public class SendLoc extends Service {
 			double lon2) {
 		double dLat = Math.toRadians(lat2 - lat1);
 		double dLon = Math.toRadians(lon2 - lon1);
+		
 		lat1 = Math.toRadians(lat1);
 		lat2 = Math.toRadians(lat2);
 

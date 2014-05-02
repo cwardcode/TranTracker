@@ -72,7 +72,9 @@ containing a value of this type.
         public static final int n1=0x7f060004;
         public static final int n2=0x7f060005;
         public static final int n3=0x7f060006;
-        public static final int splashDesc=0x7f06000a;
+        public static final int resetText=0x7f06000a;
+        public static final int resetting=0x7f06000c;
+        public static final int splashDesc=0x7f06000b;
         public static final int stopText=0x7f060009;
         public static final int v1=0x7f060001;
         public static final int v2=0x7f060002;
