@@ -62,8 +62,6 @@ public class Map extends Activity implements OnClickListener {
 	private static final String VILLAGE = "myovEpsuzNR~DCZQrAkAAiAR_AVaAJaAUoCe@kCc@_@J[Zi@xB]rA}AlBMn@?tABhAPdB";
 	private static final String HHS = "}invE|tyzN[sAHoBIoCaAqFg@aE{@gEoA}Gk@eFe@oB_@uAUoBCaBIgC?cD@_CGmC_@eCoAqEgBsGkLDCo@v@}CIO";
 
-	// A drop down menu that allows the user to navigate to other pages.\\
-	//private Spinner menu;
 	// Our map object\\
 	private GoogleMap googleMap;
 	// Cullowhee's LatLng object\\
@@ -84,29 +82,75 @@ public class Map extends Activity implements OnClickListener {
 	 * The map button.
 	 */
 	private Button map;
+	
+	/**
+	 * The chat button.
+	 */
 	private Button chat;
+	
+	/**
+	 * The key button.
+	 */
 	private Button key;
 	
+	/**
+	 * The help button.
+	 */
 	private Button help;
 	
+	/**
+	 * The about button.
+	 */
 	private Button about;
 
+	/**
+	 * The list of bus marker definitions.
+	 */
 	private List<MarkerDef> markerDefs;
 	
+	/**
+	 * The list of stop marker definitions.
+	 */
 	private List<StopDef> stopDefs;
 	
+	/**
+	 * The list of stop markers.
+	 */
 	private List<Marker> stops;
 	
+	/**
+	 * The list of bus markers
+	 */
 	private List<Marker> markers;
 	
+	/**
+	 * The handler used to run the async task.
+	 */
 	private Handler handler = new Handler();
 	
+	/**
+	 * An async task that downloads the database information as XML from the
+	 * server.
+	 * 
+	 * @author Hayden Thomas
+	 * 
+	 * @version 5/5/14
+	 */
 	private class DownloadXmlTask extends AsyncTask<String, Void, String> {
 		
+		/**
+		 * The list of bus marker definitions.
+		 */
 		private List<MarkerDef> markerDefs;
 		
+		/**
+		 * The list of stop marker definitions.
+		 */
 		private List<StopDef> stopDefs;
 		
+		/**
+		 * Downloads the XML while running in the background.
+		 */
 		@Override
 		protected String doInBackground(String... urls) {
 			try {
@@ -119,12 +163,23 @@ public class Map extends Activity implements OnClickListener {
 			}
 		}
 		
+		/**
+		 * Adds the markers to the map.
+		 */
 		@Override
 		protected void onPostExecute(String result) {
 			addMarkers();
 			addStops();
 		}
 		
+		/**
+		 * Downloads and parses the XML from the given URL.
+		 * 
+		 * @param urlString the URL of the XML file as a String.
+		 * @return A String that indicates success or failure.
+		 * @throws XmlPullParserException
+		 * @throws IOException
+		 */
 		private String loadXmlFromNetwork(String urlString) throws XmlPullParserException, IOException {
 			InputStream stream = null;
 			MarkerParser parser = new MarkerParser();
@@ -144,6 +199,13 @@ public class Map extends Activity implements OnClickListener {
 			
 		}
 		
+		/**
+		 * Downloads the XML and turns it into an InputStream.
+		 * 
+		 * @param urlString the URL of the XML file as a String
+		 * @return an InputStream
+		 * @throws IOException
+		 */
 		private InputStream downloadUrl(String urlString) throws IOException {
 			URL url = new URL(urlString);
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -155,12 +217,14 @@ public class Map extends Activity implements OnClickListener {
 		    return conn.getInputStream();
 		}
 		
+		/**
+		 * Adds the stop markers to the map.
+		 */
 		private void addStops() {
 			String name = "";
 			double sLat = 0.0;
 			double sLong = 0.0;
 			
-			//try{
 			for (StopDef def : stopDefs) {
 				name = def.title;
 				sLat = def.sLat;
@@ -196,12 +260,11 @@ public class Map extends Activity implements OnClickListener {
 					AppConstants.stopNames.add(name);
 				}
 			}
-			//}catch(NullPointerException ex){
-			//	Toast.makeText(getApplicationContext(), 
-  			//		  "Could not connect to server (stop)",Toast.LENGTH_SHORT).show();
-			//}
 		}
 		
+		/**
+		 * Adds the bus markers to the map.
+		 */
 		private void addMarkers() {
 			int id = 0;
 			String name = "";
@@ -210,7 +273,6 @@ public class Map extends Activity implements OnClickListener {
 			double speed = 0.0;
 			
 			String info = "";
-			//try{
 			for (MarkerDef def : markerDefs) {
 				id = def.id;
 				name = def.title;
@@ -241,10 +303,6 @@ public class Map extends Activity implements OnClickListener {
 						             .fromResource(R.drawable.shuttle))));
 				}
 			}
-			//}catch(NullPointerException ex){
-			//	Toast.makeText(getApplicationContext(), 
-  			//		  "Could not connect to server (marker)",Toast.LENGTH_SHORT).show();
-			//}
 		}
 	}
 
@@ -272,10 +330,6 @@ public class Map extends Activity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(edu.wcu.trackerapp.R.layout.activity_map);
-		// Initialize the spinner
-		//menu = (Spinner) findViewById(R.id.menuSpinner);
-		// Set up the listener for the spinner.
-		//menu.setOnItemSelectedListener(this);
 		
 		map = (Button) findViewById(R.id.mapMapButton);
 		chat = (Button) findViewById(R.id.mapChatButton);
@@ -289,11 +343,7 @@ public class Map extends Activity implements OnClickListener {
 		about.setOnClickListener(this);
 		help.setOnClickListener(this);
 		
-		//Initializing it here will keep the app from breaking under 
-		//certain errors. Since I'm too lazy to write log messages
-		//right now and I want to see these errors, I'm going to let it break.
-		
-		//markerDefs = new ArrayList<MarkerDef>();
+		markerDefs = new ArrayList<MarkerDef>();
 		markers = new ArrayList<Marker>();
 		stops = new ArrayList<Marker>();
 		AppConstants.createRoutes(this);
@@ -312,6 +362,9 @@ public class Map extends Activity implements OnClickListener {
 	}
 
 	
+	/**
+	 * Runs the async task that retrieves the data from our database.
+	 */
 	public void retrieveData() {
 		if (isConnected()) {
 			new DownloadXmlTask().execute(XMLURL);
@@ -320,6 +373,11 @@ public class Map extends Activity implements OnClickListener {
 		}
 	}
 	
+	/**
+	 * Checks whether the App is connected to the server.
+	 * 
+	 * @return true if there is a connection, false otherwise.
+	 */
 	private boolean isConnected() {
 		ConnectivityManager cm = 
 				(ConnectivityManager)this.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -329,30 +387,6 @@ public class Map extends Activity implements OnClickListener {
 				              activeNetwork.isConnectedOrConnecting();
 		return isConnected;
 	}
-	
-	
-	/*
-	 * This method is for if I ever get tabs working, lol.
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			                 Bundle savedInstanceState) {
-		
-		View rootView = inflater.inflate(R.layout.activity_map, container, 
-				                         false);
-		
-		try {
-			// Loading map
-			initializeMap();
-			initializePolylines();
-			// TODO: Make this useful
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		return rootView;
-	}
-	*/
-	
 
 	/**
 	 * function to load map. If map is not created it will create it for you
@@ -377,89 +411,11 @@ public class Map extends Activity implements OnClickListener {
 	}
 
 	/**
-	 * Adds options to the menu.
-	 * 
-	 * @param menu
-	 *            the menu options that will be added, if any.
-	 */
-	/*
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.map, menu);
-		return true;
-	}
-	*/
-	
-	/**
-	 * Performs the appropriate action when an item is selected.
-	 * 
-	 * @param parent
-	 *            the object containing all of the list items.
-	 * @param view
-	 *            ?
-	 * @param pos
-	 *            the items position.
-	 * @param id
-	 *            ?
-	 */
-	/*
-	@Override
-	public void onItemSelected(AdapterView<?> parent, View view, int pos,
-			long id) {
-		String item = parent.getItemAtPosition(pos).toString();
-
-		handleSelection(item);
-
-	}
-	*/
-
-	/**
-	 * Performs the action that is appropriate for the given selection. In this
-	 * case, we will match the activity that matches the selection.
-	 * 
-	 * @param selection
-	 *            a string representing the user's selection.
-	 */
-	/*
-	private void handleSelection(String selection) {
-		Intent next = null;
-		if (selection.equals("Key")) {
-			next = new Intent(this, edu.wcu.trackerapp.Key.class);
-			this.startActivity(next);
-		} else if (selection.equals("Contact")) {
-			next = new Intent(this, edu.wcu.trackerapp.Contact.class);
-			this.startActivity(next);
-		} else if (selection.equals("Help")) {
-			next = new Intent(this, edu.wcu.trackerapp.Help.class);
-			this.startActivity(next);
-		} else if (selection.equals("About")) {
-			next = new Intent(this, edu.wcu.trackerapp.About.class);
-			this.startActivity(next);
-		}
-	}
-	*/
-
-	/**
-	 * This method is called when nothing is selected.
-	 */
-	/*
-	@Override
-	public void onNothingSelected(AdapterView<?> arg0) {
-		// Right now this does nothing; however, it will likely be useful,
-		// so I'm leaving the TODO as a reminder to myself.
-
-		// TODO Auto-generated method stub
-
-	}
-	*/
-
-	/**
 	 * This function creates the polylines that will be used to represent routes
 	 * in our application.
 	 */
 	private void initializePolylines() {
 		routes = new ArrayList<Polyline>();
-		//List<LatLng> route1 = decodePoly(OFF_SOUTH);
         
 		if (AppConstants.selectedRoutes.contains(AppConstants.ROUTE_ALL_CAMPUS)) {
 		    Polyline allCampus = googleMap.addPolyline(new PolylineOptions()
@@ -495,6 +451,11 @@ public class Map extends Activity implements OnClickListener {
 	}
 
 
+	/**
+	 * Handles button presses.
+	 * 
+	 * @param v the button that was pressed as a View.
+	 */
 	@Override
 	public void onClick(View v) {
         Button button = (Button) v;

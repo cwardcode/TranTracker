@@ -15,10 +15,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 /**
- * This class represents the site list screen. This screen will display a 
- * listview containing several preset sites that the user can choose from.
- * Once the user selects one of these sites, a new page will be launched to
- * display the site.
+ * This class represents the stop list screen. This screen will display a 
+ * listview containing several stops that the user can choose to highlight
+ * once they have been selected, the user must back out of the list to 
+ * update the map.
  * 
  * @author Hayden Thomas
  * @version 11/4/2013
@@ -61,20 +61,6 @@ public class StopList extends Activity implements OnItemClickListener {
 	}
 
 	/**
-	 * Initializes the activity's standard options menu.
-	 * 
-	 * @param menu the options menu.
-	 */
-	/*
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.stop_list, menu);
-		return true;
-	}
-	*/
-
-	/**
 	 * Performs the appropriate action when an item is selected.
 	 * 
 	 * @param parent the adapter view containing the selection.
@@ -98,17 +84,11 @@ public class StopList extends Activity implements OnItemClickListener {
 			Log.d("stopList", stopName + " Removed");
 			selection.setSelected(false);
 		}
-		
-		
-		/*
-		StopSelection selection = AppConstants.sites.get(position);
-		Intent next = new Intent(this, edu.wcu.trackerapp.Map.class);
-		next.putExtra(AppConstants.URL_KEY, selection.getURL());
-		this.startActivity(next);
-		*/
-		
 	}
 	
+	/**
+	 * Reloads the map screen when the back button is pressed.
+	 */
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		if (keyCode == KeyEvent.KEYCODE_BACK) {
 			Intent next = new Intent(this, edu.wcu.trackerapp.Map.class);

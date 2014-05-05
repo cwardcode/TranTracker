@@ -15,10 +15,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 /**
- * This class represents the site list screen. This screen will display a 
- * listview containing several preset sites that the user can choose from.
- * Once the user selects one of these sites, a new page will be launched to
- * display the site.
+ * This class represents the route list screen. This screen will display a 
+ * listview containing several routes that the user can choose from. Once the
+ * user has selected their routes, they can back out to an updated map screen.
  * 
  * @author Hayden Thomas
  * @version 11/4/2013
@@ -46,9 +45,6 @@ public class RouteList extends Activity implements OnItemClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.list);
 		
-		//AppConstants.createRoutes(this);
-		
-		
 		list = (ListView) findViewById(R.id.listView1);
 		
 		list.setItemsCanFocus(false);
@@ -60,20 +56,6 @@ public class RouteList extends Activity implements OnItemClickListener {
 		list.setAdapter(adapter);
 		list.setOnItemClickListener(this);
 	}
-
-	/**
-	 * Initializes the activity's standard options menu.
-	 * 
-	 * @param menu the options menu.
-	 */
-	/*
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.route_list, menu);
-		return true;
-	}
-	*/
 
 	/**
 	 * Performs the appropriate action when an item is selected.
@@ -100,16 +82,13 @@ public class RouteList extends Activity implements OnItemClickListener {
 			selection.setSelected(false);
 		}
 		
-		
-		/*
-		RouteSelection selection = AppConstants.sites.get(position);
-		Intent next = new Intent(this, edu.wcu.trackerapp.Map.class);
-		next.putExtra(AppConstants.URL_KEY, selection.getURL());
-		this.startActivity(next);
-		*/
-		
 	}
 	
+	/**
+	 * Reloads the map screen when the user presses the back button.
+	 * 
+	 * @see android.app.Activity#onKeyDown(int, android.view.KeyEvent)
+	 */
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		if (keyCode == KeyEvent.KEYCODE_BACK) {
 			Intent next = new Intent(this, edu.wcu.trackerapp.Map.class);

@@ -236,7 +236,7 @@ public class MarkerParser {
 	/**
 	 * Creates a new MarkerDef using the information in the XML feed.
 	 * 
-	 * @param parser
+	 * @param parser the parser used to parse the list.
 	 * @throws XmlPullParserException
 	 * @throws IOException
 	 */
@@ -247,7 +247,6 @@ public class MarkerParser {
 		double vLat = 0.0;
 		double vLong = 0.0;
 		double speed = 0.0;
-		//String tag = "";
 		
 		while (parser.next() != XmlPullParser.END_TAG) {
             if (parser.getEventType() != XmlPullParser.START_TAG) {
@@ -352,6 +351,12 @@ public class MarkerParser {
 	
 	/**
 	 * Reads the vehicle's current latitude from the XML.
+	 * @param parser the parser used to parse the list.
+	 * 
+	 * @return the latitude as a double.
+	 * 
+	 * @throws XmlPullParserException
+	 * @throws IOException
 	 */
 	private double readLat(XmlPullParser parser) throws IOException, XmlPullParserException {
 		double vLat = 0.0;
@@ -362,7 +367,13 @@ public class MarkerParser {
 	}
 	
 	/**
-	 * Reads the vehicle's current latitude from the XML.
+	 * Reads the stop's current latitude from the XML.
+	 * @param parser the parser used to parse the list.
+	 * 
+	 * @return the latitude as a double.
+	 * 
+	 * @throws XmlPullParserException
+	 * @throws IOException
 	 */
 	private double readStopLat(XmlPullParser parser) throws IOException, XmlPullParserException {
 		double vLat = 0.0;
@@ -372,6 +383,14 @@ public class MarkerParser {
 		return vLat;
 	}
 	
+	/**
+	 * Reads the stop's current longitude from the XML.
+	 * 
+	 * @param parser the XmlPullParser used to read the XML.
+	 * @return the longitude as a double.
+	 * @throws IOException
+	 * @throws XmlPullParserException
+	 */
 	private double readStopLong(XmlPullParser parser) throws IOException, XmlPullParserException {
 		double vLong = 0.0;
 		parser.require(XmlPullParser.START_TAG, ns, "stopLong");
@@ -382,6 +401,8 @@ public class MarkerParser {
 	
 	/**
 	 * Reads the vehicle's current longitude from the XML.
+	 * @param parser the XmlPullParser used to read the XML.
+	 * @return the longitude as a double.
 	 */
 	private double readLong(XmlPullParser parser) throws IOException, XmlPullParserException {
 		double vLong = 0.0;
@@ -391,6 +412,12 @@ public class MarkerParser {
 		return vLong;
 	}
 	
+	/**
+	 * Reads the vehicle's speed from the XML.
+	 * 
+	 * @param parser the XmlPullParser used to read the XML.
+	 * @return the speed as a double.
+	 */
 	private double readSpeed(XmlPullParser parser) throws IOException, XmlPullParserException {
 		double speed = 0.0;
 		parser.require(XmlPullParser.START_TAG, ns, "speed");
@@ -399,6 +426,11 @@ public class MarkerParser {
 		return speed;
 	}
 	
+	/**
+	 * Reads text from the XML.
+	 * @param parser the XmlPullParser used to read the XML.
+	 * @return the text as a string.
+	 */
 	private String readText(XmlPullParser parser) throws IOException, XmlPullParserException {
 		String result = "";
 		if (parser.next() == XmlPullParser.TEXT) {
@@ -409,6 +441,12 @@ public class MarkerParser {
 		return result;
 	}
 	
+	/**
+	 * Skips tags that don't need to be read.
+	 * @param parser the XmlPullParser used to parse.
+	 * @throws XmlPullParserException
+	 * @throws IOException
+	 */
 	private void skip(XmlPullParser parser) throws XmlPullParserException, IOException {
 		if (parser.getEventType() != XmlPullParser.START_TAG) {
 			throw new IllegalStateException();

@@ -16,7 +16,10 @@ import com.google.android.gms.maps.model.LatLng;
 
 public class RouteArrayHolder {
 
-  private LatLng[] allCampusPtsList = {
+    /**
+     * The array containing the points in the all campus route.
+     */
+    private LatLng[] allCampusPtsList = {
             new LatLng(35.3029, -83.18177),
             new LatLng(35.302780000000006, -83.18175000000001),
             new LatLng(35.30266, -83.18181000000001),
@@ -262,7 +265,10 @@ public class RouteArrayHolder {
             new LatLng(35.306270000000005, -83.1842),
             new LatLng(35.30626, -83.18426000000001)
     };
-
+    
+    /**
+     * The array containing the points in the HHS Express route.
+     */
     private LatLng[] hhsRoutePtsList = {
             new LatLng(35.30415, -83.20351000000001),
             new LatLng(35.30429, -83.20309),
@@ -309,6 +315,9 @@ public class RouteArrayHolder {
             new LatLng(35.31176, -83.18278000000001)
     };
 
+    /**
+     * The array containing the points in the Village Express route.
+     */
     private LatLng[] villageRoutePtsList = {
             new LatLng(35.31175, -83.18281),
             new LatLng(35.31165, -83.18377000000001),
@@ -332,6 +341,9 @@ public class RouteArrayHolder {
             new LatLng(35.316, -83.18745000000001),
     };
 
+    /**
+     * The array containing the points in the Off-Campus North route.
+     */
     private LatLng[] offCampusNorthRoutePtsList = {
             new LatLng(35.31176, -83.1828),
             new LatLng(35.31179, -83.18246),
@@ -486,6 +498,9 @@ public class RouteArrayHolder {
             new LatLng(35.32302, -83.17874)
     };
 
+    /**
+     * The array containing the points in the Off-Campus South route.
+     */
     private LatLng[] offCampusSouthRoutePtsList = {
             new LatLng(35.31175, -83.18282),
             new LatLng(35.31179, -83.18247000000001),
@@ -641,6 +656,11 @@ public class RouteArrayHolder {
             new LatLng(35.31175, -83.18282),
     };
     
+    /**
+     * Returns the AllCampus route as a list of LatLng objects.
+     * 
+     * @return an ArrayList of LatLng objects.
+     */
     public ArrayList<LatLng> getAllCampus() {
     	ArrayList<LatLng> allCampus = new ArrayList<LatLng>();
     	
@@ -651,6 +671,11 @@ public class RouteArrayHolder {
     	return allCampus;
     }
     
+    /**
+     * Returns the HHS Express route as a list of LatLng objects.
+     * 
+     * @return an ArrayList of LatLng objects.
+     */
     public ArrayList<LatLng> getHHS() {
         ArrayList<LatLng> hhs = new ArrayList<LatLng>();
     	
@@ -661,6 +686,11 @@ public class RouteArrayHolder {
     	return hhs;
     }
     
+    /**
+     * Returns the Village Express route as a list of LatLng objects.
+     * 
+     * @return an ArrayList of LatLng objects.
+     */
     public ArrayList<LatLng> getVillage() {
         ArrayList<LatLng> village = new ArrayList<LatLng>();
     	
@@ -671,6 +701,11 @@ public class RouteArrayHolder {
     	return village;
     }
     
+    /**
+     * Returns the Off-Campus South route as a list of LatLng objects. 
+     * 
+     * @return an ArrayList of LatLng objects.
+     */
     public ArrayList<LatLng> getOffSouth() {
         ArrayList<LatLng> offSouth = new ArrayList<LatLng>();
     	
@@ -681,6 +716,11 @@ public class RouteArrayHolder {
     	return offSouth;
     }
     
+    /**
+     * Returns the Off-Campus North route as a list of LatLng objects.
+     * 
+     * @return an ArrayList of LatLng objects.
+     */
     public ArrayList<LatLng> getOffNorth() {
         ArrayList<LatLng> offNorth = new ArrayList<LatLng>();
     	

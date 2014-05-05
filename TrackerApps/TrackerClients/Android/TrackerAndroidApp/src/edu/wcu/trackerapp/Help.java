@@ -91,9 +91,6 @@ public class Help extends Activity implements OnClickListener {
 		if (selection.equals("Key")) {
 			next = new Intent(this, edu.wcu.trackerapp.Key.class);
 			this.startActivity(next);
-		} else if (selection.equals("Contact")) {
-			next = new Intent(this, edu.wcu.trackerapp.Contact.class);
-			this.startActivity(next);
 		} else if (selection.equals("Help")) {
 			next = new Intent(this, edu.wcu.trackerapp.Help.class);
 			this.startActivity(next);
@@ -128,17 +125,6 @@ public class Help extends Activity implements OnClickListener {
 			Intent next = new Intent(this, edu.wcu.trackerapp.About.class);
 			next.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			this.startActivity(next);
-		}
-		
+		}	
 	}
-
-	/*
-	@Override
-	public void onNothingSelected(AdapterView<?> arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-	*/
-
-
 }
