@@ -644,22 +644,25 @@ public class TranTracker extends Activity implements
 				Mat contour = contours.get(i);
 				double contourArea = Imgproc.contourArea(contour);
 				
-				int num = (int) contour.total();
-				int buff[] = new int[num * 2];
-				contour.get(0,0, buff);
-				for(int j = 0; j < num * 2; j = j +2) {
-					points.add(new Point(buff[j], buff[j + 1]));
-				}
+				if (contourArea > 2000) {
+				    int num = (int) contour.total();
+				    int buff[] = new int[num * 2];
+				    contour.get(0,0, buff);
+				    for(int j = 0; j < num * 2; j = j +2) {
+					    points.add(new Point(buff[j], buff[j + 1]));
+				    }
 				
-				Point[] pointArray = new Point[1]; 
-				pointArray = points.toArray(pointArray);
-				MatOfPoint rectPoints = new MatOfPoint(pointArray);
-				Core.rectangle(mFGMask, Imgproc.boundingRect(rectPoints).br(),
-						       Imgproc.boundingRect(rectPoints).tl(), 
-						       new Scalar(255, 255, 0, 255));
-				//Core.putText(mFGMask, "ANT", Imgproc.boundingRect(rectPoints)
-				//		     .tl(), Core.FONT_HERSHEY_COMPLEX, 1, 
-				//		     new Scalar(255, 200, 0, 255));
+				    Point[] pointArray = new Point[0];
+				
+				    pointArray = points.toArray(pointArray);
+				    MatOfPoint rectPoints = new MatOfPoint(pointArray);
+				    Core.rectangle(mFGMask, Imgproc.boundingRect(rectPoints).br(),
+						           Imgproc.boundingRect(rectPoints).tl(), 
+						           new Scalar(255, 255, 0, 255));
+				    //Core.putText(mFGMask, "ANT", Imgproc.boundingRect(rectPoints)
+				    //		     .tl(), Core.FONT_HERSHEY_COMPLEX, 1, 
+				    //		     new Scalar(255, 200, 0, 255));
+				}
 			}
 			
 			Imgproc.drawContours(mFGMask, contours, -1, color, -1);
