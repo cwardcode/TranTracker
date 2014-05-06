@@ -5,6 +5,7 @@
       <root url="jar://$PROJECT_DIR$/TrackerClients/Android/TrackerApp/bin/dexedLibs/google-play-services_lib-fc3f61f45e828f363d1c941403cc1929.jar!/" />
       <root url="jar://$PROJECT_DIR$/TrackerClients/Android/TrackerApp/bin/dexedLibs/android-support-v4-921af93b4560b715107bd512def54832.jar!/" />
     </CLASSES>
+    <JAVADOC />
     <SOURCES />
   </library>
 </component>

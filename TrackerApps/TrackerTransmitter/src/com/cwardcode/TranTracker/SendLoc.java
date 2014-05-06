@@ -175,7 +175,7 @@ public class SendLoc extends Service {
 		vehicleID = intent.getIntExtra("VehicleID", -1);
 		title = intent.getStringExtra("title");
 		numPeople = intent.getIntExtra("people", -1);
-		return START_STICKY;
+		return START_NOT_STICKY;
 	}
 
 	/**

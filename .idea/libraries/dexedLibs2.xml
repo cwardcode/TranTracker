@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="dexedLibs">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/TrackerApps/TrackerTransmitter/bin/dexedLibs/opencv library - 2.4.5-5f2606e68285de84e35843a4cd10fde3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/TrackerApps/TrackerTransmitter/bin/dexedLibs/opencv library - 2.4.5-3130f1acd8d94d4cb0b3bb62e517406c.jar!/" />
+      <root url="jar://$PROJECT_DIR$/TrackerApps/TrackerTransmitter/bin/dexedLibs/opencv library - 2.4.5-dd008882cc732435d11856a464eef1c1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

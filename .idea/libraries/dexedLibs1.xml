@@ -1,0 +1,18 @@
+<component name="libraryTable">
+  <library name="dexedLibs1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/TrackerApps/TrackerClients/Android/TrackerAndroidApp/bin/dexedLibs/android-support-v4-1b45c58dbba13ad54261a0c80a591a49.jar!/" />
+      <root url="jar://$PROJECT_DIR$/TrackerApps/TrackerClients/Android/TrackerAndroidApp/bin/dexedLibs/annotations-6865d278797e29f45d2d74a7ff3c20f6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/TrackerApps/TrackerClients/Android/TrackerAndroidApp/bin/dexedLibs/google-play-services_lib-ee9344c8dca46f504e1ff25fbcbeb57c.jar!/" />
+      <root url="jar://$PROJECT_DIR$/TrackerApps/TrackerClients/Android/TrackerAndroidApp/bin/dexedLibs/google-play-services-c69bbb0ab95742073a3fd55f411b944b.jar!/" />
+      <root url="jar://$PROJECT_DIR$/TrackerApps/TrackerClients/Android/TrackerAndroidApp/bin/dexedLibs/android-support-v4-c460cda04b5092c383c7659836442347.jar!/" />
+      <root url="jar://$PROJECT_DIR$/TrackerApps/TrackerClients/Android/TrackerAndroidApp/bin/dexedLibs/android-support-v4-32a661fdec5855cf2fd52249182fcab3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/TrackerApps/TrackerClients/Android/TrackerAndroidApp/bin/dexedLibs/google-play-services-575d2250d0bde3533e0df9262b43abae.jar!/" />
+      <root url="jar://$PROJECT_DIR$/TrackerApps/TrackerClients/Android/TrackerAndroidApp/bin/dexedLibs/google-play-services_lib-6cf07fffb8a63601125d81e323c22324.jar!/" />
+      <root url="jar://$PROJECT_DIR$/TrackerApps/TrackerClients/Android/TrackerAndroidApp/bin/dexedLibs/google-play-services_lib-26b8e93fb6e58ee58b6643ef53f16db1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/TrackerApps/TrackerClients/Android/TrackerAndroidApp/bin/dexedLibs/google-play-services-a89269a463eb687904b819d9c30be62a.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

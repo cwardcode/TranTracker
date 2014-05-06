@@ -1,6 +1,6 @@
 /*
  * This file is auto-generated.  DO NOT MODIFY.
- * Original file: C:\\Users\\Hayden\\Documents\\GitHub\\capstone\\Libraries\\OpenCV Library - 2.4.5\\src\\org\\opencv\\engine\\OpenCVEngineInterface.aidl
+ * Original file: C:\\Users\\chris\\IdeaProjects\\newCap\\capstone\\Libraries\\OpenCV Library - 2.4.5\\src\\org\\opencv\\engine\\OpenCVEngineInterface.aidl
  */
 package org.opencv.engine;
 /**
