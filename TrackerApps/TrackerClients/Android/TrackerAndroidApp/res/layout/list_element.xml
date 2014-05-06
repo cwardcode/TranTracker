@@ -16,6 +16,13 @@
         android:layout_weight="1.5"
         android:layout_marginRight="10dp"
         android:layout_marginLeft="5dp">
+        
+        <ImageButton 
+            android:id="@+id/icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/map_marker_blk" />
+        
     </LinearLayout>
     
     <TextView

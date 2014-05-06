@@ -3,6 +3,7 @@ package edu.wcu.trackerapp;
 import java.util.ArrayList;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 
 /**
@@ -94,19 +95,34 @@ public class AppConstants {
 		return "ERROR";
 	}
 	
+	/**
+	 * Creates a new route selection with the given parameters.
+	 * 
+	 * @param id the selection's id
+	 * @param context the calling context
+	 * @return a new RouteSelection object.
+	 */
 	public static RouteSelection getRouteSelection(int id, Context context) {
 		String name = getRouteName(id, context);
-		RouteSelection route = new RouteSelection(name, id);
+		Drawable icon = context.getResources().getDrawable(
+                R.drawable.map_marker_blk);
+		RouteSelection route = new RouteSelection(name, id, icon);
+
 		
 		// This makes the map default to displaying the all-campus route only.
 		if (route.getRouteName().equals(ROUTE_ALL_CAMPUS)) {
-			route.setSelected(true);
+			route.setSelected(true, context);
 			selectedRoutes.add(route.getRouteName());
 		}
 		
 		return route;
 	}
 	
+	/**
+	 * Creates the list of stops.
+	 * 
+	 * @param context the calling context.
+	 */
 	public static void createStops(Context context) {
 		if (stops == null) {
 			stops = new ArrayList<StopSelection>();
@@ -117,8 +133,17 @@ public class AppConstants {
 		}
 	}
 	
+	/**
+	 * Creates a new stop selection with the given parameters.
+	 * 
+	 * @param id the id of the stop.
+	 * @param context the calling context.
+	 * @return a new StopSelection object.
+	 */
 	public static StopSelection getStopSelection(int id, Context context) {
 		String name = stopNames.get(id);
-		return new StopSelection(name, id);
+		Drawable icon = context.getResources().getDrawable(
+				                               R.drawable.map_marker_blk);
+		return new StopSelection(name, id, icon);
 	}
 }

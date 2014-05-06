@@ -1,5 +1,8 @@
 package edu.wcu.trackerapp;
 
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+
 
 /**
  * This class represents a selection for a list view containing a list of
@@ -20,7 +23,7 @@ public class RouteSelection {
 	 * The icon the route uses in the list.
 	 */
 	//TODO: add icons once the functionality is complete.
-	//private Drawable icon;
+	private Drawable icon;
 	
 	/**
 	 * The route's id number.
@@ -31,11 +34,30 @@ public class RouteSelection {
 	 * Creates a new route selection using the given parameters. The selected
 	 * field will default to false.
 	 */
-	public RouteSelection(String name, int id) {
+	public RouteSelection(String name, int id, Drawable icon) {
 		this.routeName = name;
 		this.routeID = id;
+		this.icon = icon;
 	}
 	
+	/**
+	 * Returns the selection's icon.
+	 * 
+	 * @return the icon as a Drawable object.
+	 */
+	public Drawable getIcon() {
+		return icon;
+	}
+	
+	/**
+	 * Set the selections icon.
+	 * 
+	 * @param icon the new icon.
+	 */
+	public void setIcon(Drawable icon) {
+		this.icon = icon;
+	}
+
 	/**
 	 * Returns the route's name.
 	 * 
@@ -68,8 +90,18 @@ public class RouteSelection {
 	 * 
 	 * @param selected a boolean representing the selections selected state.
 	 */
-	public void setSelected(boolean selected) {
+	public void setSelected(boolean selected, Context context) {
 		this.selected = selected;
+		
+		if (selected) {
+			Drawable icon = context.getResources().getDrawable(
+	                R.drawable.map_marker_green);
+			this.setIcon(icon);
+		} else {
+			Drawable icon = context.getResources().getDrawable(
+	                R.drawable.map_marker_blk);
+			this.setIcon(icon);
+		}
 	}
 	
 	/**

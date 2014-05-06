@@ -77,12 +77,12 @@ public class StopList extends Activity implements OnItemClickListener {
 		if (!selection.isSelected()) {
 		    AppConstants.selectedStops.add(stopName);
 		    Log.d("stopList", stopName + " Added");
-		    selection.setSelected(true);
+		    selection.setSelected(true, this);
 		} else {
 			AppConstants.selectedStops.remove(
 					AppConstants.selectedStops.indexOf(stopName));
 			Log.d("stopList", stopName + " Removed");
-			selection.setSelected(false);
+			selection.setSelected(false, this);
 		}
 	}
 	

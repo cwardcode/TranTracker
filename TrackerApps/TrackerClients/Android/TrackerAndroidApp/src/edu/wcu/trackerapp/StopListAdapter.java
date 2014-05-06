@@ -73,7 +73,7 @@ public class StopListAdapter extends ArrayAdapter<StopSelection> {
 			
 			ViewHolder viewHolder = new ViewHolder();
 			viewHolder.text = (TextView) rowView.findViewById(R.id.routeName);
-			//viewHolder.image = (ImageView) rowView.findViewById(R.id.imageButton1);
+			viewHolder.image = (ImageView) rowView.findViewById(R.id.icon);
 			rowView.setTag(viewHolder);
 		}
 		
@@ -81,8 +81,8 @@ public class StopListAdapter extends ArrayAdapter<StopSelection> {
 		
 		StopSelection selection = AppConstants.stops.get(position);
 		
-		//holder.image.setImageDrawable(sites.get(position).getIcon());
-		//holder.image.setBackgroundDrawable(null);
+		holder.image.setImageDrawable(stops.get(position).getIcon());
+		holder.image.setBackgroundDrawable(null);
 		
 		holder.text.setText(selection.getStopName());
 		

@@ -74,12 +74,12 @@ public class RouteList extends Activity implements OnItemClickListener {
 		if (!selection.isSelected()) {
 		    AppConstants.selectedRoutes.add(routeName);
 		    Log.d("RouteList", routeName + " Added");
-		    selection.setSelected(true);
+		    selection.setSelected(true, this);
 		} else {
 			AppConstants.selectedRoutes.remove(
 					AppConstants.selectedRoutes.indexOf(routeName));
 			Log.d("RouteList", routeName + " Removed");
-			selection.setSelected(false);
+			selection.setSelected(false, this);
 		}
 		
 	}

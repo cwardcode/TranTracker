@@ -226,10 +226,14 @@ containing a value of this type.
         public static final int ic_plusone_small_off_client=0x7f02001b;
         public static final int ic_plusone_standard_off_client=0x7f02001c;
         public static final int ic_plusone_tall_off_client=0x7f02001d;
-        public static final int logo=0x7f02001e;
-        public static final int map=0x7f02001f;
-        public static final int shuttle=0x7f020020;
-        public static final int stopmarker=0x7f020021;
+        public static final int list_selector_background_disabled=0x7f02001e;
+        public static final int list_selector_background_pressed=0x7f02001f;
+        public static final int logo=0x7f020020;
+        public static final int map=0x7f020021;
+        public static final int map_marker_blk=0x7f020022;
+        public static final int map_marker_green=0x7f020023;
+        public static final int shuttle=0x7f020024;
+        public static final int stopmarker=0x7f020025;
     }
     public static final class id {
         public static final int aboutAboutButton=0x7f050009;
@@ -237,7 +241,7 @@ containing a value of this type.
         public static final int aboutHelpButton=0x7f050008;
         public static final int aboutKeyButton=0x7f050007;
         public static final int aboutMapButton=0x7f050005;
-        public static final int action_settings=0x7f05002d;
+        public static final int action_settings=0x7f05002e;
         public static final int chatAboutButton=0x7f05000e;
         public static final int chatChatButton=0x7f05000b;
         public static final int chatHelpButton=0x7f05000d;
@@ -253,6 +257,7 @@ containing a value of this type.
         public static final int helpMapButton=0x7f050016;
         public static final int homeButtonContact=0x7f050014;
         public static final int hybrid=0x7f050004;
+        public static final int icon=0x7f05002c;
         public static final int inputEditText=0x7f050012;
         public static final int inputLinLayout=0x7f050011;
         public static final int keyAboutButton=0x7f05001f;
@@ -271,7 +276,7 @@ containing a value of this type.
         public static final int none=0x7f050000;
         public static final int normal=0x7f050001;
         public static final int outputTextView=0x7f050010;
-        public static final int routeName=0x7f05002c;
+        public static final int routeName=0x7f05002d;
         public static final int route_button=0x7f050020;
         public static final int satellite=0x7f050002;
         public static final int sendBtn=0x7f050013;

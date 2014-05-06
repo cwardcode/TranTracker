@@ -1,5 +1,8 @@
 package edu.wcu.trackerapp;
 
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+
 
 /**
  * This class represents a selection for a list view containing a list of
@@ -20,7 +23,7 @@ public class StopSelection {
 	 * The icon the stop uses in the list.
 	 */
 	//TODO: add icons once the functionality is complete.
-	//private Drawable icon;
+	private Drawable icon;
 	
 	/**
 	 * The stop's id number.
@@ -31,9 +34,28 @@ public class StopSelection {
 	 * Creates a new stop selection using the given parameters. The selected
 	 * field will default to false.
 	 */
-	public StopSelection(String name, int id) {
+	public StopSelection(String name, int id, Drawable icon) {
 		this.stopName = name;
 		this.stopID = id;
+		this.icon = icon;
+	}
+	
+	/**
+	 * Returns the stop's icon.
+	 * 
+	 * @return the icon as a Drawable.
+	 */
+	public Drawable getIcon() {
+	    return icon;
+	}
+	
+	/**
+	 * Sets the icon to the given icon.
+	 * 
+	 * @param icon the new icon.
+	 */
+	public void setIcon(Drawable icon) {
+		this.icon = icon;
 	}
 	
 	/**
@@ -67,9 +89,20 @@ public class StopSelection {
 	 * Changes whether the site is selected or not.
 	 * 
 	 * @param selected a boolean representing the selections selected state.
+	 * @param the calling context. This is needed to properly update icons.
 	 */
-	public void setSelected(boolean selected) {
+	public void setSelected(boolean selected, Context context) {
 		this.selected = selected;
+		
+		if (selected) {
+			Drawable icon = context.getResources().getDrawable(
+	                R.drawable.map_marker_green);
+			this.setIcon(icon);
+		} else {
+			Drawable icon = context.getResources().getDrawable(
+	                R.drawable.map_marker_blk);
+			this.setIcon(icon);
+		}
 	}
 	
 	/**
