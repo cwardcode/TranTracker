@@ -84,6 +84,9 @@ public class StopList extends Activity implements OnItemClickListener {
 			Log.d("stopList", stopName + " Removed");
 			selection.setSelected(false, this);
 		}
+		//AppConstants.createStops(this);
+		//((StopListAdapter) adapter).setStops(AppConstants.stops);
+		//adapter.notifyDataSetChanged();
 	}
 	
 	/**

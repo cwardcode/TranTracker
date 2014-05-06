@@ -333,7 +333,6 @@ public class SendLoc extends Service {
 		filterRes.putExtra("Distance", distanceFromStop);
 		filterRes.putExtra("VehicleID", vehicleID);
 		filterRes.putExtra("title", title);
-		dbHelper.close();
 		context.sendBroadcast(filterRes);
 	}
 

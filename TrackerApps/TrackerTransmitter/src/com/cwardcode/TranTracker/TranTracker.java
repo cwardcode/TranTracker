@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.json.JSONArray;
@@ -19,9 +20,11 @@ import org.opencv.android.CameraBridgeViewBase.CvCameraViewListener2;
 import org.opencv.android.LoaderCallbackInterface;
 import org.opencv.android.OpenCVLoader;
 import org.opencv.android.Utils;
+import org.opencv.core.Core;
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfPoint;
+import org.opencv.core.Point;
 import org.opencv.core.Scalar;
 import org.opencv.imgproc.Imgproc;
 import org.opencv.objdetect.CascadeClassifier;
@@ -629,9 +632,36 @@ public class TranTracker extends Activity implements
 
 			Scalar color = new Scalar(255);
 
-			Imgproc.findContours(mFGMask, contours, hierarchy,
-					Imgproc.RETR_CCOMP, Imgproc.CHAIN_APPROX_NONE);
+			//Imgproc.findContours(mFGMask, contours, hierarchy,
+			//		Imgproc.RETR_CCOMP, Imgproc.CHAIN_APPROX_NONE);
 
+			Imgproc.findContours(mFGMask,  contours, hierarchy, 
+					             Imgproc.RETR_EXTERNAL, 
+					             Imgproc.CV_CONTOURS_MATCH_I1);
+			
+			for (int i = 0; i < contours.size(); i++) {
+				List<Point> points = new ArrayList<Point>(5);
+				Mat contour = contours.get(i);
+				double contourArea = Imgproc.contourArea(contour);
+				
+				int num = (int) contour.total();
+				int buff[] = new int[num * 2];
+				contour.get(0,0, buff);
+				for(int j = 0; j < num * 2; j = j +2) {
+					points.add(new Point(buff[j], buff[j + 1]));
+				}
+				
+				Point[] pointArray = new Point[1]; 
+				pointArray = points.toArray(pointArray);
+				MatOfPoint rectPoints = new MatOfPoint(pointArray);
+				Core.rectangle(mFGMask, Imgproc.boundingRect(rectPoints).br(),
+						       Imgproc.boundingRect(rectPoints).tl(), 
+						       new Scalar(255, 255, 0, 255));
+				//Core.putText(mFGMask, "ANT", Imgproc.boundingRect(rectPoints)
+				//		     .tl(), Core.FONT_HERSHEY_COMPLEX, 1, 
+				//		     new Scalar(255, 200, 0, 255));
+			}
+			
 			Imgproc.drawContours(mFGMask, contours, -1, color, -1);
 
 			Log.d("contours", "Number of contours found: " + contours.size());
@@ -639,7 +669,7 @@ public class TranTracker extends Activity implements
 			Bitmap bmp = Bitmap.createBitmap(mFGMask.cols(), mFGMask.rows(),
 					Bitmap.Config.ARGB_8888);
 
-			Utils.matToBitmap(mFGMask, bmp);
+			//Utils.matToBitmap(mFGMask, bmp);
 
 			// Imgproc.pyrDown(mGrey, mPyrDownMat);
 			// Imgproc.pyrDown(mPyrDownMat, mPyrDownMat);
@@ -651,7 +681,7 @@ public class TranTracker extends Activity implements
 		}
 		return nonCountImg;
 	}
-
+	
 	/**
 	 * {@inheritDoc}
 	 */

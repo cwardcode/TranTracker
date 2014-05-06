@@ -1,6 +1,7 @@
  	package edu.wcu.trackerapp;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import edu.wcu.trackerapp.AppConstants;
 import edu.wcu.trackerapp.StopSelection;
@@ -49,6 +50,24 @@ public class StopListAdapter extends ArrayAdapter<StopSelection> {
 		super(context, textViewResourceID, stops);
 		this.context = context;
 		viewSource = textViewResourceID;
+		this.stops = stops;
+	}
+	
+	/**
+	 * Returns the list of stops.
+	 * 
+	 * @return a List containing all of the stopSelection objects.
+	 */
+	public List<StopSelection> getStops() {
+		return stops;
+	}
+	
+	/**
+	 * Replaces the list of StopSelections with the given list.
+	 * 
+	 * @param stops the new list of StopSelections.
+	 */
+	public void setStops(ArrayList<StopSelection> stops) {
 		this.stops = stops;
 	}
 	
