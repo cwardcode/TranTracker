@@ -4,6 +4,6 @@
     <entry_points version="2.0" />
   </component>
   <component name="IdProvider" IDEtalkID="30CBAF13505EBBA13521A5DB4CB33AB1" />
-  <component name="ProjectRootManager" version="2" project-jdk-name="Android 4.1.2 Google APIs" project-jdk-type="Android SDK" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_3" assert-keyword="false" jdk-15="false" project-jdk-name="Android 4.1.2 Google APIs" project-jdk-type="Android SDK" />
 </project>
 

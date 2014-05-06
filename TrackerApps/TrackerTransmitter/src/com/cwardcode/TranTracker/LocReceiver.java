@@ -92,6 +92,7 @@ public class LocReceiver extends BroadcastReceiver {
 					statement.executeUpdate(insertTableSQL);
 
 				} catch (Exception e) {
+					Log.e("com.cwardcode.TranTracker", e.getMessage());
 					System.out.println("Error Occurred!");
 					System.out.println(e.getMessage());
 

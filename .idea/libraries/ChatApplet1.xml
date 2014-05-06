@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="ChatApplet1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Website/GPSTracker/static/lib/ChatApplet.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

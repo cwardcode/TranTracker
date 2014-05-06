@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="dexedLibs2">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Testing/TrackerAppTest/bin/dexedLibs/robotium-solo-5.0.1-5b64fd7e323702404b75253a387472b8.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Testing/TrackerAppTest/bin/dexedLibs/annotations-6865d278797e29f45d2d74a7ff3c20f6.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
