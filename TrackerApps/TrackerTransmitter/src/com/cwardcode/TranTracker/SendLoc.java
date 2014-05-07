@@ -65,8 +65,6 @@ public class SendLoc extends Service {
 	/** Name of the nearest stop */
 	private String nameAtStop;
 	private static double distanceFromStop;
-	/** Global cursor for database */
-	private Cursor cursor = null;
 
 	/***
 	 * Class to for allowing clients to access this service's public methods.
@@ -226,6 +224,8 @@ public class SendLoc extends Service {
 	 * Sets up the arraylists with coordinate points for each stoplocation.
 	 */
 	private void setupStopLocList() {
+		Cursor cursor = null;
+
 		try {
 			String query = "select latitude from stop";
 			cursor = stopLocations.rawQuery(query, null);
@@ -272,6 +272,8 @@ public class SendLoc extends Service {
 	 */
 	public boolean isNearLoc() {
 		boolean isNear = false;
+		Cursor cursor = null;
+
 		for (int i = 0; i < stopLatList.size(); i++) {
 
 			double lat1 = Double.parseDouble(stopLatList.get(i));
@@ -288,6 +290,7 @@ public class SendLoc extends Service {
 				if (cursor.getCount() > 0) {
 					nameAtStop = cursor.getString(0);
 				}
+				cursor.close();
 			}
 		}
 		return isNear;

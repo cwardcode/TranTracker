@@ -608,164 +608,137 @@ public class TranTracker extends Activity implements
 		mGrey = inputFrame.gray();
 		// Check to see if near a stop, and it is stopped.
 		while (IS_BOUND && locService.isNearLoc() && locService.isStopped()) {
-			if (mAbsoluteBodySize == 0) {
-				int height = mGrey.rows();
-				if (Math.round(height * mRelativeBodySize) > 0) {
-					mAbsoluteBodySize = Math.round(height * mRelativeBodySize);
-				}
-			}
-			mNativeDetector.setMinFaceSize(mAbsoluteBodySize);
+			/*
+			 * if (mAbsoluteBodySize == 0) { int height = mGrey.rows(); if
+			 * (Math.round(height * mRelativeBodySize) > 0) { mAbsoluteBodySize
+			 * = Math.round(height * mRelativeBodySize); } }
+			 * mNativeDetector.setMinFaceSize(mAbsoluteBodySize);
+			 * 
+			 * MatOfRect faces = new MatOfRect();
+			 * 
+			 * if (mJavaDetector != null) {
+			 * mJavaDetector.detectMultiScale(mGrey, faces, 1.1, 2, 2, new
+			 * Size(mAbsoluteBodySize, mAbsoluteBodySize), new Size()); }
+			 * 
+			 * Rect[] facesArray = faces.toArray(); // Draw rect around detected
+			 * person. // TODO: label and track person so not counted twice. for
+			 * (int i = 0; i < facesArray.length; i++) { Core.rectangle(mRgba,
+			 * facesArray[i].tl(), facesArray[i].br(), BODY_RECT_COLOR, 3);
+			 * 
+			 * Blob blob = new Blob(facesArray[i], blobID); if (blobs.size() ==
+			 * 0) { blobs.add(blob); }
+			 * 
+			 * boolean blobFound = false;
+			 * 
+			 * for (Blob b : blobs) {
+			 * 
+			 * if (b.onScreen(screenWidth, screenHeight)) { double blobDiff =
+			 * blob.area() - b.area();
+			 * 
+			 * // Check to see if the blobs are about the same // size. if
+			 * (Math.abs(blobDiff) < 1200) { // Check to see if the distance
+			 * between blobs is // the same-ish. int yDist = Math.abs(blob.y() -
+			 * b.y()); int xDist = Math.abs(blob.x() - b.x());
+			 * 
+			 * if ((yDist < 100) && (xDist < 100)) { // Pretty sure the blobs
+			 * are the same, so we // replace instead of adding.
+			 * blob.setID(b.id());
+			 * 
+			 * blobs.set(blobs.indexOf(b), blob);
+			 * 
+			 * blobFound = true; } } } }
+			 * 
+			 * if (!blobFound) { blobs.add(blob); blobID++; }
+			 */
+			// setPeopleData(facesArray.length);
 
-			MatOfRect faces = new MatOfRect();
+			List<MatOfPoint> contours = new ArrayList<MatOfPoint>();
 
-			if (mJavaDetector != null) {
-				mJavaDetector.detectMultiScale(mGrey, faces, 1.1, 2, 2,
-						new Size(mAbsoluteBodySize, mAbsoluteBodySize),
-						new Size());
-			}
+			mBVSub.apply(mGrey, mFGMask, 0.15);
 
-			Rect[] facesArray = faces.toArray();
-			// Draw rect around detected person.
-			// TODO: label and track person so not counted twice.
-			for (int i = 0; i < facesArray.length; i++) {
-				Core.rectangle(mRgba, facesArray[i].tl(), facesArray[i].br(),
-						BODY_RECT_COLOR, 3);
+			Mat hierarchy = new Mat();
 
-				Blob blob = new Blob(facesArray[i], blobID);
-				if (blobs.size() == 0) {
-					blobs.add(blob);
-				}
+			Scalar color = new Scalar(255);
 
-				boolean blobFound = false;
+			// Imgproc.findContours(mFGMask, contours, hierarchy,
+			// Imgproc.RETR_CCOMP, Imgproc.CHAIN_APPROX_NONE);
 
-				for (Blob b : blobs) {
+			Imgproc.findContours(mFGMask, contours, hierarchy,
+					Imgproc.RETR_EXTERNAL, Imgproc.CV_CONTOURS_MATCH_I1);
 
-					if (b.onScreen(screenWidth, screenHeight)) {
-						double blobDiff = blob.area() - b.area();
+			for (int i = 0; i < contours.size(); i++) {
+				List<Point> points = new ArrayList<Point>(5);
+				Mat contour = contours.get(i);
+				double contourArea = Imgproc.contourArea(contour);
 
-						// Check to see if the blobs are about the same
-						// size.
-						if (Math.abs(blobDiff) < 1200) {
-							// Check to see if the distance between blobs is
-							// the same-ish.
-							int yDist = Math.abs(blob.y() - b.y());
-							int xDist = Math.abs(blob.x() - b.x());
+				if (contourArea > 1000) {
+					int num = (int) contour.total();
+					int buff[] = new int[num * 2];
+					contour.get(0, 0, buff);
+					
+					for (int j = 0; j < num * 2; j = j + 2) {
+						points.add(new Point(buff[j], buff[j + 1]));
+					}
 
-							if ((yDist < 100) && (xDist < 100)) {
-								// Pretty sure the blobs are the same, so we
-								// replace instead of adding.
-								blob.setID(b.id());
+					Point[] pointArray = new Point[0];
 
-								blobs.set(blobs.indexOf(b), blob);
+					pointArray = points.toArray(pointArray);
+					MatOfPoint rectPoints = new MatOfPoint(pointArray);
+					
+					Core.rectangle(mFGMask, Imgproc.boundingRect(rectPoints)
+							.br(), Imgproc.boundingRect(rectPoints).tl(),
+							new Scalar(255, 255, 0, 255));
 
-								blobFound = true;
+					Blob blob = new Blob(Imgproc.boundingRect(rectPoints),
+							             blobID);
+
+					if (blobs.size() == 0) {
+						blobs.add(blob);
+					}
+
+					boolean blobFound = false;
+
+					for (Blob b : blobs) {
+
+						if (b.onScreen(screenWidth, screenHeight)) {
+							double blobDiff = blob.area() - b.area();
+
+							// Check to see if the blobs are about the same //
+							// size.
+							if (Math.abs(blobDiff) < 1200) {
+								// Check to see if the distance
+								// between blobs is the same-ish.
+								int yDist = Math.abs(blob.y() - b.y());
+								int xDist = Math.abs(blob.x() - b.x());
+
+								if ((yDist < 100) && (xDist < 100)) {
+									// Pretty sure the
+									// blobs are the same, so we replace instead
+									// of adding.
+									blob.setID(b.id());
+
+									blobs.set(blobs.indexOf(b), blob);
+
+									blobFound = true;
+								}
 							}
 						}
 					}
+
+					if (!blobFound) {
+						blobs.add(blob);
+						blobID++;
+					}
+
 				}
 
-				if (!blobFound) {
-					blobs.add(blob);
-					blobID++;
-				}
-				// setPeopleData(facesArray.length);
-
-				// List<MatOfPoint> contours = new ArrayList<MatOfPoint>();
-
-				/* mBVSub.apply(mGrey, mFGMask, 0.01); */
-
-				// Mat hierarchy = new Mat();
-
-				// Scalar color = new Scalar(255);
-
-				// Imgproc.findContours(mFGMask, contours, hierarchy,
-				// Imgproc.RETR_CCOMP, Imgproc.CHAIN_APPROX_NONE);
-
-				// Imgproc.findContours(mFGMask, contours, hierarchy,
-				// Imgproc.RETR_EXTERNAL, Imgproc.CV_CONTOURS_MATCH_I1);
-
-				// for (int i = 0; i < contours.size(); i++) {
-				// List<Point> points = new ArrayList<Point>(5);
-				// Mat contour = contours.get(i);
-				// double contourArea = Imgproc.contourArea(contour);
-
-				// if (contourArea > 1000) {
-				// int num = (int) contour.total();
-				// int buff[] = new int[num * 2];
-				// contour.get(0, 0, buff);
-				// for (int j = 0; j < num * 2; j = j + 2) {
-				// points.add(new Point(buff[j], buff[j + 1]));
-				// }
-
-				// Point[] pointArray = new Point[0];
-
-				// pointArray = points.toArray(pointArray);
-				// MatOfPoint rectPoints = new MatOfPoint(pointArray);
-				// Core.rectangle(mFGMask, Imgproc.boundingRect(rectPoints)
-				// .br(), Imgproc.boundingRect(rectPoints).tl(),
-				// new Scalar(255, 255, 0, 255));
-				// Core.putText(mFGMask, "ANT",
-				// Imgproc.boundingRect(rectPoints)
-				// .tl(), Core.FONT_HERSHEY_COMPLEX, 1,
-				// new Scalar(255, 200, 0, 255));
-
-				// Core.rectangle(mFGMask, new Point(0, 0), new Point(100,
-				// 100), new Scalar(0, 255, 255, 255));
-
-				// Blob blob = new Blob(Imgproc.boundingRect(rectPoints),
-				// blobID);
-
-				/*
-				 * if (blobs.size() == 0) { blobs.add(blob); }
-				 * 
-				 * boolean blobFound = false;
-				 * 
-				 * for (Blob b : blobs) {
-				 * 
-				 * if (b.onScreen(screenWidth, screenHeight)) { double blobDiff
-				 * = blob.area() - b.area();
-				 * 
-				 * // Check to see if the blobs are about the same // size. if
-				 * (Math.abs(blobDiff) < 1200) { // Check to see if the distance
-				 * between blobs is // the same-ish. int yDist =
-				 * Math.abs(blob.y() - b.y()); int xDist = Math.abs(blob.x() -
-				 * b.x());
-				 * 
-				 * if ((yDist < 100) && (xDist < 100)) { // Pretty sure the
-				 * blobs are the same, so we // replace instead of adding.
-				 * blob.setID(b.id());
-				 * 
-				 * blobs.set(blobs.indexOf(b), blob);
-				 * 
-				 * blobFound = true; } } } }
-				 * 
-				 * if (!blobFound) { blobs.add(blob); blobID++; }
-				 * 
-				 * } }
-				 */
-
-				// Imgproc.drawContours(mFGMask, contours, -1, color, -1);
-
-				// Log.d("contours", "Number of contours found: " +
-				// contours.size());
-
-				// Bitmap bmp = Bitmap.createBitmap(mFGMask.cols(),
-				// mFGMask.rows(),
-				// Bitmap.Config.ARGB_8888);
-
-				// Utils.matToBitmap(mFGMask, bmp);
-
-				// Imgproc.pyrDown(mGrey, mPyrDownMat);
-				// Imgproc.pyrDown(mPyrDownMat, mPyrDownMat);
-
-				// List<MatOfPoint> contours = new ArrayList<MatofPoint>();
-
-				// Imgproc.findContours(image, contours, hierarchy, mode,
-				// method);
-				setPeopleData(blobs.size());
-				//return mFGMask;
-				return mRgba;
 			}
+
+			Imgproc.drawContours(mFGMask, contours, -1, color, -1);
+
+			Log.d("contours", "Number of contours found: " + contours.size());
+			setPeopleData(blobs.size());
+			return mFGMask;
 
 		}
 		// setPeopleData(blobs.size());
