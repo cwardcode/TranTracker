@@ -200,7 +200,7 @@ public class TranTracker extends Activity implements
 				mOpenCvCameraView.enableView();
 
 				// Initialize our background subtraction stuff.
-				mBVSub = new BackgroundSubtractorMOG(5, 3, .1);
+				mBVSub = new BackgroundSubtractorMOG(5, 3, .1, 20);
 				average = new Mat();
 			}
 				break;
