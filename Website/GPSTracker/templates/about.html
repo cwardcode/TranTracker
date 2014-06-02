@@ -1,26 +1,21 @@
-{% extends "base.html" %}
+{% extends "colbase.html" %}
 {% load static %}
 
+<!-- Heading override -->
+{% block section_header %}
+<h2> About Us</h2>
+{% endblock %}
 <!-- Content override -->
 {% block content %}
     <div style="margin:auto 0;text-align:center">
-        <p>
-
-        <h1>Hello, and welcome to "Where's Da Bus?"!</h1></p>
-        <p>
-
-        <h3>Thanks for finding our website. This application is currently in development
-            as part of a <br>university capstone project hoping to create a vehicle-tracking
-            fleet management system. <br>You can keep track of our progress by checking back
-            often!</h3></p>
-        <p>
-
-        <h3>Full plans include tracking via this web application and mobile versions as
-            well. <br>If you have any questions, feel free to contact us via our
-            <a href="../contact/">'contact us'</a> page.</h3></p>
-        <p>
-
-        <h3>Sincerely,<br> Chris Ward,<br>Hayden Thomas</h3></p>
+        <p>Hello, and welcome to "TranTracker"!
+        <br>
+        Thanks for finding our website. This application is currently in development
+            with hopes to create an industry leading,  vehicle-tracking system with 
+            environmental sustainability in mind.
+        <br>
+        If you have any questions, feel free to contact us via our
+            <a href="../contact/">'contact us'</a> page.
     </div>
 {% endblock %}
 

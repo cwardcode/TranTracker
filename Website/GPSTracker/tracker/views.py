@@ -8,6 +8,14 @@ def home(request):
     return render_to_response('index.html')
 
 
+def demo(request):
+    return render_to_response('demo.html')
+
+
+def features(request):
+    return render_to_response('features.html')
+
+
 def test(request):
     return render_to_response('test.html')
 

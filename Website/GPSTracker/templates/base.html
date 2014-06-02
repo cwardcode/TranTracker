@@ -1,77 +1,113 @@
 {% load static %}
-<!DOCTYPE html>
+<!DOCTYPE HTML>
+<!--
+    Halcyonic 3.1 by HTML5 UP
+    html5up.net | @n33co
+    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
 <html>
 <head>
-    <title>Where's Da Bus?</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <link rel="shortcut icon" href="../static/images/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="{% static 'images/logo.png' %}" type="image/x-icon">
-    <link id="main-css" href="{% static 'css/main.css' %}" rel="stylesheet"/>
-    <meta http-equiv="description" content="">
-    <meta http-equiv="keywords" content="">
-    {% block header %}
-    {% endblock %}
-    <script type="text/javascript">
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-44804074-1']);
-        _gaq.push(['_trackPageview']);
-        (function () {
-            var ga = document.createElement('script');
-            ga.type = 'text/javascript';
-            ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(ga, s);
-        })();
-    </script>
+<title>TranTracker</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/config.js' %}"></script>
+<script src="{% static 'js/skel.min.js' %}"></script>
+<script src="{% static 'js/skel-panels.min.js' %}"></script>
+<link rel="stylesheet" href="{% static 'css/skel-noscript.css' %}" />
+<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+<link rel="stylesheet" href="{% static 'css/style-desktop.css' %}" />
 </head>
-<body class="products_results">
+<body class="subpage">
+
+<!-- Header -->
 <div id="header-wrapper">
-    <div id="header" class="content">
-        <div class="logo">
-            <a href="/"><img id="header-logo" alt="My Site" src="../static/images/logo.png"/></a>
+    <header id="header" class="container">
+        <div class="row">
+            <div class="12u">
+
+                <img id="logo" src="{% static 'images/logo.png' %}">	
+                <!-- Nav -->
+                <nav id="nav">
+                    <a href="/">Homepage</a>
+                    <a href="/features">Features</a>
+                    <a href="/demo">Live Demo</a>
+                    <a href="/about">About Us</a>
+                    <a href="/contact">Contact Us</a>
+                </nav>
+
+            </div>
         </div>
-        <ul id="header-menu">
-            <li class="first"></li>
-            <li class="last"></li>
-        </ul>
-    </div>
+    </header>
 </div>
 
-<div id="top-wrapper">
-    <div id="top" class="content">
-        <ul id="top-menu">
-            <li class="first"><a href="/" rel="">Home</a></li>
-            <li><a href="/chat/">Shuttle Speak</a></li>
-            <li><a href="/help/">Help</a></li>
-            <li><a href="/about/">About Us</a></li>
-            <li><a href="/contact/">Contact Us</a></li>
-        </ul>
-    </div>
-</div>
+<!-- Content -->
 <div id="content-wrapper">
-    <div id="content" class="content">
-        <div id="sidebar">
-            {% block sidebar %}
-            {% endblock %}
-        </div>
+    <div id="content">
+        <div class="container">
+            <div class="row">
+                <div class="9u">
 
-        <div id="page">
-            {% block content %}
-                <p>Content here, boss.</p>
-            {% endblock %}
+                    <!-- Main Content -->
+                    <section>
+                        {% block content %}
+                        <header>
+                            <h2>Heading</h2>
+                            <h3>Subheading</h3>
+                        </header>
+                        <p>
+                        Content here, boss.
+                        </p>
+                        {% endblock %}
+                    </section>
+
+                </div>
+                <div class="3u">
+
+                    <!-- Sidebar -->
+                    <section>
+                        {% block sidebar %}
+                        <header>
+                            <h2>Magna Phasellus</h2>
+                        </header>
+                        <ul class="link-list">
+                            <li><a href="#">Sed dolore viverra</a></li>
+                            <li><a href="#">Ligula non varius</a></li>
+                            <li><a href="#">Nec sociis natoque</a></li>
+                            <li><a href="#">Penatibus et magnis</a></li>
+                            <li><a href="#">Dis parturient montes</a></li>
+                            <li><a href="#">Nascetur ridiculus</a></li>
+                        </ul>
+                    </section>
+                    <section>
+                        <header>
+                            <h2>Ipsum Dolor</h2>
+                        </header>
+                        <p>
+                        Vehicula fermentum ligula at pretium. Suspendisse semper iaculis eros, eu aliquam 
+                        iaculis. Phasellus ultrices diam sit amet orci lacinia sed consequat. 							
+                        </p>
+                        <ul class="link-list">
+                            <li><a href="#">Sed dolore viverra</a></li>
+                            <li><a href="#">Ligula non varius</a></li>
+                            <li><a href="#">Dis parturient montes</a></li>
+                            <li><a href="#">Nascetur ridiculus</a></li>
+                        </ul>
+                        {% endblock %}
+                    </section>
+
+                </div>
+            </div>
         </div>
     </div>
+</div>
 
+<!-- Copyright -->
+<div id="copyright">
+    &copy; TranTracker. All rights reserved. | Design: <a href="http://html5up.net">HTML5 UP</a>
+</div>
 
-    <div id="top-wrapper" class="content">
-        <div id="top" class="content">
-            <ul id="top-menu">
-                <li class="first"><a href="#" rel="">FAQ</a></li>
-                <li class=""><a href="#" rel="">Privacy Policy</a></li>
-                <li><a href="#" rel="">Terms of Use</a></li>
-            </ul>
-        </div>
-    </div>
 </body>
 </html>

@@ -1,0 +1,124 @@
+{% load static %}
+<!DOCTYPE HTML>
+<!--
+    Halcyonic 3.1 by HTML5 UP
+    html5up.net | @n33co
+    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<head>
+<title>TranTracker</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/config.js' %}"></script>
+<script src="{% static 'js/skel.min.js' %}"></script>
+<script src="{% static 'js/skel-panels.min.js' %}"></script>
+<link rel="stylesheet" href="{% static 'css/skel-noscript.css' %}" />
+<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+<link rel="stylesheet" href="{% static 'css/style-desktop.css' %}" />
+</head>
+<body class="subpage">
+
+<!-- Header -->
+<div id="header-wrapper">
+    <header id="header" class="container">
+        <div class="row">
+            <div class="12u">
+
+                <img id="logo" src="{% static 'images/logo.png' %}">	
+                <!-- Nav -->
+                <nav id="nav">
+                    <a href="/">Homepage</a>
+                    <a href="/features">Features</a>
+                    <a href="/demo">Live Demo</a>
+                    <a href="/about">About Us</a>
+                    <a href="/contact">Contact Us</a>
+                </nav>
+
+            </div>
+        </div>
+    </header>
+</div>
+	<!-- Content -->
+			<div id="content-wrapper">
+				<div id="content">
+					<div class="container">
+						<div class="row">
+							<div class="12u">
+							
+								<!-- Main Content -->
+									<section>
+                                        
+										<header>
+                                            {% block section_header %}
+                                            <h1>default content, edit section_header block</h1>
+											<h2>heading - Replace with h2 text</h2>
+											<h3>subheading - Replace with h3</h3>
+                                            {% endblock %}
+										</header>
+                                        {% block content %}
+										<p>
+											Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam metus, congue 
+											vel suscipit ut, dignissim non risus. Vestibulum ante est, fringilla nec placerat 
+											eu, vestibulum vitae diam. Integer eget egestas eros. Duis enim erat, mollis quis 
+											lacinia eget, blandit nec ipsum. Donec vitae turpis ipsum. Aliquam mauris libero, 
+											sagittis in eleifend at, mattis imperdiet velit. Donec urna risus, rutrum molestie 
+											varius ac, lacinia sit amet augue. Nam ultrices elementum eros.
+										</p>
+										<p>
+											Sed faucibus viverra ligula, non varius magna semper vitae. Donec eu justo ut ipsum 
+											hendrerit congue nec eu risus. Cum sociis natoque penatibus et magnis dis parturient 
+											montes, nascetur ridiculus mus. Lorem ipsum dolor sit amet, consectetur adipiscing 
+											egestas tempus. Cras convallis odio sit amet risus convallis porttitor. Integer 
+											vehicula fermentum ligula at pretium. Suspendisse semper iaculis eros, eu aliquam 
+											justo imperdiet vel. Proin nec dictum mi. Duis commodo enim non tellus interdum 
+											elit. Suspendisse fermentum adipiscing nisi, a tempor libero malesuada at. Morbi 
+											lacinia dui adipiscing risus eleifend tincidunt. Proin eu mauris eu tellus eleifend 
+											hendrerit.
+										</p>
+										<p>
+											Mauris sit amet tellus urna. In facilisis, tortor vitae ultricies egestas, odio 
+											mi rhoncus arcu, quis euismod felis felis et velit. Mauris varius consectetur erat 
+											egestas tempus. Cras convallis odio sit amet risus convallis porttitor. Integer 
+											vehicula fermentum ligula at pretium. Suspendisse semper iaculis eros, eu aliquam 
+											justo imperdiet vel. Proin nec dictum mi. Duis commodo enim non tellus interdum 
+											iaculis. Phasellus ultrices diam sit amet orci lacinia sed consequat dui auctor. 							
+										</p>
+										<p>
+											Sed faucibus viverra ligula, non varius magna semper vitae. Donec eu justo ut ipsum 
+											hendrerit congue nec eu risus. Cum sociis natoque penatibus et magnis dis parturient 
+											montes, nascetur ridiculus mus. Lorem ipsum dolor sit amet, consectetur adipiscing 
+											egestas tempus. Cras convallis odio sit amet risus convallis porttitor. Integer 
+											vehicula fermentum ligula at pretium. Suspendisse semper iaculis eros, eu aliquam 
+											justo imperdiet vel. Proin nec dictum mi. Duis commodo enim non tellus interdum 
+											elit. Suspendisse fermentum adipiscing nisi, a tempor libero malesuada at. Morbi 
+											lacinia dui adipiscing risus eleifend tincidunt. Proin eu mauris eu tellus eleifend 
+											hendrerit.
+										</p>
+										<p>
+											Mauris sit amet tellus urna. In facilisis, tortor vitae ultricies egestas, odio 
+											mi rhoncus arcu, quis euismod felis felis et velit. Mauris varius consectetur erat 
+											egestas tempus. Cras convallis odio sit amet risus convallis porttitor. Integer 
+											vehicula fermentum ligula at pretium. Suspendisse semper iaculis eros, eu aliquam 
+											justo imperdiet vel. Proin nec dictum mi. Duis commodo enim non tellus interdum 
+											iaculis. Phasellus ultrices diam sit amet orci lacinia sed consequat dui auctor. 							
+										</p>
+                                        {% endblock %}
+									</section>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+<!-- Copyright -->
+<div id="copyright">
+    &copy; TranTracker. All rights reserved. | Design: <a href="http://html5up.net">HTML5 UP</a>
+</div>
+
+</body>
+</html>

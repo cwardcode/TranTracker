@@ -12,7 +12,6 @@ PWD = os.path.join(os.path.dirname(os.path.realpath(__file__)), os.path.pardir)
 
 ADMINS = (
     ('Chris Ward', 'chris.dev.ward@gmail.com'),
-    ('Hayden Thomas', 'hlthomas2@catamount.wcu.edu'),
 )
 
 MANAGERS = ADMINS

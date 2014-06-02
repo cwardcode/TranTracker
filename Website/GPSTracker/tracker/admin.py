@@ -12,7 +12,7 @@ class LocationAdmin(admin.ModelAdmin):
     search_fields = ('VehID', 'LocID', 'Speed')
     list_filter = ('VehID',)
 
-    readonly_fields = ('LocID')#('LocID', 'VehID', 'Latitude', 'Longitude', 'Speed')
+    readonly_fields = ('LocID',)#('LocID', 'VehID', 'Latitude', 'Longitude', 'Speed')
     fieldsets = [
         ('Location', {'fields': ['LocID', 'VehID', 'Latitude', 'Longitude', 'Speed','Distance', ]}), ]
 
