@@ -63,6 +63,8 @@ $vehNameActual = @mysql_fetch_assoc($vehNameResult);
   $xml .= "<latitude>".$row['Latitude']."</latitude>";
   $xml .= "<longitude>".$row['Longitude']."</longitude>";
   $xml .= "<speed>".$row['Speed']."</speed>";
+  $xml .= "<estwait>".$row['EstWait']."</estwait>";
+  $xml .= "<nextstop>".$row['NextStop']."</nextstop>";
   $xml .= "</marker>";
 }
 while ($row = @mysql_fetch_assoc($result2)){

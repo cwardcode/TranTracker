@@ -8,13 +8,15 @@ from tracker.models import StopLocation
 
 
 class LocationAdmin(admin.ModelAdmin):
-    list_display = ('LocID', 'VehID', 'Latitude', 'Longitude', 'Speed',)
+    list_display = ('LocID', 'VehID', 'Latitude', 'Longitude', 'Speed', 
+                                                         'estWait', 'NextStop',)
     search_fields = ('VehID', 'LocID', 'Speed')
     list_filter = ('VehID',)
 
-    readonly_fields = ('LocID',)#('LocID', 'VehID', 'Latitude', 'Longitude', 'Speed')
+    readonly_fields = ('LocID', 'VehID', 'Latitude', 'Longitude', 'Speed')
     fieldsets = [
-        ('Location', {'fields': ['LocID', 'VehID', 'Latitude', 'Longitude', 'Speed','Distance', ]}), ]
+        ('Location', {'fields': ['LocID', 'VehID', 'Latitude', 'Longitude', 
+                                            'Speed','estWait','NextStop', ]}), ]
 
 admin.site.register(Location, LocationAdmin)
 

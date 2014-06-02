@@ -16,7 +16,8 @@ class Location(models.Model):
     Latitude = models.DecimalField(max_digits=10, decimal_places=6)
     Longitude = models.DecimalField(max_digits=10, decimal_places=6)
     Speed = models.DecimalField(max_digits=4, decimal_places=1)
-    Distance = models.DecimalField(max_digits=8, decimal_places=5)
+    estWait = models.DecimalField(max_digits=8, decimal_places=5)
+    NextStop = models.CharField(max_length=25)
 
     def __unicode__(self):
         #VehID + LocID Identifier
