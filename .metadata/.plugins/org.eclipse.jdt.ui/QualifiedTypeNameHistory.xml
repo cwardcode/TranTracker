@@ -19,4 +19,5 @@
 <fullyQualifiedTypeName name="android.widget.EditText"/>
 <fullyQualifiedTypeName name="edu.wcu.trackerapp.R.id"/>
 <fullyQualifiedTypeName name="java.lang.Runnable"/>
+<fullyQualifiedTypeName name="edu.wcu.trackerapp.AppConstants"/>
 </qualifiedTypeNameHistroy>

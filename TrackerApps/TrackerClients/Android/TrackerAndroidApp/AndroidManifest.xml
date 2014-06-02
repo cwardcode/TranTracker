@@ -86,11 +86,15 @@
             android:finishOnTaskLaunch="true"
             android:clearTaskOnLaunch="true">
         </activity>
-
-        <meta-data
+        <!-- Chris' API key -->
+		<meta-data
+		    android:name="com.google.android.maps.v2.API_KEY"
+		    android:value="AIzaSyBSZzOuhe9NDKB3ZDc6DWyUTpOleE9zqIg"/>
+		<!-- Hayden's API Key -->
+        <!-- <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyAZadjynfc7FRt3fISKCqbzWaI9HXJ_Pj0" />
-        
+         -->
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
