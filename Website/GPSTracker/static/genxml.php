@@ -69,8 +69,11 @@ while ($row = @mysql_fetch_assoc($result2)){
     $stopNameQuery = "SELECT StopName from tracker_stoplocation where StopID='" . $row['StopID']."'";
     $stopNameResult = mysql_query($stopNameQuery);
     $stopNameActual = @mysql_fetch_array($stopNameResult);
+    $stopIDQuery = "SELECT StopID from tracker_stoplocation where StopName = ".$stopNameActual[0]."'";
+    $stopIDResult = mysql_query($stopIDQuery);
     $xml .= "<stop>";  
-    $xml .= "<stopID>".$stopNameActual[0]."</stopID>";    
+    $xml .= "<stopID>".$row['StopID']."</stopID>";    
+    $xml .= "<stopName>".$stopNameActual[0]."</stopName>";    
     $xml .= "<stopLat>".parseToXML($row['Latitude'])."</stopLat>";
     $xml .= "<stopLong>".parseToXML($row['Longitude'])."</stopLong>";
     $xml .= "</stop>"; 
