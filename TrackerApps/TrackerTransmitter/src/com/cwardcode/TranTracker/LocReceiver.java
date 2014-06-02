@@ -3,6 +3,7 @@ package com.cwardcode.TranTracker;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.SQLTimeoutException;
 import java.sql.Statement;
 
 import android.content.BroadcastReceiver;
@@ -17,7 +18,7 @@ import android.util.Log;
  * 
  * @author Hayden Thomas
  * @author Chris Ward
- * @version September 9, 2013
+ * @version June 1, 2014
  */
 public class LocReceiver extends BroadcastReceiver {
 
@@ -49,8 +50,9 @@ public class LocReceiver extends BroadcastReceiver {
 		Double latitude = intent.getDoubleExtra("latitude", -1);
 		Double longitude = intent.getDoubleExtra("longitude", -1);
 		Double speed = intent.getDoubleExtra("speed", -1);
-		Double distance = intent.getDoubleExtra("Distance", -1);
-		updateRemote(vehicleName, latitude, longitude, speed, distance);
+		String nextStop = intent.getStringExtra("nextStop");
+		Double estWait = intent.getDoubleExtra("estWait", -133);
+		updateRemote(vehicleName, latitude, longitude, speed, nextStop, estWait);
 	}
 
 	/**
@@ -62,7 +64,7 @@ public class LocReceiver extends BroadcastReceiver {
 		/**
 		 * Runs in the background and continuously sends data to the server.
 		 * 
-		 * @param strings
+		 * @param s0trings
 		 *            the array of items to send.
 		 */
 		protected Void doInBackground(String... strings) {
@@ -72,17 +74,14 @@ public class LocReceiver extends BroadcastReceiver {
 			try {
 				Connection dbConnection = null;
 				Statement statement = null;
-				// insert into tracker_location (VehID_id, Latitude, Longitude,
-				// Speed, Distance)
-				// VALUES ((select VehID from tracker_vehicle WHERE
-				// title="Chris"), 35.42, -84.31, 34.4, .4);
 				String insertTableSQL = "INSERT INTO tracker_location"
-						+ "(VehID_id, Latitude, Longitude, Speed, Distance) "
+						+ "(VehID_id, Latitude, Longitude, Speed, EstWait, NextStop) "
 						+ "VALUES"
 						+ "((select VehID from tracker_vehicle WHERE title=\""
 						+ strings[0] + "\")," + strings[1] + "," + strings[2]
-						+ "," + strings[3] + "," + strings[4] + ")";
-				Log.e("com.cwardcode.TranTracker", "Attempting to execute:"
+						+ "," + strings[3] + "," + strings[4] + ",\""
+						+ strings[5] + "\")";
+				Log.i("LocReceiver", "Attempting to execute:"
 						+ insertTableSQL);
 				try {
 					Class.forName(DB_DRIVER);
@@ -91,13 +90,11 @@ public class LocReceiver extends BroadcastReceiver {
 					statement = dbConnection.createStatement();
 					statement.executeUpdate(insertTableSQL);
 
-				} catch (Exception e) {
-					Log.e("com.cwardcode.TranTracker", e.getMessage());
-					System.out.println("Error Occurred!");
-					System.out.println(e.getMessage());
-
+				} catch (SQLTimeoutException e) {
+					Log.e("LocReceiver", e.getMessage());
+				} catch (ClassNotFoundException e) {
+					Log.e("LocReceiver", e.getMessage());
 				} finally {
-
 					if (statement != null) {
 						statement.close();
 					}
@@ -107,7 +104,7 @@ public class LocReceiver extends BroadcastReceiver {
 					}
 				}
 			} catch (SQLException ex) {
-				ex.getMessage();
+				Log.e("LocReceiver", ex.getMessage());
 			}
 			return null;
 		}
@@ -137,17 +134,20 @@ public class LocReceiver extends BroadcastReceiver {
 	 *            the vehicle's longitude.
 	 * @param speed
 	 *            the vehicle's speed.
+	 * @param estWait
+	 *            the estimated time of arival.
 	 */
 	private void updateRemote(String vehName, double latitude,
-			double longitude, double speed, double distance) {
-		Log.e("Latitude:", latitude + "");
-		Log.e("Longitude:", longitude + "");
-		Log.e("Speed:", speed + "");
-		Log.e("Dist:", distance + "");
+			double longitude, double speed, String nextStop, double estWait) {
+		Log.i("Latitude:", latitude + "");
+		Log.i("Longitude:", longitude + "");
+		Log.i("Speed:", speed + "");
+		Log.i("nextStop:", nextStop + "");
+		Log.i("estWait:", estWait + "");
 		// Now that the local visualizations are out of the way, let's actually
 		// send it to the server.
 		SendLocationData send = new SendLocationData();
 		send.execute(vehName + "", latitude + "", longitude + "", speed + "",
-				distance + "");
+				estWait + "", nextStop + "");
 	}
 }
