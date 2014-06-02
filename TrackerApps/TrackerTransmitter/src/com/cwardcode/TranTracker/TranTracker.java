@@ -4,15 +4,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.CameraBridgeViewBase;
 import org.opencv.android.CameraBridgeViewBase.CvCameraViewFrame;
@@ -24,36 +18,24 @@ import org.opencv.core.Core;
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfPoint;
-import org.opencv.core.MatOfRect;
 import org.opencv.core.Point;
-import org.opencv.core.Rect;
 import org.opencv.core.Scalar;
-import org.opencv.core.Size;
 import org.opencv.imgproc.Imgproc;
-import org.opencv.objdetect.CascadeClassifier;
 import org.opencv.video.BackgroundSubtractorMOG;
-import org.xmlpull.v1.XmlPullParserException;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.content.ComponentName;
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.SurfaceView;
 import android.view.View;
 import android.widget.AdapterView;
@@ -64,37 +46,34 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cwardcode.TranTracker.SendLoc.LocationBinder;
-import com.cwardcode.TranTracker.StopLocation.StopEntry;
-import com.cwardcode.TranTracker.StopParser.StopDef;
 
 /**
  * Provides a user interface that allows the user to select which vehicle is
- * being tracked and begin tracking.
+ * being tracked and begin tracking. Provides integration with OpenCV to allow
+ * ridership statistic tracking.
  * 
  * @author Hayden Thomas
  * @author Chris Ward
- * @version September 9, 2013
+ * @version June 1, 2014
  */
-@TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-public class TranTracker extends Activity implements
-		AdapterView.OnItemSelectedListener, CvCameraViewListener2 {
-	/** URL which returns JSON array of vehicles. */
-	private static final String VID_URL = "http://tracker.cwardcode.com/static/getvid.php";
-	/** Holds whether the application is tracking. */
+public class TranTracker extends Activity
+		implements
+			AdapterView.OnItemSelectedListener,
+			CvCameraViewListener2 {
+	/** Holds application tracking state. */
 	public static boolean IS_TRACKING;
-	/** Holds whether the service is currently bound. */
+	/** Holds service state. */
 	public static boolean IS_BOUND;
 	/** Holds whether a vehicle is selected. */
 	public static boolean VEH_SELECT;
-	/** Color of the rectangle drawn around bodies */
-	private static final Scalar BODY_RECT_COLOR = new Scalar(0, 255, 0, 255);
-	/** Determines if we're using the android/Java camera */
-	public static final int JAVA_DETECTOR = 0;
+	/**
+	 * TODO: Uncomment if we switch back to blob-detection. Color of the
+	 * rectangle drawn around bodies.
+	 * 
+	 * private static final Scalar BODY_RECT_COLOR = new Scalar(0, 255, 0, 255);
+	 */
 	/** Determines if we're using the native camera */
 	public static final int NATIVE_DETECTOR = 1;
-	private static final String STOPURL = "http://tracker.cwardcode.com/static/genxml.php";
-	/** Set default detector to java */
-	private int mDetectorType = JAVA_DETECTOR;
 	/** Holds current application context. */
 	private static Context context;
 	/** Holds alert notifying user of no network */
@@ -117,241 +96,83 @@ public class TranTracker extends Activity implements
 	private Mat nonCountImg;
 	/** Holds the haar cascade file used to find bodies */
 	private File mCascadeFile;
-	/** Interprets mCascadeFile */
-	private CascadeClassifier mJavaDetector;
-	/** Size of body relative to screen */
-	private float mRelativeBodySize = 0.2f;
-	/** Size of body */
-	private int mAbsoluteBodySize = 0;
-	/** Holds our native OpenCV detector */
-	private DetectionBasedTracker mNativeDetector;
-	/** Holds all detector types */
-	private String[] mDetectorName;
 	/** A service instance */
-	SendLoc locService;
-
-	private List<MatOfPoint> contours;
-
-	// private BackgroundSubtractorMOG2 mBVSub;
+	private SendLoc locService;
+	/**
+	 * TODO: May use in the future, commenting out for warnings. private
+	 * List<MatOfPoint> contours;
+	 */
+	/** Using MOG Background Subtraction Alg. */
 	private BackgroundSubtractorMOG mBVSub;
 	private Mat mFGMask;
-	private Mat mPyrDownMat;
-	private Mat average;
-
-	private MenuItem mItemFace40;
-	private MenuItem mItemFace50;
-	private MenuItem mItemFace30;
-	private MenuItem mItemFace20;
-	private MenuItem mItemType;
-	private List<StopDef> stopDefs = new ArrayList<StopDef>();
-
+	/**
+	 * TODO May use in future, commenting for warnings.
+	 * 
+	 * private Mat mPyrDownMat;
+	 * 
+	 * private Mat average;
+	 */
+	/** List of blobs counted. */
 	private List<Blob> blobs = new ArrayList<Blob>();
+	/** Initialize blobID to zero. */
 	private int blobID = 0;
-
+	/** Holds current screen width. */
 	private int screenWidth;
+	/** Holds current screen height. */
 	private int screenHeight;
 
 	/** Initializes OpenCV */
 	private BaseLoaderCallback mLoaderCallback = new BaseLoaderCallback(this) {
-
 		@Override
 		public void onManagerConnected(int status) {
 			switch (status) {
-			case LoaderCallbackInterface.SUCCESS: {
-				// System.loadLibrary("opencv_java");
-				System.loadLibrary("TranTracker");
-				try {
-					// load cascade file from application resources
-					InputStream is = getResources().openRawResource(
-							R.raw.haarcascade_mcs_upperbody);
-					// Create 'cascade' directory on android device
-					File cascadeDir = getDir("cascade", Context.MODE_PRIVATE);
-					mCascadeFile = new File(cascadeDir,
-							"haarcascade_upperbody.xml");
-					FileOutputStream os = new FileOutputStream(mCascadeFile);
+				case LoaderCallbackInterface.SUCCESS : {
+					// System.loadLibrary("opencv_java");
+					System.loadLibrary("TranTracker");
+					try {
+						// load cascade file from application resources
+						InputStream is = getResources().openRawResource(
+								R.raw.haarcascade_mcs_upperbody);
+						// Create 'cascade' directory on android device
+						File cascadeDir = getDir("cascade",
+								Context.MODE_PRIVATE);
+						mCascadeFile = new File(cascadeDir,
+								"haarcascade_upperbody.xml");
+						FileOutputStream os = new FileOutputStream(mCascadeFile);
 
-					byte[] buffer = new byte[4096];
-					int bytesRead;
-					// write cascade file to android file system
-					while ((bytesRead = is.read(buffer)) != -1) {
-						os.write(buffer, 0, bytesRead);
-					}
-					// close file streams
-					is.close();
-					os.close();
-					// Set up java camera
-					mJavaDetector = new CascadeClassifier(
-							mCascadeFile.getAbsolutePath());
-					if (mJavaDetector.empty()) {
+						byte[] buffer = new byte[4096];
+						int bytesRead;
+						// write cascade file to android file system
+						while ((bytesRead = is.read(buffer)) != -1) {
+							os.write(buffer, 0, bytesRead);
+						}
+						// close file streams
+						is.close();
+						os.close();
+
+					} catch (IOException e) {
 						Log.e(this.getClass().toString(),
-								"Failed to load cascade classifier :(");
-						mJavaDetector = null;
-					} else {
-						mNativeDetector = new DetectionBasedTracker(
-								mCascadeFile.getAbsolutePath(), 0);
-						cascadeDir.delete();
+								"Failed to load cascade, " + e.getMessage());
 					}
-				} catch (IOException e) {
-					Log.e(this.getClass().toString(),
-							"Failed to load cascade. Exception thrown: "
-									+ e.getMessage());
-				}
-				// Allow us to view OpenCV window.
-				mOpenCvCameraView.enableView();
+					// Allow us to view OpenCV window.
+					mOpenCvCameraView.enableView();
 
-				// Initialize our background subtraction stuff.
-				mBVSub = new BackgroundSubtractorMOG(5, 3, .1, 20);
-				average = new Mat();
-			}
-				break;
-			default: {
-				super.onManagerConnected(status);
-			}
-				break;
+					// Initialize our background subtraction stuff.
+					mBVSub = new BackgroundSubtractorMOG(5, 3, .1, 20);
+					// TODO: Uncomment if we use field.
+					// average = new Mat();
+				}
+					break;
+				default : {
+					super.onManagerConnected(status);
+				}
+					break;
 			}
 		}
 	};
 
-	private class DownloadXmlTask extends AsyncTask<String, Void, String> {
-		@Override
-		protected String doInBackground(String... urls) {
-			try {
-				return loadXmlFromNetwork(urls[0]);
-			} catch (IOException ex) {
-				Log.d("com.cwardcode.TranTracker", ex.getMessage());
-				return "IO Error";
-			} catch (XmlPullParserException ex) {
-				Log.d("com.cwardcode.TranTracker", ex.getMessage());
-				return "Parser Erorr";
-			}
-		}
-
-		@Override
-		protected void onPostExecute(String result) {
-			updateSQL();
-		}
-
-		private String loadXmlFromNetwork(String urlString)
-				throws XmlPullParserException, IOException {
-			InputStream stream = null;
-			StopParser parser = new StopParser();
-
-			try {
-				stream = downloadUrl(urlString);
-				parser.parseXML(stream);
-				stopDefs = parser.getStopList();
-			} finally {
-				if (stream != null) {
-					stream.close();
-				}
-			}
-
-			return "success";
-
-		}
-
-		private void updateSQL() {
-			StopLocationDbHelper stopHelper = new StopLocationDbHelper(
-					getApplicationContext());
-			SQLiteDatabase db = stopHelper.getWritableDatabase();
-			db.setVersion(0);
-			db.close();
-			db = stopHelper.getWritableDatabase();
-			if (db.needUpgrade(2)) {
-				ContentValues entry = new ContentValues();
-				for (StopDef stop : stopDefs) {
-					entry.put(StopEntry.COLUMN_NAME_STOP_ID, stop.id);
-					entry.put(StopEntry.COLUMN_NAME_NAME, stop.title);
-					entry.put(StopEntry.COLUMN_NAME_LAT, stop.sLat);
-					entry.put(StopEntry.COLUMN_NAME_LNG, stop.sLong);
-					long newRowID = db.insert(StopEntry.TABLE_NAME,
-							StopEntry.COLUMN_NAME_NULL, entry);
-					if (newRowID == -1) {
-						Toast.makeText(getApplicationContext(),
-								"Could not make" + " row for: " + stop.title,
-								Toast.LENGTH_SHORT).show();
-					}
-				}
-			}
-			// List<StopDef> list = stopHelper.getAllEntries();
-			db.close();
-		}
-
-		private InputStream downloadUrl(String urlString) throws IOException {
-			URL url = new URL(urlString);
-			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-			conn.setReadTimeout(10000);
-			conn.setConnectTimeout(15000 /* milliseconds */);
-			conn.setRequestMethod("GET");
-			conn.setDoInput(true);
-			conn.connect();
-			return conn.getInputStream();
-		}
-
-	}
-
 	/**
-	 * Pulls vehicle list from database.
-	 */
-	private class GetVehicles extends AsyncTask<Void, Void, Void> {
-		String json;
-
-		/**
-		 * Threaded processes, parses JSON output from server.
-		 * 
-		 * @param arg0
-		 *            not used
-		 * @return null to end task
-		 */
-		@Override
-		protected Void doInBackground(Void... arg0) {
-			ParseJson jsonParser = new ParseJson();
-			json = jsonParser.makeServiceCall(VID_URL, ParseJson.GET);
-
-			if (json != null) {
-				try {
-					JSONObject jsonObj = new JSONObject(json);
-					JSONArray categories = jsonObj.getJSONArray("vehicles");
-					for (int i = 0; i < categories.length(); i++) {
-						JSONObject catObj = (JSONObject) categories.get(i);
-						Vehicle cat = new Vehicle(catObj.getInt("id"),
-								catObj.getString("name"));
-						VehList.add(cat);
-					}
-
-				} catch (JSONException e) {
-					e.printStackTrace();
-				}
-
-			} else {
-				Log.e("JSON Data", "Didn't receive any data from server!");
-				this.cancel(true);
-			}
-
-			return null;
-		}
-
-		@Override
-		protected void onCancelled() {
-			noNetworkAlert.show();
-		};
-
-		/**
-		 * After main thread has finished, populate spinner with vehicles.
-		 * 
-		 * @param result
-		 *            return status of main thread.
-		 */
-		@Override
-		protected void onPostExecute(Void result) {
-			super.onPostExecute(result);
-			populateSpinner();
-		}
-
-	}
-
-	/**
-	 * Triggered when an item within the spinner's list is selected.
+	 * Triggered when an item within the spinner is selected.
 	 * 
 	 * @param parent
 	 *            the <code>AdapterView</code> in which the view exists.
@@ -379,15 +200,32 @@ public class TranTracker extends Activity implements
 		VEH_SELECT = false;
 	}
 
+	/** Allows direct communication between the service and activity. */
 	private ServiceConnection mConnection = new ServiceConnection() {
 
+		/**
+		 * When service is started, create pointer to it.
+		 * 
+		 * @param className
+		 *            Name of class calling service
+		 * @param service
+		 *            Service to be bound.
+		 * @see android.content.ServiceConnection#onServiceConnected(android.content.ComponentName,
+		 *      android.os.IBinder)
+		 */
 		@Override
 		public void onServiceConnected(ComponentName className, IBinder service) {
 			LocationBinder binder = (LocationBinder) service;
 			locService = binder.getService();
 			IS_BOUND = true;
 		}
-
+		/**
+		 * Notifies activity that service has disconnected.
+		 * 
+		 * @param className
+		 *            unused
+		 * @see android.content.ServiceConnection#onServiceDisconnected(android.content.ComponentName)
+		 */
 		@Override
 		public void onServiceDisconnected(ComponentName arg0) {
 			IS_BOUND = false;
@@ -421,6 +259,9 @@ public class TranTracker extends Activity implements
 		}
 	}
 
+	/**
+	 * If no network has been detected, kick user out of app.
+	 */
 	public static void showDialog() {
 		noNetworkAlert.show();
 	}
@@ -460,23 +301,20 @@ public class TranTracker extends Activity implements
 
 		peopleData = (TextView) findViewById(R.id.PeopleDataView);
 
-		mDetectorName = new String[2];
-		mDetectorName[JAVA_DETECTOR] = "Java";
-		mDetectorName[NATIVE_DETECTOR] = "Native (tracking)";
-
 		IS_TRACKING = false;
 		srvIntent = new Intent(this, SendLoc.class);
-		VehList = new ArrayList<Vehicle>();
+		Bundle bundle = getIntent().getExtras();
+		VehList = bundle.getParcelable("vehicles");
 
 		gridSpinner = (Spinner) findViewById(R.id.VehicleSelect);
 		gridSpinner.setOnItemSelectedListener(this);
-
-		new GetVehicles().execute();
-		new DownloadXmlTask().execute(STOPURL);
+		populateSpinner();
+		// new GetVehicles().execute();
 		mOpenCvCameraView = (CameraBridgeViewBase) findViewById(R.id.cameraView);
 		mOpenCvCameraView.setVisibility(SurfaceView.VISIBLE);
 		mOpenCvCameraView.setCvCameraViewListener(this);
-		contours = new ArrayList<MatOfPoint>();
+		// TODO Uncomment if we decide to do contour stuff
+		// contours = new ArrayList<MatOfPoint>();
 
 	}
 
@@ -502,8 +340,8 @@ public class TranTracker extends Activity implements
 	 */
 	private void populateSpinner() {
 		ArrayList<String> vehicles = new ArrayList<String>();
-		for (Vehicle aVehList : VehList) {
-			vehicles.add(aVehList.getName());
+		for (Vehicle aVeh : VehList) {
+			vehicles.add(aVeh.getName());
 		}
 
 		ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(this,
@@ -518,6 +356,8 @@ public class TranTracker extends Activity implements
 	/**
 	 * Returns the current application's context. Allows the service to send a
 	 * message to the broadcast receiver.
+	 * 
+	 * @return Application Context
 	 */
 	public static Context getAppContext() {
 		return context;
@@ -675,7 +515,7 @@ public class TranTracker extends Activity implements
 					int num = (int) contour.total();
 					int buff[] = new int[num * 2];
 					contour.get(0, 0, buff);
-					
+
 					for (int j = 0; j < num * 2; j = j + 2) {
 						points.add(new Point(buff[j], buff[j + 1]));
 					}
@@ -684,13 +524,13 @@ public class TranTracker extends Activity implements
 
 					pointArray = points.toArray(pointArray);
 					MatOfPoint rectPoints = new MatOfPoint(pointArray);
-					
+
 					Core.rectangle(mFGMask, Imgproc.boundingRect(rectPoints)
 							.br(), Imgproc.boundingRect(rectPoints).tl(),
 							new Scalar(255, 255, 0, 255));
 
 					Blob blob = new Blob(Imgproc.boundingRect(rectPoints),
-							             blobID);
+							blobID);
 
 					if (blobs.size() == 0) {
 						blobs.add(blob);
@@ -744,72 +584,6 @@ public class TranTracker extends Activity implements
 		// setPeopleData(blobs.size());
 		blobs.clear();
 
-		return nonCountImg;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		Log.i("", "called onCreateOptionsMenu");
-		mItemFace50 = menu.add("Face size 50%");
-		mItemFace40 = menu.add("Face size 40%");
-		mItemFace30 = menu.add("Face size 30%");
-		mItemFace20 = menu.add("Face size 20%");
-		mItemType = menu.add(mDetectorName[mDetectorType]);
-		return true;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		Log.i("", "called onOptionsItemSelected; selected item: " + item);
-
-		if (item == mItemFace50)
-			setMinFaceSize(0.5f);
-		else if (item == mItemFace40)
-			setMinFaceSize(0.4f);
-		else if (item == mItemFace30)
-			setMinFaceSize(0.3f);
-		else if (item == mItemFace20)
-			setMinFaceSize(0.2f);
-		else if (item == mItemType) {
-			mDetectorType = (mDetectorType + 1) % mDetectorName.length;
-			item.setTitle(mDetectorName[mDetectorType]);
-			setDetectorType(mDetectorType);
-		}
-		return true;
-	}
-
-	/**
-	 * Sets the minimum threshold for a face
-	 * 
-	 * @param faceSize
-	 */
-	private void setMinFaceSize(float faceSize) {
-		mRelativeBodySize = faceSize;
-		mAbsoluteBodySize = 0;
-	}
-
-	/**
-	 * Sets whether to use a native detector or the android java detector.
-	 * 
-	 * @param type
-	 */
-	private void setDetectorType(int type) {
-		if (mDetectorType != type) {
-			mDetectorType = type;
-
-			if (type == NATIVE_DETECTOR) {
-				Log.i("", "Detection Based Tracker enabled");
-				mNativeDetector.start();
-			} else {
-				Log.i("", "Cascade detector enabled");
-				mNativeDetector.stop();
-			}
-		}
+		return mGrey;
 	}
 }

@@ -4,13 +4,13 @@ import java.util.ArrayList;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.util.Log;
 
 /**
  * This class defines a set of app-wide constants.
  * 
  * @author Hayden Thomas
- * @version 4/12/14
+ * @author Chris Ward
+ * @version 06/01/14
  */
 public class AppConstants {
     
@@ -19,6 +19,13 @@ public class AppConstants {
 	 */
 	public static final String PREFS = "AppSettings";
 	
+	/**
+	 * Converts m/s to mi/h, for displaying speed on map.
+	 */
+	public static final double METER_CONV = 2.37;
+	/**
+	 * 
+	 */
 	/**
 	 * The number of routes in the list.
 	 */

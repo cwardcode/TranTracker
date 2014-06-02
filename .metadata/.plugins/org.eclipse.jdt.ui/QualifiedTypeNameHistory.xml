@@ -10,7 +10,6 @@
 <fullyQualifiedTypeName name="android.support.v4.app.FragmentActivity"/>
 <fullyQualifiedTypeName name="android.webkit.WebView.FindListener"/>
 <fullyQualifiedTypeName name="javax.net.ssl.HandshakeCompletedListener"/>
-<fullyQualifiedTypeName name="android.os.AsyncTask"/>
 <fullyQualifiedTypeName name="edu.wcu.trackerapp.Chat.ConnectToNetwork"/>
 <fullyQualifiedTypeName name="android.widget.ScrollView"/>
 <fullyQualifiedTypeName name="android.app.AlertDialog"/>
@@ -19,4 +18,14 @@
 <fullyQualifiedTypeName name="android.widget.EditText"/>
 <fullyQualifiedTypeName name="edu.wcu.trackerapp.R.id"/>
 <fullyQualifiedTypeName name="java.lang.Runnable"/>
+<fullyQualifiedTypeName name="edu.wcu.trackerapp.AppConstants"/>
+<fullyQualifiedTypeName name="android.database.SQLException"/>
+<fullyQualifiedTypeName name="android.os.AsyncTask"/>
+<fullyQualifiedTypeName name="com.cwardcode.TranTracker.SplashActivity"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="android.os.Parcelable.Creator"/>
+<fullyQualifiedTypeName name="com.cwardcode.TranTracker.Vehicle"/>
+<fullyQualifiedTypeName name="com.cwardcode.TranTracker.VehicleArrayList"/>
+<fullyQualifiedTypeName name="java.lang.InterruptedException"/>
+<fullyQualifiedTypeName name="android.util.Log"/>
 </qualifiedTypeNameHistroy>

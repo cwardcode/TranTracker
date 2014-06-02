@@ -280,7 +280,8 @@ public class Map extends Activity implements OnClickListener {
 				vLong = def.vLong;
 				speed = def.speed;
 				
-				info = " Name: " + name + " Speed: " + speed;
+				info = " Name: " + name + " Speed: " + Math.round(speed 
+										* AppConstants.METER_CONV) + " MPH";
 				
 				boolean markerFound = false;
 				

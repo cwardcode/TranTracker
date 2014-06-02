@@ -65,6 +65,7 @@ containing a value of this type.
         public static final int haarcascade_upperbody=0x7f040003;
         public static final int lbpcascade_frontalface=0x7f040004;
         public static final int lbpcascade_profileface=0x7f040005;
+        public static final int notinitailized=0x7f040006;
     }
     public static final class string {
         public static final int app_name=0x7f060000;

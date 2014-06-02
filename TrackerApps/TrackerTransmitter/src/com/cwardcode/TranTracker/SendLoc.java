@@ -1,12 +1,14 @@
 package com.cwardcode.TranTracker;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.CursorIndexOutOfBoundsException;
+import android.database.SQLException;
+import android.database.StaleDataException;
 import android.database.sqlite.SQLiteDatabase;
 import android.location.Criteria;
 import android.location.Location;
@@ -16,6 +18,7 @@ import android.os.Binder;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.Looper;
+import android.util.Log;
 
 /**
  * Uses the device's GPS to determine it's location and sends this infomration
@@ -23,33 +26,36 @@ import android.os.Looper;
  * 
  * @author Hayden Thomas
  * @author Chris Ward
- * @version September 9, 2013
+ * @version June 1, 2014
  */
 public class SendLoc extends Service {
-
+	private static final double DIST_RESET = 9999999.0;
+	/** The distance at which the shuttle registers as near a Stop in miles. */
 	private static final double DIST_THRESHOLD = 0.5;
-	private static final double SPEED_THRESHOLD = 0.5;
-	private static final double R = 6372.8;
-	private static final double MILES_CONVERSION = 0.621371;
-
+	/** The speed at which the shuttle registers as stopped, in m/s. */
+	private static final double SPEED_THRESHOLD = 2.2352;
+	/** Radius of Earth, as accurate I could find. See: http://bit.ly/1wRP08p */
+	private static final int R = 6371;
+	/** Conversion factor for KM to Miles. */
+	private static final double KM_TO_MILES_CONVERSION = 0.621371;
+	/** Estimated transmission delay. */
+	private static final int TRANS_DELAY = 10;
+	/** Holds closest distance from stop, compared to all other stops. */
+	private double closestDistance = 999.0;
 	/** Provides access to the device's GPS services. */
 	private LocationManager lm;
 	/** Listens for location updates from the LocationManager. */
 	private LocationListener locListener;
 	/** The amount of people using a particular stop */
 	private static int numPeople;
-
 	/** Used to identify the vehicle that is being tracked by this device. */
 	private static int vehicleID;
-
 	/** Used to identify the vehicle by name */
 	private static String title;
-
 	/** StopLocation database */
 	private static SQLiteDatabase stopLocations;
 	/** Helper for database */
 	private static StopLocationDbHelper dbHelper;
-
 	/** Binder to return to client (TranTracker) */
 	private final IBinder rtnBinder = new LocationBinder();
 	/** Holds current speed of shuttle. */
@@ -59,12 +65,17 @@ public class SendLoc extends Service {
 	/** Holds current longitude */
 	private static double curLng;
 	/** ArrayList that holds each stop's latitude */
-	ArrayList<String> stopLatList = new ArrayList<String>();
+	private ArrayList<String> stopLatList = new ArrayList<String>();
 	/** ArrayList that holds each stop's longitude */
-	ArrayList<String> stopLngList = new ArrayList<String>();
+	private ArrayList<String> stopLngList = new ArrayList<String>();
 	/** Name of the nearest stop */
-	private String nameAtStop;
-	private static double distanceFromStop;
+	private static String closestStop = "Off-Route";
+	/** ETA until arriving at next stop */
+	private static double nextStopETA = -1;
+	/** Provides a context from which to send our broadcast messages. */
+	private static Context context;
+	/** Intent to send the message, along with a filter. */
+	private static Intent filterRes;
 
 	/***
 	 * Class to for allowing clients to access this service's public methods.
@@ -80,6 +91,9 @@ public class SendLoc extends Service {
 
 	/**
 	 * Listens for changes in the device's location.
+	 * 
+	 * @author Chris Ward
+	 * @version June 01, 2014
 	 */
 	private class MyLocationListener implements LocationListener {
 		/**
@@ -94,11 +108,12 @@ public class SendLoc extends Service {
 			curLat = location.getLatitude();
 			curLng = location.getLongitude();
 			if (isNearLoc()) {
-				//Get peopleData from main activity
+				// Get peopleData from main activity
 				updateWithPeopleData(location);
-			}
-			if (location != null) {
+				context.sendBroadcast(filterRes);
+			} else if (location != null) {
 				updateLocation(location);
+				context.sendBroadcast(filterRes);
 			}
 		}
 
@@ -147,18 +162,10 @@ public class SendLoc extends Service {
 	public void onCreate() {
 		super.onCreate();
 		addLocationListener();
+		// setup Array with stopLocations
 		dbHelper = new StopLocationDbHelper(getApplicationContext());
 		stopLocations = dbHelper.getReadableDatabase();
-		// setup Array with stopLocations
 		setupStopLocList();
-		//  Just to test since location updates don't change on the transformer
-		// prime..
-		/**
-		curLat = 35.311575;// location.getLatitude();
-		curLng = -83.180500;// location.getLongitude();
-		curSpeed = .03;
-		isNearLoc();
-		**/
 	}
 
 	/**
@@ -194,8 +201,8 @@ public class SendLoc extends Service {
 					lm.requestLocationUpdates(LocationManager.GPS_PROVIDER,
 							2000, 0, locListener);
 					Looper.loop();
-				} catch (Exception ex) {
-					ex.printStackTrace();
+				} catch (RuntimeException ex) {
+					Log.e("SendLoc", ex.getMessage());
 				}
 			}
 		}, "SendLocThread");
@@ -203,23 +210,6 @@ public class SendLoc extends Service {
 		sendLocThread.start();
 	}
 
-	/**
-	 * generates a random number b/t 1-10
-	 * 
-	 * @return 'random' number
-	 */
-	public int getRandomNum() {
-		return new Random().nextInt(10);
-	}
-
-	/**
-	 * Returns next closest stop name, if exists.
-	 * 
-	 * @return next closest stop
-	 */
-	public String getNextStop() {
-		return nameAtStop;
-	}
 	/**
 	 * Sets up the arraylists with coordinate points for each stoplocation.
 	 */
@@ -245,125 +235,138 @@ public class SendLoc extends Service {
 					stopLngList.add(cursor.getString(0));
 				} while (cursor.moveToNext());
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (SQLException | StaleDataException
+				| CursorIndexOutOfBoundsException e) {
+			Log.e("SendLoc", e.getMessage());
 			stopLatList = null;
 			stopLngList = null;
 		}
 	}
 
 	/**
-	 * Determines if vehicle is moving.
+	 * Determines if vehicle is moving based on the current speed compared to a
+	 * threshold of 5MPH anything under is considered stopped to allow time for
+	 * the ridership tracking system to kick in.
 	 * 
 	 * @return true if shuttle is moving.
 	 */
-	public boolean isStopped() {
-		boolean isMoving = false;
+	public synchronized boolean isStopped() {
+		boolean isStopped = false;
 		if (curSpeed < SPEED_THRESHOLD) {
-			isMoving = true;
+			isStopped = true;
 		}
-		return isMoving;
+		return isStopped;
 	}
 
 	/**
-	 * Determines if near stoplocation
+	 * Determines if currently near a shuttle stop. Also determines stop closest
+	 * to the shuttle.
 	 * 
 	 * @return true if within .5 miles of stop.
 	 */
-	public boolean isNearLoc() {
+	public synchronized boolean isNearLoc() {
+		closestDistance = DIST_RESET;
 		boolean isNear = false;
 		Cursor cursor = null;
-
-		for (int i = 0; i < stopLatList.size(); i++) {
-
+		for (int i = 0; i < stopLatList.size(); ++i) {
+			int dbIndex = i + 1;
 			double lat1 = Double.parseDouble(stopLatList.get(i));
 			double lng2 = Double.parseDouble(stopLngList.get(i));
 
-			 distanceFromStop = haversine(curLat, curLng, lat1, lng2);
+			double distanceFromStop = haversine(curLat, curLng, lat1, lng2);
 
 			if (distanceFromStop <= DIST_THRESHOLD) {
-				isNear = true;
-				cursor = stopLocations
-						.rawQuery("Select name from stop where stopid = " + i
-								+ ";", null);
-				cursor.moveToFirst();
-				if (cursor.getCount() > 0) {
-					nameAtStop = cursor.getString(0);
+				if (distanceFromStop < closestDistance) {
+					isNear = true;
+					closestDistance = distanceFromStop;
+					cursor = stopLocations.rawQuery(
+							"Select name from stop where stopID = " + dbIndex
+									+ ";", null);
+					cursor.moveToFirst();
+					if (cursor.getCount() > 0) {
+						closestStop = cursor.getString(0);
+					}
+					cursor.close();
 				}
-				cursor.close();
 			}
+		}
+		// Calculate ETA based on speed and distance if moving. Throwing in a
+		// transmission delay for good measure.
+		if (curSpeed > 0.0) {
+			nextStopETA = Math.round((closestDistance / (9 + curSpeed))
+					+ TRANS_DELAY);
 		}
 		return isNear;
 	}
 
 	/**
-	 * Haversine function Ripped from Rosetta Code
+	 * Haversine function for determining distances between two coordinates on a
+	 * globe.
+	 * 
+	 * @param lat1
+	 *            Latitudinal coordinate 1
+	 * @param lon1
+	 *            Longitudinal coordinate 1
+	 * @param lat2
+	 *            Latitudinal coordinate 2
+	 * @param lon2
+	 *            Longitudinal coordinate 2
+	 * @return Distance, in miles, between two coordinates.
 	 */
 	public static double haversine(double lat1, double lon1, double lat2,
 			double lon2) {
+		// Convert to radians since we're doing trig.
+		double localLat1 = Math.toRadians(lat1);
+		double localLat2 = Math.toRadians(lat2);
+		// Get difference between two points then convert to radians
 		double dLat = Math.toRadians(lat2 - lat1);
 		double dLon = Math.toRadians(lon2 - lon1);
-		
-		lat1 = Math.toRadians(lat1);
-		lat2 = Math.toRadians(lat2);
+		// Get length of arch.
+		double archLength = Math.sin(dLat / 2) * Math.sin(dLat / 2)
+				+ Math.cos(localLat1) * Math.cos(localLat2)
+				* Math.sin(dLon / 2) * Math.sin(dLon / 2);
+		// Get angle of arch.
+		double arcDistance = 2 * Math.atan2(Math.sqrt(archLength),
+				Math.sqrt(1 - archLength));
+		// Multiply by average radius of Earth, and convert to miles.
+		return R * arcDistance * KM_TO_MILES_CONVERSION;
 
-		double a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.sin(dLon / 2)
-				* Math.sin(dLon / 2) * Math.cos(lat1) * Math.cos(lat2);
-		double c = 2 * Math.asin(Math.sqrt(a));
-		return R * c * MILES_CONVERSION;
 	}
 
 	/**
-	 * Updates the current location.
+	 * Updates the current location of the shuttle to the server.
 	 * 
 	 * @param location
 	 *            the device's current Location.
 	 */
-	public static void updateLocation(Location location) {
-		Context context;
-		context = TranTracker.getAppContext();// getAppContext();
-		double latitude, longitude, speed;
-
-		latitude = location.getLatitude();
-		longitude = location.getLongitude();
-		speed = location.getSpeed();
-		curSpeed = speed;
-		Intent filterRes = new Intent();
-		filterRes.setAction("com.cwardcode.intent.action.LOCATION");
-		filterRes.putExtra("latitude", latitude);
-		filterRes.putExtra("longitude", longitude);
-		filterRes.putExtra("speed", speed);
-		filterRes.putExtra("Distance", distanceFromStop);
-		filterRes.putExtra("VehicleID", vehicleID);
-		filterRes.putExtra("title", title);
-		context.sendBroadcast(filterRes);
-	}
-
-	/**
-	 * Updates the current location, along with ridership data.
-	 * 
-	 * @param location
-	 *            the device's current Location.
-	 */
-	public static void updateWithPeopleData(Location location) {
-		Context context;
+	public static synchronized void updateLocation(Location location) {
+		filterRes = new Intent();
 		context = TranTracker.getAppContext();
 		double latitude, longitude, speed;
 
 		latitude = location.getLatitude();
 		longitude = location.getLongitude();
 		speed = location.getSpeed();
-
-		Intent filterRes = new Intent();
+		curSpeed = speed;
 		filterRes.setAction("com.cwardcode.intent.action.LOCATION");
 		filterRes.putExtra("latitude", latitude);
 		filterRes.putExtra("longitude", longitude);
 		filterRes.putExtra("speed", speed);
-		filterRes.putExtra("Distance", distanceFromStop);
 		filterRes.putExtra("VehicleID", vehicleID);
 		filterRes.putExtra("title", title);
+		filterRes.putExtra("nextStop", closestStop);
+		filterRes.putExtra("estWait", nextStopETA);
+	}
+	/**
+	 * Updates the current location, along with ridership data.
+	 * 
+	 * @param location
+	 *            the device's current Location.
+	 */
+	public static synchronized void updateWithPeopleData(Location location) {
+		// updateLocation, then add peopledata.
+		updateLocation(location);
 		filterRes.putExtra("people", numPeople);
-		context.sendBroadcast(filterRes);
 	}
 
 	/**
