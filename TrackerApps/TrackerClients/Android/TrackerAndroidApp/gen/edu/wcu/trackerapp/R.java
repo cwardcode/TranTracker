@@ -241,7 +241,7 @@ containing a value of this type.
         public static final int aboutHelpButton=0x7f050008;
         public static final int aboutKeyButton=0x7f050007;
         public static final int aboutMapButton=0x7f050005;
-        public static final int action_settings=0x7f05002e;
+        public static final int action_settings=0x7f050030;
         public static final int chatAboutButton=0x7f05000e;
         public static final int chatChatButton=0x7f05000b;
         public static final int chatHelpButton=0x7f05000d;
@@ -280,8 +280,10 @@ containing a value of this type.
         public static final int route_button=0x7f050020;
         public static final int satellite=0x7f050002;
         public static final int sendBtn=0x7f050013;
+        public static final int snippet=0x7f05002f;
         public static final int stop_button=0x7f050021;
         public static final int terrain=0x7f050003;
+        public static final int title=0x7f05002e;
         public static final int username=0x7f05002a;
     }
     public static final class integer {
@@ -298,6 +300,7 @@ containing a value of this type.
         public static final int dialoglayout=0x7f030007;
         public static final int list=0x7f030008;
         public static final int list_element=0x7f030009;
+        public static final int window=0x7f03000a;
     }
     public static final class menu {
         public static final int about=0x7f0b0000;

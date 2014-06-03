@@ -2,8 +2,6 @@
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="edu.wcu.trackerapp.MarkerParser.MarkerDef"/>
 <fullyQualifiedTypeName name="android.view.View.OnClickListener"/>
-<fullyQualifiedTypeName name="java.lang.NullPointerException"/>
-<fullyQualifiedTypeName name="android.widget.TextView"/>
 <fullyQualifiedTypeName name="android.app.DialogFragment"/>
 <fullyQualifiedTypeName name="edu.wcu.trackerapp.Chat.HandleDialogFragment"/>
 <fullyQualifiedTypeName name="android.content.DialogInterface"/>
@@ -14,12 +12,8 @@
 <fullyQualifiedTypeName name="android.widget.ScrollView"/>
 <fullyQualifiedTypeName name="android.app.AlertDialog"/>
 <fullyQualifiedTypeName name="android.app.Activity"/>
-<fullyQualifiedTypeName name="android.app.AlertDialog.Builder"/>
 <fullyQualifiedTypeName name="android.widget.EditText"/>
-<fullyQualifiedTypeName name="edu.wcu.trackerapp.R.id"/>
 <fullyQualifiedTypeName name="java.lang.Runnable"/>
-<fullyQualifiedTypeName name="edu.wcu.trackerapp.AppConstants"/>
-<fullyQualifiedTypeName name="android.database.SQLException"/>
 <fullyQualifiedTypeName name="android.os.AsyncTask"/>
 <fullyQualifiedTypeName name="com.cwardcode.TranTracker.SplashActivity"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
@@ -28,4 +22,25 @@
 <fullyQualifiedTypeName name="com.cwardcode.TranTracker.VehicleArrayList"/>
 <fullyQualifiedTypeName name="java.lang.InterruptedException"/>
 <fullyQualifiedTypeName name="android.util.Log"/>
+<fullyQualifiedTypeName name="android.os.BadParcelableException"/>
+<fullyQualifiedTypeName name="android.os.DeadObjectException"/>
+<fullyQualifiedTypeName name="android.os.OperationCanceledException"/>
+<fullyQualifiedTypeName name="android.os.ParcelFileDescriptor"/>
+<fullyQualifiedTypeName name="android.os.TransactionTooLargeException"/>
+<fullyQualifiedTypeName name="android.database.SQLException"/>
+<fullyQualifiedTypeName name="android.database.StaleDataException"/>
+<fullyQualifiedTypeName name="android.database.CursorIndexOutOfBoundsException"/>
+<fullyQualifiedTypeName name="org.apache.http.client.ClientProtocolException"/>
+<fullyQualifiedTypeName name="java.io.IOException"/>
+<fullyQualifiedTypeName name="edu.wcu.trackerapp.Map"/>
+<fullyQualifiedTypeName name="android.app.AlertDialog.Builder"/>
+<fullyQualifiedTypeName name="java.lang.NullPointerException"/>
+<fullyQualifiedTypeName name="com.google.android.gms.maps.GoogleMap.InfoWindowAdapter"/>
+<fullyQualifiedTypeName name="android.view.LayoutInflater"/>
+<fullyQualifiedTypeName name="edu.wcu.trackerapp.R.layout"/>
+<fullyQualifiedTypeName name="android.widget.TextView"/>
+<fullyQualifiedTypeName name="edu.wcu.trackerapp.R.id"/>
+<fullyQualifiedTypeName name="edu.wcu.trackerapp.WindowAdapter"/>
+<fullyQualifiedTypeName name="java.util.concurrent.TimeUnit"/>
+<fullyQualifiedTypeName name="edu.wcu.trackerapp.AppConstants"/>
 </qualifiedTypeNameHistroy>

@@ -178,6 +178,8 @@ public class Chat extends Activity implements OnClickListener, MessageListener {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		getActionBar().setDisplayShowHomeEnabled(false);
+		getActionBar().setTitle("TranTracker");
 		setContentView(R.layout.activity_chat);
 
 		map = (Button) findViewById(R.id.chatMapButton);
@@ -300,6 +302,13 @@ public class Chat extends Activity implements OnClickListener, MessageListener {
 				@Override
 				public void run() {
 					messages.append("could not send message");
+				}
+			});
+		} catch (NullPointerException ex) {
+			runOnUiThread(new Runnable() {
+				@Override
+				public void run() {
+					messages.append("Could not connect to network.");
 				}
 			});
 		}

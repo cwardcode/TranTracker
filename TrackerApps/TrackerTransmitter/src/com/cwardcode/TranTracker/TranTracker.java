@@ -24,11 +24,8 @@ import org.opencv.imgproc.Imgproc;
 import org.opencv.video.BackgroundSubtractorMOG;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.AlertDialog.Builder;
 import android.content.ComponentName;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.graphics.Bitmap;
@@ -76,8 +73,6 @@ public class TranTracker extends Activity
 	public static final int NATIVE_DETECTOR = 1;
 	/** Holds current application context. */
 	private static Context context;
-	/** Holds alert notifying user of no network */
-	private static Builder noNetworkAlert;
 	/** Intent to hold sendLoc service. */
 	private Intent srvIntent;
 	/** Shows the current number of people in the frame */
@@ -259,12 +254,6 @@ public class TranTracker extends Activity
 		}
 	}
 
-	/**
-	 * If no network has been detected, kick user out of app.
-	 */
-	public static void showDialog() {
-		noNetworkAlert.show();
-	}
 
 	/**
 	 * Called when the activity is first created.
@@ -279,26 +268,6 @@ public class TranTracker extends Activity
 		setContentView(R.layout.main);
 		TranTracker.context = getApplicationContext();
 
-		Intent intent = getIntent();
-		if (intent.hasExtra("exit")) {
-			finish();
-		}
-
-		noNetworkAlert = new AlertDialog.Builder(this).setTitle("No Network!")
-				.setPositiveButton("Exit",
-						new DialogInterface.OnClickListener() {
-							@Override
-							public void onClick(DialogInterface dialog,
-									int which) {
-								Intent intent = new Intent(TranTracker.context,
-										TranTracker.class);
-								intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-								intent.putExtra("exit", "true");
-								startActivity(intent);
-							}
-
-						});
-
 		peopleData = (TextView) findViewById(R.id.PeopleDataView);
 
 		IS_TRACKING = false;
@@ -309,7 +278,7 @@ public class TranTracker extends Activity
 		gridSpinner = (Spinner) findViewById(R.id.VehicleSelect);
 		gridSpinner.setOnItemSelectedListener(this);
 		populateSpinner();
-		// new GetVehicles().execute();
+		
 		mOpenCvCameraView = (CameraBridgeViewBase) findViewById(R.id.cameraView);
 		mOpenCvCameraView.setVisibility(SurfaceView.VISIBLE);
 		mOpenCvCameraView.setCvCameraViewListener(this);

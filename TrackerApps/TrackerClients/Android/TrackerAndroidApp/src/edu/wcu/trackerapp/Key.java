@@ -41,6 +41,8 @@ public class Key extends Activity implements OnClickListener {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		getActionBar().setDisplayShowHomeEnabled(false);
+		getActionBar().setTitle("TranTracker");
 		setContentView(R.layout.activity_key);
 		
 		settings = getSharedPreferences(AppConstants.PREFS, 

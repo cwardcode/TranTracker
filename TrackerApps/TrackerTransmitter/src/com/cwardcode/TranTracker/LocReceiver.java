@@ -51,7 +51,7 @@ public class LocReceiver extends BroadcastReceiver {
 		Double longitude = intent.getDoubleExtra("longitude", -1);
 		Double speed = intent.getDoubleExtra("speed", -1);
 		String nextStop = intent.getStringExtra("nextStop");
-		Double estWait = intent.getDoubleExtra("estWait", -133);
+		int estWait = intent.getIntExtra("estWait", -133);
 		updateRemote(vehicleName, latitude, longitude, speed, nextStop, estWait);
 	}
 

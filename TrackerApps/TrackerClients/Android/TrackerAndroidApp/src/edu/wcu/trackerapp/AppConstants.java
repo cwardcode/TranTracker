@@ -20,13 +20,6 @@ public class AppConstants {
 	public static final String PREFS = "AppSettings";
 	
 	/**
-	 * Converts m/s to mi/h, for displaying speed on map.
-	 */
-	public static final double METER_CONV = 2.37;
-	/**
-	 * 
-	 */
-	/**
 	 * The number of routes in the list.
 	 */
 	public static final int NUM_ROUTES = 5;

@@ -36,6 +36,8 @@ public class About extends Activity implements OnClickListener {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		getActionBar().setDisplayShowHomeEnabled(false);
+		getActionBar().setTitle("TranTracker");
 		setContentView(R.layout.activity_about);
 
 		map = (Button) findViewById(R.id.aboutMapButton);
