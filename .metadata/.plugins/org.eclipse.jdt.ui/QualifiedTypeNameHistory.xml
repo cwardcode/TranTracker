@@ -34,7 +34,6 @@
 <fullyQualifiedTypeName name="java.io.IOException"/>
 <fullyQualifiedTypeName name="edu.wcu.trackerapp.Map"/>
 <fullyQualifiedTypeName name="android.app.AlertDialog.Builder"/>
-<fullyQualifiedTypeName name="java.lang.NullPointerException"/>
 <fullyQualifiedTypeName name="com.google.android.gms.maps.GoogleMap.InfoWindowAdapter"/>
 <fullyQualifiedTypeName name="android.view.LayoutInflater"/>
 <fullyQualifiedTypeName name="edu.wcu.trackerapp.R.layout"/>
@@ -45,4 +44,5 @@
 <fullyQualifiedTypeName name="edu.wcu.trackerapp.AppConstants"/>
 <fullyQualifiedTypeName name="java.lang.Double"/>
 <fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="java.lang.NullPointerException"/>
 </qualifiedTypeNameHistroy>

@@ -194,11 +194,15 @@ public class Map extends Activity
 		 */
 		@Override
 		protected void onPostExecute(String result) {
-			addMarkers();
-			// Only need to run this once.
-			if (!hasRan) {
-				addStops();
-				hasRan = true;
+			try {
+				addMarkers();
+				// Only need to run this once.
+				if (!hasRan) {
+					addStops();
+					hasRan = true;
+				}
+			} catch (NullPointerException npe) {
+				Log.e("Map", "Threw Null");
 			}
 		}
 
@@ -330,9 +334,9 @@ public class Map extends Activity
 					info = "Closest Stop: " + nextStop + "\nETA: ...";
 				} else {
 					info = "Closest Stop: "
-						  + nextStop
-						  + "\nETA: "
-						  + String.format("%d min,  %d sec", minutes, seconds);
+							+ nextStop
+							+ "\nETA: "
+							+ String.format("%d min,  %d sec", minutes, seconds);
 				}
 				boolean markerFound = false;
 
@@ -456,7 +460,7 @@ public class Map extends Activity
 		if (isConnected()) {
 			new DownloadXmlTask().execute(XMLURL);
 		} else {
-			noNetworkAlert.show();
+			Log.w("Map", "Not connected to network.");
 		}
 	}
 	/**
