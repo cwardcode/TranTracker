@@ -35,15 +35,13 @@ public class SendLoc extends Service {
 	/** Converts m/s to mi/h. */
 	public static final double METER_CONV = 2.37;
 	/** Sixty seconds are in one minute. */
-	public static final int MIN_SEC_CONV = 60;
+	public static final double MIN_SEC_CONV = 60;
 	/** The speed at which the shuttle registers as stopped, in m/s. */
 	private static final double SPEED_THRESHOLD = 2.2352;
 	/** Radius of Earth, as accurate I could find. See: http://bit.ly/1wRP08p */
 	private static final int R = 6371;
 	/** Conversion factor for KM to Miles. */
 	private static final double KM_TO_MILES_CONVERSION = 0.621371;
-	// /** Estimated transmission delay. */
-	// private static final int TRANS_DELAY = 10;
 	/** Holds closest distance from stop, compared to all other stops. */
 	private double closestDistance = 999.0;
 	/** Provides access to the device's GPS services. */
@@ -75,7 +73,7 @@ public class SendLoc extends Service {
 	/** Name of the nearest stop */
 	private static String closestStop = "Off-Route";
 	/** ETA until arriving at next stop */
-	private static int nextStopETA = -1;
+	private static double nextStopETA = -1;
 	/** Provides a context from which to send our broadcast messages. */
 	private static Context context;
 	/** Intent to send the message, along with a filter. */
@@ -295,11 +293,12 @@ public class SendLoc extends Service {
 				}
 			}
 		}
+		
 		/* Calculate ETA based on speed and distance if moving. Throwing in a
-		   transmission delay for good measure. ETA results in seconds. */
-
-		if (curSpeed > 0.0) {
-			nextStopETA = (int) (Math.round(closestDistance / curSpeed) * MIN_SEC_CONV);
+		   transmission delay for good measure. ETA results in seconds. 
+		 */
+		if (curSpeed > 0.2 && isNear) {
+			nextStopETA =  ((closestDistance / (curSpeed)) * MIN_SEC_CONV*MIN_SEC_CONV);
 		}
 
 		return isNear;

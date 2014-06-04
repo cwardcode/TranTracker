@@ -43,4 +43,6 @@
 <fullyQualifiedTypeName name="edu.wcu.trackerapp.WindowAdapter"/>
 <fullyQualifiedTypeName name="java.util.concurrent.TimeUnit"/>
 <fullyQualifiedTypeName name="edu.wcu.trackerapp.AppConstants"/>
+<fullyQualifiedTypeName name="java.lang.Double"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
 </qualifiedTypeNameHistroy>
