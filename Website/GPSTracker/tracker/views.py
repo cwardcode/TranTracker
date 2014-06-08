@@ -60,11 +60,6 @@ def chart(request):
 
     return render_to_response('chart.html', {'ridershipChart': riderchart})
 
-
-def help_page(request):
-    return render_to_response('help.html')
-
-
 def about(request):
     return render_to_response('about.html')
 

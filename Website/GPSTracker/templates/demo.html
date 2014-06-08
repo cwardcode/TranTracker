@@ -22,6 +22,18 @@
                 padding: 0px
             }
 
+            #name {
+                line-height:18px; 
+            }
+            
+            #eta {
+                line-height:18px; 
+            }
+            
+            #stop {
+                line-height:18px; 
+            }
+
             #map_canvas {
                 height: 100%
             }
@@ -62,32 +74,7 @@
          * up and adds all necessary objects along with styles.
          */
         function load() {
-            //custon black/grey style
-          /**  var styles = [
-                {
-                    "stylers": [
-                        {
-                            "saturation": -100
-                        },
-                        {
-                            "gamma": 0.18
-                        },
-                        {
-                            "lightness": -30
-                        }
-                    ]
-                },
-                {
-                    "elementType": "labels.text",
-                    "stylers": [
-                        {
-                            "invert_lightness": true
-                        }
-                    ]
-                }
-            ];
-            */
-            var styles;
+           var styles;
             //Shuttle marker image
             image = '/static/images/shuttle.png';
             //Location at which to center map.
@@ -102,7 +89,7 @@
                 }
             }
             //Our styled map object
-            var styledMap = new google.maps.StyledMapType(styles, {name: "Black-White"});
+            var styledMap = new google.maps.StyledMapType(styles);
             //Apply mapOptions to map element
             map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
 
@@ -131,24 +118,8 @@
             }
             markersArray = [];
         }
-        var rad = function(x) {
-            return x * Math.PI / 180;
-        };
 
-        var getHaversineDist = function(location1, location2) {
-            var R = 6378137; // Earth’s mean radius in meter
-            var meterToMile = 0.000621371;
-            var dLat = rad(location2.lat() - location1.lat());
-            var dLong = rad(location2.lng() - location1.lng());
-            var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-                Math.cos(rad(location1.lat())) * Math.cos(rad(location2.lat())) *
-                Math.sin(dLong / 2) * Math.sin(dLong / 2);
-            var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-            var d = R * c;
-            return d*meterToMile; // returns the distance in meter
-        };        
-
-        /**
+       /**
          * Renders the current locations for each shuttle to our map as a marker.
          * Accomplished by parsing an XML file with shuttle locations and adding each
          * vehicle's attributes to a marker object.
@@ -164,22 +135,29 @@
                 var markers = xml.documentElement.getElementsByTagName("marker");
                 //for each marker, get info from its tag and build marker.
                 for (var i = 0; i < markers.length; i++) {
+
                     //get child nodes of marker
                     var vid = markers[i].childNodes[0].textContent;
                     var name =  markers[i].childNodes[1].textContent;
+
                     //The location where the marker is to be placed.
                     var point = new google.maps.LatLng(
                             parseFloat(markers[i].childNodes[2].textContent),
                             parseFloat(markers[i].childNodes[3].textContent));
-                    var speed = markers[i].childNodes[4].textContent;
+                    var eta = markers[i].childNodes[5].textContent;
+                    var etaSeconds = eta*60;
+                    var etaActual = new Date(null, null, null, null, null, 
+                        etaSeconds).toTimeString().match(/:\d{2}:\d{2}/)[0]; 
+                    var nextStop = markers[i].childNodes[6].textContent;
+
                     //Distance between shuttle and stop.
                     var shuttle;
                     var stop;      
-                    //var distance = getHaversineDist(shuttle, stop);
-                    //The info that is displayed when a marker is clicked.
-                    var html = "<b>" + name + "</b>" + "<br>speed: " +
-                            Math.round(speed * METER_CONVERS) + " mph";
 
+                    //The info that is displayed when a marker is clicked.
+                    var html = "<div id=\"name\"><b>" + name + "</b></div>" + "<div id=\"stop\">Next Stop: " +
+                        nextStop + "</div><div id= \"eta\">ETA: " + etaActual + "</div>";
+                    console.log(html);
                     //The marker object to be placed on the map.
                     var marker = new google.maps.Marker({
                         map: map,
@@ -187,8 +165,10 @@
                         icon: image,
                         title: name
                     });
+
                     //Add each marker to the array of markers.
                     markersArray.push(marker);
+
                     //Apply markers to map.
                     bindInfoWindow(marker, map, infoWindow, html);
                 }
@@ -443,19 +423,16 @@
 
         </script>
 
-        </head>
-        <body>
-        <div id="map_canvas" style="width:100%; height:900px"></div>
-        </body>
-        </html>
+        <div id="map_canvas" style="width:100%; height:790px"></div>
     {% endblock %}
 {% endblock %}
 
 <!-- Sidebar override -->
 {% block sidebar %}
     <ul id="side-menu">
-        <li class="first"><a>Routes</a>
-            <ul id="side-menu-5938">
+        <div class="first">
+        <li class="first">Routes
+            <ul id="first2">
                 <li class="first"><a onClick="toggleRoute(0);">All-Campus</a></li>
                 <li class="first"><a onClick="toggleRoute(1);">Village Express</a></li>
                 <li class="first"><a onClick="toggleRoute(2);">HHS Express</a></li>
@@ -463,9 +440,11 @@
                 <li class="first"><a onClick="toggleRoute(4);">Off-Campus South</a></li>
             </ul>
         </li>
-        <li class="last"><a>Stops</a>
-            <ul id="side-menu-68085">
-                <select id="content-lb" class="content" size="20">
+        </div>
+        <div class = "last">
+        <li class="last">Stops
+            <ul>
+                <select class="content" size="20">
                     <option onClick="bounceMarker(0);" value="1"> N. Baseball</option>
                     <option onClick="bounceMarker(1);" value="2"> S. Baseball</option>
                     <option onClick="bounceMarker(2);" value="3"> Ramsey</option>
@@ -488,7 +467,8 @@
                     <option onClick="bounceMarker(19);" value="20"> Kimmell</option>
                 </select>
             </ul>
+            <button type="button" onClick="clearStopMarkers();">Clear Markers</button>
         </li>
-        <button type="button" onClick="clearStopMarkers();">Clear Markers</button>
+        </div>
     </ul>
 {% endblock %}

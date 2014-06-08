@@ -26,7 +26,8 @@
 		line-height: 1.85em;
 		font-weight: 300;
 	}
-
+    .last { display:inline-block; vertical-align:top; overflow:hidden; }
+    .last select { padding:10px; margin:-5px -20px -5px -5px; }
 	ul, ol, p, dl
 	{
 		margin: 0 0 2em 0;
@@ -48,6 +49,9 @@
 	}
 
 /* Multi-use */
+    .first a {
+        color: aea58f;
+    }
 
 	.link-list
 	{
