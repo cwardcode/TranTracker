@@ -1,9 +1,9 @@
 package edu.wcu.trackerapp.test;
 
+import com.cwardcode.trackerapp.Map;
+import com.cwardcode.trackerapp.R;
 import com.robotium.solo.Solo;
 
-import edu.wcu.trackerapp.Map;
-import edu.wcu.trackerapp.R;
 import android.test.ActivityInstrumentationTestCase2;
 
 public class NavTest extends ActivityInstrumentationTestCase2<Map> {

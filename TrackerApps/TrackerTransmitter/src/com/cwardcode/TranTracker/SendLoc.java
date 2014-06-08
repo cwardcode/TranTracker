@@ -32,14 +32,16 @@ public class SendLoc extends Service {
 	private static final double DIST_RESET = 9999999.0;
 	/** The distance at which the shuttle registers as near a Stop in miles. */
 	private static final double DIST_THRESHOLD = 0.5;
+	/** Converts m/s to mi/h. */
+	public static final double METER_CONV = 2.37;
+	/** Sixty seconds are in one minute. */
+	public static final double MIN_SEC_CONV = 60;
 	/** The speed at which the shuttle registers as stopped, in m/s. */
 	private static final double SPEED_THRESHOLD = 2.2352;
 	/** Radius of Earth, as accurate I could find. See: http://bit.ly/1wRP08p */
 	private static final int R = 6371;
 	/** Conversion factor for KM to Miles. */
 	private static final double KM_TO_MILES_CONVERSION = 0.621371;
-	/** Estimated transmission delay. */
-	private static final int TRANS_DELAY = 10;
 	/** Holds closest distance from stop, compared to all other stops. */
 	private double closestDistance = 999.0;
 	/** Provides access to the device's GPS services. */
@@ -235,11 +237,12 @@ public class SendLoc extends Service {
 					stopLngList.add(cursor.getString(0));
 				} while (cursor.moveToNext());
 			}
-		} catch (SQLException | StaleDataException
-				| CursorIndexOutOfBoundsException e) {
+		} catch (SQLException e) {
 			Log.e("SendLoc", e.getMessage());
-			stopLatList = null;
-			stopLngList = null;
+		} catch (StaleDataException e) {
+			Log.e("SendLoc", e.getMessage());
+		} catch (CursorIndexOutOfBoundsException e) {
+			Log.e("SendLoc", e.getMessage());
 		}
 	}
 
@@ -290,12 +293,14 @@ public class SendLoc extends Service {
 				}
 			}
 		}
-		// Calculate ETA based on speed and distance if moving. Throwing in a
-		// transmission delay for good measure.
-		if (curSpeed > 0.0) {
-			nextStopETA = Math.round((closestDistance / (9 + curSpeed))
-					+ TRANS_DELAY);
+		
+		/* Calculate ETA based on speed and distance if moving. Throwing in a
+		   transmission delay for good measure. ETA results in seconds. 
+		 */
+		if (curSpeed > 0.2 && isNear) {
+			nextStopETA =  ((closestDistance / (curSpeed)) * MIN_SEC_CONV*MIN_SEC_CONV);
 		}
+
 		return isNear;
 	}
 
@@ -347,7 +352,7 @@ public class SendLoc extends Service {
 		latitude = location.getLatitude();
 		longitude = location.getLongitude();
 		speed = location.getSpeed();
-		curSpeed = speed;
+		curSpeed = speed * METER_CONV;
 		filterRes.setAction("com.cwardcode.intent.action.LOCATION");
 		filterRes.putExtra("latitude", latitude);
 		filterRes.putExtra("longitude", longitude);

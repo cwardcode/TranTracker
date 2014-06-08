@@ -5,6 +5,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
@@ -21,6 +24,9 @@ import android.view.WindowManager;
  * @version June 1, 2014
  */
 public class SplashActivity extends Activity {
+	/** Holds alert notifying user of no network */
+	private static Builder noNetworkAlert;
+
 	/**
 	 * (non-Javadoc)
 	 * 
@@ -41,9 +47,35 @@ public class SplashActivity extends Activity {
 		}
 
 		setContentView(R.layout.activity_splash);
+
+		Intent intent = getIntent();
+		if (intent.hasExtra("exit")) {
+			finish();
+		}
+
+		noNetworkAlert = new AlertDialog.Builder(this)
+				.setTitle("No Network!")
+				.setMessage(
+						"You're not connected to the internet. Please do so before launching TranTracker")
+				.setPositiveButton("Exit",
+						new DialogInterface.OnClickListener() {
+							@Override
+							public void onClick(DialogInterface dialog,
+									int which) {
+								finish();
+							}
+
+						}).setCancelable(false);
 		new DisplaySplash().execute();
 		new GetData().execute();
 
+	}
+
+	/**
+	 * If no network has been detected, kick user out of app.
+	 */
+	public static void showDialog() {
+		noNetworkAlert.show();
 	}
 
 	private class DisplaySplash extends AsyncTask<Void, Void, Void> {
@@ -57,7 +89,7 @@ public class SplashActivity extends Activity {
 		protected void onPreExecute() {
 			super.onPreExecute();
 		}
-		
+
 		/**
 		 * @see android.os.AsyncTask#doInBackground(java.lang.Object[])
 		 */
@@ -103,7 +135,10 @@ public class SplashActivity extends Activity {
 		 */
 		@Override
 		protected Void doInBackground(Void... arg0) {
-			// Start with parsing stops into SQLiteDB - Create DbHelper.
+			// Get list of currently operable vehicles.
+			collectVehicles();
+
+			// Parse stops into SQLiteDB - Create DbHelper.
 			StopLocationDbHelper stopHelper = new StopLocationDbHelper(
 					getApplicationContext());
 			SQLiteDatabase db = stopHelper.getWritableDatabase();
@@ -112,9 +147,6 @@ public class SplashActivity extends Activity {
 			db.setVersion(0);
 			db.close();
 			db = stopHelper.getWritableDatabase();
-
-			// Get list of currently operable vehicles.
-			collectVehicles();
 			return null;
 		}
 
@@ -133,16 +165,26 @@ public class SplashActivity extends Activity {
 		}
 
 		/**
+		 * If the thread is cancelled, display noNetworkAlert dialogue.
+		 * 
+		 * @see android.os.AsyncTask#onCancelled()
+		 */
+		@Override
+		protected void onCancelled() {
+			noNetworkAlert.show();
+		}
+
+		/**
 		 * Parses JSON response from server to collect current list of shuttles
 		 * in service.
 		 */
 		private void collectVehicles() {
 			ParseJson jsonParser = new ParseJson();
 			// Try for a response.
-			String json = jsonParser.makeServiceCall(VID_URL, ParseJson.GET);
-
-			if (json != null) {
-				try {
+			try {
+				String json = jsonParser
+						.makeServiceCall(VID_URL, ParseJson.GET);
+				if (json != null) {
 					JSONObject jsonObj = new JSONObject(json);
 					/**
 					 * Basically like STARTTAG for a child in XML, defines a
@@ -159,17 +201,15 @@ public class SplashActivity extends Activity {
 
 						VehList.add(cat);
 					}
-
-				} catch (JSONException e) {
-					Log.e("SplashActivity-JSON", e.getMessage());
 				}
 
-			} else {
-				Log.e("SplashActivity-JSON",
-						"Didn't receive any data from server!");
+			} catch (JSONException e) {
+				Log.e("SplashActivity-JSON", e.getMessage());
+			} catch (NullPointerException npe) {
 				this.cancel(true);
+				Log.e("SplashActivity-JSON", "No network, bailing out.");
 			}
-		}
 
+		}
 	}
 }

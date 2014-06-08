@@ -51,7 +51,7 @@ public class LocReceiver extends BroadcastReceiver {
 		Double longitude = intent.getDoubleExtra("longitude", -1);
 		Double speed = intent.getDoubleExtra("speed", -1);
 		String nextStop = intent.getStringExtra("nextStop");
-		Double estWait = intent.getDoubleExtra("estWait", -133);
+		double estWait = intent.getDoubleExtra("estWait", -133);
 		updateRemote(vehicleName, latitude, longitude, speed, nextStop, estWait);
 	}
 
@@ -137,7 +137,7 @@ public class LocReceiver extends BroadcastReceiver {
 	 * @param estWait
 	 *            the estimated time of arival.
 	 */
-	private void updateRemote(String vehName, double latitude,
+	private synchronized void updateRemote(String vehName, double latitude,
 			double longitude, double speed, String nextStop, double estWait) {
 		Log.i("Latitude:", latitude + "");
 		Log.i("Longitude:", longitude + "");

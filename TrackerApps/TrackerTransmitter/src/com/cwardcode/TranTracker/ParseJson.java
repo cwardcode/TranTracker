@@ -60,7 +60,7 @@ public class ParseJson {
 	 * @return response from server.
 	 * */
 	public String makeServiceCall(String url, int method,
-			List<NameValuePair> params) {
+			List<NameValuePair> params) throws NullPointerException {
 		InputStream input = null;
 		String response = null;
 		try {
