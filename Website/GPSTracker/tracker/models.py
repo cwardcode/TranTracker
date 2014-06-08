@@ -58,7 +58,8 @@ class PeopleCount(models.Model):
         return str(self.CountID)
 
     def peoplecount_chart(self):
-       stopNames = self.getStopNames()
+       #stopNames = self.getStopNames()
+       # TODO check to see if ^^ stil needed i.e. anything breaking?
        totPeople = self.totalPeople()
        stopIDStr = str(self.StopID) 
        if stopIDStr == "Kimmell":
@@ -104,11 +105,13 @@ class PeopleCount(models.Model):
                totAtStop = self.totalPeopleByStop(1)
 
        lu = { 'categories' : [self.StopID],\
-               'names' : [stopNames],\
+               'names' : [stopIDStr],\
+               #'names' : [stopNames],\
                'tot_riders' : [self.Count],\
                'tot_riders_at_stop' : [totAtStop]} 
 
-       return render_to_string('admin/tracker/peoplecount/peoplecount_chart.html', lu )
+       #return render_to_string('admin/tracker/peoplecount/peoplecount_chart.html', lu )
+       return render_to_string('peoplecount_chart.html', lu )
     peoplecount_chart.allow_tags = True
 
     def allstops_chart(self):
