@@ -4,8 +4,8 @@ import os
 from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
 
 
-DEBUG = True
-#DEBUG = False
+#DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 #Get pwd for relative paths
 PWD = os.path.join(os.path.dirname(os.path.realpath(__file__)), os.path.pardir)
