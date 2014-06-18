@@ -16,7 +16,6 @@
 <fullyQualifiedTypeName name="java.lang.Runnable"/>
 <fullyQualifiedTypeName name="android.os.AsyncTask"/>
 <fullyQualifiedTypeName name="com.cwardcode.TranTracker.SplashActivity"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="android.os.Parcelable.Creator"/>
 <fullyQualifiedTypeName name="com.cwardcode.TranTracker.Vehicle"/>
 <fullyQualifiedTypeName name="com.cwardcode.TranTracker.VehicleArrayList"/>
@@ -45,4 +44,15 @@
 <fullyQualifiedTypeName name="java.lang.Double"/>
 <fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="java.lang.NullPointerException"/>
+<fullyQualifiedTypeName name="java.lang.NumberFormatException"/>
+<fullyQualifiedTypeName name="com.cwardcode.trackerapp.R.id"/>
+<fullyQualifiedTypeName name="org.osmdroid.views.MapView"/>
+<fullyQualifiedTypeName name="com.cwardcode.trackerapp.R.drawable"/>
+<fullyQualifiedTypeName name="org.osmdroid.DefaultResourceProxyImpl"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="com.cwardcode.trackerapp.MapOverlay"/>
+<fullyQualifiedTypeName name="org.osmdroid.views.overlay.ItemizedOverlay"/>
+<fullyQualifiedTypeName name="org.osmdroid.views.overlay.OverlayItem"/>
+<fullyQualifiedTypeName name="org.osmdroid.util.GeoPoint"/>
+<fullyQualifiedTypeName name="org.osmdroid.ResourceProxy"/>
 </qualifiedTypeNameHistroy>
