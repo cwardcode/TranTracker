@@ -1,10 +1,12 @@
-from django.contrib import admin
+#from django.contrib import admin
+from django.contrib.gis import admin
 from django.shortcuts import render_to_response
 from chartit import DataPool, Chart 
 from tracker.models import Location
 from tracker.models import Vehicle
 from tracker.models import PeopleCount
 from tracker.models import StopLocation
+from tracker.models import TrackArea
 
 
 class LocationAdmin(admin.ModelAdmin):
@@ -84,7 +86,7 @@ class PeopleCountAdmin(admin.ModelAdmin):
                     'Count',)
     search_fields = ('StopID', 'Date', 'Time', 'Count')
     list_filter = ('Time',)
-    #Re-enable this when we can automatically post ridership counts from app
+    #Re-enable this when we can automatically post ridership counts from app and prevent data tampering
     #readonly_fields = ('CountID', 'StopID', 'VehID', 'LocID','Count','Date', 'Time', 'peoplecount_chart')
     readonly_fields = ('CountID', 'Date', 'Time', 'peoplecount_chart')
     fieldsets = [
@@ -93,4 +95,4 @@ class PeopleCountAdmin(admin.ModelAdmin):
         ('PeopleCount Chart', {'fields': ['peoplecount_chart', ]}), ]
 
 admin.site.register(PeopleCount, PeopleCountAdmin)
-
+admin.site.register(TrackArea, admin.OSMGeoAdmin)

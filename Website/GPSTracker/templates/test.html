@@ -1,238 +1,71 @@
+{% extends "base.html" %}
 {% load static %}
-<!DOCTYPE HTML>
-<!--
-    Halcyonic 3.1 by HTML5 UP
-    html5up.net | @n33co
-    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-<head>
-<title>TranTracker</title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<meta name="description" content="" />
-<meta name="keywords" content="" />
-<script src="/static/js/jquery.min.js"></script>
-<script src="/static/js/config.js"></script>
-<script src="/static/js/skel.min.js"></script>
-<script src="/static/js/skel-panels.min.js"></script>
-<link rel="stylesheet" href="/static/css/skel-noscript.css" />
-<link rel="stylesheet" href="/static/css/style.css" />
-<link rel="stylesheet" href="/static/css/style-desktop.css" />
-</head>
-<body>
 
-<!-- Header -->
-<div id="header-wrapper">
-    <header id="header" class="container">
-        <div class="row">
-            <div class="12u">
+<!-- Content override -->
+{% block content %}
 
-                <!-- Logo -->
-                <!--<h1><a href="#" id="logo">HaHEYlcyonic</a></h1>-->
-                <img id="logo" src="{% static 'images/logo.png' %}">	
-                <!-- Nav -->
-                <nav id="nav">
-                    <a href="/">Home</a>
-                    <a href="/features">Features</a>
-                    <a href="/demo">Live Demo</a>
-                    <a href="/about">About Us</a>
-                    <a href="/contact">Contact Us</a>
-                </nav>
+    <!-- If you have to define styles, etc, you need to have a html template tag
+    It lets you put a page inside a page.. Since styles/scripts need
+    to be definied within the <head  /> tags, we have to simulate that here.-->
 
-            </div>
+    {% block html %}
+    <div id="demoMap" style="height:790px"></div>
+    <script src="/static/js/OpenLayers.js"></script>
+    <script>
+        map = new OpenLayers.Map("TrackerMap");
+        var fromProj = new OpenLayers.Projection("EPSG:4326");
+        var toProj   = new OpenLayers.Projection("EPSG:900913");
+        var position = new OpenLayers.LonLat(35.30872, -83.18432);
+        var zoomPosi = 10;
+       
+        map.addLayer(new OpenLayers.Layer.OSM());
+        map.setCenter(position, zoomPosi);
+    </script>
+    {% endblock %}
+{% endblock %}
+
+<!-- Sidebar override -->
+{% block sidebar %}
+    <ul id="side-menu">
+        <div class="first">
+        <li class="first">Routes
+            <ul id="first2">
+                <li class="first"><a onClick="toggleRoute(0);">All-Campus</a></li>
+                <li class="first"><a onClick="toggleRoute(1);">Village Express</a></li>
+                <li class="first"><a onClick="toggleRoute(2);">HHS Express</a></li>
+                <li class="first"><a onClick="toggleRoute(3);">Off-Campus North</a></li>
+                <li class="first"><a onClick="toggleRoute(4);">Off-Campus South</a></li>
+            </ul>
+        </li>
         </div>
-    </header>
-    <div id="banner">
-        <div class="container">
-            <div class="row">
-                <div class="6u">
-
-                    <!-- Banner Copy -->
-                    <p>Meet TranTracker<br><br>Helping create more sustainable and 
-                       efficient public transit systems.</p>
-                    <a href="/demo" class="button-big">View live demo</a>
-
-                </div>
-                <div class="6u">
-                    <!-- Banner Image -->
-                    <a href="#" class="bordered-feature-image"><img src="/static/images/ProdDemo.jpg" alt="" /></a>
-
-                </div>
-            </div>
+        <div class = "last">
+        <li class="last">Stops
+            <ul>
+                <select class="content" size="20">
+                    <option onClick="bounceMarker(0);" value="1"> N. Baseball</option>
+                    <option onClick="bounceMarker(1);" value="2"> S. Baseball</option>
+                    <option onClick="bounceMarker(2);" value="3"> Ramsey</option>
+                    <option onClick="bounceMarker(3);" value="4"> Field House</option>
+                    <option onClick="bounceMarker(4);" value="5"> Bardo Arts Center</option>
+                    <option onClick="bounceMarker(5);" value="6"> Dining Hall</option>
+                    <option onClick="bounceMarker(6);" value="7"> Walker</option>
+                    <option onClick="bounceMarker(7);" value="8"> Village</option>
+                    <option onClick="bounceMarker(8);" value="9"> Norton</option>
+                    <option onClick="bounceMarker(9);" value="10"> UC</option>
+                    <option onClick="bounceMarker(10);" value="11"> Library</option>
+                    <option onClick="bounceMarker(11);" value="12"> Moore</option>
+                    <option onClick="bounceMarker(12);" value="13"> Reynolds</option>
+                    <option onClick="bounceMarker(13);" value="14"> McKee</option>
+                    <option onClick="bounceMarker(14);" value="15"> Albright/Benton</option>
+                    <option onClick="bounceMarker(15);" value="16"> Harrill</option>
+                    <option onClick="bounceMarker(16);" value="17"> Central</option>
+                    <option onClick="bounceMarker(17);" value="18"> OneStop</option>
+                    <option onClick="bounceMarker(18);" value="19"> Coulter</option>
+                    <option onClick="bounceMarker(19);" value="20"> Kimmell</option>
+                </select>
+            </ul>
+            <button type="button" onClick="clearStopMarkers();">Clear Markers</button>
+        </li>
         </div>
-    </div>
-</div>
-
-<!-- Features -->
-<div id="features-wrapper">
-    <div id="features">
-        <div class="container">
-            <div class="row">
-                <div class="3u">
-                    <section>
-                        <a class="feature-image"><img src="/static/images/android.jpg" alt="" /></a>
-                        <h2>Powered by Android</h2>
-                        <p>
-                        The TranTracker shuttle tracking system is completely powered
-                        by and Android, which ensures enhanced compatibility at a 
-                        lower cost.
-                        </p>
-                    </section>
-
-                </div>
-                <div class="3u">
-                    <section>
-                        <a class="feature-image"><img src="/static/images/stopwatch.jpg" alt="" /></a>
-                        <h2>Increase Efficiency</h2>
-                        <p>
-                        Using TranTracker, administrators can visualize which stops along 
-                        a route are being utilized more frequently than others, allowing
-                        for more efficient scheduling.
-                        </p>
-                    </section>
-
-                </div>
-                <div class="3u">
-                    <section>
-                        <a class="bordered-feature-image"><img src="/static/images/sustain.png" alt="" /></a>
-                        <h2>Increase Sustainability</h2>
-                        <p>
-                        Increase the environmental sustainability of your shuttles! While our system makes shuttles
-                        more efficient, it also makes the shuttles more sustainable for the environment.
-                        </p>
-                    </section>
-
-                </div>
-                <div class="3u">
-
-                    <!-- Feature #4 -->
-                    <section>
-                        <a class="bordered-feature-image"><img src="/static/images/pic04.jpg" alt="" /></a>
-                        <h2>See For Yourself</h2>
-                        <p>
-                        Feel free to test drive TranTracker for yourself! Visit 
-                        our live demo to see why we're number one.
-                        </p>
-                    </section>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!--
-<div id="content-wrapper">
-    <div id="content">
-        <div class="container">
-            <div class="row">
-                <div class="4u">
-
-                    <section>
-                        <header>
-                            <h2>Who We Are</h2>
-                            <h3>A subheading about who we are</h3>
-                        </header>
-                        <a href="#" class="feature-image"><img src="/static/images/pic05.jpg" alt="" /></a>
-                        <p>
-                        Duis neque nisi, dapibus sed mattis quis, rutrum accumsan sed. 
-                        Suspendisse eu varius nibh. Suspendisse vitae magna eget odio amet mollis 
-                        justo facilisis quis. Sed sagittis mauris amet tellus gravida lorem ipsum.
-                        </p>
-                    </section>
-
-                </div>
-                <div class="4u">
-
-                    <section>
-                        <header>
-                            <h2>What We Do</h2>
-                            <h3>A subheading about what we do</h3>
-                        </header>
-                        <ul class="check-list">
-                            <li>Sed mattis quis rutrum accum</li>
-                            <li>Eu varius nibh suspendisse lorem</li>
-                            <li>Magna eget odio amet mollis justo</li>
-                            <li>Facilisis quis sagittis mauris</li>
-                            <li>Amet tellus gravida lorem ipsum</li>
-                        </ul>
-                    </section>
-
-                </div>
-                <div class="4u">
-
-                    <section>
-                        <header>
-                            <h2>What People Are Saying</h2>
-                            <h3>And a final subheading about our clients</h3>
-                        </header>
-                        <ul class="quote-list">
-                            <li>
-                            <img src="/static/images/pic06.jpg" alt="" />
-                            <p>"Neque nisidapibus mattis"</p>
-                            <span>Jane Doe, CEO of UntitledCorp</span>
-                            </li>
-                            <li>
-                            <img src="/static/images/pic07.jpg" alt="" />
-                            <p>"Lorem ipsum consequat!"</p>
-                            <span>John Doe, President of FakeBiz</span>
-                            </li>
-                            <li>
-                            <img src="/static/images/pic08.jpg" alt="" />
-                            <p>"Magna veroeros amet tempus"</p>
-                            <span>Mary Smith, CFO of UntitledBiz</span>
-                            </li>
-                        </ul>
-                    </section>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div id="footer-wrapper">
-    <footer id="footer" class="container">
-        <div class="row">
-            <div class="5u">
-
-                <section>
-                    <h2>Links to Important Stuff</h2>
-                    <div>
-                        <div class="row">
-                            <div class="3u">
-                                <ul class="link-list last-child">
-                                    <li><a href="#">Neque amet dapibus</a></li>
-                                    <li><a href="#">Sed mattis quis rutrum</a></li>
-                                    <li><a href="#">Accumsan suspendisse</a></li>
-                                    <li><a href="#">Eu varius vitae magna</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-            </div>
-            <div class="4u">
-
-                <section>
-                    <h2>An Informative Text Blurb</h2>
-                    <p>
-                    Duis neque nisi, dapibus sed mattis quis, rutrum accumsan sed. Suspendisse eu 
-                    varius nibh. Suspendisse vitae magna eget odio amet mollis. Duis neque nisi, 
-                    dapibus sed mattis quis, sed rutrum accumsan sed. Suspendisse eu varius nibh 
-                    lorem ipsum amet dolor sit amet lorem ipsum consequat gravida justo mollis.
-                    </p>
-                </section>
-
-            </div>
-        </div>
-    </footer>
-</div>
-
--->
-<!-- Copyright -->
-<div id="copyright">
-    &copy; TranTracker. All rights reserved. | Design: <a href="http://html5up.net">HTML5 UP</a>
-</div>
-
-</body>
-</html>
+    </ul>
+{% endblock %}

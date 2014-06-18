@@ -1,4 +1,4 @@
-from django.db import models
+from django.contrib.gis.db import models
 from django.template.loader import render_to_string
 
 class Vehicle(models.Model):
@@ -58,7 +58,6 @@ class PeopleCount(models.Model):
         return str(self.CountID)
 
     def peoplecount_chart(self):
-       stopNames = self.getStopNames()
        totPeople = self.totalPeople()
        stopIDStr = str(self.StopID) 
        if stopIDStr == "Kimmell":
@@ -104,11 +103,11 @@ class PeopleCount(models.Model):
                totAtStop = self.totalPeopleByStop(1)
 
        lu = { 'categories' : [self.StopID],\
-               'names' : [stopNames],\
+               'names' : [stopIDStr],\
                'tot_riders' : [self.Count],\
                'tot_riders_at_stop' : [totAtStop]} 
 
-       return render_to_string('admin/tracker/peoplecount/peoplecount_chart.html', lu )
+       return render_to_string('peoplecount_chart.html', lu )
     peoplecount_chart.allow_tags = True
 
     def allstops_chart(self):
@@ -133,4 +132,23 @@ class StopLocation(models.Model):
         #VehID + LocID Identifier
         return str(self.StopName)
 
+class TrackArea(models.Model):
+    # Regular Django fields corresponding to the attributes in the
+    # world borders shapefile.
+    name = models.CharField(max_length=50)
+    area = models.IntegerField('Area (square miles)')
+    lon = models.FloatField('Longitude (Center)')
+    lat = models.FloatField('Latitude (Center)')
 
+    # GeoDjango-specific: a geometry field (MultiPolygonField), and
+    # overriding the default manager with a GeoManager instance.
+    mpoly = models.MultiPolygonField()
+    objects = models.GeoManager()
+
+    # So the model is pluralized correctly in the admin.
+    class Meta:
+        verbose_name_plural = "Tracking Areas"
+
+    # Returns the string representation of the model.
+    def __unicode__(self):
+        return self.name

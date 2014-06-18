@@ -6,19 +6,23 @@
 
 include './config.php';
 //Connect to database
-$con = mysql_connect($hostname, $username, $password) or die (mysql_error());
+$con=pg_connect ("host=$hostname dbname=$database user=$username 
+                port=$port password=$password", PGSQL_CONNECT_FORCE_NEW) 
+                                                   or die("Could not connect!");
+
+//$con = mysql_connect($hostname, $username, $password) or die (mysql_error());
 //Select database
-mysql_select_db($database) or die (mysql_error());
+//mysql_select_db($database) or die (mysql_error());
 
 // array for json response
 $response = array();
 $response["vehicles"] = array();
 
 // Mysql select query
-$result = mysql_query("SELECT * FROM tracker_vehicle");
+$result = pg_query("SELECT * FROM tracker_vehicle");
 
 //Get list of vids
-while($row = mysql_fetch_array($result)){
+while($row = pg_fetch_array($result)){
     $tmp = array();
     $tmp["id"] = $row["VehID"];   //vehicle id
     $tmp["name"] = $row["Title"]; //vehicle title
@@ -32,5 +36,5 @@ header('Content-Type: application/json');
 //print json array
 echo json_encode($response);
 //close connection
-mysql_close($con);
+pg_close($con);
 ?>
