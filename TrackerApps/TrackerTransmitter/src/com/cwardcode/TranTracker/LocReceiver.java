@@ -26,16 +26,16 @@ public class LocReceiver extends BroadcastReceiver {
 	 * A MySQL library that allows communication from the application to a MySQL
 	 * server
 	 */
-	private static final String DB_DRIVER = "com.mysql.jdbc.Driver";
+	private static final String DB_DRIVER = "org.postgresql.Driver";
 
 	/** The connection string that allows DB_DRIVER to connect to the server. */
-	private static final String DB_CONNECTION = "jdbc:mysql://tracker.cwardcode.com:3306/gpstracker";
+	private static final String DB_CONNECTION = "jdbc:postgresql://tracker.cwardcode.com:5432/geodatabase";
 
 	/** The user name used for this connection */
-	private static final String DB_USER = "gpstracker";
+	private static final String DB_USER = "cdward4";
 
 	/** The password used for this connection */
-	private static final String DB_PASSWORD = "tracker";
+	private static final String DB_PASSWORD = "geopassword";
 
 	/**
 	 * Receives information from an intent broadcasting to this receiver.
@@ -74,13 +74,18 @@ public class LocReceiver extends BroadcastReceiver {
 			try {
 				Connection dbConnection = null;
 				Statement statement = null;
+				//TODO update sql insert statement for postgres
+				//insert into tracker_location("VehID_id", "Latitude", "Longitude", "Speed", "estWait", "NextStop") 
+				//        values ((select "VehID" from tracker_vehicle where "Title"='Village Express'), 35.31214,
+				// 		  -83.10432, 8.94, 30.2, 'Village');
+
 				String insertTableSQL = "INSERT INTO tracker_location"
-						+ "(VehID_id, Latitude, Longitude, Speed, EstWait, NextStop) "
+						+ "(\"VehID_id\", \"Latitude\", \"Longitude\", \"Speed\", \"estWait\", \"NextStop\") "
 						+ "VALUES"
-						+ "((select VehID from tracker_vehicle WHERE title=\""
-						+ strings[0] + "\")," + strings[1] + "," + strings[2]
-						+ "," + strings[3] + "," + strings[4] + ",\""
-						+ strings[5] + "\")";
+						+ "((select \"VehID\" from tracker_vehicle WHERE \"Title\"=\'"
+						+ strings[0] + "\')," + strings[1] + "," + strings[2]
+						+ "," + strings[3] + "," + strings[4] + ",\' "
+						+ strings[5] + "\')";
 				Log.i("LocReceiver", "Attempting to execute:"
 						+ insertTableSQL);
 				try {
@@ -135,7 +140,7 @@ public class LocReceiver extends BroadcastReceiver {
 	 * @param speed
 	 *            the vehicle's speed.
 	 * @param estWait
-	 *            the estimated time of arival.
+	 *            the estimated time of arrival.
 	 */
 	private synchronized void updateRemote(String vehName, double latitude,
 			double longitude, double speed, String nextStop, double estWait) {

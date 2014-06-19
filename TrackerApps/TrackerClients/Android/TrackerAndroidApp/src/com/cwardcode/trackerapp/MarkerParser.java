@@ -485,7 +485,7 @@ public class MarkerParser {
 	 * @return the ETA represented in seconds as an integer.
 	 */
 	private double readWait(XmlPullParser parser) throws IOException,
-			XmlPullParserException {
+			XmlPullParserException, NumberFormatException {
 		double estWait = 0;
 		parser.require(XmlPullParser.START_TAG, ns, "estwait");
 		estWait = Double.parseDouble(readText(parser));

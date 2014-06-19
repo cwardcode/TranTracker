@@ -28,3 +28,4 @@ logcat.view.colsize.TID=50
 logcat.view.colsize.Tag=219
 logcat.view.colsize.Text=543
 logcat.view.colsize.Time=160
+logcat.view.filters.list=name\: 'trackerapp', tag\: '', text\: '', pid\: '', app\: 'com.cwardcode.trackerapp', level\: 'verbose', 

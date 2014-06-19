@@ -15,5 +15,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
 	<classpathentry kind="lib" path="C:/Users/chris/IdeaProjects/Capstone/Libraries/mysqlConnector508.jar"/>
+	<classpathentry kind="lib" path="C:/Users/chris/IdeaProjects/Capstone/Libraries/postgresql-9.3-1101.jdbc4.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
