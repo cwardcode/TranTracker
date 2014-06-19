@@ -2,11 +2,8 @@
 from django.contrib.gis import admin
 from django.shortcuts import render_to_response
 from chartit import DataPool, Chart 
-from tracker.models import Location
-from tracker.models import Vehicle
-from tracker.models import PeopleCount
-from tracker.models import StopLocation
-from tracker.models import TrackArea
+from tracker.models import Location, PeopleCount, RouteStop,ShuttleRoute
+from tracker.models import StopLocation, TrackArea, Vehicle
 
 
 class LocationAdmin(admin.ModelAdmin):
@@ -96,3 +93,5 @@ class PeopleCountAdmin(admin.ModelAdmin):
 
 admin.site.register(PeopleCount, PeopleCountAdmin)
 admin.site.register(TrackArea, admin.OSMGeoAdmin)
+admin.site.register(ShuttleRoute, admin.OSMGeoAdmin)
+admin.site.register(RouteStop, admin.OSMGeoAdmin)

@@ -133,22 +133,38 @@ class StopLocation(models.Model):
         return str(self.StopName)
 
 class TrackArea(models.Model):
-    # Regular Django fields corresponding to the attributes in the
-    # world borders shapefile.
     name = models.CharField(max_length=50)
     area = models.IntegerField('Area (square miles)')
     lon = models.FloatField('Longitude (Center)')
     lat = models.FloatField('Latitude (Center)')
 
-    # GeoDjango-specific: a geometry field (MultiPolygonField), and
-    # overriding the default manager with a GeoManager instance.
     mpoly = models.MultiPolygonField()
     objects = models.GeoManager()
 
-    # So the model is pluralized correctly in the admin.
     class Meta:
         verbose_name_plural = "Tracking Areas"
 
-    # Returns the string representation of the model.
+    def __unicode__(self):
+        return self.name
+
+class ShuttleRoute(models.Model):
+    name = models.CharField(max_length=50)
+    mpoly = models.LineStringField()
+    objects = models.GeoManager()
+
+    class Meta:
+        verbose_name_plural = "Shuttle Routes"
+
+    def __unicode__(self):
+        return self.name
+
+class RouteStop(models.Model):
+    name = models.CharField(max_length=50)
+    mpoint = models.PointField()
+    objects = models.GeoManager()
+
+    class Meta:
+        verbose_name_plural = "Route Stops"
+
     def __unicode__(self):
         return self.name

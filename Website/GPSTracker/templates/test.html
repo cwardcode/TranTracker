@@ -1,27 +1,30 @@
 {% extends "base.html" %}
 {% load static %}
+<!-- Head embed -->
+{% block head %}
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>OpenLayers: Vector Features</title>
+    <link rel="stylesheet" href="/static/css/mapstyle.css" type="text/css">
+    <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
+    <script onload="init()"type="text/javascript">
+        var map, layer;
 
+        function init(){
+            map = new OpenLayers.Map('map');
+            layer = new OpenLayers.Layer.OSM("Simple OSM Map");
+            map.addLayer(layer);
+            map.setCenter(
+                new OpenLayers.LonLat(-83.18432, 35.30872).transform(
+                new OpenLayers.Projection("EPSG:4326"),
+                map.getProjectionObject()),16);
+        }            
+    </script>                                                   
+{% endblock %}
 <!-- Content override -->
 {% block content %}
-
-    <!-- If you have to define styles, etc, you need to have a html template tag
-    It lets you put a page inside a page.. Since styles/scripts need
-    to be definied within the <head  /> tags, we have to simulate that here.-->
-
-    {% block html %}
-    <div id="demoMap" style="height:790px"></div>
-    <script src="/static/js/OpenLayers.js"></script>
-    <script>
-        map = new OpenLayers.Map("TrackerMap");
-        var fromProj = new OpenLayers.Projection("EPSG:4326");
-        var toProj   = new OpenLayers.Projection("EPSG:900913");
-        var position = new OpenLayers.LonLat(35.30872, -83.18432);
-        var zoomPosi = 10;
-       
-        map.addLayer(new OpenLayers.Layer.OSM());
-        map.setCenter(position, zoomPosi);
-    </script>
-    {% endblock %}
+<!-- Nasty, but we have to do it to load the map. -->
+<body onload="init()"/>
+<div id="map" style="height:790px"></div>
 {% endblock %}
 
 <!-- Sidebar override -->

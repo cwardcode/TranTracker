@@ -1,7 +1,6 @@
 from chartit import DataPool, Chart
 from django.shortcuts import render_to_response
-from tracker.models import PeopleCount
-from tracker.models import StopLocation
+from tracker.models import PeopleCount, StopLocation, ShuttleRoute, RouteStop
 
 
 def home(request):
@@ -17,6 +16,8 @@ def features(request):
 
 
 def test(request):
+    routes = ShuttleRoute.objects.all()
+    stops = RouteStop.objects.all() 
     return render_to_response('test.html')
 
 

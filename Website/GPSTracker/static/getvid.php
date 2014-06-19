@@ -9,16 +9,11 @@ include './config.php';
 $con=pg_connect ("host=$hostname dbname=$database user=$username 
                 port=$port password=$password", PGSQL_CONNECT_FORCE_NEW) 
                                                    or die("Could not connect!");
-
-//$con = mysql_connect($hostname, $username, $password) or die (mysql_error());
-//Select database
-//mysql_select_db($database) or die (mysql_error());
-
 // array for json response
 $response = array();
 $response["vehicles"] = array();
 
-// Mysql select query
+// select all the vehicles from Postgres database
 $result = pg_query("SELECT * FROM tracker_vehicle");
 
 //Get list of vids
