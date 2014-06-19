@@ -134,6 +134,7 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'tracker',
     'chartit',
+    'djgeojson',
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'

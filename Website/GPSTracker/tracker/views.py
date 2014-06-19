@@ -18,7 +18,7 @@ def features(request):
 def test(request):
     routes = ShuttleRoute.objects.all()
     stops = RouteStop.objects.all() 
-    return render_to_response('test.html')
+    return render_to_response('test.html', {'routes': routes,'stops': stops})
 
 
 def chat(request):

@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load geojson_tags %}
 <!-- Head embed -->
 {% block head %}
  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -7,16 +8,68 @@
     <link rel="stylesheet" href="/static/css/mapstyle.css" type="text/css">
     <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
     <script onload="init()"type="text/javascript">
-        var map, layer;
+        var map, maplayer, stopMarkerLayer, routeLayer;
+        var pCount = 0;
+        var routeByID = {};
+        var stopByID = {};
+            stopByID.length = 0;
+        var size = new OpenLayers.Size(21,21);
+        var icon = new OpenLayers.Icon('/static/images/stopMarker.ico',size);
+
+
+        {% for ShuttleRoute in routes %}
+        routeByID[{{ShuttleRoute.id}}] = {
+            name: "{{ShuttleRoute.name}}",
+            //TODO fix.
+            polyline: "{{ShuttleRoute.mpoly}}"
+        };
+        {% endfor %}
+
+        function drawStops(){
+
+        {% for RouteStop in stops %}
+        stopByID[{{RouteStop.id}}] = {
+            name: "{{RouteStop.name}}",
+            lat: {{RouteStop.mpoint.y}},
+            lng: {{RouteStop.mpoint.x}},
+        };
+        stopByID.length += 1;
+        console.log("length: " + stopByID.length);
+        {% endfor %}
+        }
 
         function init(){
             map = new OpenLayers.Map('map');
-            layer = new OpenLayers.Layer.OSM("Simple OSM Map");
-            map.addLayer(layer);
+            maplayer = new OpenLayers.Layer.OSM("Simple OSM Map");
+            map.addLayer(maplayer);
+            stopMarkerLayer = new OpenLayers.Layer.Markers("StopMarkers");
+            map.addLayer(stopMarkerLayer);
             map.setCenter(
-                new OpenLayers.LonLat(-83.18432, 35.30872).transform(
+                new OpenLayers.LonLat(-83.18032, 35.30872).transform(
                 new OpenLayers.Projection("EPSG:4326"),
                 map.getProjectionObject()),16);
+            drawStops();
+
+            for(var i = 1; i <= stopByID.length; i++) {
+            console.log("Adding: " + stopByID[i].name);
+            //Have to clone our icon if used more than once.
+            if(pCount == 0){ 
+            stopMarkerLayer.addMarker(new OpenLayers.Marker(
+                new OpenLayers.LonLat(stopByID[i].lng,
+                                      stopByID[i].lat).transform(
+                                      new OpenLayers.Projection("EPSG:4326"),
+                                      map.getProjectionObject()),icon));
+                pCount = 1;
+            } else {
+             stopMarkerLayer.addMarker(new OpenLayers.Marker(
+                new OpenLayers.LonLat(stopByID[i].lng,
+                                      stopByID[i].lat).transform(
+                                      new OpenLayers.Projection("EPSG:4326"),
+                                      map.getProjectionObject()),icon.clone()));
+            }
+            }
+            //add routes
+            //routeLayer = new OpenLayers.Feature.Vector 
         }            
     </script>                                                   
 {% endblock %}
@@ -26,6 +79,12 @@
 <body onload="init()"/>
 <div id="map" style="height:790px"></div>
 {% endblock %}
+{% for ShuttleRoute in routes %}
+routeByID[{{ShuttleRoute.id}}] = {
+    name: "{{ShuttleRoute.name}}",
+    polyline: {{ShuttleRoute.mpoly}}
+};
+{% endfor %}
 
 <!-- Sidebar override -->
 {% block sidebar %}
