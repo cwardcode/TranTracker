@@ -12,16 +12,16 @@
         var pCount = 0;
         var stopByID = {};
         //create field to keep track of array length
-        stopByID.length = 0;
-
+        stopByID.length = 50;
+       
         function drawStops(){
             {% for RouteStop in stops %}
-              stopByID[{{RouteStop.id}}] = {
+              stopByID[{{RouteStop.StopID}}] = {
                   name: "{{RouteStop.name}}",
                   lat: {{RouteStop.mpoint.y}},
                   lng: {{RouteStop.mpoint.x}},
               };
-              stopByID.length += 1;
+              //stopByID.length += 1;
             {% endfor %}
         }
         /**
@@ -73,20 +73,24 @@
             //Add stops to map layer
             for(var i = 1; i <= stopByID.length; i++) {
                 //Have to clone our icon if used more than once.
-                if(pCount == 0){ 
-                    stopMarkerLayer.addMarker(new OpenLayers.Marker(
-                                new OpenLayers.LonLat(stopByID[i].lng,
-                                    stopByID[i].lat).transform(
-                                        new OpenLayers.Projection("EPSG:4326"),
-                                          map.getProjectionObject()),stopIcon));
-                    pCount = 1;
-                } else {
-                    stopMarkerLayer.addMarker(new OpenLayers.Marker(
-                                new OpenLayers.LonLat(stopByID[i].lng,
-                                    stopByID[i].lat).transform(
-                                        new OpenLayers.Projection("EPSG:4326"),
-                                            map.getProjectionObject()),
-                                            stopIcon.clone()));
+                try{
+                    if(pCount == 0){ 
+                        stopMarkerLayer.addMarker(new OpenLayers.Marker(
+                                    new OpenLayers.LonLat(stopByID[i].lng,
+                                        stopByID[i].lat).transform(
+                                            new OpenLayers.Projection("EPSG:4326"),
+                                              map.getProjectionObject()),stopIcon));
+                        pCount = 1;
+                    } else {
+                        stopMarkerLayer.addMarker(new OpenLayers.Marker(
+                                    new OpenLayers.LonLat(stopByID[i].lng,
+                                        stopByID[i].lat).transform(
+                                            new OpenLayers.Projection("EPSG:4326"),
+                                                map.getProjectionObject()),
+                                                stopIcon.clone()));
+                    }
+                } catch (err) {
+                    console.log(err);
                 }
             }
 

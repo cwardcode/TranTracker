@@ -3,7 +3,7 @@ from django.contrib.gis import admin
 from django.shortcuts import render_to_response
 from chartit import DataPool, Chart 
 from tracker.models import Location, PeopleCount, RouteStop,ShuttleRoute
-from tracker.models import StopLocation, TrackArea, Vehicle
+from tracker.models import TrackArea, Vehicle
 
 
 class LocationAdmin(admin.ModelAdmin):
@@ -31,17 +31,6 @@ class VehicleAdmin(admin.ModelAdmin):
 
 admin.site.register(Vehicle, VehicleAdmin)
 
-
-class StopLocationAdmin(admin.ModelAdmin):
-    list_display = ('StopID', 'StopName', 'Latitude', 'Longitude',)
-    search_fields = ('StopName',)
-    list_filter = ('StopName',)
-
-    readonly_fields = ('StopID',)
-    fieldsets = [
-        ('StopLocation', {'fields': ['StopID', 'StopName', 'Latitude', 'Longitude']}), ]
-
-admin.site.register(StopLocation, StopLocationAdmin)
 
 class ChartChangeList(admin.ModelAdmin):
     list_display = ('StopID', 'VehID','Date', 'Time', 'Count',)
@@ -92,6 +81,23 @@ class PeopleCountAdmin(admin.ModelAdmin):
         ('PeopleCount Chart', {'fields': ['peoplecount_chart', ]}), ]
 
 admin.site.register(PeopleCount, PeopleCountAdmin)
-admin.site.register(TrackArea, admin.OSMGeoAdmin)
-admin.site.register(ShuttleRoute, admin.OSMGeoAdmin)
-admin.site.register(RouteStop, admin.OSMGeoAdmin)
+
+class TrackAreaAdmin(admin.OSMGeoAdmin):
+    default_lon = -9259955.994351353 
+    default_lat = 4206048.190320374
+    default_zoom = 15
+admin.site.register(TrackArea, TrackAreaAdmin)
+
+class ShuttleRouteAdmin(admin.OSMGeoAdmin):
+    default_lon = -9259955.994351353 
+    default_lat = 4206048.190320374
+    default_zoom = 15
+ 
+admin.site.register(ShuttleRoute, ShuttleRouteAdmin)
+
+class RouteStopAdmin(admin.OSMGeoAdmin):
+    default_lon = -9259955.994351353 
+    default_lat = 4206048.190320374
+    default_zoom = 15
+    readonly_fields = ('Latitude','Longitude')
+admin.site.register(RouteStop, RouteStopAdmin)

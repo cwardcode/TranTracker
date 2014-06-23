@@ -7,7 +7,7 @@ class Vehicle(models.Model):
     Driver = models.CharField(max_length=25)
 
     def __unicode__(self):
-        return self.Title
+        return str(self.Title)
 
 
 class Location(models.Model):
@@ -26,7 +26,7 @@ class Location(models.Model):
 
 class PeopleCount(models.Model):
     CountID = models.AutoField(primary_key=True)
-    StopID = models.ForeignKey('StopLocation')
+    StopID = models.ForeignKey('RouteStop')
     VehID = models.ForeignKey('Vehicle')
     LocID = models.ForeignKey('Location')
     Date = models.DateField(auto_now_add=True, blank=False)
@@ -122,16 +122,6 @@ class PeopleCount(models.Model):
     allstops_chart.allow_tags = True
 
 
-class StopLocation(models.Model):
-    StopID = models.AutoField(primary_key=True)
-    StopName = models.CharField(max_length=40)
-    Latitude = models.DecimalField(max_digits=10, decimal_places=6)
-    Longitude = models.DecimalField(max_digits=10, decimal_places=6)
-
-    def __unicode__(self):
-        #VehID + LocID Identifier
-        return str(self.StopName)
-
 class TrackArea(models.Model):
     name = models.CharField(max_length=50)
     area = models.IntegerField('Area (square miles)')
@@ -145,7 +135,7 @@ class TrackArea(models.Model):
         verbose_name_plural = "Tracking Areas"
 
     def __unicode__(self):
-        return self.name
+        return str(self.name)
 
 class ShuttleRoute(models.Model):
     name = models.CharField(max_length=50)
@@ -156,15 +146,23 @@ class ShuttleRoute(models.Model):
         verbose_name_plural = "Shuttle Routes"
 
     def __unicode__(self):
-        return self.name
+        return str(self.name)
 
 class RouteStop(models.Model):
-    name = models.CharField(max_length=50)
+    StopID = models.AutoField(primary_key=True)
+    StopName = models.CharField(max_length=40)
     mpoint = models.PointField()
     objects = models.GeoManager()
+    Latitude = models.DecimalField(max_digits=10, decimal_places=6)
+    Longitude = models.DecimalField(max_digits=10, decimal_places=6)
 
     class Meta:
         verbose_name_plural = "Route Stops"
 
+    def save(self, *args, **kwargs):
+        self.Latitude  = self.mpoint.y
+        self.Longitude = self.mpoint.x
+        super(RouteStop, self).save(*args, **kwargs)
+
     def __unicode__(self):
-        return self.name
+        return str(self.StopName)

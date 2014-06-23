@@ -65,7 +65,7 @@ $vehNameActual = @pg_fetch_assoc($vehNameResult);
 
 //Handle Stop Locations
 $query2 = "SELECT *
-FROM tracker_stoplocation";
+FROM tracker_routestop";
 
 $result2 = pg_query($query2);
 
@@ -74,11 +74,11 @@ if (!$result2) {
 }
 
 
-while ($row = @pg_fetch_assoc($result2)){
-    $stopNameQuery = "SELECT \"StopName\" from tracker_stoplocation where \"StopID\"='" . $row['StopID']."'";
+while ($row = @pg_fetch_assoc($result2)){             //stop_location
+    $stopNameQuery = "SELECT \"StopName\" from tracker_routestop where \"StopID\"='" . $row['StopID']."'";
     $stopNameResult = pg_query($stopNameQuery);
     $stopNameActual = @pg_fetch_array($stopNameResult);
-    $stopIDQuery = "SELECT \"StopID\" from tracker_stoplocation where \"StopName\" = '".$stopNameActual[0]."'";
+    $stopIDQuery = "SELECT \"StopID\" from tracker_routestop where \"StopName\" = '".$stopNameActual[0]."'";
     $stopIDResult = pg_query($stopIDQuery);
     $xml .= "<stop>";  
     $xml .= "<stopID>".$row['StopID']."</stopID>";    

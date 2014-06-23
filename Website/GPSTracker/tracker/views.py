@@ -1,7 +1,7 @@
 from chartit import DataPool, Chart
 from django.shortcuts import render_to_response
 from django.http import HttpResponse
-from tracker.models import PeopleCount, StopLocation, ShuttleRoute, RouteStop
+from tracker.models import PeopleCount, ShuttleRoute, RouteStop
 
 
 def home(request):
@@ -9,17 +9,26 @@ def home(request):
 
 
 def demo(request):
-    routes = ShuttleRoute.objects.all()[0].mpoly
+    routes = None
+    try:
+        routes = ShuttleRoute.objects.all()[0].mpoly
+    except (UnboundLocalError, IndexError) as e:
+        print "No routes in list!"
+
     stops = RouteStop.objects.all() 
     return render_to_response('demo.html', {'routes': routes,'stops': stops})
-
 
 def features(request):
     return render_to_response('features.html')
 
 
 def test(request):
-    routes = ShuttleRoute.objects.all()[0].mpoly
+    routes = None
+    try:
+        routes = ShuttleRoute.objects.all()[0].mpoly
+    except (UnboundLocalError, IndexError) as e:
+        print "No routes in list!"
+
     stops = RouteStop.objects.all() 
     return render_to_response('test.html', {'routes': routes,'stops': stops})
 
@@ -34,7 +43,7 @@ def chat(request):
 
 
 def stopNames(nameID):
-    stop = StopLocation.objects.filter(StopID = nameID).values()[0]['StopName'].split(' ')[0]
+    stop = RouteStop.objects.filter(StopID = nameID).values()[0]['StopName'].split(' ')[0]
     return stop
 
 
