@@ -8,83 +8,114 @@
     <link rel="stylesheet" href="/static/css/mapstyle.css" type="text/css">
     <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
     <script onload="init()"type="text/javascript">
-        var map, maplayer, stopMarkerLayer, routeLayer;
+        var map, maplayer, stopMarkerLayer, routeLayer, route;
         var pCount = 0;
-        var routeByID = {};
         var stopByID = {};
-            stopByID.length = 0;
-        var size = new OpenLayers.Size(21,21);
-        var icon = new OpenLayers.Icon('/static/images/stopMarker.ico',size);
-
-
-        {% for ShuttleRoute in routes %}
-        routeByID[{{ShuttleRoute.id}}] = {
-            name: "{{ShuttleRoute.name}}",
-            //TODO fix.
-            polyline: "{{ShuttleRoute.mpoly}}"
-        };
-        {% endfor %}
+        //create field to keep track of array length
+        stopByID.length = 0;
 
         function drawStops(){
-
-        {% for RouteStop in stops %}
-        stopByID[{{RouteStop.id}}] = {
-            name: "{{RouteStop.name}}",
-            lat: {{RouteStop.mpoint.y}},
-            lng: {{RouteStop.mpoint.x}},
-        };
-        stopByID.length += 1;
-        console.log("length: " + stopByID.length);
-        {% endfor %}
+            {% for RouteStop in stops %}
+              stopByID[{{RouteStop.id}}] = {
+                  name: "{{RouteStop.name}}",
+                  lat: {{RouteStop.mpoint.y}},
+                  lng: {{RouteStop.mpoint.x}},
+              };
+              stopByID.length += 1;
+            {% endfor %}
         }
+        /**
+         * Draws selected route on map, defaults to all-campus
+         * TODO:
+         *  * Make routes selectable
+         *  * Default currently set in views, if I'm thining correctly,
+         *    need to call a separate function in veiws and pass it whichever
+         *    route ID is specified (index starts at 1 for some wtf reason.
+         */
+        function drawRoute() {
+            route = [
+            {% for ShuttleRoute in routes %}
+            new OpenLayers.Geometry.Point{{ShuttleRoute}}.transform(new 
+                    OpenLayers.Projection("EPSG:4326"), map.getProjectionObject()),
+                {% endfor %}
+            ];
+        }            
 
+        /**
+         * Initializes and renders map. Draws all stops and routes dynamically,
+         * as set in the Administration Panel. 
+         * 
+         * TODO: 
+         *  * Shuttle markers
+         */
         function init(){
+            //set stopMarker size and icon
+            var stopSize = new OpenLayers.Size(21,21);
+            var stopIcon = new OpenLayers.Icon('/static/images/stopMarker.ico',
+                                                                      stopSize);
+            //Map base layer
             map = new OpenLayers.Map('map');
             maplayer = new OpenLayers.Layer.OSM("Simple OSM Map");
             map.addLayer(maplayer);
+
+            //Stop arker base layer
             stopMarkerLayer = new OpenLayers.Layer.Markers("StopMarkers");
             map.addLayer(stopMarkerLayer);
             map.setCenter(
-                new OpenLayers.LonLat(-83.18032, 35.30872).transform(
-                new OpenLayers.Projection("EPSG:4326"),
-                map.getProjectionObject()),16);
+                    new OpenLayers.LonLat(-83.18032, 35.30872).transform(
+                        new OpenLayers.Projection("EPSG:4326"),
+                            map.getProjectionObject()),16);
+
+            //Populate route/stops 
+            drawRoute();
             drawStops();
 
+            //Add stops to map layer
             for(var i = 1; i <= stopByID.length; i++) {
-            console.log("Adding: " + stopByID[i].name);
-            //Have to clone our icon if used more than once.
-            if(pCount == 0){ 
-            stopMarkerLayer.addMarker(new OpenLayers.Marker(
-                new OpenLayers.LonLat(stopByID[i].lng,
-                                      stopByID[i].lat).transform(
-                                      new OpenLayers.Projection("EPSG:4326"),
-                                      map.getProjectionObject()),icon));
-                pCount = 1;
-            } else {
-             stopMarkerLayer.addMarker(new OpenLayers.Marker(
-                new OpenLayers.LonLat(stopByID[i].lng,
-                                      stopByID[i].lat).transform(
-                                      new OpenLayers.Projection("EPSG:4326"),
-                                      map.getProjectionObject()),icon.clone()));
+                //Have to clone our icon if used more than once.
+                if(pCount == 0){ 
+                    stopMarkerLayer.addMarker(new OpenLayers.Marker(
+                                new OpenLayers.LonLat(stopByID[i].lng,
+                                    stopByID[i].lat).transform(
+                                        new OpenLayers.Projection("EPSG:4326"),
+                                          map.getProjectionObject()),stopIcon));
+                    pCount = 1;
+                } else {
+                    stopMarkerLayer.addMarker(new OpenLayers.Marker(
+                                new OpenLayers.LonLat(stopByID[i].lng,
+                                    stopByID[i].lat).transform(
+                                        new OpenLayers.Projection("EPSG:4326"),
+                                            map.getProjectionObject()),
+                                            stopIcon.clone()));
+                }
             }
-            }
-            //add routes
-            //routeLayer = new OpenLayers.Feature.Vector 
-        }            
+
+            //add routes to map layer
+            routeLayer = new OpenLayers.Layer.Vector("Route");
+            //Create new LineString based on points from route selected
+            var allroute = new OpenLayers.Feature.Vector(new 
+                                OpenLayers.Geometry.LineString(route));
+            //set custom style for linestring --maroon color w/ width of 4px
+            var routeStyle = OpenLayers.Util.applyDefaults(routeStyle,
+                    OpenLayers.Feature.Vector.style['default']);
+            routeStyle.strokeColor = "#CC3300";
+            routeStyle.strokeWidth = 4; 
+            allroute.style = routeStyle;
+            //add route to layer
+            routeLayer.addFeatures(allroute);
+            //add layer to map.
+            map.addLayer(routeLayer);
+      
+        } 
     </script>                                                   
 {% endblock %}
 <!-- Content override -->
 {% block content %}
 <!-- Nasty, but we have to do it to load the map. -->
 <body onload="init()"/>
+
 <div id="map" style="height:790px"></div>
 {% endblock %}
-{% for ShuttleRoute in routes %}
-routeByID[{{ShuttleRoute.id}}] = {
-    name: "{{ShuttleRoute.name}}",
-    polyline: {{ShuttleRoute.mpoly}}
-};
-{% endfor %}
 
 <!-- Sidebar override -->
 {% block sidebar %}

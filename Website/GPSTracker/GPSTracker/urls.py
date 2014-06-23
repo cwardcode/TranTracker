@@ -1,6 +1,8 @@
 from django.conf.urls import patterns, include, url
 #from django.contrib import admin
 from django.contrib.gis import admin
+from djgeojson.views import GeoJSONLayerView
+from tracker.models import ShuttleRoute
 
 admin.autodiscover()
 
@@ -16,4 +18,5 @@ urlpatterns = patterns('',
                        url(r'^test', 'tracker.views.test', name='test'),
                        url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
                        url(r'^admin/', include(admin.site.urls)),
+                       url(r'^data.geojson$', GeoJSONLayerView.as_view(model=ShuttleRoute), name='data'),
                        )

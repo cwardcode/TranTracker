@@ -1,5 +1,6 @@
 from chartit import DataPool, Chart
 from django.shortcuts import render_to_response
+from django.http import HttpResponse
 from tracker.models import PeopleCount, StopLocation, ShuttleRoute, RouteStop
 
 
@@ -8,7 +9,9 @@ def home(request):
 
 
 def demo(request):
-    return render_to_response('demo.html')
+    routes = ShuttleRoute.objects.all()[0].mpoly
+    stops = RouteStop.objects.all() 
+    return render_to_response('demo.html', {'routes': routes,'stops': stops})
 
 
 def features(request):
@@ -16,10 +19,15 @@ def features(request):
 
 
 def test(request):
-    routes = ShuttleRoute.objects.all()
+    routes = ShuttleRoute.objects.all()[0].mpoly
     stops = RouteStop.objects.all() 
     return render_to_response('test.html', {'routes': routes,'stops': stops})
 
+
+def get_routes_json(request, route_id):
+    route = ShuttleRoute.objects.get(pk=route_id)
+    response = route.mpoly.geojson
+    return HttpResponse(response, mimetype='application/json')
 
 def chat(request):
     return render_to_response('chat.html')
