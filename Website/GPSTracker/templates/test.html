@@ -4,27 +4,20 @@
 <!-- Head embed -->
 {% block head %}
  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>OpenLayers: Vector Features</title>
     <link rel="stylesheet" href="/static/css/mapstyle.css" type="text/css">
-    <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
+    <!--<script src="http://www.openlayers.org/api/OpenLayers.js"></script>-->
+    <script src="/static/js/OpenLayers.js"></script>
     <script onload="init()"type="text/javascript">
-        var map, maplayer, stopMarkerLayer, routeLayer, route;
+        var map, maplayer, stopMarkerLayer,shuttleMarkerLayer, routeLayer, route;
+        var shuttleByID = {};
         var pCount = 0;
+        var sCount = 0;
+        var numShuttles = 0;
         var stopByID = {};
-        //create field to keep track of array length
+        //create field to keep track of stop array length
         stopByID.length = 50;
        
-        function drawStops(){
-            {% for RouteStop in stops %}
-              stopByID[{{RouteStop.StopID}}] = {
-                  name: "{{RouteStop.name}}",
-                  lat: {{RouteStop.mpoint.y}},
-                  lng: {{RouteStop.mpoint.x}},
-              };
-              //stopByID.length += 1;
-            {% endfor %}
-        }
-        /**
+       /**
          * Draws selected route on map, defaults to all-campus
          * TODO:
          *  * Make routes selectable
@@ -32,7 +25,7 @@
          *    need to call a separate function in veiws and pass it whichever
          *    route ID is specified (index starts at 1 for some wtf reason.
          */
-        function drawRoute() {
+        function getRoute() {
             route = [
             {% for ShuttleRoute in routes %}
             new OpenLayers.Geometry.Point{{ShuttleRoute}}.transform(new 
@@ -40,6 +33,38 @@
                 {% endfor %}
             ];
         }            
+        /**
+         * Collects shuttles using ORM and stores into an array
+         */
+        function getShuttles() {
+            {% for shuttle in shuttles %}
+            shuttleByID[{{shuttle.VehID_id}}] = {
+                    name: "{{shuttle.VehID_id}}",
+                    lat: {{shuttle.Latitude}},
+                    lng: {{shuttle.Longitude}},
+                    eta: {{shuttle.estWait}},
+                    next: "{{shuttle.NextStop}}",
+                };
+            numShuttles += 1;//tle.VehID_id}}");
+            {% endfor %}
+            addShuttleMarkers();
+        }
+       
+         /**
+         * Adds shuttles to the shuttleByID
+         */
+        function getStops(){
+            {% for RouteStop in stops %}
+              stopByID[{{RouteStop.StopID}}] = {
+                  name: "{{RouteStop.name}}",
+                  lat: {{RouteStop.mpoint.y}},
+                  lng: {{RouteStop.mpoint.x}},
+              };
+              stopByID.length += 1;
+            {% endfor %}
+            addStopMarkers();
+        }
+
 
         /**
          * Initializes and renders map. Draws all stops and routes dynamically,
@@ -59,40 +84,19 @@
             map.addLayer(maplayer);
 
             //Stop arker base layer
-            stopMarkerLayer = new OpenLayers.Layer.Markers("StopMarkers");
+            stopMarkerLayer = new OpenLayers.Layer.Markers("Stop Markers");
             map.addLayer(stopMarkerLayer);
+            shuttleMarkerLayer = new OpenLayers.Layer.Markers("Shuttle Markers");
+            map.addLayer(shuttleMarkerLayer);
             map.setCenter(
                     new OpenLayers.LonLat(-83.18032, 35.30872).transform(
                         new OpenLayers.Projection("EPSG:4326"),
                             map.getProjectionObject()),16);
 
-            //Populate route/stops 
-            drawRoute();
-            drawStops();
-
-            //Add stops to map layer
-            for(var i = 1; i <= stopByID.length; i++) {
-                //Have to clone our icon if used more than once.
-                try{
-                    if(pCount == 0){ 
-                        stopMarkerLayer.addMarker(new OpenLayers.Marker(
-                                    new OpenLayers.LonLat(stopByID[i].lng,
-                                        stopByID[i].lat).transform(
-                                            new OpenLayers.Projection("EPSG:4326"),
-                                              map.getProjectionObject()),stopIcon));
-                        pCount = 1;
-                    } else {
-                        stopMarkerLayer.addMarker(new OpenLayers.Marker(
-                                    new OpenLayers.LonLat(stopByID[i].lng,
-                                        stopByID[i].lat).transform(
-                                            new OpenLayers.Projection("EPSG:4326"),
-                                                map.getProjectionObject()),
-                                                stopIcon.clone()));
-                    }
-                } catch (err) {
-                    console.log(err);
-                }
-            }
+            //Populate route/shuttles/stops 
+            getShuttles();
+            getStops();
+            getRoute();
 
             //add routes to map layer
             routeLayer = new OpenLayers.Layer.Vector("Route");
@@ -109,8 +113,67 @@
             routeLayer.addFeatures(allroute);
             //add layer to map.
             map.addLayer(routeLayer);
-      
+            map.addControl(new OpenLayers.Control.LayerSwitcher()); 
         } 
+
+          function addShuttleMarkers() {
+            var stopSize = new OpenLayers.Size(21,21);
+            var stopIcon = new OpenLayers.Icon('/static/images/shuttle.ico',
+                                                                      stopSize); 
+            //Add stops to map layer
+            for(var i = 0; i <= numShuttles; i++) {
+                //Have to clone our icon if used more than once.
+                try{
+                    if(sCount == 0){ 
+                        shuttleMarkerLayer.addMarker(new OpenLayers.Marker(
+                                    new OpenLayers.LonLat(shuttleByID[i].lng,
+                                        shuttleByID[i].lat).transform(
+                                            new OpenLayers.Projection("EPSG:4326"),
+                                            map.getProjectionObject()),stopIcon));
+                        sCount = 1;
+                    } else {
+                        shuttleMarkerLayer.addMarker(new OpenLayers.Marker(
+                                    new OpenLayers.LonLat(shuttleByID[i].lng,
+                                        shuttleByID[i].lat).transform(
+                                            new OpenLayers.Projection("EPSG:4326"),
+                                            map.getProjectionObject()),
+                                    stopIcon.clone()));
+                    }
+                } catch (err) {
+                console.log("shuttle: " + err)
+                }
+            }
+        }
+
+
+        function addStopMarkers() {
+            var stopSize = new OpenLayers.Size(21,21);
+            var stopIcon = new OpenLayers.Icon('/static/images/stopMarker.ico',
+                                                                      stopSize); 
+            //Add stops to map layer
+            for(var i = 0; i <= stopByID.length; i++) {
+                //Have to clone our icon if used more than once.
+                try{
+                    if(pCount == 0){ 
+                        stopMarkerLayer.addMarker(new OpenLayers.Marker(
+                                    new OpenLayers.LonLat(stopByID[i].lng,
+                                        stopByID[i].lat).transform(
+                                            new OpenLayers.Projection("EPSG:4326"),
+                                            map.getProjectionObject()),stopIcon));
+                        pCount = 1;
+                    } else {
+                        stopMarkerLayer.addMarker(new OpenLayers.Marker(
+                                    new OpenLayers.LonLat(stopByID[i].lng,
+                                        stopByID[i].lat).transform(
+                                            new OpenLayers.Projection("EPSG:4326"),
+                                            map.getProjectionObject()),
+                                    stopIcon.clone()));
+                    }
+                } catch (err) {
+                console.log("stop: " + err)
+                }
+            }
+        }
     </script>                                                   
 {% endblock %}
 <!-- Content override -->

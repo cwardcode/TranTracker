@@ -114,7 +114,7 @@
          *   <link rel="stylesheet" href="/path/to/default/style.css"  type="text/css">
          * (end code)
          */
-        ImgPath : ''
+        ImgPath : '/static/images/OpenLayers/'
     };
 
     /**
