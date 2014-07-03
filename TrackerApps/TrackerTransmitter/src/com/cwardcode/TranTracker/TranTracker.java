@@ -109,6 +109,12 @@ public class TranTracker extends Activity
 	 */
 	/** List of blobs counted. */
 	private List<Blob> blobs = new ArrayList<Blob>();
+	
+	/** List of blobs entering the shuttle */
+	private List<Blob> onBlobs = new ArrayList<Blob>();
+	
+	/** List of blobs exiting the shuttle */
+	private List<Blob> offBlobs = new ArrayList<Blob>();
 	/** Initialize blobID to zero. */
 	private int blobID = 0;
 	/** Holds current screen width. */
@@ -416,7 +422,7 @@ public class TranTracker extends Activity
 		// Holds grey frame
 		mGrey = inputFrame.gray();
 		// Check to see if near a stop, and it is stopped.
-		while (IS_BOUND && locService.isNearLoc() && locService.isStopped()) {
+		while (true) {//(IS_BOUND && locService.isNearLoc() && locService.isStopped()) {
 			/*
 			 * if (mAbsoluteBodySize == 0) { int height = mGrey.rows(); if
 			 * (Math.round(height * mRelativeBodySize) > 0) { mAbsoluteBodySize
@@ -538,6 +544,8 @@ public class TranTracker extends Activity
 						blobs.add(blob);
 						blobID++;
 					}
+					
+					findBlobDir(blob);
 
 				}
 
@@ -546,13 +554,85 @@ public class TranTracker extends Activity
 			Imgproc.drawContours(mFGMask, contours, -1, color, -1);
 
 			Log.d("contours", "Number of contours found: " + contours.size());
+			Log.d("blobs", "Number of blobs found: " + blobs.size());
+			Log.d("blobs", "Number entering: " + onBlobs.size());
+			Log.d("blobs", "Number exiting: " + offBlobs.size());
 			setPeopleData(blobs.size());
 			return mFGMask;
 
 		}
 		// setPeopleData(blobs.size());
-		blobs.clear();
+		//blobs.clear();
 
-		return mGrey;
+		//return mGrey;
+	}
+	
+	private void findBlobDir(Blob blob) {
+		/* First, we set up our intersection points. These points let us 
+		 * tell the current direction of our blob.
+		 */
+		
+		/* The lefthand point. If a blob started to the left of this point,
+		 * we assume that it is entering the shuttle. It should be the right 
+		 * hand edge of the rectangle that forms the leftmost 4th of the 
+		 * screen.
+		 */
+	    int leftPoint = screenWidth / 4;
+	    
+	    /* The righthand point, used to see if the blob is exiting. It is the 
+	     * lefthand edge of the rightmost 4th of the screen. Taking the width
+	     * of the screen and subtracting it from 1/4 of itself should
+	     * give us this point.
+	     */
+		int rightPoint = screenWidth - leftPoint; 
+		
+		// Check to see if the blob was already entering or exiting.
+		if (!(blob.getEntrance() == -1)) {
+			// Now we check the state of entering blobs.
+			if (blob.getEntrance() == 0) {
+				if (blob.x() < leftPoint) {
+					// This means that the blob is either yet to enter
+					// or changed its mind, so we set its state to 0.
+					blob.setDir(0);
+				} else {
+					// This means that it is entering the bus.
+					blob.setDir(1);
+				}
+			// Now we check exiting blobs with the same method.
+			} else if (blob.getEntrance() == 1) {
+				if (blob.x() > rightPoint) {
+					blob.setDir(0);
+				} else {
+					blob.setDir(2);
+				}
+			}
+		
+		// Now, find the direction of a blob that has just entered the screen.
+		} else {
+			// Check to see if the blob is entering from the left.
+			if (blob.x() < leftPoint) {
+				blob.setEntrance(0);
+			// Now we check to see if the blob is entering from the right.
+			} else if (blob.x() > rightPoint) {
+				blob.setEntrance(1);
+			}
+		}
+		
+		// Now, we update our blob lists appropriately.
+		if (blob.getDir() == 1) {
+			onBlobs.add(blob);
+		} else if (blob.getDir() == 2) {
+			offBlobs.add(blob);
+		}
+		
+		if (onBlobs.contains(blob) && blob.getDir() != 1) {
+			onBlobs.remove(blob);
+		} else if (offBlobs.contains(blob) && blob.getDir() != 2) {
+			offBlobs.remove(blob);
+		}
+		
+		Log.d("blobs", "Blob dir: " + blob.getDir());
+		Log.d("blobs", "Blob entrance: " + blob.getEntrance());
+		// Hope it works!
 	}
 }

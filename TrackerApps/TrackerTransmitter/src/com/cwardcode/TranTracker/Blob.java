@@ -20,6 +20,21 @@ public class Blob {
 	 * The blob's id.
 	 */
 	private int id;
+	
+	/**
+	 * This value lets us determine which direction the blob is moving.
+	 * 1 means that the blob is entering the shuttle, 2 means that it is 
+	 * exiting the shuttle, and 0 means that it counts towards neither total.
+	 */
+	private int dir;
+	
+	/**
+	 * This value represents the direction that the blob entered the screen
+	 * from. 0 means that it entered from the left, 1 means that it entered
+	 * from the right. This value is initialized as -1 until it can be 
+	 * initialized properly.
+	 */
+	private int entrance;
 
 	/**
 	 * Creates a new Blob based on the given rectangle with the given id.
@@ -32,6 +47,8 @@ public class Blob {
 	public Blob(Rect rectangle, int id) {
 		this.rectangle = rectangle;
 		this.id = id;
+		this.dir = 0;
+		this.entrance = -1;
 	}
 
 	/**
@@ -89,5 +106,21 @@ public class Blob {
 		}
 
 		return result;
+	}
+	
+	public int getDir() {
+		return dir;
+	}
+	
+	public void setDir(int dir) {
+		this.dir = dir;
+	}
+	
+	public void setEntrance(int ent) {
+		entrance = ent;
+	}
+	
+	public int getEntrance() {
+		return entrance;
 	}
 }
