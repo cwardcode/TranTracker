@@ -10,15 +10,129 @@
 {% block content %}
 <div id="map" style="height:790px"></div>
 <script>
+var map;
+//holds latlng points for route polyline
+var route = new Array();
+var shuttles = new Array();
+var stopIcon = L.icon({
+        iconUrl:"/static/images/stopMarker.ico",
+        iconSize:[20,20]
+        });
+var shuttleIcon = L.icon({
+        iconUrl:"/static/images/shuttle.png",
+        iconSize:[20,20]
+        });
+
+function pushLatLngToArray(lnglat) {
+    //split lngLat to individual components
+    var latLngCoord = lnglat.replace(/[()]/g,'').split(", ");
+    //create latlng from lnglat's position and push to array
+    route.push(L.latLng(latLngCoord[1],latLngCoord[0])); 
+}
+
+function addRoute() {
+    {% for route in routes %}
+        pushLatLngToArray("{{route}}");
+    {% endfor %}
+    L.polyline(route, {color: 'red'}).addTo(map);
+}
+    
+function addShuttles() {
+    clearShuttles();
+    downloadUrl("/static/genxml.php",function(data) {
+        var xml = data.responseXML;
+        //holds all elements of tag "marker".
+        var markers = xml.documentElement.getElementsByTagName("marker");
+        //get info from each element and buld marker for map
+        for (var i = 0; i < markers.length; i++) {
+            var vid = markers[i].childNodes[0].textContent;
+            var name =  markers[i].childNodes[1].textContent;
+
+            //The location where the marker is to be placed.
+            var point = L.latLng(
+                    parseFloat(markers[i].childNodes[2].textContent),
+                    parseFloat(markers[i].childNodes[3].textContent));
+            var eta = markers[i].childNodes[5].textContent;
+            var etaSeconds = eta*60;
+            var etaActual = new Date(null, null, null, null, null, 
+                etaSeconds).toTimeString().match(/:\d{2}:\d{2}/)[0]; 
+            var nextStop = markers[i].childNodes[6].textContent;
+
+            //Distance between shuttle and stop.
+            var shuttle;
+            var stop;      
+
+            //The info that is displayed when a marker is clicked.
+            var html = "<div id=\"name\"><b>" + name + "</b></div>" + 
+                       "<div id=\"stop\">Next Stop: " + nextStop 
+                       + "</div><div id= \"eta\">ETA: " + etaActual + "</div>";
+            shuttles.push(L.marker(point, {icon:shuttleIcon,title:name})
+                                                   .bindPopup(html));
+            map.addLayer(shuttles[shuttles.length-1]);
+        }
+    });
+}
+
+function clearShuttles() {
+    for(var i = 0; i < shuttles.length; i++) {
+        map.removeLayer(shuttles[i]); 
+    }
+    shuttles = new Array();
+
+}
+
+function doNothing() {}
+
+function addStops() {
+    {% for stop in stops %}
+        L.marker(L.latLng({{stop.mpoint.y}},{{stop.mpoint.x}}),
+                                  {icon:stopIcon,title: "{{stop}}"}).addTo(map);
+    {% endfor %}
+}
+
+function swapCoordValues(route) {
+    var latLngCoord = route.replace(/[()]/g,'').split(",");
+    return latLngCoord;
+}
+
+/**
+ * Downloads a specified XML file and returns its contents.
+ *
+ * @param url      - the url of the file to download
+ * @param callback - function to run after download has processed.
+ */
+function downloadUrl(url, callback) {
+    var request = window.ActiveXObject ?
+            new ActiveXObject('Microsoft.XMLHTTP') :
+            new XMLHttpRequest;
+
+    request.onreadystatechange = function () {
+        if (request.readyState == 4) {
+            request.onreadystatechange = doNothing;
+            callback(request, request.status);
+        }
+    };
+
+    request.open('GET', url, true);
+    request.send(null);
+}
 
 var culloLatLng = [35.30872, -83.18432];
-var map = L.map('map').setView(culloLatLng, 15);
+map = L.map('map').setView(culloLatLng, 15);
 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 18,
             attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ', 
             id: 'examples.map-i86knfo3'
         }).addTo(map);
+        //Add routes
+        addRoute();        
+        //Add Stops
+        addStops();
+        //Add shuttles
+        addShuttles();
+        //Update shuttles every 3 seconds
+        setInterval(function() { addShuttles()},3000);
 </script>
 
 {% endblock %}
