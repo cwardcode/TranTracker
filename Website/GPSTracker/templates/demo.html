@@ -10,6 +10,16 @@
 {% block content %}
 <div id="map" style="height:790px"></div>
 <script>
+/**
+ * Script to display a leaflet map including stop locations, shuttle locations,
+ * and current positions of shuttles using OpenStreetMap tiles.
+ *
+ * downloadUrl method from google maps tutorial.
+ *
+ * Author: Chris Ward
+ * Version: July 03, 2014
+ */
+
 var map;
 //holds latlng points for route polyline
 var route = new Array();
