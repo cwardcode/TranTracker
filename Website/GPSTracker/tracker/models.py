@@ -58,6 +58,7 @@ class PeopleCount(models.Model):
         return str(self.CountID)
 
     def peoplecount_chart(self):
+       totAtStop = 0
        totPeople = self.totalPeople()
        stopIDStr = str(self.StopID) 
        if stopIDStr == "Kimmell":

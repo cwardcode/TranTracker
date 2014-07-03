@@ -32,11 +32,13 @@
                     OpenLayers.Projection("EPSG:4326"), map.getProjectionObject()),
                 {% endfor %}
             ];
+
         }            
         /**
          * Collects shuttles using ORM and stores into an array
          */
         function getShuttles() {
+            shuttleMarkerLayer.clearMarkers();
             {% for shuttle in shuttles %}
             shuttleByID[{{shuttle.VehID_id}}] = {
                     name: "{{shuttle.VehID_id}}",
@@ -114,8 +116,17 @@
             //add layer to map.
             map.addLayer(routeLayer);
             map.addControl(new OpenLayers.Control.LayerSwitcher()); 
+            setInterval(function() { redrawShuttles() },5000);
         } 
-
+          function redrawShuttles() {
+              console.log("inside redrawShuttles. sCount: " + sCount + ", numShuttles: " + numShuttles);
+              sCount = 0;
+              console.log("middle redrawShuttles. sCount: " + sCount + ", numShuttles: " + numShuttles);
+              numShuttles = 0;
+              getShuttles();
+              shuttleMarkerLayer.redraw();
+              console.log("ending redrawShuttles. sCount: " + sCount + ", numShuttles: " + numShuttles);
+          }
           function addShuttleMarkers() {
             var stopSize = new OpenLayers.Size(21,21);
             var stopIcon = new OpenLayers.Icon('/static/images/shuttle.ico',
@@ -140,7 +151,6 @@
                                     stopIcon.clone()));
                     }
                 } catch (err) {
-                console.log("shuttle: " + err)
                 }
             }
         }
@@ -170,7 +180,6 @@
                                     stopIcon.clone()));
                     }
                 } catch (err) {
-                console.log("stop: " + err)
                 }
             }
         }

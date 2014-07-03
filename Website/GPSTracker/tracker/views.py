@@ -21,6 +21,23 @@ def demo(request):
 def features(request):
     return render_to_response('features.html')
 
+def leaftest(request):
+    routes = None
+    try:
+        routes = ShuttleRoute.objects.all()[0].mpoly
+    except (UnboundLocalError, IndexError) as e:
+        print "No routes in list!"
+    query = 'SELECT DISTINCT ON ("VehID_id") * FROM ( SELECT * FROM tracker_location GROUP BY "VehID_id", "LocID", "Latitude" ,"Longitude" ,"Speed", "estWait", "NextStop" ORDER BY "LocID" DESC) AS tmp'; 
+    shuttles = Location.objects.raw(query)
+   #holder = Location.objects.distinct()
+ 
+   # for s in holder:
+   #     shuttles = s.NextStop
+       
+    stops = RouteStop.objects.all() 
+    return render_to_response('leaftest.html', {'routes': routes,'shuttles':shuttles,'stops': stops})
+
+
 
 def test(request):
     routes = None
