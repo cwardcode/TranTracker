@@ -125,16 +125,16 @@ class PeopleCount(models.Model):
 
 class TrackArea(models.Model):
     name = models.CharField(max_length=50)
-    area = models.IntegerField('Area (square miles)')
-    lon = models.FloatField('Longitude (Center)')
-    lat = models.FloatField('Latitude (Center)')
-
-    mpoly = models.MultiPolygonField()
+    area = models.DecimalField('Area (square miles)',max_digits=5, decimal_places=2)
+    
+    mpoly = models.MultiPolygonField(srid=4326, null=True,geography=True)
     objects = models.GeoManager()
 
     class Meta:
         verbose_name_plural = "Tracking Areas"
-
+    def save(self, *args, **kwargs):
+        self.area = self.mpoly.area 
+        super(TrackArea,self).save(*args,**kwargs)
     def __unicode__(self):
         return str(self.name)
 

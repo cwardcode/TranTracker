@@ -73,8 +73,8 @@ class PeopleCountAdmin(admin.ModelAdmin):
     search_fields = ('StopID', 'Date', 'Time', 'Count')
     list_filter = ('Time',)
     #Re-enable this when we can automatically post ridership counts from app and prevent data tampering
-    #readonly_fields = ('CountID', 'StopID', 'VehID', 'LocID','Count','Date', 'Time', 'peoplecount_chart')
-    readonly_fields = ('CountID', 'Date', 'Time', 'peoplecount_chart')
+    readonly_fields = ('CountID', 'StopID', 'VehID', 'LocID','Count','Date', 'Time', 'peoplecount_chart')
+    #readonly_fields = ('CountID', 'Date', 'Time', 'peoplecount_chart')
     fieldsets = [
         ('PeopleCount', {'fields': ['CountID', 'StopID', 'VehID', 'LocID', 'Date', 'Time',
                                     'Count', ]}),
@@ -86,6 +86,7 @@ class TrackAreaAdmin(admin.OSMGeoAdmin):
     default_lon = -9259955.994351353 
     default_lat = 4206048.190320374
     default_zoom = 15
+    readonly_fields = ('area',)
 admin.site.register(TrackArea, TrackAreaAdmin)
 
 class ShuttleRouteAdmin(admin.OSMGeoAdmin):
