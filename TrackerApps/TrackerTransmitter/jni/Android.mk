@@ -5,7 +5,7 @@ include $(CLEAR_VARS)
 #OPENCV_CAMERA_MODULES:=off
 #OPENCV_INSTALL_MODULES:=off
 #OPENCV_LIB_TYPE:=SHARED
-include C:/NVPACK/OpenCV-2.4.5-Tegra-sdk-r2/sdk/native/jni/OpenCV-tegra3.mk
+include C:/NVPACK/OpenCV-2.4.5-Tegra-sdk/sdk/native/jni/OpenCV-tegra3.mk
 
 LOCAL_MODULE    := TranTracker
 LOCAL_SRC_FILES := TranTracker.cpp DetectionBasedTracker_jni.cpp

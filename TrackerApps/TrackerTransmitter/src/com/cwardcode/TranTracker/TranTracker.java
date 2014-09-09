@@ -49,8 +49,8 @@ import com.cwardcode.TranTracker.SendLoc.LocationBinder;
  * being tracked and begin tracking. Provides integration with OpenCV to allow
  * ridership statistic tracking.
  * 
- * @author Hayden Thomas
  * @author Chris Ward
+ * @author Hayden Thomas
  * @version June 1, 2014
  */
 public class TranTracker extends Activity
@@ -92,6 +92,7 @@ public class TranTracker extends Activity
 	/** Holds the haar cascade file used to find bodies */
 	private File mCascadeFile;
 	/** A service instance */
+	@SuppressWarnings("unused")
 	private SendLoc locService;
 	/**
 	 * TODO: May use in the future, commenting out for warnings. private
