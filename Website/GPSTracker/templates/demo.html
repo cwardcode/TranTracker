@@ -5,6 +5,7 @@
 {% block head %}
 <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
 <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+<script type="text/javascript" src="/static/js/leaflet.smoothmarkerbouncing.js"></script>
 {% endblock %}
 <!-- Content override -->
 {% block content %}
@@ -98,13 +99,24 @@ function doNothing() {}
 function addStops() {
     {% for stop in stops %}
         L.marker(L.latLng({{stop.mpoint.y}},{{stop.mpoint.x}}),
-                                  {icon:stopIcon,title: "{{stop}}"}).addTo(map);
+        {icon:stopIcon,title: "{{stop}}"})
+        .setBouncingOptions({
+                bounceHeight: 25,
+                bounceSpeed: 34,
+                exclusive: true
+        }).on('click', function() {
+            this.toggleBouncing();
+        }).addTo(map);
     {% endfor %}
 }
 
 function swapCoordValues(route) {
     var latLngCoord = route.replace(/[()]/g,'').split(",");
     return latLngCoord;
+}
+
+function bounceMarker(markerID) {
+
 }
 
 /**
@@ -155,11 +167,9 @@ map = L.map('map').setView(culloLatLng, 15);
         <div class="first">
         <li class="first">Routes
             <ul id="first2">
-                <li class="first"><a onClick="toggleRoute(0);">All-Campus</a></li>
-                <li class="first"><a onClick="toggleRoute(1);">Village Express</a></li>
-                <li class="first"><a onClick="toggleRoute(2);">HHS Express</a></li>
-                <li class="first"><a onClick="toggleRoute(3);">Off-Campus North</a></li>
-                <li class="first"><a onClick="toggleRoute(4);">Off-Campus South</a></li>
+                {% for route in routeNames %}
+                <li class="first"><a onClick="toggleRoute();">{{route.name}}</a></li>
+                {% endfor %}
             </ul>
         </li>
         </div>
@@ -167,29 +177,11 @@ map = L.map('map').setView(culloLatLng, 15);
         <li class="last">Stops
             <ul>
                 <select class="content" size="20">
-                    <option onClick="bounceMarker(0);" value="1"> N. Baseball</option>
-                    <option onClick="bounceMarker(1);" value="2"> S. Baseball</option>
-                    <option onClick="bounceMarker(2);" value="3"> Ramsey</option>
-                    <option onClick="bounceMarker(3);" value="4"> Field House</option>
-                    <option onClick="bounceMarker(4);" value="5"> Bardo Arts Center</option>
-                    <option onClick="bounceMarker(5);" value="6"> Dining Hall</option>
-                    <option onClick="bounceMarker(6);" value="7"> Walker</option>
-                    <option onClick="bounceMarker(7);" value="8"> Village</option>
-                    <option onClick="bounceMarker(8);" value="9"> Norton</option>
-                    <option onClick="bounceMarker(9);" value="10"> UC</option>
-                    <option onClick="bounceMarker(10);" value="11"> Library</option>
-                    <option onClick="bounceMarker(11);" value="12"> Moore</option>
-                    <option onClick="bounceMarker(12);" value="13"> Reynolds</option>
-                    <option onClick="bounceMarker(13);" value="14"> McKee</option>
-                    <option onClick="bounceMarker(14);" value="15"> Albright/Benton</option>
-                    <option onClick="bounceMarker(15);" value="16"> Harrill</option>
-                    <option onClick="bounceMarker(16);" value="17"> Central</option>
-                    <option onClick="bounceMarker(17);" value="18"> OneStop</option>
-                    <option onClick="bounceMarker(18);" value="19"> Coulter</option>
-                    <option onClick="bounceMarker(19);" value="20"> Kimmell</option>
+                    {% for stop in stops %}
+                    <option onClick="bounceMarker({{stop.StopID}});" value="{{stop.StopID}}">{{stop}}</option>
+                    {%endfor%}
                 </select>
             </ul>
-            <button type="button" onClick="clearStopMarkers();">Clear Markers</button>
         </li>
         </div>
     </ul>

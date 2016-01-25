@@ -12,11 +12,18 @@ def demo(request):
     routes = None
     try:
         routes = ShuttleRoute.objects.all()[0].mpoly
+        routeNames = ShuttleRoute.objects.order_by('name').all()
     except (UnboundLocalError, IndexError) as e:
         print "No routes in list!"
-
-    stops = RouteStop.objects.all() 
-    return render_to_response('demo.html', {'routes': routes,'stops': stops})
+    query = 'SELECT DISTINCT ON ("VehID_id") * FROM ( SELECT * FROM tracker_location GROUP BY "VehID_id", "LocID", "Latitude" ,"Longitude" ,"Speed", "estWait", "NextStop" ORDER BY "LocID" DESC) AS tmp'; 
+    shuttles = Location.objects.raw(query)
+   #holder = Location.objects.distinct()
+ 
+   # for s in holder:
+   #     shuttles = s.NextStop
+       
+    stops = RouteStop.objects.order_by('StopName').all() 
+    return render_to_response('test.html', {'routeNames': routeNames, 'routes': routes,'shuttles':shuttles,'stops': stops})
 
 def features(request):
     return render_to_response('features.html')
@@ -43,6 +50,7 @@ def test(request):
     routes = None
     try:
         routes = ShuttleRoute.objects.all()[0].mpoly
+        routeNames = ShuttleRoute.objects.order_by('name').all()
     except (UnboundLocalError, IndexError) as e:
         print "No routes in list!"
     query = 'SELECT DISTINCT ON ("VehID_id") * FROM ( SELECT * FROM tracker_location GROUP BY "VehID_id", "LocID", "Latitude" ,"Longitude" ,"Speed", "estWait", "NextStop" ORDER BY "LocID" DESC) AS tmp'; 
@@ -52,8 +60,8 @@ def test(request):
    # for s in holder:
    #     shuttles = s.NextStop
        
-    stops = RouteStop.objects.all() 
-    return render_to_response('test.html', {'routes': routes,'shuttles':shuttles,'stops': stops})
+    stops = RouteStop.objects.order_by('StopName').all() 
+    return render_to_response('test.html', {'routeNames': routeNames, 'routes': routes,'shuttles':shuttles,'stops': stops})
 
 
 def get_routes_json(request, route_id):
